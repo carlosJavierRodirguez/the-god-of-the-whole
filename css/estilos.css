@@ -51,7 +51,7 @@ body {
 
 .logo {
     max-width: 60%;
-    height: auto;
+    padding-top: 70px;
 }
 
 .campo-email {
@@ -106,4 +106,8 @@ margin: 40px 0px 0px 75px;
 }
 .recuperar{
     margin: -26px 0px 0px 238px;
+}
+
+.sala{
+    color: white;
 }
