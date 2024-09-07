@@ -1,49 +1,73 @@
+/* Estilo general */
 body {
     background-image: url('../img/fondoLogin.jpeg');
-    background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.container {
+    max-width: 100%;
+    padding: 0 15px;
+}
 
 .boton {
     background-color: rgba(255, 255, 255, 0);
-    border: solid 1px #ffffff00;
+    border: none;
 }
 
 .pergamino {
-    height: 380px;
-    background-size: cover;
     background-image: url('../img/pergamino.png');
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 200%;
+    min-height: 500px; /* Ajusta el mínimo para asegurar que la imagen se vea bien */
 }
 
- .pin-juego { 
-    margin-left: 75px;
-   margin-top: 20px;
-    width: 210px;
-    height: 50px;
-}
-
-.nombre-jugador{
-    margin-left: 75px;   
-    margin-top: 20px;
-    width: 210px;
-    height: 50px;
-}
-
-.botonIngresar{
-    margin: 0px 0px 0px 45px;
-}
-
-.letra-iniciar-sesion{
-    color:  #0004ff;
-    margin: -26px 0px 0px 200px;
-}
-
-.letra-sala{
+.link {
     color: white;
-    margin-left: 60px;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: black;
+}
+
+@media (min-width: 768px) {
+    .pergamino {
+        max-width: 400px; /* Ajustar tamaño máximo en pantallas medianas */
+        padding: 3rem;
+    }
+}
+
+.logo {
+    max-width: 60%;
+    height: auto;
+}
+
+.campo-email {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.botonIngresar {
+    border: none !important;
+    background-color: transparent;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .subir{
