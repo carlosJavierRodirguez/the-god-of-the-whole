@@ -1,52 +1,46 @@
 <?php
-// ejemplo
-    include('conexion.php');
+include('conexion2.php');
 
-    $conexion = new conexion();
+$conexion = new conexion();
 
-    $values = array(
-        ':selTipoIdentificacion'=> $_POST['selTipoIdentificacion'],
-        ':txtNumeroIdentificacion'=> $_POST['txtNumeroIdentificacion'],
-        ':txtNombres'=> $_POST['txtNombres'],
-        ':txtPrimerApellido'=> $_POST['txtPrimerApellido'],
-        ':txtSegundoApellido'=> $_POST['txtSegundoApellido'],
-        ':txtFechaNacimiento'=> $_POST['txtFechaNacimiento'],
-        ':txtTelefono'=> $_POST['txtTelefono'],
-        ':txtDireccionResidencia'=> $_POST['txtDireccionResidencia'],
-        ':txtEmail'=> $_POST['txtEmail'],
-        ':selMunicipioResidencia'=> $_POST['selMunicipioResidencia'],
-        ':selMunicipioNacimiento'=> $_POST['selMunicipioNacimiento']
-        
-    );
+$values = array(
+    ':txtNombreUsuario' => $_POST['txtNombreUsuario'],
+    ':txtEmailRegistro' => $_POST['txtEmailRegistro'],
+    ':txtClaveRegistro' => $_POST['txtClaveRegistro']
+);
 
-    $sqlInsertPersona="INSERT INTO `promosocial`.`persona`
-    (
-    `TipoIdentificacionId`,
-    `personaNumeroIdentificacion`,
-    `personaNombres`,
-    `personaPrimerApellido`,
-    `personaSegundoApellido`,
-    `personaFechaNacimiento`,
-    `personaTelefono`,
-    `personaDireccionResidencia`,
-    `personaEmail`,
-    `personaMunicipioResidencia`,
-    `personaMunicipioNacimiento`)
-    VALUES
-    (:selTipoIdentificacion,
-    :txtNumeroIdentificacion,
-    :txtNombres,
-    :txtPrimerApellido,
-    :txtSegundoApellido,
-    :txtFechaNacimiento,
-    :txtTelefono,
-    :txtDireccionResidencia,
-    :txtEmail,
-    :selMunicipioResidencia,
-    :selMunicipioNacimiento );";
+$sqlInsertPersona = "INSERT INTO `juego`.`usuario`
+(
+`nombreUsuario`,
+`email`,
+`clave`)
+VALUES
+(
+    :txtNombreUsuario,
+    :txtEmailRegistro,
+    :txtClaveRegistro);";
 
-    //echo $sqlInsertPersona;
+try {
+    // Ejecutar la consulta
+    $resultado = $conexion->ejecutar($sqlInsertPersona, $values);
 
-    $conexion->ejecutar($sqlInsertPersona,$values);
-    header('Location:http://localhost/registrarPersona');
-?>
+    // Incluye SweetAlert2 y tu archivo JS personalizado
+    echo "
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script src='../js/animaciones.js'></script>";
+
+    // Asegúrate de que las funciones sean llamadas después de cargar los scripts
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (" . ($resultado ? 'true' : 'false') . ") {
+                mostrarAlertaError();
+            } else {
+               
+             mostrarAlertaExito();
+            }
+        });
+    </script>";
+} catch (Exception $e) {
+    // Si hay un error en la consulta o en la ejecución
+    echo "Error: " . $e->getMessage();
+}

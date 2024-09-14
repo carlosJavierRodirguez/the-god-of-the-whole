@@ -1,34 +1,28 @@
 <?php
 class conexion
 {
-    private $host;
-    private $dbname;
-    private $user;
-    private $pass;
+    private $dsn;
+    private $server;
+    private $usuario;
+    private $baseDatos;
+    private $password;
 
     public function __construct()
     {
-        $this->host = "localhost";
-        $this->dbname = "teoriaConjuntos";
-        $this->user = "postgres";
-        $this->pass = "";
+        $this->server = "localhost";
+        $this->usuario = "root";
+        $this->baseDatos = "juego";
+        $this->password = "1083877108";
     }
 
     public function conectar()
     {
+        $this->dsn = 'mysql:host=' . $this->server . ';port=3306;dbname=' . $this->baseDatos . '';
         try {
-            //establecer la conexión con MSQL utilizando PDD
-            $conecto = new PDO("pgsql:host=$this->host;dbname=$this->dbname", $this->user, $this->pass);
-
-
-            //OPCIONAL: configurar el modo de error para manejar excepciones
+            $conecto = new PDO($this->dsn, $this->usuario, $this->password);
             $conecto->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            //si llegas a este punto, la conexion ha sido exitosa
-            echo "conexión exitosa a la base de datos <br>";
         } catch (PDOException $e) {
-            //en caso de error, mostrar el mensaje de error
-            die("error de conexión:" . $e->getMessage());
+            die("Error de conexión: " . $e->getMessage());
         }
         return $conecto;
     }
@@ -45,6 +39,7 @@ class conexion
         }
         return $resultado;
     }
+// funcion para el inicio de sesión
     public function consultaIniciarSesion($sqlQuery, $values)
     {
         $conexion = $this->conectar();
@@ -55,6 +50,7 @@ class conexion
         }
         return $resultados;
     }
+
     public function consulta1($querysql)
     {
         $conexion = $this->conectar();
@@ -72,3 +68,4 @@ class conexion
         $queryEjecutar->execute($values);
     }
 }
+?>

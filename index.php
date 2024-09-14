@@ -26,7 +26,7 @@
         <div class="col-12 col-md-4"></div>
         <div class="col-12 col-md-4">
           <div class="d-flex justify-content-center">
-            <a href="partida.html" class="boton"
+            <a href="partida.php" class="boton"
               ><img
                 src="img/botonJugarOnline.png"
                 alt="imagen de boton de jugar online"
@@ -34,7 +34,7 @@
           </div>
           <br />
           <div class="d-flex justify-content-center">
-            <a href="configuraciones.html" class="boton"
+            <a href="configuraciones.php" class="boton"
               ><img
                 src="img/botonConfiguracion.png"
                 alt="imagen de boton de configuraciones"
