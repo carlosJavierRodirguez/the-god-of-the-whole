@@ -39,7 +39,7 @@ class conexion
         }
         return $resultado;
     }
-// funcion para el inicio de sesión
+    // funcion para el inicio de sesión
     public function consultaIniciarSesion($sqlQuery, $values)
     {
         $conexion = $this->conectar();
@@ -68,4 +68,3 @@ class conexion
         $queryEjecutar->execute($values);
     }
 }
-?>

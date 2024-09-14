@@ -1,6 +1,6 @@
 /* Estilo general */
 body {
-    background-image: url("../img/fondoLogin.jpeg");
+    background-image: url("../img/fondoPrueba.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -110,28 +110,7 @@ form {
 .tipoLetra {
     font-family: 'Jeju Hallasan';
 }
-.fondoConfiguraciones{
-    background-image: url("../img/fondoConfiguraciones.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.fondoRegistrarse{
-    background-image: url("../img/fondoRegistrarse.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .letraRegistrarse{
     font-family: 'Special Elite', cursive;
 }

@@ -10,20 +10,10 @@ $conectar->conectar();
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The god of the whole</title>
-  <link rel="stylesheet" href="css/estilos.css" />
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/estilos.css" />
-  <link rel="stylesheet" href="fontawesome/css/all.css" />
-  <link rel="icon" href="img/logo.png" type="image/x-icon" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Jeju+Hallasan&display=swap"
-    rel="stylesheet" />
+  <?php include('principal/head.php') ?>
 </head>>
 
-<body class="fondoRegistrarse">
+<body>
   <div class="container">
     <div class="row justify-content-center">
       <!-- Logo y Título -->
@@ -78,7 +68,7 @@ $conectar->conectar();
           <div class="text-center">
             <div class="text-white">
               ¿Ya tienes cuenta?
-              <a href="iniciarSesion.html" class="link tipoLetra">Iniciar Sesión</a>
+              <a href="iniciarSesion.php" class="link tipoLetra">Iniciar Sesión</a>
             </div>
             <button type="submit" class="btn btn-sm botonIngresar">
               <img

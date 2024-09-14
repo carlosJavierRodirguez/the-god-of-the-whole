@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The god of the whole</title>
-    <link rel="stylesheet" href="css/estilos.css" />
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/estilos.css" />
-    <link rel="stylesheet" href="fontawesome/css/all.css" />
-    <link rel="icon" href="img/logo.png" type="image/x-icon" />
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-4"></div>
-        <div class="col-12 col-md-4">
-          <div class="d-flex justify-content-center">
-            <img src="img/logo.png" class="logo fa-bounce" alt="" />
-          </div>
-        </div>
+<head>
+  <?php include('principal/head.php') ?>
+</head>
 
-        <div class="col-12 col-md-4"></div>
-        <!--botones-->
-        <div class="col-12 col-md-4"></div>
-        <div class="col-12 col-md-4">
-          <div class="d-flex justify-content-center">
-            <a href="partida.php" class="boton"
-              ><img
-                src="img/botonJugarOnline.png"
-                alt="imagen de boton de jugar online"
-            /></a>
-          </div>
-          <br />
-          <div class="d-flex justify-content-center">
-            <a href="configuraciones.php" class="boton"
-              ><img
-                src="img/botonConfiguracion.png"
-                alt="imagen de boton de configuraciones"
-            /></a>
-          </div>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4"></div>
+      <div class="col-12 col-md-4">
+        <div class="d-flex justify-content-center">
+          <img src="img/logo.png" class="logo fa-bounce" alt="" />
         </div>
-        <div class="col-12 col-md-4"></div>
       </div>
+
+      <div class="col-12 col-md-4"></div>
+      <!--botones-->
+      <div class="col-12 col-md-4"></div>
+      <div class="col-12 col-md-4">
+        <div class="d-flex justify-content-center">
+          <a href="partida.php" class="boton"><img
+              src="img/botonJugarOnline.png"
+              alt="imagen de boton de jugar online" /></a>
+        </div>
+        <br />
+        <div class="d-flex justify-content-center">
+          <a href="configuraciones.php" class="boton"><img
+              src="img/botonConfiguracion.png"
+              alt="imagen de boton de configuraciones" /></a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4"></div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

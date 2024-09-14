@@ -44,4 +44,3 @@ if ($resultadoLogin) {
     header('Location: ../iniciarSesion.php');
     exit(); // Asegurarse de que el script no continúe ejecutándose después de la redirección
 }
-?>
