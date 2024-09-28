@@ -1,0 +1,58 @@
+.contenedor {      
+    background-image: url('../img/pergamino2.jpeg');
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen dentro del contenedor */
+    height: 70vh;
+    width: 120px;
+    position: fixed;
+    left: 0;
+    display: flex;
+    flex-direction: column; /* Organiza los elementos verticalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+    border-radius: 8px;
+}
+.contenedor-item {
+    display: flex;
+    flex-direction: column; /*contenido en columnas */
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+}
+
+.contenedor-item p {
+    margin: 0;
+    width: 120px;
+    text-align: center;
+    font-size: 1rem;
+    word-wrap: break-word; /* Permite que las palabras se rompan si son demasiado largas */
+
+}
+
+.user-profile {
+    background-image: url('../img/pergamino3.jpeg');
+    background-size: cover;
+    background-position: center; 
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
