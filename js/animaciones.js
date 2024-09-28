@@ -22,10 +22,4 @@ function mostrarAlertaError() {
     });
 }
 
-// Este bloque asegura que el DOM esté completamente cargado antes de ejecutar cualquier código que dependa del DOM
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("El DOM está completamente cargado.");
-});
-
-
 

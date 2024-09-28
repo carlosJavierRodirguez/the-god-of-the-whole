@@ -12,7 +12,7 @@ class Conexion
         $this->server = "localhost";
         $this->usuario = "postgres";
         $this->baseDatos = "teoriaConjuntos";
-        $this->password = "";  
+        $this->password = "1083877108";
     }
 
     public function conectar()
@@ -21,9 +21,9 @@ class Conexion
         try {
             $conecto = new PDO($this->dsn, $this->usuario, $this->password);
             $conecto->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Conexión exitosa";
+            // echo "Conexión exitosa";
         } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();  // Mensaje de error más descriptivo
+            // echo "Error de conexión: " . $e->getMessage();  // Mensaje de error más descriptivo
         }
         return isset($conecto) ? $conecto : null;  // Retorna null si no se conectó
     }
@@ -64,7 +64,7 @@ class Conexion
         return $resultados;
     }
     // Función para insertar datos
-    public function ejecutar($querysql, $values)
+    public function insertarDatos($querysql, $values)
     {
         $conexion = $this->conectar();
         $queryEjecutar = $conexion->prepare($querysql);

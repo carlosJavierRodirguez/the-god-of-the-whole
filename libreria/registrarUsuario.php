@@ -1,7 +1,7 @@
 <?php
-include('conexion2.php');
+include('conexion.php');
 
-$conexion = new conexion();
+$conexion = new   Conexion();
 
 $values = array(
     ':txtNombreUsuario' => $_POST['txtNombreUsuario'],
@@ -9,20 +9,25 @@ $values = array(
     ':txtClaveRegistro' => $_POST['txtClaveRegistro']
 );
 
-$sqlInsertPersona = "INSERT INTO `juego`.`usuario`
-(
-`nombreUsuario`,
-`email`,
-`clave`)
-VALUES
-(
-    :txtNombreUsuario,
-    :txtEmailRegistro,
-    :txtClaveRegistro);";
+$sqlInsertPersona = "
+    INSERT INTO public.usuario
+    (  
+        \"nombreUsuario\",
+        email,
+        clave
+    )
+    VALUES
+    (  
+        :txtNombreUsuario,
+        :txtEmailRegistro,
+        :txtClaveRegistro
+    );
+";
+
 
 try {
     // Ejecutar la consulta
-    $resultado = $conexion->ejecutar($sqlInsertPersona, $values);
+    $resultado = $conexion->insertarDatos($sqlInsertPersona, $values);
 
     // Incluye SweetAlert2 y tu archivo JS personalizado
     echo "

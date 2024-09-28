@@ -1,16 +1,11 @@
 <?php
 session_start(); // Inicio de la sesión
 
-include('conexion2.php');
+include('conexion.php');
 include('classAcceso.php'); // Incluir la clase para realizar el encapsulamiento
 
-$encapsularAcceso = new acceso(); // Crear el objeto
-$conexion = new conexion();
-
-// Verificar que los datos del formulario están definidos
-if (!isset($_POST['txtEmail']) || !isset($_POST['txtClave'])) {
-    die("Error: Email o clave no proporcionados.");
-}
+$encapsularAcceso = new Acceso(); // Crear el objeto
+$conexion = new Conexion();
 
 // Establecer email y clave
 $encapsularAcceso->setEmail($_POST['txtEmail']); // Establecer email
@@ -23,7 +18,7 @@ $values = array(
 );
 
 $sqlLogin = "SELECT 
-    nombreUsuario,
+    \"nombreUsuario\",
     email,
     clave
     FROM usuario
