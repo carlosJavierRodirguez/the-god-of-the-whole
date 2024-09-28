@@ -1,5 +1,5 @@
 <?php
-class acceso
+class Acceso
 {
     private $email;
     private $clave;

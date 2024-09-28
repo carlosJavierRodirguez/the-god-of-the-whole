@@ -1,7 +1,7 @@
 <?php
-include('libreria/conexion2.php');
+include('libreria/conexion.php');
 
-$conectar = new conexion();
+$conectar = new Conexion();
 
 $conectar->conectar();
 
