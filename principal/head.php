@@ -7,3 +7,6 @@
 <link rel="stylesheet" href="fontawesome/css/all.css" />
 <link rel="icon" href="img/logo.png" type="image/x-icon" />
 <link href="https://fonts.googleapis.com/css2?family=Jeju+Hallasan&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap" rel="stylesheet">

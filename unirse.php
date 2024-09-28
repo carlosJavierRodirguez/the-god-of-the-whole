@@ -13,6 +13,7 @@
         <div class="d-flex justify-content-center">
           <img src="img/logo.png" class="logo fa-bounce" alt="" />
         </div>
+        <h1 class="d-flex justify-content-center text-white sofadi-one-regular ">Unirse a Partida</h1>
       </div>
 
       <div class="col-12 col-md-4"></div>
