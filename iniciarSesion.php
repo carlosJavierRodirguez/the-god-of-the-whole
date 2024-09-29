@@ -51,7 +51,7 @@ $conectar->conectar();
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
             <div>
-              <a href="" class="link tipoLetra">¿Olvidaste tu contraseña?</a>
+              <a href="recuperarClave.php" class="link tipoLetra">¿Olvidaste tu contraseña?</a>
             </div>
             <div>
               <a href="crearCuenta.php" class="link tipoLetra">¿No tienes cuenta?</a>

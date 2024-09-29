@@ -32,7 +32,7 @@ if ($resultadoLogin) {
     // Si hay un resultado, se considera que el usuario ha sido autenticado
     $usuario = $resultadoLogin['nombreUsuario']; // Obtener el nombre de usuario
     $_SESSION['nombreUsuario'] = $usuario; // Guardar en la sesión
-    header('Location: ../inicioUsuario.php'); // Redirigir a la página deseada
+    header('Location: ../apartadoUsuario.php'); // Redirigir a la página deseada
     exit(); // Asegurarse de que el script no continúe ejecutándose después de la redirección
 } else {
     // Si no se encuentra el usuario, redirigir a la página de inicio de sesión

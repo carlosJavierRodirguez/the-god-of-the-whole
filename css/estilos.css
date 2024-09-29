@@ -1,6 +1,6 @@
 /* Estilo general */
 body {
-  background-image: url("../img/fondoPrueba.jpg");
+  background-image: url("../img/prueba.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -102,6 +102,7 @@ form {
 }
 
 .recuperar {
+  
   margin: -26px 0px 0px 238px;
 }
 
