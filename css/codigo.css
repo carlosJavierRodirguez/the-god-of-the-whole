@@ -1,0 +1,12 @@
+.codigo input {
+    width: 50px;
+    /* Ancho del campo */
+    height: 50px;
+    /* Alto del campo */
+    font-size: 24px;
+    /* Tamaño de fuente */
+    text-align: center;
+    /* Centrando el texto */
+    margin: 0 5px;
+    /* Margen entre campos */
+}

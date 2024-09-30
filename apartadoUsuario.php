@@ -1,3 +1,7 @@
+<?php
+session_start(); // Esto debe estar en la primera línea del archivo
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,11 +29,8 @@
 
     <div class="user-profile">
         <img src="img/afrodita.png" alt="Icono de Usuario" class="user-icon">
-        <span class="username">ZZZZZZZ</span>
+        <span class="username"><?php echo  $_SESSION['persona']; ?></span>
     </div>
-
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </body>
 
 </html>

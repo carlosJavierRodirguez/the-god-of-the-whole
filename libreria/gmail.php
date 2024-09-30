@@ -44,34 +44,38 @@ try {
     $numeros = numerosRecuperacion();
 
     $cuerpoCorreo = '
-        <html> 
-        <body>
-            <h2 style="text-align: left; color: #333;">Recuperación de Contraseña</h2>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="color: #000;">Hola,</p>
-                    <p style="color: #000;">Hemos recibido una solicitud para restablecer la contraseña de tu cuenta.</p>
-                    <p style="color: #000;">Tu código de restablecimiento de contraseña es:</p>
-                    <p style="text-align: center;">
-                        <div style="text-align: center; font-size: 50px; line-height: 1.5; width: 100%;" id="numeros">';
+<html>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+        <h2 style="text-align: left; color: #333;">Recuperación de Contraseña</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div>
+                <p style="color: #000;">Hola,</p>
+                <p style="color: #000;">Hemos recibido una solicitud para restablecer la contraseña de tu cuenta.</p>
+                <p style="color: #000;">Tu código de restablecimiento de contraseña es:</p>
+                <p style="text-align: center;">
+                    <div style="text-align: center; font-size: 40px; line-height: 1.5; word-wrap: break-word; width: 100%;" id="numeros">';
 
+    // Agregamos los números al cuerpo del correo
     foreach ($numeros as $numero) {
         $cuerpoCorreo .= $numero . ' ';
     }
 
     $cuerpoCorreo .= '
-                        </div>
-                    </p>
-                    <p style="color: #000;">Si no solicitaste este cambio, simplemente ignora este correo.</p>
-                    <p style="color: #000;">Saludos,<br>El equipo de soporte de The God of the Whole</p>
-                </div>
-                <div style="display: flex; justify-content: flex-end;">
-                    <img src="cid:logo" class="logo" alt="" style="width: 300px; height: 300px;" />
-                </div>
+                    </div>
+                </p>
+                <p style="color: #000;">Si no solicitaste este cambio, simplemente ignora este correo.</p>
+                <p style="color: #000;">Saludos,<br>El equipo de soporte de The God of the Whole</p>
             </div>
-        </body>
-        </html>
-    ';
+            <div style="text-align: center; padding-top: 20px;">
+                <img src="cid:logo" class="logo" alt="Logo" style="max-width: 100%; height: auto;" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+';
+
 
     $mail->Body = $cuerpoCorreo;
 
