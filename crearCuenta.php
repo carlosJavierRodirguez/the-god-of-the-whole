@@ -21,9 +21,6 @@ $conectar->conectar();
         <div class="d-flex justify-content-center">
           <img src="img/logo.png" class="logo fa-bounce" alt="" />
         </div>
-        <div class="d-flex justify-content-center">
-          <h1 class="tipoLetra text-white letraRegistrarse">Registrarse</h1>
-        </div>
         <!-- Formulario de inicio de sesión -->
         <form action="libreria/registrarUsuario.php" method="POST" class="pergamino p-4 p-md-5">
           <div class="form-group mb-2 email">

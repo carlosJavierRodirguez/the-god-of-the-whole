@@ -13,14 +13,16 @@
         <div class="d-flex justify-content-center">
           <img src="img/logo.png" class="logo fa-bounce" alt="" />
         </div>
-        <h1 class="d-flex justify-content-center text-white sofadi-one-regular ">Unirse a Partida</h1>
+     
       </div>
 
       <div class="col-12 col-md-4"></div>
       <!--botones-->
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4 subir">
+     
         <form action="" method="get" class="pergamino p-4 p-md-5">
+          <br>
           <div class="form-group mb-2 email">
             <!-- Email -->
             <input
@@ -30,7 +32,6 @@
               placeholder="Nombre del Jugador"
               required />
           </div>
-
           <div class="form-group mb-2">
             <!-- Contraseña -->
 

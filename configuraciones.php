@@ -22,18 +22,18 @@
         <form action="" method="get">
           <div class="pergamino">
             <div class="col-12 col-md-12 row">
-              <div class="col-12">
+              <div class="col-12 ">
                 <h3 class="configuraciones tipoLetra text-white">General</h3>
                 <input
-                  type="range"
-                  class="form-range rango"
+                  type="range" min="0" max="10"
+                  class="form-range rango "
                   id="rangoGeneral"
                   placeholder="rangoGeneral" />
               </div>
               <div class="col-12">
                 <h3 class="rango tipoLetra text-white">Música</h3>
                 <input
-                  type="range"
+                  type="range" min="0" max="10"
                   class="form-range rango"
                   id="rangoMusica"
                   placeholder="rangoGeneral" />
@@ -41,7 +41,7 @@
               <div class="col-12">
                 <h3 class="rango tipoLetra text-white">Voces</h3>
                 <input
-                  type="range"
+                  type="range" min="0" max="10"
                   class="form-range rango"
                   id="rangoVoces"
                   placeholder="rangoGeneral" />

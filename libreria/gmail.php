@@ -64,7 +64,7 @@ try {
     $cuerpoCorreo .= '
                     </div>
                 </p>
-                <p style="color: #000;">Si no solicitaste este cambio, simplemente ignora este correo.</p>
+                <p style="color: #000;">Si no solicitaste este cambio, simplemente ignora este correo. Otra persona puede haber escrito tu dirección de correo electrónico por error.</p>
                 <p style="color: #000;">Saludos,<br>El equipo de soporte de The God of the Whole</p>
             </div>
             <div style="text-align: center; padding-top: 20px;">

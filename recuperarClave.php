@@ -27,6 +27,7 @@ $conectar->conectar();
             <div class="col-12 col-md-4 subir">
 
                 <form action="libreria/gmail.php" method="post" class="pergamino p-4 p-md-5">
+                    <br>
                     <div class="form-group mb-2 email">
                         <span class="text-white fw-bold tipoLetra">Email <i class="fa-solid fa-envelope"></i>
                             <!-- Email -->
@@ -38,6 +39,7 @@ $conectar->conectar();
                                 placeholder="correo@gmail.com"
                                 required />
                     </div>
+                    <br>
                     <!-- Botón de inicio de sesión -->
                     <div class="text-center">
                         <button type="submit" class="btn btn-sm botonIngresar">

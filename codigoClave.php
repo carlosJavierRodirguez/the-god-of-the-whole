@@ -29,7 +29,7 @@
                     <div class="form-group mb-2 email">
                         <div class="d-flex align-items-center">
                             <div class="text-white">
-                                <h5>Expira en </h5>
+                                <h6>Expira en</h6>
                             </div>
                             <div id="contador">
                                 <h5 class="text-white">10:00</h5>
@@ -39,7 +39,7 @@
                             cuentaRegresiva();
                         </script>
                     </div>
-                    <br>
+
                     <!-- Campos de código de recuperación -->
                     <div class="codigo mb-4 d-flex justify-content-center">
                         <input type="text" maxlength="1" class="form-control" id="input1" oninput="nextInput(1)" required>
@@ -47,13 +47,33 @@
                         <input type="text" maxlength="1" class="form-control" id="input3" oninput="nextInput(3)" required>
                         <input type="text" maxlength="1" class="form-control" id="input4" oninput="nextInput(4)" required>
                     </div>
-
-                    <!-- Botón de inicio de sesión -->
-                    <div class="text-center">
+                    <div class="d-flex align-items-center">
+                        <div class="text-white">
+                            <a href="recuperarClave.php" class="link tipoLetra">
+                                Cambiar Email
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="text-white">
+                            <a href="" class="link tipoLetra">
+                                Reenviar Codigo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-center form-group mb-2">
                         <button type="submit" class="btn btn-sm botonIngresar">
                             <img src="img/botonEnviar.png" class="img-fluid" alt="Botón de ingresar" />
                         </button>
                     </div>
+                    <div class="form-group mb-2 email">
+
+                        <script>
+                            cuentaRegresiva();
+                        </script>
+                    </div>
+                    <!-- Botón de inicio de sesión -->
+
                 </form>
             </div>
             <div class="col-12 col-md-4"></div>

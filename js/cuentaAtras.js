@@ -22,7 +22,7 @@ function cuentaRegresiva() {
     if (tiempoRestante < 0) {
       clearInterval(intervalo);
       document.getElementById("contador").innerHTML =
-        '<h5 class="text-white">¡Tiempo terminado!</h5>';
+        '<h6 class="text-white"> Codigo Expirado</h6>';
     }
   }, 1000); // 1000 ms = 1 segundo
 }
