@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "sweetalert2": "^11.14.0"
+    "sweetalert2": "^11.14.0",
+    "the-god-of-the-whole": "file:"
   }
 }
