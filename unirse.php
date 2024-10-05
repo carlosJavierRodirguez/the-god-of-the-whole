@@ -5,6 +5,7 @@
   <?php include('principal/head.php') ?>
 </head>
 
+
 <body>
   <div class="container">
     <div class="row">
@@ -13,14 +14,14 @@
         <div class="d-flex justify-content-center">
           <img src="img/logo.png" class="logo fa-bounce" alt="" />
         </div>
-     
+
       </div>
 
       <div class="col-12 col-md-4"></div>
       <!--botones-->
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4 subir">
-     
+
         <form action="" method="get" class="pergamino p-4 p-md-5">
           <br>
           <div class="form-group mb-2 email">

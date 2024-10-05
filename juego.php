@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <?php include('principal/head.php') ?>
-  <style>.col-2{border: 1px solid #000}    </style>
-  <style>.col-11{border: 1px solid #000} </style>
+
+  <link rel="stylesheet" href="css/estilosJuego.css" /> 
     
 </head>
 <body>
