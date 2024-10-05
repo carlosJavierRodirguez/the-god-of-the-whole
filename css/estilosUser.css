@@ -194,4 +194,30 @@ h5 {
   display: block; /* Asegura que el icono esté en su propia línea */
   margin-bottom: 5px; /* Espaciado entre el icono y el texto */
 }
+.bajarFormulario {
+  margin-top: 28%;
+}
+.selecionPerfilImagen {
+  width: 100px;
+  height: auto;
+  border: 2px solid transparent;
+  transition: border 0.3s;
+}
+.letra {
+  margin-top: 5rem;
+}
+.modal .btn-close-custom {
+  position: absolute; /* Coloca el botón en una posición absoluta */
+  top: 20%; /* Ajusta la distancia desde la parte superior */
+  left: 75%; /* Alinea a la derecha */
+  color: #fff; /* Cambia el color del icono a blanco */
+  background-color: transparent; /* Fondo transparente */
+  border: none; /* Sin borde */
+  font-size: 1.5rem; /* Tamaño del icono */
+  cursor: pointer; /* Cursor cambia a puntero al pasar sobre el botón */
+}
 
+.modal .btn-close-custom:hover {
+  color: #f0f0f0; /* Cambia el color al hacer hover */
+  transform: scale(1.1); /* Efecto de agrandamiento al pasar el mouse */
+}
