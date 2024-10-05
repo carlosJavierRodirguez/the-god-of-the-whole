@@ -1,5 +1,5 @@
 // Selecciona todos los elementos de los iconos
-const icons = document.querySelectorAll('.icon');
+const icons = document.querySelectorAll('.icono');
 
 // Variable para almacenar el ícono seleccionado
 let selectedIcon = null;
