@@ -55,4 +55,14 @@
     color: white;
     margin-top: 50px;
 }
-
+#iframe-cargando {
+  display: none; /* Inicialmente oculto */
+  width: 100%; /* Ajusta al 100% del contenedor */
+  height: 100%; /* Ajusta al 100% del contenedor */
+  border: none; /* Sin bordes */
+  position: fixed; /* Fijo en pantalla */
+  top: 0; /* Cubre toda la ventana */
+  left: 0; /* Cubre toda la ventana */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+  z-index: 1000; /* En la parte superior */
+}
