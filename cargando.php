@@ -72,7 +72,7 @@
         </h1>
     </div>
 
- <script src="js/codigo.js"></script>
+ <script src="js/codigos.js"></script>
  <script src="js/transicion.js"></script>
 
     

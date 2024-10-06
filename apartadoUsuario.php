@@ -170,7 +170,7 @@ session_start(); // Esto debe estar en la primera línea del archivo
 
                 </div>
                 <div class="modal-body pergamino">
-                    <form action="" method="post" class="bajarFormulario">
+                    <form action="salaEsperaCreador.php" method="post" class="bajarFormulario">
                         <button type="button" class="text-white bg-transparent border-0 btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-x"></i>
                         </button>
@@ -208,7 +208,7 @@ session_start(); // Esto debe estar en la primera línea del archivo
                 </div>
                 <div class="modal-body pergamino">
                     <br>
-                    <form action="" method="post" class="bajarFormulario">
+                    <form action="salaEsperaInvitado.php" method="post" class="bajarFormulario">
                         <button type="button" class="text-white bg-transparent border-0 btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-x"></i>
                         </button>
@@ -252,41 +252,28 @@ session_start(); // Esto debe estar en la primera línea del archivo
                             <div class="col-8">
                                 <br>
                                 <h3 class="letra tipoLetra">General</h3>
-                                <input
-                                    type="range" min="0" max="10"
-                                    class="form-range rango"
-                                    id="rangoGeneral"
-                                    placeholder="rangoGeneral" />
+                                <input type="range" min="0" max="10" class="form-range rango text-danger" id="rangoGeneral" placeholder="rangoGeneral" />
                             </div>
                             <div class="col-2"></div>
                             <div class="col-2"></div>
                             <div class="col-8">
                                 <h3 class="tipoLetra">Música</h3>
-                                <input
-                                    type="range" min="0" max="10"
-                                    class="form-range rango"
-                                    id="rangoMusica"
-                                    placeholder="rangoMusica" />
+                                <input type="range" min="0" max="10" class="form-range rango text-danger" id="rangoMusica" placeholder="rangoMusica" />
                             </div>
                             <div class="col-2"></div>
                             <div class="col-2"></div>
                             <div class="col-8">
-
                                 <h3 class="tipoLetra">Voces</h3>
-                                <input
-                                    type="range" min="0" max="10"
-                                    class="form-range rango"
-                                    id="rangoVoces"
-                                    placeholder="rangoVoces" />
+                                <input type="range" min="0" max="10" class="form-range rango text-danger" id="rangoVoces" placeholder="rangoVoces" />
                             </div>
                             <div class="col-2"></div>
                         </div>
 
                         <div class="col-12 btn botonIngresar">
-                            <a href="index.php" class=" "><img
+                            <button type="submit" class="bg-transparent border-0"><img
                                     src="img/botonGuardar.png"
                                     alt="imagen de boton de guardar"
-                                    class="img-fluid" /></a>
+                                    class="img-fluid" /></button>
                         </div>
 
                     </form>
