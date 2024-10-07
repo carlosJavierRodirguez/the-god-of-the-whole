@@ -1,3 +1,58 @@
-.col-11, .col-2 {
-  border: 1px solid #000;
+
+.preguntas1{
+  top: 10px;
 }
+
+.pergamino-head {
+  width: 90%;
+  height: 85%;
+  position: relative;
+}
+
+.texto-encima1 {
+  position: relative;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+  .texto-encima1 {
+    top: -105%; /* Ajusta según lo que se vea mejor en móviles */
+    font-size: 0.6rem; /* Reduce el tamaño de fuente para pantallas pequeñas */
+    padding: 0 10px; /* Añade algo de padding si el texto es muy largo */
+    line-height: 1.2; /* Ajusta la altura de línea para evitar que el texto ocupe demasiado espacio vertical */
+  }
+}
+
+/* Ajustes para pantallas medianas */
+@media (min-width: 577px) and (max-width: 768px) {
+  .texto-encima1 {
+    top: -95%; /* Ajuste moderado para tablets */
+    font-size: 1rem;
+    line-height: 1.2; /* Ajusta la altura de línea para evitar que el texto ocupe demasiado espacio vertical */
+  }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 769px) {
+  .texto-encima1 {
+    top: -110%; /* Mantiene el estilo original en pantallas grandes */
+    font-size: 1.2rem; /* Se puede aumentar ligeramente el tamaño en pantallas grandes */
+    line-height: 0.8; /* Ajusta la altura de línea para evitar que el texto ocupe demasiado espacio vertical */
+  }
+}
+
+h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+
