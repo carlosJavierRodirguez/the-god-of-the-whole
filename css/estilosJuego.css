@@ -11,16 +11,16 @@ body {
   padding: 1rem; /* Añadir un poco de espacio alrededor */
 }
 
-.pergamino-head {
-  background-image: url(../img/Pergamino-juego-head.png);
+.muro{
+  background-image: url(../img/basiliskoNuevopng.png);
   background-size: contain; /* Ajustar para mantener la relación de aspecto */
   background-repeat: no-repeat;
   background-position: center;
+  text-align: center;
   padding: 2rem; /* Asegúrate de que el padding sea suficiente */
   border-radius: 5px;
-  width: 100%;
-  min-height: 400px; /* Altura mínima */
-  margin-bottom: 20px; /* Margen inferior para separación */
+  width: 100%; /* Altura mínima */
+  margin-bottom: 10px; /* Margen inferior para separación */
   overflow: hidden; /* Evita que el contenido se desborde */
 }
 
@@ -38,16 +38,16 @@ body {
 }
 
 .texto1 {
-  font-size: 1.5rem; /* Tamaño de fuente */
+  font-size: 5rem; /* Tamaño de fuente */
   line-height: 1.2; 
   text-align: center; 
-  color: #8b4513; 
+  color: white; 
   padding: 4rem; /* Ajusta el padding según sea necesario */
 }
 
 /* Media queries para pantallas pequeñas */
 @media (max-width: 576px) {
-  .pergamino-head {
+  .muro{
     padding: 1rem; /* Ajusta el padding para pantallas pequeñas */
     min-height: 250px; /* Reduce la altura mínima */
   }
@@ -58,7 +58,7 @@ body {
 
 /* Media queries para pantallas medianas */
 @media (min-width: 577px) and (max-width: 768px) {
-  .pergamino-head {
+  .muro{
     padding: 2rem; /* Ajusta el padding */
     min-height: 300px; /* Ajusta la altura mínima */
   }
@@ -69,12 +69,12 @@ body {
 
 /* Media queries para pantallas grandes */
 @media (min-width: 769px) {
-  .pergamino-head {
+  .muro{
     padding: 3rem; /* Padding original */
     min-height: 450px; /* Altura original */
   }
   .texto1 {
-    font-size: 1.5rem; /* Tamaño original */
+    font-size: 2rem; /* Tamaño original */
   }
 }
 
