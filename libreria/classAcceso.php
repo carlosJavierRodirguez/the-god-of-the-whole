@@ -8,6 +8,7 @@ class Acceso
     {
         $this->email = $email;
     }
+
     public function getEmail()
     {
         return $this->email;
@@ -17,6 +18,7 @@ class Acceso
     {
         $this->clave = $clave;
     }
+
     public function getClave()
     {
         return $this->clave;
