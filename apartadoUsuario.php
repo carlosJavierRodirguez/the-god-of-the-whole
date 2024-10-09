@@ -1,5 +1,14 @@
 <?php
-session_start(); // Esto debe estar en la primera línea del archivo
+session_start(); // Iniciar la sesión
+
+// Verificar si la sesión 'nombreUsuario' está configurada
+if (!isset($_SESSION['nombreUsuario'])) {
+    header('Location: iniciarSesion.php'); // Redirigir a la página de inicio de sesión
+    exit(); // Asegurarse de que el script no continúe ejecutándose
+}
+
+// Si la sesión está configurada, obtener el nombre de usuario
+$nombreUsuario = $_SESSION['nombreUsuario'];
 ?>
 
 <!DOCTYPE html>
@@ -51,10 +60,14 @@ session_start(); // Esto debe estar en la primera línea del archivo
                                     <img src="img/afrodita.png" alt="Afrodita" class="user-icon mr-3">
                                 </button>
                                 <span class="username" id="NombreJugador">
-                                    Carlos Javier Rodriguez
+                                    <?php echo $nombreUsuario; ?>
                                     <button type="button" class="btn border border-0">
                                         <i class="fa-solid fa-user-pen"></i>
                                     </button>
+                                    <form action="cerrarSesion.php" class="d-flex justify-content-end" method="post">
+                                        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                                    </form>
+
                                 </span>
                             </div>
 

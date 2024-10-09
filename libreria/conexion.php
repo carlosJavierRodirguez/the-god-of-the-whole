@@ -53,7 +53,13 @@ class Conexion
         }
         return $resultados;
     }
-
+    public function consultaValor($sqlQuery, $values)
+    {
+        $conexion = $this->conectar();
+        $consulta = $conexion->prepare($sqlQuery);
+        $consulta->execute($values);
+        return $consulta->fetchAll(PDO::FETCH_ASSOC); // devolver todos los resultados
+    }
     public function consulta1($querysql)
     {
         $conexion = $this->conectar();
