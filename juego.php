@@ -13,7 +13,7 @@
     <div class="muro">
 
       <div class="texto1">
-        <h2>Ronda:1</h2>
+        <h2>Ronda:2</h2>
         <p>Tiempo: 5:00</p>
         <p>¿Qué dioses se consideran olímpicos?</p>
       </div>
