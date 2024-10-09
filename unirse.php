@@ -22,14 +22,15 @@
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4 subir">
 
-        <form action="" method="get" class="pergamino p-4 p-md-5">
+        <form action="salaEsperaInvitado.php" method="post" class="pergamino p-4 p-md-5">
           <br>
           <div class="form-group mb-2 email">
             <!-- Email -->
             <input
               type="text"
               class="form-control campo-email"
-              id="nombreJugador"
+              id="txtNombreJugador"
+              name="txtNombreJugador"
               placeholder="Nombre del Jugador"
               required />
           </div>
@@ -39,7 +40,8 @@
             <input
               type="number"
               class="form-control campo-email"
-              id="password"
+              id="txtCodigoSala"
+              name="txtCodigoSala"
               placeholder="Pin de Juego"
               required />
           </div>
