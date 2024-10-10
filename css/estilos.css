@@ -10,6 +10,17 @@ body {
   justify-content: center;
   align-items: center;
 }
+.pantano {
+  background-image: url("../img/pantano.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .container {
   max-width: 100%;
