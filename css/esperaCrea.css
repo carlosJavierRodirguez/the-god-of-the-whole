@@ -1,0 +1,9 @@
+.username {
+    transition: all 0.3s ease;
+}
+
+.username:hover {
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}

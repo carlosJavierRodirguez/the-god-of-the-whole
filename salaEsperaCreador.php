@@ -17,6 +17,7 @@ $sala->setCodigoSala($codigoSala);
 <head>
   <?php include('principal/head.php') ?>
   <link rel="stylesheet" href="css/salaEsp.css">
+  <link rel="stylesheet" href="css/esperaCrea.css">
 </head>
 
 <body>
@@ -24,12 +25,12 @@ $sala->setCodigoSala($codigoSala);
   <div class="pergaminoCu-ontainer">
     <div class="pergaminoCu">
 
-      <div class="infoSala col-9">
+      <div class="infoSala col-9 text-white">
         <div>Nombre Sala: <?php echo $sala->getNombreSala(); ?></div>
         <div>Codigo: <i class="fa-solid fa-copy"></i> </div>
-        <div>Jugadores: </div>
+        
       </div>
-
+      <div class="text-white">Jugadores: 4/4  <i class="fa-solid fa-user"></i> </div>
       <div class="rueda col-9">
 
         <div class="user-profile col-12">
@@ -72,6 +73,7 @@ $sala->setCodigoSala($codigoSala);
         <!-- Iframe para mostrar el archivo HTML -->
         <iframe id="iframe-cargando" src="cargando.php"></iframe>
       </div>
+      <script src="js/eliminar.js"></script>
       <script src="js/transicion.js"></script>
 </body>
 

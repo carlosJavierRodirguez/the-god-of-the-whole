@@ -18,15 +18,15 @@ $sala->setCodigoSala($codigoSala);
 
 <body>
 
-    <div class="pergaminoCu-ontainer">
+<div class="pergaminoCu-Container">
         <div class="pergaminoCu">
 
-            <div class="infoSala col-9">
-                <div>Nombre Sala: carlos</div>
-                <div>Codigo: <?php echo $sala->getCodigoSala(); ?> <button class=" bg-transparent border-0 text-white"><i class="fa-solid fa-copy "></button></i></div>
-                <div>Jugadores: </div>
+            <div class="infoSala col-9 text-white">
+                <div>Nombre Sala: Carlos</div>
+                <div>Codigo: <?php echo $sala->getCodigoSala(); ?> <button class=" bg-transparent border-0"><i class="fa-solid fa-copy"></i></button></i></div>
+                
             </div>
-
+            <div class="text-white">Jugadores: 4/4  <i class="fa-solid fa-user"></i> </div>
             <div class="rueda col-9">
 
                 <div class="user-profile col-12">
