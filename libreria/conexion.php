@@ -6,6 +6,7 @@ class Conexion
     private $usuario;
     private $baseDatos;
     private $password;
+    private $conexion; // Variable para almacenar la conexión
 
     public function __construct()
     {
@@ -13,6 +14,7 @@ class Conexion
         $this->usuario = "postgres";
         $this->baseDatos = "teoriaConjuntos";
         $this->password = "1083877108";
+        $this->conexion = $this->conectar(); // Establecer la conexión al crear el objeto
     }
 
     public function conectar()
@@ -21,59 +23,56 @@ class Conexion
         try {
             $conecto = new PDO($this->dsn, $this->usuario, $this->password);
             $conecto->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // echo "Conexión exitosa";
+            return $conecto; // Retorna la conexión
         } catch (PDOException $e) {
-            // echo "Error de conexión: " . $e->getMessage();  // Mensaje de error más descriptivo
+            // Manejar error de conexión
+            echo "Error de conexión: " . $e->getMessage();
+            return null; // Retorna null si no se conectó
         }
-        return isset($conecto) ? $conecto : null;  // Retorna null si no se conectó
     }
 
+    // Método para ejecutar consultas sin retorno de valores
+    public function ejecutar($sqlQuery, $values = [])
+    {
+        if ($this->conexion) {
+            $consulta = $this->conexion->prepare($sqlQuery);
+            $consulta->execute($values);
+            return $consulta->rowCount(); // Devuelve el número de filas afectadas
+        }
+        return false; // Retorna false si no hay conexión
+    }
 
-
+    // Otros métodos existentes...
     public function consulta($sqlQuery)
     {
-        $conexiondb = $this->conectar();
-        $consulta = $conexiondb->prepare($sqlQuery);
-
+        $consulta = $this->conexion->prepare($sqlQuery);
         $consulta->execute();
-
-        while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $resultado[] = $fila;
-        }
-        return $resultado;
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
-    // funcion para el inicio de sesión
+
     public function consultaIniciarSesion($sqlQuery, $values)
     {
-        $conexion = $this->conectar();
-        $consulta = $conexion->prepare($sqlQuery);
+        $consulta = $this->conexion->prepare($sqlQuery);
         $consulta->execute($values);
-        while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $resultados[] = $fila;
-        }
-        return $resultados;
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function consultaValor($sqlQuery, $values)
     {
-        $conexion = $this->conectar();
-        $consulta = $conexion->prepare($sqlQuery);
+        $consulta = $this->conexion->prepare($sqlQuery);
         $consulta->execute($values);
-        return $consulta->fetchAll(PDO::FETCH_ASSOC); // devolver todos los resultados
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function consulta1($querysql)
     {
-        $conexion = $this->conectar();
-        $consulta = $conexion->query($querysql);
-        while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            $resultados[] = $fila;
-        }
-        return $resultados;
+        $consulta = $this->conexion->query($querysql);
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
-    // Función para insertar datos
+
     public function insertarDatos($querysql, $values)
     {
-        $conexion = $this->conectar();
-        $queryEjecutar = $conexion->prepare($querysql);
+        $queryEjecutar = $this->conexion->prepare($querysql);
         $queryEjecutar->execute($values);
     }
 }

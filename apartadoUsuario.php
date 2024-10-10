@@ -53,22 +53,32 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
                 <div class="row bajarResponsive">
                     <div class="col-12">
-                        <div class="user-profile bg-white p-3">
+
+                        <div class="user-profile bg-white p-3 d-flex flex-column" style="height: 100%;">
+                            <!-- Botón de Cerrar Sesión -->
+                            <div class="d-flex justify-content-end">
+                                <form action="cerrarSesion.php" method="post">
+                                    <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                                </form>
+                            </div>
                             <!-- Imagen y Nombre del Usuario en Flexbox -->
                             <div class="d-flex align-items-center mb-4">
                                 <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <img src="img/afrodita.png" alt="Afrodita" class="user-icon mr-3">
                                 </button>
-                                <span class="username" id="NombreJugador">
-                                    <?php echo $nombreUsuario; ?>
-                                    <button type="button" class="btn border border-0">
+                                <span id="nombreUsuarioDisplay" class="username"><?php echo $_SESSION['nombreUsuario']; ?></span>
+
+                                <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#actualizarNombreModal">
+                                    <i class="fa-solid fa-user-pen"></i>
+                                </button>
+
+                                <!-- <span class="username" id="NombreJugador" >
+                                    
+                                    <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#actualizarNombreModal">
                                         <i class="fa-solid fa-user-pen"></i>
                                     </button>
-                                    <form action="cerrarSesion.php" class="d-flex justify-content-end" method="post">
-                                        <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
-                                    </form>
 
-                                </span>
+                                </span> -->
                             </div>
 
                             <!-- Frase mitológica -->
@@ -87,7 +97,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                 <div class="col-12 col-md-6">
                                     <h5><i class="fas fa-chart-line"></i> Porcentaje de Victorias:</h5>
                                     <div class="progress barras">
-                                        <div class="progress-bar  victorias" role="progressbar">
+                                        <div class="progress-bar victorias" role="progressbar">
                                             66%
                                         </div>
                                     </div>
@@ -95,13 +105,17 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                 <div class="col-12 col-md-6">
                                     <h5><i class="fas fa-chart-line-down"></i> Porcentaje de Derrotas:</h5>
                                     <div class="progress barras">
-                                        <div class="progress-bar  derrotas" role="progressbar">
+                                        <div class="progress-bar derrotas" role="progressbar">
                                             33%
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -295,9 +309,36 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
             </div>
         </div>
     </div>
+
+    <!-- Modal de actualizar nombre -->
+    <div class="modal fade" id="actualizarNombreModal" tabindex="-1" aria-labelledby="actualizarNombreLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content user-profile">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="actualizarNombreLabel">Actualizar Nombre</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formActualizarNombre" action="libreria/acceso.php" method="POST">
+                        <input type="hidden" name="usuarioID" id="usuarioID" value="<?php echo $_SESSION['usuarioID']; ?>">
+                        <input type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nuevo nombre" required>
+                        <div class="modal-footer border-0 d-flex justify-content-center">
+                            <button type="submit" class="btn border-0" id="actualizarNombreBtn">
+                                <img src="img/botonGuardar.png" alt="Guardar" srcset="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="js/actualizarNombre.js"></script>
+
 </body>
-
-
-
 
 </html>
