@@ -72,13 +72,6 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                     <i class="fa-solid fa-user-pen"></i>
                                 </button>
 
-                                <!-- <span class="username" id="NombreJugador" >
-                                    
-                                    <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#actualizarNombreModal">
-                                        <i class="fa-solid fa-user-pen"></i>
-                                    </button>
-
-                                </span> -->
                             </div>
 
                             <!-- Frase mitológica -->

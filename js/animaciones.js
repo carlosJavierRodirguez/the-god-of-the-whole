@@ -1,4 +1,3 @@
-// Define las funciones en el ámbito global
 function mostrarAlertaExito() {
   Swal.fire({
     position: "center",
@@ -7,7 +6,7 @@ function mostrarAlertaExito() {
     showConfirmButton: false,
     timer: 1500,
   }).then(() => {
-    window.location.href = " ../apartadoUsuario.php"; // lo redirige a la pagina si es exitoso el registro
+    window.location.href = "../iniciarSesion.php"; // Redirige al iniciar sesión
   });
 }
 
@@ -16,9 +15,9 @@ function mostrarAlertaError() {
     position: "center",
     icon: "error",
     title: "Error al registrar usuario",
-    text: "Please try again later.",
+    text: "Por favor intentar mas tarde",
   }).then(() => {
-    window.location.href = "iniciarSesion.php"; // lo redirige a la pagina si es exitoso el registro
+    window.location.href = "../crearCuenta.php"; // Redirige a crear cuenta
   });
 }
 
