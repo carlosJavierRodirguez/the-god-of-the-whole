@@ -1,7 +1,7 @@
 <?php
 include('conexion.php');
 
-$conexion = new   Conexion();
+$conexion = new Conexion();
 
 $values = array(
     ':txtNombreUsuario' => $_POST['txtNombreUsuario'],
@@ -24,7 +24,6 @@ $sqlInsertPersona = "
     );
 ";
 
-
 try {
     // Ejecutar la consulta
     $resultado = $conexion->insertarDatos($sqlInsertPersona, $values);
@@ -38,10 +37,10 @@ try {
     echo "<script>
         document.addEventListener('DOMContentLoaded', function() {
             if (" . ($resultado ? 'true' : 'false') . ") {
-                mostrarAlertaError();
+                mostrarAlertaError();  // Mostrar alerta de error y redirigir a crear cuenta
             } else {
                
-             mostrarAlertaExito();
+             mostrarAlertaExito();  // Mostrar alerta de éxito y redirigir a iniciar sesión
             }
         });
     </script>";

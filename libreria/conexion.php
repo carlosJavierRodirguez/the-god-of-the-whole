@@ -6,7 +6,7 @@ class Conexion
     private $usuario;
     private $baseDatos;
     private $password;
-    private $conexion; // Variable para almacenar la conexión
+    private $conexion;
 
     public function __construct()
     {
