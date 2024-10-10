@@ -3,6 +3,7 @@
 
 <head>
   <?php include('principal/head.php'); ?>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilosJuego.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 </head>
@@ -20,30 +21,37 @@
     </div>
 
     <!-- Sección con el personaje mostrado en pergamino veneno -->
-    <div class="row pergaminoveneno ">
+    <div class="row pergaminoveneno">
       <div class="col-12 text-center">
         <div class="espadas"></div>
       </div>
     </div>
 
-    <!-- Sección adicional vacía -->
-    <div class="row arboles">
-      <div class="col-12">
-
-       <div class="row my-4 justify-content-center">
-         <div class="col-6 col-md-4 text-center mb-4">
-          <p><div class="afrodita"></div></p>
-         </div>
-
-           <div class="col-6 col-md-4 text-center mb-4">
-            <p><div class="hera"></div></p>
-         </div>
-
-         <div class="col-6 col-md-4 text-center mb-4">
-         <p><div class="atenea"></div></p>
+    <!-- Apartado 4x4 de imágenes -->
+    <div class="row my-4 image-grid">
+      <div class="col-3">
+        <img src="../img/image1.png" class="img-fluid" >
       </div>
-
-       </div>
+      <div class="col-3">
+        <img src="../img/image2.png" class="img-fluid" >
+      </div>
+      <div class="col-3">
+        <img src="../img/image3.png" class="img-fluid" >
+      </div>
+      <div class="col-3">
+        <img src="../img/image4.png" class="img-fluid" >
+      </div>
+      <div class="col-3">
+        <img src="../img/image5.png" class="img-fluid" >
+      </div>
+      <div class="col-3">
+        <img src="../img/image6.png" class="img-fluid" >
+      </div>
+      <div class="col-3">
+        <img src="../img/image7.png" class="img-fluid" >
+      </div>
+      <div class="col-3">
+        <img src="../img/image8.png" class="img-fluid" >
       </div>
     </div>
 

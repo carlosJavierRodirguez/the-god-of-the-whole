@@ -17,7 +17,7 @@ body {
 }
 
 .muro {
-  background-image: url(../img/basi.png);
+  background-image: url('../img/basi.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -29,8 +29,8 @@ body {
   overflow: hidden;
 }
 
-.afrodita{
-  background-image: url(../img/afrodita.png);
+.afrodita {
+  background-image: url('../img/afrodita.png');
   background-size: 10vh;
   background-repeat: no-repeat;
   margin-top: 2%; /* Reducir margen superior */
@@ -39,8 +39,9 @@ body {
   width: 50%;
   min-height: 9vh; /* Ajustar la altura mínima */
 }
-.hera{
-  background-image: url(../img/hera.png);
+
+.hera {
+  background-image: url('../img/hera.png');
   background-size: 10vh;
   background-repeat: no-repeat;
   margin-top: 2%; /* Reducir margen superior */
@@ -49,8 +50,9 @@ body {
   width: 50%;
   min-height: 10vh; /* Ajustar la altura mínima */
 }
-.atenea{
-  background-image: url(../img/atenea.png);
+
+.atenea {
+  background-image: url('../img/atenea.png');
   background-size: 10vh;
   background-repeat: no-repeat;
   margin-top: 2%; /* Reducir margen superior */
@@ -60,9 +62,8 @@ body {
   min-height: 9.8vh; /* Ajustar la altura mínima */
 }
 
-
 .pergaminoveneno {
-  background-image: url(../img/Pergaminove.png);
+  background-image: url('../img/Pergaminove.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -70,12 +71,12 @@ body {
   padding: 2rem; /* Reducir padding */
   border-radius: 5px;
   width: 100%;
-  min-height: 25vh; /* Ajustar para que no ocupe demasiado espacio */
+  min-height: 30vh; /* Aumentar altura mínima */
   overflow: hidden;
 }
 
 .arboles {
-  background-image: url(../img/arbolesdioses.png);
+  background-image: url('../img/arbolesdioses.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -83,12 +84,12 @@ body {
   padding: 2rem;
   border-radius: 5px;
   width: 100%;
-  min-height: 25vh;
+  min-height: 30vh; /* Mantener altura mínima */
   overflow: hidden;
 }
 
 .espadas {
-  background-image: url(../img/Espadas.png);
+  background-image: url('../img/Espadas.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -97,7 +98,7 @@ body {
   padding: 0;
   border-radius: 1px;
   width: 100%;
-  min-height: 35vh; /* Ajustar la altura mínima */
+  min-height: 40vh; /* Aumentar altura mínima */
 }
 
 /* Estilos de texto */
@@ -108,18 +109,35 @@ body {
   padding: 1rem;
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.7);
 }
-
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Centra horizontalmente */
+    }
+    .image-grid .col-3 {
+      display: flex; /* Para centrar la imagen dentro de la columna */
+      justify-content: center;
+      align-items: center; /* Centra verticalmente */
+      margin-bottom: 20px; /* Espaciado entre las filas */
+    }
+    .image-grid img {
+      max-width: 100%; /* Asegura que las imágenes no excedan el ancho de la columna */
+      height: auto; /* Mantiene la relación de aspecto */
+    }
 /* Reseteo de márgenes y rellenos en h2 y p */
-h2, p {
+h2,
+p {
   margin: 0;
   padding: 0;
 }
 
 /* Media queries para pantallas pequeñas */
 @media (max-width: 576px) {
-  .pergaminoveneno, .arboles, .espadas {
+  .pergaminoveneno,
+  .arboles,
+  .espadas {
     padding: 1rem; /* Reducir padding para pantallas pequeñas */
-    min-height: 20vh; /* Ajustar la altura mínima en pantallas pequeñas */
+    min-height: 25vh; /* Ajustar la altura mínima en pantallas pequeñas */
   }
 
   .espadas {
@@ -133,13 +151,15 @@ h2, p {
 
 /* Media queries para pantallas medianas */
 @media (min-width: 577px) and (max-width: 768px) {
-  .pergaminoveneno, .arboles, .espadas {
+  .pergaminoveneno,
+  .arboles,
+  .espadas {
     padding: 2rem;
-    min-height: 25vh; /* Ajustar altura para pantallas medianas */
+    min-height: 30vh; /* Aumentar altura para pantallas medianas */
   }
 
   .espadas {
-    margin-top: 26%; /* Ajustar el margen superior */
+    margin-top: 25%; /* Ajustar el margen superior */
   }
 
   .texto1 {
@@ -149,9 +169,11 @@ h2, p {
 
 /* Media queries para pantallas grandes */
 @media (min-width: 769px) {
-  .pergaminoveneno, .arboles, .espadas {
+  .pergaminoveneno,
+  .arboles,
+  .espadas {
     padding: 2rem;
-    min-height: 30vh; /* Ajustar altura en pantallas grandes */
+    min-height: 40vh; /* Aumentar altura en pantallas grandes */
   }
 
   .espadas {
