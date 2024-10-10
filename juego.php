@@ -3,58 +3,54 @@
 
 <head>
   <?php include('principal/head.php'); ?>
-  <link rel="stylesheet" href="css/estilosJuego.css"/>
+  <link rel="stylesheet" href="css/estilosJuego.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 </head>
 
-<body>
-  <div class="container">
+<body class="pantano">
+  <div class="container-fluid">
 
     <!-- Encabezado de la ronda y tiempo -->
-    <div class="muro">
-
-      <div class="texto1">
-        <h2>Ronda:2</h2>
+    <div class="row muro">
+      <div class="col-12 texto1 text-center">
+        <h2>Ronda: 2</h2>
         <p>Tiempo: 5:00</p>
         <p>¿Qué dioses se consideran olímpicos?</p>
       </div>
     </div>
 
-    <!-- Conjunto A: Personaje mostrado -->
-    <div class="text-center mb-4">
-      <div class="card">
-        <div class="card-body">
-          <h5>Conjunto A</h5>
-        </div>
+    <!-- Sección con el personaje mostrado en pergamino veneno -->
+    <div class="row pergaminoveneno ">
+      <div class="col-12 text-center">
+        <div class="espadas"></div>
       </div>
     </div>
 
-    <!-- Botones de estado -->
-    <div class="text-center mb-4">
-      <button class="btn btn-success mx-2">¿Terminaste?</button>
-      <button class="btn btn-danger mx-2">Listo</button>
+    <!-- Sección adicional vacía -->
+    <div class="row arboles">
+      <div class="col-12">
+
+       <div class="row my-4 justify-content-center">
+         <div class="col-6 col-md-4 text-center mb-4">
+          <p><div class="afrodita"></div></p>
+         </div>
+
+           <div class="col-6 col-md-4 text-center mb-4">
+            <p><div class="hera"></div></p>
+         </div>
+
+         <div class="col-6 col-md-4 text-center mb-4">
+         <p><div class="atenea"></div></p>
+      </div>
+
+       </div>
+      </div>
     </div>
 
-    <!-- Selección de personajes/dioses -->
-    <div class="row my-4 justify-content-center">
-      <div class="col-md-4 text-center mb-4">
-        <img src="ruta-imagen-afrodita" alt="Afrodita" class="img-fluid">
-        <p>Afrodita</p>
-      </div>
-      <div class="col-md-4 text-center mb-4">
-        <img src="ruta-imagen-hera" alt="Hera" class="img-fluid">
-        <p>Hera</p>
-      </div>
-      <div class="col-md-4 text-center mb-4">
-        <img src="ruta-imagen-atenea" alt="Atenea" class="img-fluid">
-        <p>Atenea</p>
-      </div>
-      <!-- Repetir para los demás personajes -->
-    </div>
-
-  </div>
-
+  <!-- Scripts de Bootstrap y Popper -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
