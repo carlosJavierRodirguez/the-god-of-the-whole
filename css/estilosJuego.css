@@ -107,11 +107,11 @@ h2, p {
 /* Media queries para pantallas grandes */
 @media (min-width: 769px) {
   .espadas {
-    padding: 4rem; /* Aumenta el padding para pantallas grandes */
-    background-size: 50vh; /* Cambia a cover para llenar el espacio */
+    padding: 6rem; /* Aumenta el padding para pantallas grandes */
+    background-size: 45vh; /* Cambia a cover para llenar el espacio */
   }
   .pergaminoveneno {
-    padding: 7rem; /* Aumenta el padding para pantallas grandes */
+    padding: 4rem; /* Aumenta el padding para pantallas grandes */
     background-size: 65vh; /* Cambia a cover para llenar el espacio */
   }
   .texto1 {
