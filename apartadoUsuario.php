@@ -4,10 +4,10 @@ session_start(); // Iniciar la sesión
 // Verificar si la sesión 'nombreUsuario' está configurada
 if (!isset($_SESSION['nombreUsuario'])) {
     header('Location: iniciarSesion.php'); // Redirigir a la página de inicio de sesión
-    exit(); // Asegurarse de que el script no continúe ejecutándose
+    exit(); 
 }
 
-// Si la sesión está configurada, obtener el nombre de usuario
+// nombre de usuario
 $nombreUsuario = $_SESSION['nombreUsuario'];
 ?>
 

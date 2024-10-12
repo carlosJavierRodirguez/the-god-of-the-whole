@@ -1,13 +1,14 @@
 <?php
-session_start(); 
+session_start();
 
 include('conexion.php');
-include('classAcceso.php'); 
+include('classAcceso.php');
 
 $encapsularAcceso = new Acceso(); // Crear el objeto
 $conexion = new Conexion();
 
 // Verificar si se está intentando iniciar sesión
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['txtEmail']) && isset($_POST['txtClave'])) {
     // Establecer email y clave desde el formulario
     $encapsularAcceso->setEmail(trim($_POST['txtEmail'])); // Eliminar espacios
@@ -15,32 +16,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['txtEmail']) && isset(
 
     // Preparar los valores para la consulta
     $values = array(
-        ':email' => $encapsularAcceso->getEmail(),
-        ':clave' => $encapsularAcceso->getClave() 
+        ':email' => $encapsularAcceso->getEmail()
     );
 
     $sqlLogin = "SELECT 
         \"usuarioID\", 
-        \"nombreUsuario\"  -- Incluye usuarioID para usarlo después
+        \"nombreUsuario\", 
+        clave -- Obtener el hash de la clave almacenada
     FROM public.usuario  
-    WHERE email = :email
-    AND clave = :clave;";
+    WHERE email = :email;";
 
     // Ejecutar la consulta y obtener el resultado
-    $resultadoLogin = $conexion->consultaValor($sqlLogin, $values);
+    $resultadoLogin = $conexion->consultaIniciarSesion($sqlLogin, $values);
 
     if (!empty($resultadoLogin)) {
-        // Si hay un resultado, se considera que el usuario ha sido autenticado
+        $hashAlmacenado = $resultadoLogin[0]['clave']; // Obtener el hash almacenado en la BD
         $usuario = $resultadoLogin[0]['nombreUsuario']; // Obtener el nombre de usuario
         $usuarioID = $resultadoLogin[0]['usuarioID']; // Obtener el ID del usuario
-        $_SESSION['nombreUsuario'] = $usuario; 
-        $_SESSION['usuarioID'] = $usuarioID; 
-        header('Location: ../apartadoUsuario.php'); 
-        exit(); 
+
+        // Verificar la contraseña ingresada contra el hash almacenado
+        if (password_verify($encapsularAcceso->getClave(), $hashAlmacenado)) {
+            // Si la verificación es exitosa, autenticar al usuario
+            $_SESSION['nombreUsuario'] = $usuario;
+            $_SESSION['usuarioID'] = $usuarioID;
+            header('Location: ../apartadoUsuario.php');
+            exit();
+        } else {
+            // Contraseña incorrecta
+            header('Location: ../iniciarSesion.php?error=1');
+            exit();
+        }
     } else {
-       
-        header('Location: ../iniciarSesion.php?error=1'); 
-        exit(); 
+        // No se encontró el email
+        header('Location: ../iniciarSesion.php?error=1');
+        exit();
     }
 }
 

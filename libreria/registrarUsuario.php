@@ -3,10 +3,13 @@ include('conexion.php');
 
 $conexion = new Conexion();
 
+// Encriptar la contraseña
+$hashedPassword = password_hash($_POST['txtClaveRegistro'], PASSWORD_DEFAULT);
+
 $values = array(
     ':txtNombreUsuario' => $_POST['txtNombreUsuario'],
     ':txtEmailRegistro' => $_POST['txtEmailRegistro'],
-    ':txtClaveRegistro' => $_POST['txtClaveRegistro']
+    ':txtClaveRegistro' => $hashedPassword  // Usar la contraseña encriptada
 );
 
 $sqlInsertPersona = "
@@ -39,8 +42,7 @@ try {
             if (" . ($resultado ? 'true' : 'false') . ") {
                 mostrarAlertaError();  // Mostrar alerta de error y redirigir a crear cuenta
             } else {
-               
-             mostrarAlertaExito();  // Mostrar alerta de éxito y redirigir a iniciar sesión
+                mostrarAlertaExito();  // Mostrar alerta de éxito y redirigir a iniciar sesión
             }
         });
     </script>";
