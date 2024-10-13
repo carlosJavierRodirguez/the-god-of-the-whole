@@ -5,6 +5,9 @@ $conectar = new Conexion();
 
 $conectar->conectar();
 
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,6 +17,17 @@ $conectar->conectar();
 </head>
 
 <body>
+  <?php
+  // Verificar si el parámetro 'verificado' está presente en la URL
+  if (isset($_GET['verificado']) && $_GET['verificado'] === 'true') {
+    echo "<script>mostrarAlertaRegistroVerificado();</script>";
+  }
+
+  // Verificar si hay un error
+  if (isset($_GET['error']) && $_GET['error'] === 'true') {
+    echo "<script>mostrarAlertaError('Código de verificación incorrecto.');</script>";
+  }
+  ?>
   <div class="container">
     <div class="row justify-content-center">
       <!-- Logo y Título -->

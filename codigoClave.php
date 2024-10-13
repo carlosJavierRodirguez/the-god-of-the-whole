@@ -24,7 +24,18 @@
             <!-- Formulario -->
             <div class="col-12 col-md-4"></div>
             <div class="col-12 col-md-4 subir">
-                <form action="" method="post" class="pergamino p-4 p-md-5">
+                <?php
+                session_start();
+
+                // Verifica si hay un mensaje de error
+                if (isset($_SESSION['error'])) {
+                    echo "<div style='color: red;'>" . $_SESSION['error'] . "</div>";
+                    unset($_SESSION['error']);
+                }
+
+                // Aquí va el resto de tu HTML, incluido el formulario para ingresar el código
+                ?>
+                <form action="libreria/registrarUsuario.php" method="post" class="pergamino p-4 p-md-5">
                     <br>
                     <div class="form-group mb-2 email">
                         <div class="d-flex align-items-center">
@@ -35,30 +46,26 @@
                                 <h5 class="text-white">10:00</h5>
                             </div>
                         </div>
-                        <script>
-                            cuentaRegresiva();
-                        </script>
                     </div>
 
                     <!-- Campos de código de recuperación -->
                     <div class="codigo mb-4 d-flex justify-content-center">
-                        <input type="text" maxlength="1" class="form-control" id="input1" oninput="nextInput(1)" required>
-                        <input type="text" maxlength="1" class="form-control" id="input2" oninput="nextInput(2)" required>
-                        <input type="text" maxlength="1" class="form-control" id="input3" oninput="nextInput(3)" required>
-                        <input type="text" maxlength="1" class="form-control" id="input4" oninput="nextInput(4)" required>
+                        <input type="text" maxlength="1" class="form-control" id="input1" name="codigo[]" oninput="nextInput(1)" required>
+                        <input type="text" maxlength="1" class="form-control" id="input2" name="codigo[]" oninput="nextInput(2)" required>
+                        <input type="text" maxlength="1" class="form-control" id="input3" name="codigo[]" oninput="nextInput(3)" required>
+                        <input type="text" maxlength="1" class="form-control" id="input4" name="codigo[]" oninput="nextInput(4)" required>
                     </div>
+
+                    <input type="hidden" name="codigo_original" value="<?php echo $_SESSION['temp_user']['codigo']; ?>">
+
                     <div class="d-flex align-items-center">
                         <div class="text-white">
-                            <a href="recuperarClave.php" class="link tipoLetra">
-                                Cambiar Email
-                            </a>
+                            <a href="recuperarClave.php" class="link tipoLetra">Cambiar Email</a>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="text-white">
-                            <a href="" class="link tipoLetra">
-                                Reenviar Codigo
-                            </a>
+                            <a href="" class="link tipoLetra">Reenviar Codigo</a>
                         </div>
                     </div>
                     <div class="text-center form-group mb-2">
@@ -66,15 +73,9 @@
                             <img src="img/botonEnviar.png" class="img-fluid" alt="Botón de ingresar" />
                         </button>
                     </div>
-                    <div class="form-group mb-2 email">
-
-                        <script>
-                            cuentaRegresiva();
-                        </script>
-                    </div>
-                    <!-- Botón de inicio de sesión -->
-
                 </form>
+
+
             </div>
             <div class="col-12 col-md-4"></div>
         </div>

@@ -42,14 +42,6 @@ class Conexion
         return false; // Retorna false si no hay conexión
     }
 
-     // Otros métodos existentes...
-    // public function consulta($sqlQuery)
-    // {
-    //     $consulta = $this->conexion->prepare($sqlQuery);
-    //     $consulta->execute();
-    //     return $consulta->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
     public function consultaIniciarSesion($sqlQuery, $values)
     {
         $consulta = $this->conexion->prepare($sqlQuery);
