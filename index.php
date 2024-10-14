@@ -6,6 +6,8 @@
 </head>
 
 <body>
+
+
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-4"></div>
@@ -34,6 +36,10 @@
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
+<iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
+<script src="js/controlVolumen.js"></script>
+
+
 </body>
 
 </html>
