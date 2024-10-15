@@ -56,7 +56,7 @@ body {
   grid-area: pergamino; /* Asignado al área 'pergamino' */
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: rgb(175, 34, 34);
   border: 1px solid black;
   overflow: hidden;
 }
@@ -87,6 +87,29 @@ body {
   height: 100%; /* Se adapta al tamaño del contenedor */
   padding: 2rem;
   border-radius: 30px;
+}
+
+.pergaminove {
+  background-image: url('../img/Perga.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%; /* Se adapta al tamaño del contenedor */
+}
+
+.titulo2 {
+  background-image: url('../img/Maderamorada.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%; /* Se adapta al tamaño del contenedor */
+}
+
+.texto1{
+  position: relative;
+
 }
 
 .espadas {

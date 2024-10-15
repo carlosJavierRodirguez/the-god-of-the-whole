@@ -23,10 +23,13 @@
         </div>
         <div class="item4">
             <div class="inner-item5">
+              <div class="pergaminove">
+
+              </div>
             </div>
             <div class="inner-item4">
-                <div class="pergaminoveneno">
-                    <!-- Contenido del pergaminoveneno -->
+                <div class="titulo2">
+                  <div></div>
                 </div>
             </div>
         </div>
