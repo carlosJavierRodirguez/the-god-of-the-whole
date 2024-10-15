@@ -12,14 +12,14 @@
             <div class="muro"></div>
         </div>
         <div class="item2">
-        <div class="espadas">
+        <div class="arboles">
                    <!-- Contenido de las espadas -->
                 </div>
             <div class="inner-item5">
             </div>
         </div>
         <div class="item3">
-            <div class="arboles"></div> <!-- Contenedor apropiado para los arboles -->
+            <div class="espadas"></div> <!-- Contenedor apropiado para los arboles -->
         </div>
         <div class="item4">
             <div class="inner-item5">
