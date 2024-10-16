@@ -3,6 +3,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+.pantano {
+  background-image: url("../img/pantano.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 body {
   font-family: Arial, sans-serif;
@@ -11,109 +22,133 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
-  overflow: hidden; /* Evita el scroll */
+  overflow: hidden;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* Dos columnas, la segunda más grande */
-  grid-template-rows: repeat(3, 1fr); /* Tres filas */
-  grid-template-areas: 
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
     "muro pergamino"
     "espadas pergamino"
-    "arboles titulo"; /* Define las áreas del grid */
-  width: 95vw; /* Ancho adaptable */
-  height: 90vh; /* Alto adaptable */
+    "arboles titulo";
+  width: 95vw;
+  height: 90vh;
   gap: 10px;
   border: 2px solid black;
+  position: relative;
+}
+
+.item1, .item2, .item3, .item4, .item5 {
+  position: relative;
+  overflow: hidden; /* Para mantener las imágenes de fondo en su lugar */
 }
 
 .item1 {
-  grid-area: muro; /* Asignado al área 'muro' */
+  grid-area: muro;
   background-color: lightblue;
 }
 
 .item2 {
-  grid-area: espadas; /* Asignado al área 'espadas' */
+  grid-area: espadas;
   background-color: lightgreen;
 }
 
 .item3 {
-  grid-area: arboles; /* Asignado al área 'arboles' */
+  grid-area: arboles;
   background-color: lightcoral;
 }
 
 .item4 {
-  grid-area: pergamino; /* Asignado al área 'pergamino' */
+  grid-area: pergamino;
   background-color: rgb(175, 34, 34);
 }
 
 .item5 {
-  grid-area: titulo; /* Asignado al área 'titulo' */
-  background-color: rgb(150, 75, 0); /* Color para el título */
+  grid-area: titulo;
+  background-color: rgb(150, 75, 0);
 }
 
-/* Estilos para las imágenes de fondo */
-.muro {
-  background-image: url('../img/basi.png');
+.muro, .arboles, .espadas, .pergaminove, .titulo2, .afrodita, .hera {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
-  height: 100%; /* Se adapta al tamaño del contenedor */
+  z-index: 1;
+}
+.titulo2{
+  background-size: 100vh;
 }
 
+.muro {
+  background-image: url('../img/basi.png');
+}
+.hera{
+  background-image: url('../img/hera.png');
+}
+.afrodita{
+  background-image: url('../img/afrodita.png');
+}
 .arboles {
   background-image: url('../img/Mader.png');
-  background-size: 90vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 100%; /* Se adapta al tamaño del contenedor */
-  padding: 2rem;
-  border-radius: 30px;
 }
 
 .pergaminove {
   background-image: url('../img/Perga.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 100%; /* Se adapta al tamaño del contenedor */
 }
 
 .titulo2 {
   background-image: url('../img/Maderamorada.png');
-  background-size: 110vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 100%; /* Se adapta al tamaño del contenedor */
 }
 
 .espadas {
   background-image: url('../img/Shield.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 100%; /* Se adapta al tamaño del contenedor */
-  border-radius: 1px;
 }
 
-/* Media Queries para pantallas pequeñas (por ejemplo, móviles) */
+/* Contenedor de elementos arrastrables */
+#drag-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.draggable {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #000;
+  cursor: grab;
+  z-index: 2; /* Se asegura que esté por encima de las imágenes de fondo */
+}
+
+/* Zona de caída (Dropzone) */
+#dropzone {
+  position: relative;
+  z-index: 1; /* Fondo pergamino */
+}
+
+.draggable.over {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: 1fr; /* Una columna */
-    grid-template-rows: repeat(5, 1fr); /* Cinco filas */
-    grid-template-areas: 
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
       "muro"
       "espadas"
       "arboles"
       "pergamino"
-      "titulo"; /* Todo en una sola columna */
-    height: 100vh; /* Altura total de la pantalla */
-    width: 100vw; /* Ancho total de la pantalla */
+      "titulo";
+    height: 100vh;
+    width: 100vw;
   }
 }
