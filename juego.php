@@ -12,26 +12,16 @@
             <div class="muro"></div>
         </div>
         <div class="item2">
-        <div class="arboles">
-                   <!-- Contenido de las espadas -->
-                </div>
-            <div class="inner-item5">
-            </div>
+            <div class="arboles"></div>
         </div>
         <div class="item3">
-            <div class="espadas"></div> <!-- Contenedor apropiado para los arboles -->
+            <div class="espadas"></div>
         </div>
         <div class="item4">
-            <div class="inner-item5">
-              <div class="pergaminove">
-
-              </div>
-            </div>
-            <div class="inner-item4">
-                <div class="titulo2">
-                  <div></div>
-                </div>
-            </div>
+            <div class="pergaminove"></div>
+        </div>
+        <div class="item5">
+            <div class="titulo2"></div>
         </div>
     </div>
 </body>
