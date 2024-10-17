@@ -39,16 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['txtEmail']) && isset(
             // Si la verificación es exitosa, autenticar al usuario
             $_SESSION['nombreUsuario'] = $usuario;
             $_SESSION['usuarioID'] = $usuarioID;
-            header('Location: ../apartadoUsuario.php');
+            header('Location: ../usuario/apartadoUsuario.php');
             exit();
         } else {
             // Contraseña incorrecta
-            header('Location: ../iniciarSesion.php?error=1');
+            header('Location: ../login/iniciarSesion.php?error=1');
             exit();
         }
     } else {
         // No se encontró el email
-        header('Location: ../iniciarSesion.php?error=1');
+        header('Location: ../login/iniciarSesion.php?error=1');
         exit();
     }
 }

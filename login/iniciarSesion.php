@@ -1,19 +1,16 @@
 <?php
-include('libreria/conexion.php');
+include('../libreria/conexion.php');
 
 $conectar = new Conexion();
 
 $conectar->conectar();
-
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <?php include('principal/head.php') ?>
+  <?php include('../principal/head.php'); ?>
 </head>
 
 <body>
@@ -33,10 +30,10 @@ $conectar->conectar();
       <!-- Logo y Título -->
       <div class="col-lg-4 col-md-8 col-sm-10">
         <div class="d-flex justify-content-center">
-          <img src="img/logo.png" class="logo fa-bounce" alt="" />
+          <img src="../img/logo.png" class="logo fa-bounce" alt="" />
         </div>
         <!-- Formulario de inicio de sesión -->
-        <form action="libreria/acceso.php" method="post" class="pergamino p-4 p-md-5">
+        <form action="../libreria/acceso.php" method="post" class="pergamino p-4 p-md-5">
           <div class="form-group mb-2 email">
             <!-- Email -->
             <span class="text-white fw-bold tipoLetra">Email <i class="fa-solid fa-envelope"></i></span>
@@ -72,7 +69,7 @@ $conectar->conectar();
             </div>
             <button type="submit" class="btn btn-sm botonIngresar">
               <img
-                src="img/botonIniciarSesion.png"
+                src="../img/botonIniciarSesion.png"
                 class="img-fluid"
                 alt="Iniciar Sesión" />
             </button>
@@ -81,8 +78,8 @@ $conectar->conectar();
       </div>
     </div>
   </div>
-<iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
-<script src="js/controlVolumen.js"></script>
+  <iframe id="musicaIframe" src="../musica.html" style="display:none;"></iframe>
+  <script src="../js/controlVolumen.js"></script>
 </body>
 
 </html>

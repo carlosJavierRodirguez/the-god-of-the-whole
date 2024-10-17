@@ -3,7 +3,7 @@ session_start(); // Iniciar la sesión
 
 // Verificar si la sesión 'nombreUsuario' está configurada
 if (!isset($_SESSION['nombreUsuario'])) {
-    header('Location: iniciarSesion.php'); // Redirigir a la página de inicio de sesión
+    header('Location: ../login/iniciarSesion.php'); // Redirigir a la página de inicio de sesión
     exit(); 
 }
 
@@ -15,8 +15,8 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 <html lang="es">
 
 <head>
-    <?php include('principal/head.php') ?>
-    <link rel="stylesheet" href="./css/estilosUSer.css">
+    <?php include('../principal/head.php') ?>
+    <link rel="stylesheet" href="../css/estilosUSer.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -64,7 +64,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             <!-- Imagen y Nombre del Usuario en Flexbox -->
                             <div class="d-flex align-items-center mb-4">
                                 <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <img src="img/afrodita.png" alt="Afrodita" class="user-icon mr-3">
+                                    <img src="../img/afrodita.png" alt="Afrodita" class="user-icon mr-3">
                                 </button>
                                 <span id="nombreUsuarioDisplay" class="username"><?php echo $_SESSION['nombreUsuario']; ?></span>
 
@@ -130,42 +130,42 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             <div class="col-6 d-flex justify-content-center mb-3">
                                 <input type="radio" id="imagen1" name="imagen_id" value="1" required>
                                 <label for="imagen1" class="text-center" style="cursor: pointer;">
-                                    <img src="img/afrodita.png" alt="Imagen 1" class="selecionPerfilImagen" />
+                                    <img src="../img/afrodita.png" alt="Imagen 1" class="selecionPerfilImagen" />
                                     <span>Imagen 1</span>
                                 </label>
                             </div>
                             <div class="col-6 d-flex justify-content-center mb-3">
                                 <input type="radio" id="imagen2" name="imagen_id" value="2" required>
                                 <label for="imagen2" class="text-center" style="cursor: pointer;">
-                                    <img src="img/ares.png" alt="Imagen 2" class="selecionPerfilImagen" />
+                                    <img src="../img/ares.png" alt="Imagen 2" class="selecionPerfilImagen" />
                                     <span>Imagen 2</span>
                                 </label>
                             </div>
                             <div class="col-6 d-flex justify-content-center mb-3">
                                 <input type="radio" id="imagen3" name="imagen_id" value="3" required>
                                 <label for="imagen3" class="text-center" style="cursor: pointer;">
-                                    <img src="img/atenea.png" alt="Imagen 3" class="selecionPerfilImagen" />
+                                    <img src="../img/atenea.png" alt="Imagen 3" class="selecionPerfilImagen" />
                                     <span>Imagen 3</span>
                                 </label>
                             </div>
                             <div class="col-6 d-flex justify-content-center mb-3">
                                 <input type="radio" id="imagen4" name="imagen_id" value="4" required>
                                 <label for="imagen4" class="text-center" style="cursor: pointer;">
-                                    <img src="img/gemini.png" alt="Imagen 4" class="selecionPerfilImagen" />
+                                    <img src="../img/gemini.png" alt="Imagen 4" class="selecionPerfilImagen" />
                                     <span>Imagen 4</span>
                                 </label>
                             </div>
                             <div class="col-6 d-flex justify-content-center mb-3">
                                 <input type="radio" id="imagen5" name="imagen_id" value="5" required>
                                 <label for="imagen5" class="text-center" style="cursor: pointer;">
-                                    <img src="img/poseidon.png" alt="Imagen 5" class="selecionPerfilImagen" />
+                                    <img src="../img/poseidon.png" alt="Imagen 5" class="selecionPerfilImagen" />
                                     <span>Imagen 5</span>
                                 </label>
                             </div>
                             <div class="col-6 d-flex justify-content-center mb-3">
                                 <input type="radio" id="imagen6" name="imagen_id" value="6" required>
                                 <label for="imagen6" class="text-center" style="cursor: pointer;">
-                                    <img src="img/hera.png" alt="Imagen 6" class="selecionPerfilImagen" />
+                                    <img src="../img/hera.png" alt="Imagen 6" class="selecionPerfilImagen" />
                                     <span>Imagen 6</span>
                                 </label>
                             </div>
@@ -173,7 +173,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
                         <div class="modal-footer border-0">
                             <button type="submit" class="btn border-0 ">
-                                <img src="img/botonGuardar.png" alt="" srcset="">
+                                <img src="../img/botonGuardar.png" alt="" srcset="">
                             </button>
                         </div>
                     </form>
@@ -211,7 +211,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                         <div class="col-2"></div>
                         <div class="modal-footer border-0">
                             <button type="submit" class="btn bg-transparent border-0">
-                                <img src="img/botonCrearSala.png" alt="Crear Sala" class="img-fluid">
+                                <img src="../img/botonCrearSala.png" alt="Crear Sala" class="img-fluid">
                             </button>
                         </div>
                     </form>
@@ -244,7 +244,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                         <div class="col-2"></div>
                         <div class="modal-footer border-0">
                             <button type="submit" class="btn bg-transparent border-0">
-                                <img src="img/botonUnirse.png" alt="Crear Sala" class="img-fluid">
+                                <img src="../img/botonUnirse.png" alt="Crear Sala" class="img-fluid">
                             </button>
                         </div>
                     </form>
@@ -291,7 +291,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
                         <div class="col-12 btn botonIngresar">
                             <button type="submit" class="bg-transparent border-0"><img
-                                    src="img/botonGuardar.png"
+                                    src="../img/botonGuardar.png"
                                     alt="imagen de boton de guardar"
                                     class="img-fluid" /></button>
                         </div>
@@ -312,12 +312,12 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formActualizarNombre" action="libreria/acceso.php" method="POST">
+                    <form id="formActualizarNombre" action="../libreria/acceso.php" method="POST">
                         <input type="hidden" name="usuarioID" id="usuarioID" value="<?php echo $_SESSION['usuarioID']; ?>">
                         <input type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nuevo nombre" required>
                         <div class="modal-footer border-0 d-flex justify-content-center">
                             <button type="submit" class="btn border-0" id="actualizarNombreBtn">
-                                <img src="img/botonGuardar.png" alt="Guardar" srcset="">
+                                <img src="../img/botonGuardar.png" alt="Guardar" srcset="">
                             </button>
                         </div>
                     </form>
@@ -330,7 +330,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
 
 
-    <script src="js/actualizarNombre.js"></script>
+    <script src="../js/actualizarNombre.js"></script>
 
 </body>
 

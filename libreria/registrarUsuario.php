@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     title: 'Registro Verificado',
                     text: 'Tu cuenta ha sido verificada exitosamente.'
                 }).then(() => {
-                    window.location = '../iniciarSesion.php';
+                    window.location = '../login/iniciarSesion.php';
                 });
             };
             </script>";

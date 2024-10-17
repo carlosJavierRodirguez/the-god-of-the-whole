@@ -1,5 +1,5 @@
 <?php
-include('libreria/conexion.php');
+include('../libreria/conexion.php');
 
 $conectar = new conexion();
 
@@ -10,8 +10,8 @@ $conectar->conectar();
 <html lang="es">
 
 <head>
-  <?php include('principal/head.php') ?>
-</head>>
+  <?php include('../principal/head.php') ?>
+</head>
 
 <body>
   <div class="container">
@@ -19,10 +19,10 @@ $conectar->conectar();
       <!-- Logo y Título -->
       <div class="col-lg-4 col-md-8 col-sm-10">
         <div class="d-flex justify-content-center">
-          <img src="img/logo.png" class="logo fa-bounce" alt="" />
+          <img src="../img/logo.png" class="logo fa-bounce" alt="" />
         </div>
         <!-- Formulario de inicio de sesión -->
-        <form action="libreria/registrarUsuario.php" method="POST" class="pergamino p-4 p-md-5 needs-validation" novalidate>
+        <form action="../libreria/registrarUsuario.php" method="POST" class="pergamino p-4 p-md-5 needs-validation" novalidate>
           <div class="form-group mb-2 email">
             <!-- Email -->
             <span class="text-white fw-bold tipoLetra">Nombre <i class="fa-solid fa-user"></i></span>
@@ -69,7 +69,7 @@ $conectar->conectar();
             </div>
             <button type="submit" class="btn btn-sm botonIngresar">
               <img
-                src="img/botonRegistrarse.png"
+                src="../img/botonRegistrarse.png"
                 class="img-fluid"
                 alt="Iniciar Sesión" />
             </button>
@@ -79,8 +79,8 @@ $conectar->conectar();
     </div>
   </div>
 <iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
-<script src="js/controlVolumen.js"></script>
-<script src="js/validacionFormulario/validacion.js"></script>
+<script src="../js/controlVolumen.js"></script>
+<script src="../js/validacionFormulario/validacion.js"></script>
 </body>
 
 </html>

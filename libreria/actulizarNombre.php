@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'libreria/conexion.php'; // Asegúrate de que este archivo tiene la conexión a la base de datos.
+require 'conexion.php'; 
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -24,5 +24,3 @@ if (isset($data->usuarioID) && isset($data->nuevoNombre)) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Datos incompletos.']);
 }
-?>
-

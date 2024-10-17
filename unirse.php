@@ -3,6 +3,9 @@
 
 <head>
   <?php include('principal/head.php') ?>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="fontawesome/css/all.css" />
 </head>
 
 
@@ -55,7 +58,7 @@
             </button>
             <div>
               <h5 class="tipoLetra text-white">Crea tu propia sala</h5>
-              <a href="iniciarSesion.php" class="link tipoLetra">Iniciar sesión</a>
+              <a href="login/iniciarSesion.php" class="link tipoLetra">Iniciar sesión</a>
             </div>
           </div>
         </form>
@@ -63,8 +66,8 @@
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
-<iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
-<script src="js/controlVolumen.js"></script>
+  <iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
+  <script src="js/controlVolumen.js"></script>
 
 
 </body>

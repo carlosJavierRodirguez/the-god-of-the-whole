@@ -1,5 +1,5 @@
 <?php
-include('libreria/conexion.php');
+include('../libreria/conexion.php');
 $conectar = new Conexion();
 
 $conectar->conectar();
@@ -8,7 +8,7 @@ $conectar->conectar();
 <html lang="es">
 
 <head>
-    <?php include('principal/head.php') ?>
+    <?php include('../principal/head.php') ?>
 </head>
 
 <body>
@@ -17,7 +17,7 @@ $conectar->conectar();
             <div class="col-12 col-md-4"></div>
             <div class="col-12 col-md-4">
                 <div class="d-flex justify-content-center">
-                    <img src="img/logo.png" class="logo fa-bounce" alt="" />
+                    <img src="../img/logo.png" class="logo fa-bounce" alt="" />
                 </div>
             </div>
 
@@ -26,7 +26,7 @@ $conectar->conectar();
             <div class="col-12 col-md-4"></div>
             <div class="col-12 col-md-4 subir">
 
-                <form action="libreria/gmail.php" method="post" class="pergamino p-4 p-md-5">
+                <form action="../libreria/gmail.php" method="post" class="pergamino p-4 p-md-5">
                     <br>
                     <div class="form-group mb-2 email">
                         <span class="text-white fw-bold tipoLetra">Email <i class="fa-solid fa-envelope"></i>
@@ -44,7 +44,7 @@ $conectar->conectar();
                     <div class="text-center">
                         <button type="submit" class="btn btn-sm botonIngresar">
                             <img
-                                src="img/botonEnviar.png"
+                                src="../img/botonEnviar.png"
                                 class="img-fluid"
                                 alt="Boton de ingresar" />
                         </button>
