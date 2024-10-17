@@ -22,7 +22,7 @@ $conectar->conectar();
           <img src="img/logo.png" class="logo fa-bounce" alt="" />
         </div>
         <!-- Formulario de inicio de sesión -->
-        <form action="libreria/registrarUsuario.php" method="POST" class="pergamino p-4 p-md-5">
+        <form action="libreria/registrarUsuario.php" method="POST" class="pergamino p-4 p-md-5 needs-validation" novalidate>
           <div class="form-group mb-2 email">
             <!-- Email -->
             <span class="text-white fw-bold tipoLetra">Nombre <i class="fa-solid fa-user"></i></span>
@@ -80,6 +80,7 @@ $conectar->conectar();
   </div>
 <iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
 <script src="js/controlVolumen.js"></script>
+<script src="js/validacionFormulario/validacion.js"></script>
 </body>
 
 </html>
