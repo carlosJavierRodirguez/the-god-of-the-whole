@@ -28,9 +28,9 @@ $sala->setCodigoSala($codigoSala);
       <div class="infoSala col-9 text-white">
         <div>Nombre Sala: <?php echo $sala->getNombreSala(); ?></div>
         <div>Codigo: <i class="fa-solid fa-copy"></i> </div>
-        
+
       </div>
-      <div class="text-white">Jugadores: 4/4  <i class="fa-solid fa-user"></i> </div>
+      <div class="text-white">Jugadores: 4/4 <i class="fa-solid fa-user"></i> </div>
       <div class="rueda col-9">
 
         <div class="user-profile col-12">

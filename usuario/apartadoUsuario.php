@@ -4,7 +4,7 @@ session_start(); // Iniciar la sesión
 // Verificar si la sesión 'nombreUsuario' está configurada
 if (!isset($_SESSION['nombreUsuario'])) {
     header('Location: ../login/iniciarSesion.php'); // Redirigir a la página de inicio de sesión
-    exit(); 
+    exit();
 }
 
 // nombre de usuario
@@ -329,8 +329,10 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
 
 
-
+    <script src="../js/jQuery/jquery-3.6.0.min.js"></script> <!-- Primero carga jQuery -->
+    <script src="../js/jQuery/jquery-migrate-3.5.0.min.js"></script> <!-- Luego jQuery Migrate -->
     <script src="../js/actualizarNombre.js"></script>
+
 
 </body>
 
