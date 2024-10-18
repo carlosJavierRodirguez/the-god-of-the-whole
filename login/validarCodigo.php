@@ -3,7 +3,6 @@
 
 <head>
     <?php include('../principal/head.php') ?>
-    <script src="js/cuentaAtras.js"></script>
     <link rel="stylesheet" href="../css/codigo.css">
     <style>
 
@@ -45,7 +44,7 @@
                     </div>
 
 
-                    <input type="hidden" name="codigo_original" value="<?php /* echo $_SESSION['temp_user']['codigo'];*/ ?>">
+                    <input type="hidden" name="codigo_original" value="<?php echo $_SESSION['temp_user']['codigo']; ?>">
 
                     <div class="d-flex align-items-center">
                         <div class="text-white">

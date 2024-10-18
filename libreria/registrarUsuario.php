@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     title: 'Código de Verificación Enviado',
                     text: 'Se ha enviado un código de verificación a tu correo electrónico.'
                 }).then(() => {
-                    window.location = '../login/codigoClave.php';
+                    window.location = '../login/validarCodigo.php';
                 });
             };
             </script>";
@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     title: 'Código incorrecto',
                     text: 'El código de verificación ingresado es incorrecto.'
                 }).then(() => {
-                    window.location = '../login/codigoClave.php';
+                    window.location = '../login/validarCodigo.php';
                 });
             };
             </script>";
