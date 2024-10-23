@@ -27,7 +27,7 @@
         </div>
         <br />
         <div class="d-flex justify-content-center">
-          <a href="iniciarSesion.php" class="boton"><img
+          <a href="login/iniciarSesion.php" class="boton"><img
               src="img/botonCrearSala.png"
               alt="imagen de boton para crear la sala" /></a>
         </div>

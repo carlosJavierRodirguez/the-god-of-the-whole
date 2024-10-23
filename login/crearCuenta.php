@@ -78,9 +78,9 @@ $conectar->conectar();
       </div>
     </div>
   </div>
-<iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
-<script src="../js/controlVolumen.js"></script>
-<script src="../js/validacionFormulario/validacion.js"></script>
+  <iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
+  <script src="../js/controlVolumen.js"></script>
+  <script src="../js/validacionFormulario/validacion.js"></script>
 </body>
 
 </html>
