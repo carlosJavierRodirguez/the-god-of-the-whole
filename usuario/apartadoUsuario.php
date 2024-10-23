@@ -190,7 +190,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
                 </div>
                 <div class="modal-body pergamino">
-                    <form action="salaEsperaCreador.php" method="post" class="bajarFormulario">
+                    <form action="../sala/salaEsperaCreador.php" method="post" class="bajarFormulario">
                         <button type="button" class="text-white bg-transparent border-0 btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-x"></i>
                         </button>
@@ -262,32 +262,35 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
                 </div>
                 <div class="modal-body pergamino">
-                    <form action="" method="get">
+                    <form action="" method="">
                         <button type="button" class="text-white bg-transparent border-0 btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-x"></i>
                         </button>
 
-                        <div class="col-12 col-md-12 row">
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <br>
-                                <h3 class="letra tipoLetra">General</h3>
-                                <input type="range" min="0" max="10" class="form-range rango text-danger" id="rangoGeneral" placeholder="rangoGeneral" />
+                        <div class="col-12 col-md-12 row subir">
+                            <div class="col-1"></div>
+                            <div class="col-10">
+                                <h3 class="letra tipoLetra" style="margin-top: -10px;">General</h3> <!-- Ajusta el margen superior -->
+                                <input type="range" min="0" max="10" class="form-range" id="rangoGeneral" placeholder="rangoGeneral" />
                             </div>
-                            <div class="col-2"></div>
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <h3 class="tipoLetra">Música</h3>
-                                <input type="range" min="0" max="10" class="form-range rango text-danger" id="rangoMusica" placeholder="rangoMusica" />
+                            <div class="col-1"></div>
+
+                            <div class="col-1"></div>
+                            <div class="col-10">
+                                <h3 class="tipoLetra" style="margin-top: -10px;">Música</h3> <!-- Ajusta el margen superior -->
+                                <input type="range" min="0" max="10" class="form-range" id="rangoMusica" placeholder="rangoMusica" />
                             </div>
-                            <div class="col-2"></div>
-                            <div class="col-2"></div>
-                            <div class="col-8">
-                                <h3 class="tipoLetra">Voces</h3>
-                                <input type="range" min="0" max="10" class="form-range rango text-danger" id="rangoVoces" placeholder="rangoVoces" />
+                            <div class="col-1"></div>
+
+                            <div class="col-1"></div>
+                            <div class="col-10">
+                                <h3 class="tipoLetra" style="margin-top: -10px;">Voces</h3> <!-- Ajusta el margen superior -->
+                                <input type="range" min="0" max="10" class="form-range" id="rangoVoces" placeholder="rangoVoces" />
                             </div>
-                            <div class="col-2"></div>
+                            <div class="col-1"></div>
                         </div>
+
+
 
                         <div class="col-12 btn botonIngresar">
                             <button type="submit" class="bg-transparent border-0"><img
@@ -297,7 +300,6 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                         </div>
 
                     </form>
-
                 </div>
             </div>
         </div>

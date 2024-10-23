@@ -1,5 +1,5 @@
 <?php
-include('libreria/classSala.php');
+include('../libreria/classSala.php');
 
 // Obtener los valores del formulario
 $codigoSala = $_POST['txtCodigoSala'];
@@ -12,8 +12,8 @@ $sala->setCodigoSala($codigoSala);
 <html lang="es">
 
 <head>
-    <?php include('principal/head.php') ?>
-    <link rel="stylesheet" href="css/salaEsp.css">
+    <?php include('../principal/head.php') ?>
+    <link rel="stylesheet" href="../css/salaEsp.css">
 </head>
 
 <body>
@@ -30,27 +30,27 @@ $sala->setCodigoSala($codigoSala);
             <div class="rueda col-9">
 
                 <div class="user-profile col-12">
-                    <img class="user-icon" src="img/afrodita.png" alt="">
+                    <img class="user-icon" src="../img/afrodita.png" alt="">
                     <span class="username">Carlos Javier Rodriguez</span>
                 </div>
 
                 <div class="user-profile col-12">
-                    <img class="user-icon" src="img/afrodita.png" alt="">
+                    <img class="user-icon" src="../img/afrodita.png" alt="">
                     <span class="username">Carlos Javier</span>
                 </div>
 
                 <div class="user-profile col-12">
-                    <img class="user-icon" src="img/afrodita.png" alt="">
+                    <img class="user-icon" src="../img/afrodita.png" alt="">
                     <span class="username">Carlos Javier</span>
                 </div>
 
                 <div class="user-profile col-12">
-                    <img class="user-icon" src="img/afrodita.png" alt="">
+                    <img class="user-icon" src="../img/afrodita.png" alt="">
                     <span class="username">Carlos Javier</span>
                 </div>
 
                 <div class="user-profile col-12">
-                    <img class="user-icon" src="img/afrodita.png" alt="">
+                    <img class="user-icon" src="../img/afrodita.png" alt="">
                     <span class="username">Carlos Javier</span>
                 </div>
 

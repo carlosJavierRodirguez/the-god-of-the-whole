@@ -5,7 +5,7 @@ function iniciarTransicion() {
 
   // Espera 6 segundos y redirige a la siguiente página
   setTimeout(() => {
-    window.location.href = "juego.php"; // Cambia a la página que necesites
+    window.location.href = "../juego/juego.php"; // Cambia a la página que necesites
   }, 5250); // 6000 milisegundos = 6 segundos
 }
 

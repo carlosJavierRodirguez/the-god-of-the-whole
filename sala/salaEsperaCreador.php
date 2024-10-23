@@ -1,6 +1,6 @@
 <?php
-include('libreria/classSala.php');
-include('libreria/numerosAleatorios.php');
+include('../libreria/classSala.php');
+include('../libreria/numerosAleatorios.php');
 // Obtener los valores del formulario
 $nombreSala = $_POST['txtNombreSala'];
 $codigoSala = numerosRecuperacion();
@@ -15,9 +15,9 @@ $sala->setCodigoSala($codigoSala);
 <html lang="es">
 
 <head>
-  <?php include('principal/head.php') ?>
-  <link rel="stylesheet" href="css/salaEsp.css">
-  <link rel="stylesheet" href="css/esperaCrea.css">
+  <?php include('../principal/head.php') ?>
+  <link rel="stylesheet" href="../css/salaEsp.css">
+  <link rel="stylesheet" href="../css/esperaCrea.css">
 </head>
 
 <body>
@@ -34,27 +34,27 @@ $sala->setCodigoSala($codigoSala);
       <div class="rueda col-9">
 
         <div class="user-profile col-12">
-          <img class="user-icon" src="img/afrodita.png" alt="">
+          <img class="user-icon" src="../img/afrodita.png" alt="">
           <span class="username">Carlos Javier Rodriguez</span>
         </div>
 
         <div class="user-profile col-12">
-          <img class="user-icon" src="img/afrodita.png" alt="">
+          <img class="user-icon" src="../img/afrodita.png" alt="">
           <span class="username">Carlos Javier</span>
         </div>
 
         <div class="user-profile col-12">
-          <img class="user-icon" src="img/afrodita.png" alt="">
+          <img class="user-icon" src="../img/afrodita.png" alt="">
           <span class="username">Carlos Javier</span>
         </div>
 
         <div class="user-profile col-12">
-          <img class="user-icon" src="img/afrodita.png" alt="">
+          <img class="user-icon" src="../img/afrodita.png" alt="">
           <span class="username">Carlos Javier</span>
         </div>
 
         <div class="user-profile col-12">
-          <img class="user-icon" src="img/afrodita.png" alt="">
+          <img class="user-icon" src="../img/afrodita.png" alt="">
           <span class="username">Carlos Javier</span>
         </div>
 
@@ -64,17 +64,17 @@ $sala->setCodigoSala($codigoSala);
       <div class="contenedor">
         <button type="button" class="btn btn-sm botonIngresar" onclick="iniciarTransicion()">
           <img
-            src="img/botonIniciarJuego.png"
+            src="../img/botonIniciarJuego.png"
             class="img-fluid"
             style="margin-top: 100px;"
             alt="Iniciar Sesión" />
         </button>
 
         <!-- Iframe para mostrar el archivo HTML -->
-        <iframe id="iframe-cargando" src="cargando.php"></iframe>
+        <iframe id="iframe-cargando" src="../cargando.php"></iframe>
       </div>
-      <script src="js/eliminar.js"></script>
-      <script src="js/transicion.js"></script>
+      <script src="../js/eliminar.js"></script>
+      <script src="../js/transicion.js"></script>
 </body>
 
 </html>

@@ -24,31 +24,27 @@
       <div class="col-12 col-md-4 subir">
         <form action="" method="get">
           <div class="pergamino">
-            <div class="col-12 col-md-12 row">
-              <div class="col-12 ">
-                <h3 class="configuraciones tipoLetra text-white">General</h3>
-                <input
-                  type="range" min="0" max="10"
-                  class="form-range rango "
-                  id="rangoGeneral"
-                  placeholder="rangoGeneral" />
+            <div class="col-12 col-md-12 row mt-5 pt-5 ">
+              <div class="col-1"></div>
+              <div class="col-10">
+                <h3 class="letra tipoLetra" style="margin-top: -10px;">General</h3> <!-- Ajusta el margen superior -->
+                <input type="range" min="0" max="10" class="form-range" id="rangoGeneral" placeholder="rangoGeneral" />
               </div>
-              <div class="col-12">
-                <h3 class="rango tipoLetra text-white">Música</h3>
-                <input
-                  type="range" min="0" max="10"
-                  class="form-range rango"
-                  id="rangoMusica"
-                  placeholder="rangoGeneral" />
+              <div class="col-1"></div>
+
+              <div class="col-1"></div>
+              <div class="col-10">
+                <h3 class="tipoLetra" style="margin-top: -10px;">Música</h3> <!-- Ajusta el margen superior -->
+                <input type="range" min="0" max="10" class="form-range" id="rangoMusica" placeholder="rangoMusica" />
               </div>
-              <div class="col-12">
-                <h3 class="rango tipoLetra text-white">Voces</h3>
-                <input
-                  type="range" min="0" max="10"
-                  class="form-range rango"
-                  id="rangoVoces"
-                  placeholder="rangoGeneral" />
+              <div class="col-1"></div>
+
+              <div class="col-1"></div>
+              <div class="col-10">
+                <h3 class="tipoLetra" style="margin-top: -10px;">Voces</h3> <!-- Ajusta el margen superior -->
+                <input type="range" min="0" max="10" class="form-range" id="rangoVoces" placeholder="rangoVoces" />
               </div>
+              <div class="col-1"></div>
             </div>
 
             <div class="col-12 btn botonIngresar">

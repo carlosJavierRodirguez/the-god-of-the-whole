@@ -8,10 +8,7 @@
 </head>
 
 <body class="pantano">
-    <div class="grid-container">
-        <div class="item1">
-            <div class="muro"></div>
-        </div>
+    <div class="grid-container pt-3">
         <div class="item2">
             <div class="arboles">
                 <div id="drag-container">
@@ -31,9 +28,16 @@
                 </div>
             </div>
         </div>
-        <div class="item3">
-            <div class="espadas"></div>
+
+        <div class="chat container border rounded p-2 ">
+            <div class="messages p-3 mb-3" id="messages"></div>
+            <div class="send-message d-flex">
+                <input type="text" class="form-control me-2" id="message">
+                <button class="btn btn-primary" type="button" id="send"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
         </div>
+
+
         <div class="item4" id="dropzone">
             <div class="pergaminove"></div>
         </div>
@@ -45,6 +49,7 @@
 
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/dragdrop.js"></script>
+    <script src="../js/socket.js"></script>
 </body>
 
 </html>

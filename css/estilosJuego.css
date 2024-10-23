@@ -40,7 +40,11 @@ body {
   position: relative;
 }
 
-.item1, .item2, .item3, .item4, .item5 {
+.item1,
+.item2,
+.item3,
+.item4,
+.item5 {
   position: relative;
   overflow: hidden; /* Para mantener las imágenes de fondo en su lugar */
 }
@@ -70,7 +74,13 @@ body {
   background-color: rgb(150, 75, 0);
 }
 
-.muro, .arboles, .espadas, .pergaminove, .titulo2, .afrodita, .hera {
+.muro,
+.arboles,
+.espadas,
+.pergaminove,
+.titulo2,
+.afrodita,
+.hera {
   position: absolute;
   top: 0;
   left: 0;
@@ -81,33 +91,33 @@ body {
   background-position: center;
   z-index: 1;
 }
-.titulo2{
+.titulo2 {
   background-size: 100vh;
 }
 
 .muro {
-  background-image: url('../img/basi.png');
+  background-image: url("../img/basi.png");
 }
-.hera{
-  background-image: url('../img/hera.png');
+.hera {
+  background-image: url("../img/hera.png");
 }
-.afrodita{
-  background-image: url('../img/afrodita.png');
+.afrodita {
+  background-image: url("../img/afrodita.png");
 }
 .arboles {
-  background-image: url('../img/Mader.png');
+  background-image: url("../img/Mader.png");
 }
 
 .pergaminove {
-  background-image: url('../img/Perga.png');
+  background-image: url("../img/Perga.png");
 }
 
 .titulo2 {
-  background-image: url('../img/Maderamorada.png');
+  background-image: url("../img/Maderamorada.png");
 }
 
 .espadas {
-  background-image: url('../img/Shield.png');
+  background-image: url("../img/Shield.png");
 }
 
 /* Contenedor de elementos arrastrables */
@@ -152,4 +162,29 @@ body {
     height: 100vh;
     width: 100vw;
   }
+}
+.chat {
+  max-width: 300px;
+  height: auto;
+  margin: auto;
+}
+
+.messages {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  height: 200px;
+  overflow-y: scroll;
+  background-color: #8a7d7d6b;
+}
+
+.send-message input {
+  flex-grow: 1;
+}
+
+#message {
+  border-radius: 20px;
+}
+
+#send {
+  border-radius: 50px;
 }
