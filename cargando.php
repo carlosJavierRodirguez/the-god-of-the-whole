@@ -3,7 +3,8 @@
 
 <head>
     <?php include('principal/head.php') ?>
-    <link rel="stylesheet" href="css/tiempoCarga.css">
+    <link rel="stylesheet" href="./css/tiempoCarga.css">
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 
 <body>
@@ -12,7 +13,7 @@
     <div class="pergaminoCu-Container">
 
 
-        <h1 class="titulo" id="contador">PARTIDA EN 5seg</h1>
+        <h1 class="titulo" id="contador">5</h1>
 
 
         <div class="rueda col-12 col-md-12">
@@ -74,7 +75,6 @@
         </h1>
     </div>
 
-    <script src="js/codigos.js"></script>
     <script src="js/transicion.js"></script>
 
 
