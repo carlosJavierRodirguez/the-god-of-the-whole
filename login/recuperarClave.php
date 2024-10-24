@@ -40,7 +40,7 @@ $conectar->conectar();
                                 required />
                     </div>
                     <br>
-                    <!-- Botón de inicio de sesión -->
+                    
                     <div class="text-center">
                         <button type="submit" class="btn btn-sm botonIngresar">
                             <img

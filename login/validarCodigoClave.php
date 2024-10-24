@@ -1,25 +1,9 @@
-<?php
-session_start();
-
-// Verificar si la variable de sesión existe
-if (isset($_SESSION['temp_user']) && isset($_SESSION['temp_user']['codigo'])) {
-    $codigoOriginal = $_SESSION['temp_user']['codigo'];
-} else {
-    echo "No se ha definido el código original. Redirigiendo...";
-    header('Location: ../login/recuperarClave.php');
-    exit();
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php include('../principal/head.php') ?>
     <link rel="stylesheet" href="../css/codigo.css">
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -36,9 +20,9 @@ if (isset($_SESSION['temp_user']) && isset($_SESSION['temp_user']['codigo'])) {
             <!-- Formulario -->
             <div class="col-12 col-md-4"></div>
             <div class="col-12 col-md-4 subir">
-                <form action="../libreria/correoOlvidoClave.php" method="post" class="pergamino p-4 p-md-5 ">
+                <form action="../libreria/correoOlvidoClave.php" method="post" class="pergamino p-4 p-md-5">
                     <!-- Campos de código de recuperación -->
-                    <div class="mt-5 ">
+                    <div class="mt-5">
                         <div class="codigo mb-4 d-flex justify-content-center bajarImput">
                             <input type="text" maxlength="1" class="form-control" id="input1" name="codigo[]" oninput="nextInput(1)" required>
                             <input type="text" maxlength="1" class="form-control" id="input2" name="codigo[]" oninput="nextInput(2)" required>
@@ -51,7 +35,7 @@ if (isset($_SESSION['temp_user']) && isset($_SESSION['temp_user']['codigo'])) {
 
                     <div class="d-flex align-items-center">
                         <div class="text-white">
-                            <a href="" class="link tipoLetra">Reenviar Codigo</a>
+                            <a href="../libreria/reenviarCodigo.php" class="link tipoLetra">Reenviar Código</a>
                         </div>
                     </div>
                     <div class="text-center form-group mb-2">
@@ -62,7 +46,8 @@ if (isset($_SESSION['temp_user']) && isset($_SESSION['temp_user']['codigo'])) {
                 </form>
 
                 <!-- Mostrar mensaje de error con SweetAlert2 -->
-                <?php if (isset($_SESSION['error'])): ?>
+                <?php
+                if (isset($_SESSION['error'])): ?>
                     <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -75,9 +60,10 @@ if (isset($_SESSION['temp_user']) && isset($_SESSION['temp_user']['codigo'])) {
                             });
                         });
                     </script>
-                    <?php unset($_SESSION['error']); ?> <!-- Limpiar mensaje después de mostrarlo -->
+                    <!-- <?php
+                            unset($_SESSION['error']);
+                            ?> Limpiar mensaje después de mostrarlo -->
                 <?php endif; ?>
-
             </div>
             <div class="col-12 col-md-4"></div>
         </div>

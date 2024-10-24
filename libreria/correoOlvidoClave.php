@@ -2,7 +2,7 @@
 set_time_limit(60);
 
 include('numerosAleatorios.php');
-require('../libreria/conexion.php'); // Asegúrate de la ruta correcta
+require('../libreria/conexion.php'); // Ruta a la clase de conexión
 
 // Importar PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
@@ -12,6 +12,15 @@ require '../phpMailer/Exception.php';
 require '../phpMailer/PHPMailer.php';
 require '../phpMailer/SMTP.php';
 
+$correo_admin = 'thegoodofthewhole@gmail.com'; 
+$correo_password = 'uzgprvmqagqiriib'; 
+
+
+// Verificar si el correo del administrador está configurado
+if (empty($correo_admin)) {
+    throw new Exception('La dirección de correo del administrador no está configurada.');
+}
+
 $mail = new PHPMailer(true);
 
 try {
@@ -19,8 +28,12 @@ try {
     $db = new Conexion(); // Instancia de la clase de conexión
     $conn = $db->conectar(); // Obtener la conexión
 
-    // Obtener el email ingresado por el usuario
-    $email = $_POST['txtEmailRecuperar'];
+    // Obtener el email ingresado por el usuario y validar
+    if (filter_var($_POST['txtEmailRecuperar'], FILTER_VALIDATE_EMAIL)) {
+        $email = $_POST['txtEmailRecuperar'];
+    } else {
+        throw new Exception('Email no válido');
+    }
 
     // Verificar si el email existe en la base de datos
     $stmt = $conn->prepare("SELECT email FROM usuario WHERE email = :email");
@@ -33,13 +46,13 @@ try {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'thegoodofthewhole@gmail.com';
-        $mail->Password   = 'uzgprvmqagqiriib';
+        $mail->Username   = $correo_admin; // Utiliza la variable de entorno
+        $mail->Password   = $correo_password; // Utiliza la variable de entorno
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
         $mail->CharSet    = 'UTF-8';
 
-        $mail->setFrom('thegoodofthewhole@gmail.com', 'ADMINISTRADOR');
+        $mail->setFrom($correo_admin, 'ADMINISTRADOR'); // Asegúrate de que $correo_admin es válido
         $mail->addAddress($email); // Dirección de correo del usuario
 
         $mail->isHTML(true);
@@ -61,7 +74,6 @@ try {
                         <p style="text-align: center;">
                             <div style="text-align: center; font-size: 40px; line-height: 1.5; word-wrap: break-word; width: 100%;" id="numeros">';
 
-        // Agregamos los números al cuerpo del correo
         foreach ($numeros as $numero) {
             $cuerpoCorreo .= $numero . ' ';
         }
@@ -78,8 +90,7 @@ try {
                 </div>
             </div>
         </body>
-        </html>
-        ';
+        </html>';
 
         $mail->Body = $cuerpoCorreo;
 
@@ -89,26 +100,21 @@ try {
         // Enviar el correo
         $mail->send();
 
-        // Mostrar mensaje de éxito
+        // Redireccionar después de mostrar el mensaje de éxito
         echo "
-    <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>";
-
-        echo "<script>
-    function AlertaExitoCodigo() {
-        return Swal.fire({
-            title: 'Éxito',
-            text: 'El código de verificación ha sido enviado a tu correo.',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        AlertaExitoCodigo().then(() => {
-            window.location.href = '../login/validarCodigoClave.php';
-        });
-    });
-</script>";
+        <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'El código de verificación ha sido enviado a tu correo.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    window.location.href = '../login/validarCodigoClave.php'; // Redireccionamiento correcto
+                });
+            });
+        </script>";
     } else {
         // Si el correo no está registrado, mostrar error
         echo "
@@ -120,11 +126,11 @@ try {
                     title: 'Correo no registrado',
                     text: 'El correo ingresado no está en nuestra base de datos.'
                 }).then(() => {
-                    window.location.href = '../login/recuperarClave.php';
+                    window.location.href = '../login/recuperarClave.php'; // Redireccionamiento si no se encuentra el correo
                 });
             });
         </script>
-    ";
+        ";
     }
 } catch (Exception $e) {
     // Mostrar error si ocurre algún problema con el correo o la conexión
@@ -134,52 +140,11 @@ try {
         document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 icon: 'error',
-                title: 'Correo no registrado',
-                text: 'El correo ingresado no está en nuestra base de datos.'
+                title: 'Error en el envío',
+                text: 'No se pudo enviar el correo: {$mail->ErrorInfo}'
             }).then(() => {
-                window.location.href = '../login/recuperarClave.php';
+                window.location.href = '../login/recuperarClave.php'; // Redireccionamiento en caso de error
             });
         });
-    </script>
-";
-    echo "Error de envío: {$mail->ErrorInfo}";
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Capturar el código del formulario
-        $codigoIngresado = implode('', $_POST['codigo']); // Combina los 4 dígitos en un solo string
-
-        // Código original guardado en la sesión
-        if (isset($_SESSION['temp_user']) && isset($_SESSION['temp_user']['codigo'])) {
-            $codigoOriginal = $_SESSION['temp_user']['codigo'];
-
-            // Validar el código
-            if ($codigoIngresado === $codigoOriginal) {
-                // El código es correcto
-                echo "<script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Código Correcto',
-                        text: 'El código ingresado es correcto.'
-                    }).then(() => {
-                        window.location.href = '../login/nuevaClave.php'; // Redirige a una página para restablecer la contraseña
-                    });
-                </script>";
-            } else {
-                // El código es incorrecto
-                echo "<script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Código Incorrecto',
-                        text: 'El código ingresado no coincide.'
-                    }).then(() => {
-                        window.location.href = '../login/validarCodigoClave.php'; // Redirige de nuevo a la página de verificación de código
-                    });
-                </script>";
-            }
-        } else {
-            // Manejar el caso donde no existe el código en la sesión
-            echo "No se encontró el código original. Redirigiendo...";
-            header('Location: ../login/recuperarClave.php'); // Redirigir si no hay código
-            exit();
-        }
-    };
+    </script>";
 }
