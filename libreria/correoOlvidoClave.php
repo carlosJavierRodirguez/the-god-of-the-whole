@@ -1,9 +1,12 @@
 <?php
 set_time_limit(60);
-
+session_start();
 include('numerosAleatorios.php');
-require('../libreria/conexion.php'); // Ruta a la clase de conexión
+include('classAcceso.php');
+require('conexion.php'); // Ruta a la clase de conexión
 
+$conexion = new Conexion();
+$encapsularEmail = new Acceso();
 // Importar PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -12,57 +15,49 @@ require '../phpMailer/Exception.php';
 require '../phpMailer/PHPMailer.php';
 require '../phpMailer/SMTP.php';
 
-$correo_admin = 'thegoodofthewhole@gmail.com'; 
-$correo_password = 'uzgprvmqagqiriib'; 
+$encapsularEmail->setEmail('thegoodofthewhole@gmail.com');
+$encapsularEmail->setClave('uzgprvmqagqiriib');
 
-
-// Verificar si el correo del administrador está configurado
-if (empty($correo_admin)) {
-    throw new Exception('La dirección de correo del administrador no está configurada.');
-}
+$correo_admin = $encapsularEmail->getEmail();
+$correo_password = $encapsularEmail->getClave();
 
 $mail = new PHPMailer(true);
 
 try {
-    // Crear conexión a la base de datos
-    $db = new Conexion(); // Instancia de la clase de conexión
-    $conn = $db->conectar(); // Obtener la conexión
-
     // Obtener el email ingresado por el usuario y validar
-    if (filter_var($_POST['txtEmailRecuperar'], FILTER_VALIDATE_EMAIL)) {
-        $email = $_POST['txtEmailRecuperar'];
+    if (isset($_POST['txtEmailRecuperar']) && filter_var($_POST['txtEmailRecuperar'], FILTER_VALIDATE_EMAIL)) {
+        $encapsularEmail->setEmail($_POST['txtEmailRecuperar']);
     } else {
-        throw new Exception('Email no válido');
+        throw new Exception('Email no válido o no ingresado');
     }
 
     // Verificar si el email existe en la base de datos
-    $stmt = $conn->prepare("SELECT email FROM usuario WHERE email = :email");
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->execute();
+    $values = array(':email' => $encapsularEmail->getEmail());
+    $query = "SELECT email FROM usuario WHERE email = :email;";
+    $resultado = $conexion->consultaIniciarSesion($query, $values);
 
     // Si el email existe, procedemos a enviar el código de verificación
-    if ($stmt->rowCount() > 0) {
+    if (!empty($resultado)) {
         // Configuración del correo electrónico
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = $correo_admin; // Utiliza la variable de entorno
-        $mail->Password   = $correo_password; // Utiliza la variable de entorno
+        $mail->Username   = $correo_admin;
+        $mail->Password   = $correo_password;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
         $mail->CharSet    = 'UTF-8';
 
-        $mail->setFrom($correo_admin, 'ADMINISTRADOR'); // Asegúrate de que $correo_admin es válido
-        $mail->addAddress($email); // Dirección de correo del usuario
-
+        $mail->setFrom($correo_admin, 'ADMINISTRADOR');
+        $mail->addAddress($encapsularEmail->getEmail());
         $mail->isHTML(true);
         $mail->Subject = 'Recuperación de Contraseña';
 
-        $numeros = numerosRecuperacion(); // Función que genera los números aleatorios para el código
+        $numeros = numerosRecuperacion(); // Generar números aleatorios para el código
+        $_SESSION['codigo_original'] = implode('', $numeros);
 
         // Cuerpo del correo
-        $cuerpoCorreo = '
-        <html>
+        $cuerpoCorreo = ' <html>
         <body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
                 <h2 style="text-align: left; color: #333;">Recuperación de Contraseña</h2>
@@ -90,14 +85,10 @@ try {
                 </div>
             </div>
         </body>
-        </html>';
+        </html>'; // El cuerpo del correo sigue igual
 
         $mail->Body = $cuerpoCorreo;
-
-        // Adjuntar la imagen del logo
         $mail->addEmbeddedImage('../img/logo.png', 'logo');
-
-        // Enviar el correo
         $mail->send();
 
         // Redireccionar después de mostrar el mensaje de éxito
@@ -111,7 +102,7 @@ try {
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
                 }).then(() => {
-                    window.location.href = '../login/validarCodigoClave.php'; // Redireccionamiento correcto
+                    window.location.href = '../login/validarCodigoClave.php';
                 });
             });
         </script>";
@@ -126,11 +117,10 @@ try {
                     title: 'Correo no registrado',
                     text: 'El correo ingresado no está en nuestra base de datos.'
                 }).then(() => {
-                    window.location.href = '../login/recuperarClave.php'; // Redireccionamiento si no se encuentra el correo
+                    window.location.href = '../login/recuperarClave.php';
                 });
             });
-        </script>
-        ";
+        </script>";
     }
 } catch (Exception $e) {
     // Mostrar error si ocurre algún problema con el correo o la conexión
@@ -143,8 +133,10 @@ try {
                 title: 'Error en el envío',
                 text: 'No se pudo enviar el correo: {$mail->ErrorInfo}'
             }).then(() => {
-                window.location.href = '../login/recuperarClave.php'; // Redireccionamiento en caso de error
+                window.location.href = '../login/recuperarClave.php';
             });
         });
     </script>";
 }
+
+

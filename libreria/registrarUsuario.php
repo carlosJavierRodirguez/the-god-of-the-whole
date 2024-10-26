@@ -1,4 +1,5 @@
 <?php
+set_time_limit(60);
 // Incluir la clase de conexión
 require 'Conexion.php';
 session_start(); // Asegúrate de iniciar la sesión al inicio

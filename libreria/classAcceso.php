@@ -3,6 +3,7 @@ class Acceso
 {
     private $email;
     private $clave;
+    private $codigo;
 
     public function setEmail($email)
     {
@@ -22,5 +23,15 @@ class Acceso
     public function getClave()
     {
         return $this->clave;
+    }
+
+    public function setCodigoSala($codigo)
+    {
+        $this->codigo = $codigo;
+    }
+
+    public function getCodigoSala()
+    {
+        return $this->codigo;
     }
 }

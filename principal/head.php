@@ -19,5 +19,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap" rel="stylesheet" />
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
+<script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>

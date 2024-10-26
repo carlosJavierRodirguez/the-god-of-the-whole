@@ -1,9 +1,3 @@
-<?php
-include('../libreria/conexion.php');
-$conectar = new Conexion();
-
-$conectar->conectar();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +20,7 @@ $conectar->conectar();
             <div class="col-12 col-md-4"></div>
             <div class="col-12 col-md-4 subir">
 
-                <form action="../libreria/correoOlvidoClave.php" method="post" class="pergamino p-4 p-md-5">
+                <form id="formCmabiarClave" method="post" class="pergamino p-4 p-md-5">
                     <br>
                     <div class="form-group mb-2 email">
                         <span class="text-white fw-bold tipoLetra">Nueva Contraseña <i class="fa-solid fa-key"></i>
@@ -51,6 +45,7 @@ $conectar->conectar();
             <div class="col-12 col-md-4"></div>
         </div>
     </div>
+    <script src="../js/cambiarClave/nuevaClave.js"></script>
 </body>
 
 </html>

@@ -25,7 +25,7 @@
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4 subir">
 
-        <form action="salaEsperaInvitado.php" method="post" class="pergamino p-4 p-md-5">
+        <form action="libreria/Accesoinvitado.php" method="post" class="pergamino p-4 p-md-5">
           <br>
           <div class="form-group mb-2 email">
             <!-- Email -->

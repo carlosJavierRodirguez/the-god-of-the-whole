@@ -23,26 +23,16 @@
             <!-- Formulario -->
             <div class="col-12 col-md-4"></div>
             <div class="col-12 col-md-4 subir">
-                <?php
-                session_start();
-
-                // Verifica si hay un mensaje de error
-                if (isset($_SESSION['error'])) {
-                    echo "<div style='color: red;'>" . $_SESSION['error'] . "</div>";
-                    unset($_SESSION['error']);
-                }
-                ?>
                 <form action="../libreria/registrarUsuario.php" method="post" class="pergamino p-4 p-md-5 ">
                     <!-- Campos de código de recuperación -->
-                    <div class="mt-5 ">
-                        <div class="codigo mb-4 d-flex justify-content-center bajarImput">
+                    <div class="mt-5">
+                        <div class="codigo mb-4 d-flex justify-content-center bajarInput">
                             <input type="text" maxlength="1" class="form-control" id="input1" name="codigo[]" oninput="nextInput(1)" required>
                             <input type="text" maxlength="1" class="form-control" id="input2" name="codigo[]" oninput="nextInput(2)" required>
                             <input type="text" maxlength="1" class="form-control" id="input3" name="codigo[]" oninput="nextInput(3)" required>
                             <input type="text" maxlength="1" class="form-control" id="input4" name="codigo[]" oninput="nextInput(4)" required>
                         </div>
                     </div>
-
 
                     <input type="hidden" name="codigo_original" value="<?php echo $_SESSION['temp_user']['codigo']; ?>">
 

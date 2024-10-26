@@ -20,10 +20,10 @@
             <!-- Formulario -->
             <div class="col-12 col-md-4"></div>
             <div class="col-12 col-md-4 subir">
-                <form action="../libreria/correoOlvidoClave.php" method="post" class="pergamino p-4 p-md-5">
+                <form action="../libreria/validarCodigos/validarCodigoClave.php" method="post" class="pergamino p-4 p-md-5">
                     <!-- Campos de código de recuperación -->
                     <div class="mt-5">
-                        <div class="codigo mb-4 d-flex justify-content-center bajarImput">
+                        <div class="codigo mb-4 d-flex justify-content-center bajarInput">
                             <input type="text" maxlength="1" class="form-control" id="input1" name="codigo[]" oninput="nextInput(1)" required>
                             <input type="text" maxlength="1" class="form-control" id="input2" name="codigo[]" oninput="nextInput(2)" required>
                             <input type="text" maxlength="1" class="form-control" id="input3" name="codigo[]" oninput="nextInput(3)" required>
@@ -31,7 +31,8 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="codigo_original" value="<?php echo $_SESSION['temp_user']['codigo']; ?>">
+                    <input type="hidden" name="codigo_original" value="<?php echo isset($_SESSION['codigo_original']) ? $_SESSION['codigo_original'] : ''; ?>">
+
 
                     <div class="d-flex align-items-center">
                         <div class="text-white">
