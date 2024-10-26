@@ -36,8 +36,8 @@
     </div>
   </div>
 
-  <iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
-  <script src="js/controlVolumen.js"></script>
+  <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
+  
 
 
 

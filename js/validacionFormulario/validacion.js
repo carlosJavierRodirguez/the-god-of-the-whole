@@ -1,44 +1,49 @@
+// Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
-    'use strict'
+  'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        // Validaciones personalizadas
-        const nombre = document.getElementById('txtNombreUsuario').value;
-        const email = document.getElementById('txtEmailRegistro').value;
-        const clave = document.getElementById('txtClaveRegistro').value;
-        let valid = true;
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
 
-        // Validar nombre de usuario
-        if (nombre.length < 5) {
-          alert("El nombre de usuario debe tener al menos 5 caracteres.");
-          valid = false;
-        }
+      form.classList.add('was-validated')
+    }, false)
+  })
 
-        // Validar email
-        if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-          alert("Por favor, ingrese un correo electrónico válido.");
-          valid = false;
-        }
+  // Custom validation for username
+  const username = document.getElementById('txtNombreUsuario')
+  username.addEventListener('input', () => {
+    if (username.value.length < 5) {
+      username.setCustomValidity('El nombre de usuario debe tener al menos 5 caracteres')
+    } else {
+      username.setCustomValidity('')
+    }
+  })
 
-        // Validar contraseña
-        if (clave.length < 6) {
-          alert("La contraseña debe tener al menos 6 caracteres.");
-          valid = false;
-        }
+  // Custom validation for email
+  const email = document.getElementById('txtEmailRegistro')
+  email.addEventListener('input', () => {
+    if (!/^\S+@\S+\.\S+$/.test(email.value)) {
+      email.setCustomValidity('Por favor, introduce un email válido')
+    } else {
+      email.setCustomValidity('')
+    }
+  })
 
-        // Si hay errores en la validación, previene el envío
-        if (!valid) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          // Si todo es válido, envía el formulario
-          form.classList.add('was-validated');
-        }
-      }, false);
-    });
-  })();
+  // Custom validation for password
+  const password = document.getElementById('txtClaveRegistro')
+  password.addEventListener('input', () => {
+    if (password.value.length < 8) {
+      password.setCustomValidity('La contraseña debe tener al menos 8 caracteres')
+    } else {
+      password.setCustomValidity('')
+    }
+  })
+})()

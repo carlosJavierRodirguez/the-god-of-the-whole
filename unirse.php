@@ -25,7 +25,7 @@
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4 subir">
 
-        <form action="libreria/Accesoinvitado.php" method="post" class="pergamino p-4 p-md-5">
+        <form action="libreria/Accesoinvitado.php" method="post" class="pergamino p-4 p-md-5 needs-validation" novalidate>
           <br>
           <div class="form-group mb-2 email">
             <!-- Email -->
@@ -36,6 +36,9 @@
               name="txtNombreJugador"
               placeholder="Nombre del Jugador"
               required />
+              <div class="invalid-feedback text-black">
+          Nombre con al menos 3 caracteres
+          </div>
           </div>
           <div class="form-group mb-2">
             <!-- Contraseña -->
@@ -47,6 +50,9 @@
               name="txtCodigoSala"
               placeholder="Pin de Juego"
               required />
+              <div class="invalid-feedback text-black">
+          El codigo debe tener minimo 5 numeros
+          </div>
           </div>
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
@@ -66,8 +72,8 @@
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
-  <iframe id="musicaIframe" src="musica.html" style="display:none;"></iframe>
-  <script src="js/controlVolumen.js"></script>
+  <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
+  <script src="js/validacionFormulario/validacionUnirse.js"></script>
 
 
 </body>

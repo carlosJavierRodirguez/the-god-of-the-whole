@@ -33,8 +33,8 @@ $conectar->conectar();
           <img src="../img/logo.png" class="logo fa-bounce" alt="" />
         </div>
         <!-- Formulario de inicio de sesión -->
-        <form action="../libreria/acceso.php" method="post" class="pergamino p-4 p-md-5">
-          <div class="form-group mb-2 email">
+        <form action="../libreria/acceso.php" method="post" class="pergamino p-4 p-md-5 needs-validation" novalidate>
+          <div class="form-group mb-2 email"> 
             <!-- Email -->
             <span class="text-white fw-bold tipoLetra">Email <i class="fa-solid fa-envelope"></i></span>
             <input
@@ -45,6 +45,9 @@ $conectar->conectar();
               placeholder="correo@gmail.com"
               required
               autocomplete="off" />
+              <div class="invalid-feedback text-black">
+          Datos Incorrectos
+          </div>
           </div>
 
           <div class="form-group mb-2">
@@ -58,6 +61,9 @@ $conectar->conectar();
               placeholder="********"
               required
               autocomplete="off" />
+              <div class="invalid-feedback text-black">
+          Datos Incorrectos
+          </div>
           </div>
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
@@ -79,7 +85,7 @@ $conectar->conectar();
     </div>
   </div>
   <iframe id="musicaIframe" src="../musica.html" style="display:none;"></iframe>
-  <script src="../js/controlVolumen.js"></script>
+  <script src="../js/validacionFormulario/validacionIni.js"></script>
 </body>
 
 </html>
