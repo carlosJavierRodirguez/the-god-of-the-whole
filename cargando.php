@@ -37,37 +37,6 @@
                 <img class="user-icon" src="img/afrodita.png" alt="">
                 <span class="username">Carlos Javier</span>
             </div>
-
-            <div class="user-profile col-12-md">
-                <img class="user-icon" src="img/afrodita.png" alt="">
-                <span class="username">Carlos Javier</span>
-            </div>
-
-            <div class="user-profile col-12-md">
-                <img class="user-icon" src="img/afrodita.png" alt="">
-                <span class="username">Carlos Javier Rodriguez</span>
-            </div>
-
-            <div class="user-profile col-12-md">
-                <img class="user-icon" src="img/afrodita.png" alt="">
-                <span class="username">Carlos Javier</span>
-            </div>
-
-            <div class="user-profile col-12-md">
-                <img class="user-icon" src="img/afrodita.png" alt="">
-                <span class="username">Carlos Javier</span>
-            </div>
-
-            <div class="user-profile col-12-md">
-                <img class="user-icon" src="img/afrodita.png" alt="">
-                <span class="username">Carlos Javier</span>
-            </div>
-
-            <div class="user-profile col-12-md">
-                <img class="user-icon" src="img/afrodita.png" alt="">
-                <span class="username">Carlos Javier</span>
-            </div>
-
         </div>
 
         <h1 class="titulo-ultimo">

@@ -65,11 +65,6 @@ echo "<p>Tu código de sala es: " . htmlspecialchars($codigoSala) . "</p>";
                     <span class="username">Carlos Javier</span>
                 </div>
 
-                <div class="user-profile col-12">
-                    <img class="user-icon" src="../img/afrodita.png" alt="icono de usuario">
-                    <span class="username">Carlos Javier</span>
-                </div>
-
             </div>
 
         </div>

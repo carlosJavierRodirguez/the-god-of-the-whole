@@ -34,4 +34,14 @@ class Acceso
     {
         return $this->codigo;
     }
+
+    public function setClaveConfirmada($clave)
+    {
+        $this->clave = $clave;
+    }
+
+    public function getClaveConfirmada()
+    {
+        return $this->clave;
+    }
 }

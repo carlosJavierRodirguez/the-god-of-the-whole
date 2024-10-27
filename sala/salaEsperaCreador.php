@@ -53,11 +53,6 @@ $sala->setCodigoSala($codigoSala);
           <span class="username">Carlos Javier</span>
         </div>
 
-        <div class="user-profile col-12">
-          <img class="user-icon" src="../img/afrodita.png" alt="">
-          <span class="username">Carlos Javier</span>
-        </div>
-
 
       </div>
 

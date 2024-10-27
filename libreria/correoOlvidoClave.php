@@ -24,13 +24,8 @@ $correo_password = $encapsularEmail->getClave();
 $mail = new PHPMailer(true);
 
 try {
-    // Obtener el email ingresado por el usuario y validar
-    if (isset($_POST['txtEmailRecuperar']) && filter_var($_POST['txtEmailRecuperar'], FILTER_VALIDATE_EMAIL)) {
-        $encapsularEmail->setEmail($_POST['txtEmailRecuperar']);
-    } else {
-        throw new Exception('Email no válido o no ingresado');
-    }
 
+    $encapsularEmail->setEmail($_POST['txtEmailRecuperar']);
     // Verificar si el email existe en la base de datos
     $values = array(':email' => $encapsularEmail->getEmail());
     $query = "SELECT email FROM usuario WHERE email = :email;";
@@ -38,6 +33,9 @@ try {
 
     // Si el email existe, procedemos a enviar el código de verificación
     if (!empty($resultado)) {
+
+         // Guardar el email en una variable de sesión
+         $_SESSION['email_recuperacion'] = $encapsularEmail->getEmail();
         // Configuración del correo electrónico
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
@@ -138,5 +136,3 @@ try {
         });
     </script>";
 }
-
-
