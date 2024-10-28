@@ -80,8 +80,27 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 200px;
+  min-height: 195px;
 }
+
+.listo{
+  background-image: url("../img/listo.png");
+  background-size: 20vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 195px;
+}
+
+.terminaste{
+  background-image: url("../img/Terminaste.png");
+  background-size: 30vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 195px;
+}
+
 
 .woodquest {
   background-image: url("../img/Maderamorada.png");

@@ -8,18 +8,24 @@
 
 <body class="pantano">
     <div class="container">
-        <div class="row">
+        
+        <!-- Row superior para la imagen -->
+        <div class="row mb-3">
+            <div class="col-12 text-center">
+                <div class="imagen-superior"></div> <!-- Aquí se aplicará la clase de la imagen superior -->
+            </div>
+        </div>
 
+        <div class="row">
             <!-- Columna para el dropzone -->
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="woodquest text-center">
                     <h1 class="rondatexto">Ronda: 1</h1>
-                    <h2 class="preguntatexto">¿que considera a los dioses olympicos?</h2>
+                    <h2 class="preguntatexto">¿qué considera a los dioses olímpicos?</h2>
                 </div>
                 <div class="item4" id="dropzone">
                     <div class="pergaminove"></div>
                 </div>
-
                 <div class="col-12 pt-3">
                     <div class="tablajuego container" id="drag-container">
                         <div class="row">
@@ -62,14 +68,14 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Contenedor para los botones "Terminaste?" y "Listo" -->
+                <div class="text-center mt-3">
+                    <div class="terminaste mb-2"></div>
+                    <div class="listo"></div>
+                </div>
             </div>
-
         </div>
-
-        <div class="row mt-3">
-            <!-- Aquí podrías agregar más columnas si es necesario -->
-        </div>
-
     </div>
 
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
