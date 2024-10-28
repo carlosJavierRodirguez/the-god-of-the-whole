@@ -11,6 +11,9 @@ $encapsularEmail = new Acceso();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Cargar el archivo de idioma
+include 'excepcionesPhpMailer/phpmailer.lang-es.php';
+include('classAcceso.php');
 require '../phpMailer/Exception.php';
 require '../phpMailer/PHPMailer.php';
 require '../phpMailer/SMTP.php';
@@ -34,8 +37,8 @@ try {
     // Si el email existe, procedemos a enviar el código de verificación
     if (!empty($resultado)) {
 
-         // Guardar el email en una variable de sesión
-         $_SESSION['email_recuperacion'] = $encapsularEmail->getEmail();
+        // Guardar el email en una variable de sesión
+        $_SESSION['email_recuperacion'] = $encapsularEmail->getEmail();
         // Configuración del correo electrónico
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';

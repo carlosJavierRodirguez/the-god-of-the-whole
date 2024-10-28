@@ -1,14 +1,14 @@
 const socket = new WebSocket("ws://localhost:8080");
 
 socket.onopen = () => {
-    console.log("Connected")
+    console.log("Conectado")
 }
 
 socket.onclose = (event) => {
     if (event.wasClean) {
-        console.log('Closed by the client') 
+        console.log('Cerrado por el cliente')
     } else {
-        console.log('Closed by the server')
+        console.log('Cerrado por el servidor')
     }
 }
 
@@ -18,7 +18,7 @@ socket.onerror = (error) => {
 
 socket.onmessage = (event) => {
     let data = JSON.parse(event.data)
-    
+
     let text = document.createElement('div')
     text.classList.add('other')
     text.innerText = data.message
