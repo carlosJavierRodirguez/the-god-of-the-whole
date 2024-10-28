@@ -1,5 +1,5 @@
 <?php
-session_start(); // Iniciar la sesión
+session_start();
 
 // Validar el código ingresado por el usuario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </script>";
     } else {
         // Código inválido
-        // Código inválido
+        
         echo "
-<script src='../../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+            <script src='../../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         Swal.fire({
