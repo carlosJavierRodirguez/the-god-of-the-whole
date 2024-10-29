@@ -7,6 +7,153 @@
 body {
   overflow: hidden;
 }
+/*Imagenes del dragdrop*/
+.hera {
+  background-image: url("../img/hera.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.ares {
+  background-image: url("../img/ares.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.poseidon {
+  background-image: url("../img/poseidon.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.gemini {
+  background-image: url("../img/gemini.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.sirenas {
+  background-image: url("../img/sirenas.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.hades {
+  background-image: url("../img/hades.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.hercules {
+  background-image: url("../img/hercules.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.atenea {
+  background-image: url("../img/atenea.png");
+  background-size: 11vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.afrodita {
+  background-image: url("../img/afrodita.png");
+  background-size: 11vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.zeus {
+  background-image: url("../img/zeus.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.apolo {
+  background-image: url("../img/apolo.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.hefesto {
+  background-image: url("../img/Hefesto.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.artemisa {
+  background-image: url("../img/artemisa.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.artemisa {
+  background-image: url("../img/artemisa.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.minotauro {
+  background-image: url("../img/minotauro.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.griffo {
+  background-image: url("../img/griffo.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+
+
 
 .pantano {
   background-image: url("../img/pantano.png");
@@ -136,14 +283,12 @@ body {
 }
 
 .draggable {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   margin: 12px;
   justify-content: center;
-  border: 2px solid #000;
   cursor: grab;
-  background-color: blue;
-  z-index: 2;
+  z-index: 3;
 }
 
 #drag-container {

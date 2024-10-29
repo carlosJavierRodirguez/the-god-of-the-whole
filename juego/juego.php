@@ -29,25 +29,25 @@
                 <div class="col-12 pt-3">
                     <div class="tablajuego container" id="drag-container">
                         <div class="row">
-                            <div class="col-3 draggable" draggable="true" id="item1"></div>
-                            <div class="col-3 draggable" draggable="true" id="item2"></div>
-                            <div class="col-3 draggable" draggable="true" id="item3"></div>
-                            <div class="col-3 draggable" draggable="true" id="item4"></div>
-                            <div class="col-3 draggable" draggable="true" id="item5"></div>
+                            <div class="hera col-3 draggable" draggable="true" id="item1"></div>
+                            <div class="afrodita col-3 draggable" draggable="true" id="item2"></div>
+                            <div class="ares col-3 draggable" draggable="true" id="item3"></div>
+                            <div class="atenea col-3 draggable" draggable="true" id="item4"></div>
+                            <div class="hercules col-3 draggable" draggable="true" id="item5"></div>
                         </div>
                         <div class="row">
-                            <div class="col-3 draggable" draggable="true" id="item6"></div>
-                            <div class="col-3 draggable" draggable="true" id="item7"></div>
-                            <div class="col-3 draggable" draggable="true" id="item8"></div>
-                            <div class="col-3 draggable" draggable="true" id="item9"></div>
-                            <div class="col-3 draggable" draggable="true" id="item10"></div>
+                            <div class="hades col-3 draggable" draggable="true" id="item6"></div>
+                            <div class="poseidon col-3 draggable" draggable="true" id="item7"></div>
+                            <div class="gemini col-3 draggable" draggable="true" id="item8"></div>
+                            <div class="sirenas col-3 draggable" draggable="true" id="item9"></div>
+                            <div class="zeus col-3 draggable" draggable="true" id="item10"></div>
                         </div>
                         <div class="row">
-                            <div class="col-3 draggable" draggable="true" id="item11"></div>
-                            <div class="col-3 draggable" draggable="true" id="item12"></div>
-                            <div class="col-3 draggable" draggable="true" id="item13"></div>
-                            <div class="col-3 draggable" draggable="true" id="item14"></div>
-                            <div class="col-3 draggable" draggable="true" id="item15"></div>
+                            <div class="apolo col-3 draggable" draggable="true" id="item11"></div>
+                            <div class="hefesto col-3 draggable" draggable="true" id="item12"></div>
+                            <div class="artemisa col-3 draggable" draggable="true" id="item13"></div>
+                            <div class="minotauro col-3 draggable" draggable="true" id="item14"></div>
+                            <div class="griffo col-3 draggable" draggable="true" id="item15"></div>
                         </div>
                     </div>
                 </div>
