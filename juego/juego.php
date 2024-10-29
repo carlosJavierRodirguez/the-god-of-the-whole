@@ -69,11 +69,13 @@
                     </div>
                 </div>
 
-                <!-- Contenedor para los botones "Terminaste?" y "Listo" -->
-                <div class="text-center mt-3">
-                    <div class="terminaste mb-2"></div>
-                    <div class="listo"></div>
-                </div>
+<!-- Contenedor para los botones "Terminaste?" y "Listo" -->
+<div class="text-center mt-3 d-flex flex-column align-items-center">
+    <div class="contenedor-botones">
+        <div class="terminaste"></div>
+        <div class="listo"></div>
+    </div>
+</div>
             </div>
         </div>
     </div>

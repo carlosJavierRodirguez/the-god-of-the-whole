@@ -10,7 +10,7 @@ body {
 
 .pantano {
   background-image: url("../img/pantano.png");
-  background-size: cover; /* Ajusta la imagen para cubrir toda el área */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -29,7 +29,7 @@ body {
 .container {
   max-width: 1200px;
   margin: auto;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -83,24 +83,30 @@ body {
   min-height: 195px;
 }
 
-.listo{
-  background-image: url("../img/listo.png");
-  background-size: 20vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  min-height: 195px;
+.contenedor-botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.terminaste{
+.terminaste {
   background-image: url("../img/Terminaste.png");
+  background-size: 45vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 350px;
+  height: 300px;
+}
+
+.listo {
+  background-image: url("../img/listo.png");
   background-size: 30vh;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
-  min-height: 195px;
+  width: 200px;
+  height: 80px;
+  margin-top: -95px;
 }
-
 
 .woodquest {
   background-image: url("../img/Maderamorada.png");
@@ -113,11 +119,11 @@ body {
 
 .tablajuego {
   background-image: url("../img/tablon.png");
-  background-size: 80vh;
+  background-size: 90vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 150px;
+  min-height: 300px;
 }
 
 .basi {
@@ -132,7 +138,7 @@ body {
 .draggable {
   width: 50px;
   height: 50px;
-  margin: 13px;
+  margin: 12px;
   justify-content: center;
   border: 2px solid #000;
   cursor: grab;
@@ -150,37 +156,55 @@ body {
   height: 100%;
 }
 
+/* Media query para pantallas medianas */
+@media (max-width: 1024px) {
+  .chat {
+    max-width: 250px;
+  }
+
+  .terminaste {
+    width: 300px;
+    height: 250px;
+    background-size: 40vh;
+  }
+
+  .listo {
+    width: 150px;
+    height: 60px;
+    margin-top: -80px;
+  }
+}
+
+/* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
   #dropzone {
     min-height: 150px;
   }
 
-  .draggable {
-    width: 40px;
-    height: 40px;
+  .tablajuego, .woodquest, .pergaminove {
+    background-size: contain;
+    min-height: 150px;
   }
 
   .chat {
     max-width: 100%;
   }
 
-  .tablajuego,
-  .woodquest,
-  .pergaminove {
-    background-size: contain;
-    min-height: 150px;
+  .terminaste {
+    width: 250px;
+    height: 200px;
+    background-size: 35vh;
+  }
+
+  .listo {
+    width: 130px;
+    height: 50px;
+    margin-top: -70px;
   }
 }
 
+/* Media query para pantallas muy pequeñas */
 @media (max-width: 576px) {
-  .rondatexto {
-    font-size: 1.5rem;
-  }
-
-  .preguntatexto {
-    font-size: 1.2rem;
-  }
-
   .messages {
     height: 100px;
   }
@@ -189,5 +213,20 @@ body {
     width: 30px;
     height: 30px;
   }
-}
 
+  .chat {
+    max-width: 100%;
+  }
+
+  .terminaste {
+    width: 200px;
+    height: 150px;
+    background-size: 30vh;
+  }
+
+  .listo {
+    width: 100px;
+    height: 40px;
+    margin-top: -60px;
+  }
+}
