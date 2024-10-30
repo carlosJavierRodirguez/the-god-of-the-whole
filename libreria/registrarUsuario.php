@@ -31,7 +31,7 @@ function enviarCorreoVerificacion($email, $codigo)
 
     // crear objetos
     $encapsularEmail = new Acceso();
-    
+
     // establecer datos
     $encapsularEmail->setEmail('thegoodofthewhole@gmail.com');
     $encapsularEmail->setClave('uzgprvmqagqiriib');
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!$email) {
             echo "
-            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+             <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
             <script>
             window.onload = function() {
                 Swal.fire({
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (enviarCorreoVerificacion($email, $codigo)) {
             echo "
-            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+             <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
             <script>
             window.onload = function() {
                 Swal.fire({
@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit;
         } else {
             echo "
-            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+             <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
             <script>
             window.onload = function() {
                 Swal.fire({
