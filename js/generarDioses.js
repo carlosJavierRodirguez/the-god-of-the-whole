@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const gods = [
+    let gods = [
         "hera", "afrodita", "ares", "atenea", "hercules",
         "hades", "poseidon", "gemini", "sirenas", "zeus",
         "apolo", "hefesto", "artemisa", "minotauro", "griffo"
     ];
 
-    const correctGods = ["hera", "afrodita", "ares", "zeus"]; // Dioses correctos
-
-    const dragContainer = document.getElementById("drag-container");
     const rowConfig = [5, 5, 5]; // Configuración de columnas por fila
 
+    // Mezcla aleatoria del array de dioses
+    gods = shuffleArray(gods);
+
+    const dragContainer = document.getElementById("drag-container");
     let godIndex = 0;
 
     rowConfig.forEach(rowSize => {
@@ -34,6 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
         dragContainer.appendChild(rowDiv);
     });
 });
+
+// Función para mezclar el array de dioses aleatoriamente
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Intercambio de elementos
+    }
+    return array;
+}
 
 function handleDragStart(e) {
     e.dataTransfer.setData("text/plain", e.target.id);
