@@ -46,7 +46,7 @@ $conectar->conectar();
               required
               autocomplete="off" />
               <div class="invalid-feedback text-black">
-          Datos Incorrectos
+          Se espera un @
           </div>
           </div>
 
@@ -62,7 +62,7 @@ $conectar->conectar();
               required
               autocomplete="off" />
               <div class="invalid-feedback text-black">
-          Datos Incorrectos
+          Contraseña minimo 8 caracteres
           </div>
           </div>
           <!-- Botón de inicio de sesión -->

@@ -1,39 +1,42 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
-    'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
+  'use strict';
+
+  const forms = document.querySelectorAll('.needs-validation');
+
+  Array.from(forms).forEach(form => {
       form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-  
-        form.classList.add('was-validated')
-      }, false)
-    })
-  
-    // Custom validation for email
-    const email = document.getElementById('txtEmail')
-    email.addEventListener('input', () => {
+          // Prevenir el envío si hay campos inválidos
+          if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+              form.classList.add('was-validated'); // Agregar clase solo si hay errores
+          } else {
+              form.classList.remove('was-validated'); // No hacer nada si todo es válido
+          }
+      }, false);
+  });
+
+  // Validación personalizada para el email
+  const email = document.getElementById('txtEmail');
+  email.addEventListener('input', () => {
       if (!/^\S+@\S+\.\S+$/.test(email.value)) {
-        email.setCustomValidity('Correo Electronico Incorrecto')
+          email.setCustomValidity('Correo Electrónico Incorrecto');
+          email.classList.add('is-invalid'); // Añadir clase para mostrar error
       } else {
-        email.setCustomValidity('')
+          email.setCustomValidity('');
+          email.classList.remove('is-invalid'); // Quitar clase si es válido
       }
-    })
-  
-    // Custom validation for password
-    const password = document.getElementById('txtClave')
-    password.addEventListener('input', () => {
+  });
+
+  // Validación personalizada para la contraseña
+  const password = document.getElementById('txtClave');
+  password.addEventListener('input', () => {
       if (password.value.length < 8) {
-        password.setCustomValidity('Contraseña Incorrecta')
+          password.setCustomValidity('Contraseña Incorrecta');
+          password.classList.add('is-invalid'); // Añadir clase para mostrar error
       } else {
-        password.setCustomValidity('')
+          password.setCustomValidity('');
+          password.classList.remove('is-invalid'); // Quitar clase si es válido
       }
-    })
-  })()
+  });
+})();
