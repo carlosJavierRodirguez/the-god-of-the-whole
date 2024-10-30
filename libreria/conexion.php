@@ -13,7 +13,7 @@ class Conexion
         $this->server = "localhost";
         $this->usuario = "postgres";
         $this->baseDatos = "teoriaConjuntos";
-        $this->password = "1083877108";
+        $this->password = "1078776500";
         $this->conexion = $this->conectar(); // Establecer la conexión al crear el objeto
     }
 
