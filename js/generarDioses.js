@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const rowDiv = document.createElement("div");
         rowDiv.className = "row";
 
-        for (let i = 0; i < rowSize; i++) {
+        for (let iterar = 0; iterar < rowSize; iterar++) {
             if (godIndex >= gods.length) break;
 
             const godDiv = document.createElement("div");
@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Función para mezclar el array de dioses aleatoriamente
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Intercambio de elementos
+    for (let iterar = array.length - 1; iterar > 0; iterar--) {
+        const iteraciones = Math.floor(Math.random() * (iterar + 1));
+        [array[iterar], array[iteraciones]] = [array[iteraciones], array[iterar]]; // Intercambio de elementos
     }
     return array;
 }
