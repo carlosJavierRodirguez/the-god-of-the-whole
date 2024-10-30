@@ -1,26 +1,29 @@
 <?php
 set_time_limit(60);
 session_start();
-include('numerosAleatorios.php');
-include('classAcceso.php');
-require('conexion.php'); // Ruta a la clase de conexión
 
-$conexion = new Conexion();
-$encapsularEmail = new Acceso();
-// Importar PHPMailer
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-// Cargar el archivo de idioma
-include 'excepcionesPhpMailer/phpmailer.lang-es.php';
+include('excepcionesPhpMailer/phpmailer.lang-es.php');
 include('classAcceso.php');
 require '../phpMailer/Exception.php';
 require '../phpMailer/PHPMailer.php';
 require '../phpMailer/SMTP.php';
+include('numerosAleatorios.php');
+require('conexion.php');
 
+
+// Importar PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// crear objetos
+$conexion = new Conexion();
+$encapsularEmail = new Acceso();
+
+// establecer datos
 $encapsularEmail->setEmail('thegoodofthewhole@gmail.com');
 $encapsularEmail->setClave('uzgprvmqagqiriib');
 
+// obtener los datos
 $correo_admin = $encapsularEmail->getEmail();
 $correo_password = $encapsularEmail->getClave();
 

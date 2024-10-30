@@ -1,11 +1,10 @@
 <?php
 set_time_limit(60);
 
-require 'Conexion.php';
+//cargar archivos
+include('excepcionesPhpMailer/phpmailer.lang-es.php');
 
-// Cargar el archivo de idioma
-include 'excepcionesPhpMailer/phpmailer.lang-es.php';
-include('classAcceso.php');
+
 session_start();
 
 // Importar las clases de PHPMailer
@@ -13,36 +12,46 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 
-$conexion = new Conexion();
-$clave = new Acceso();
+
 // Función para generar código de verificación
 function generarCodigo()
 {
     return rand(1000, 9999);
 }
 
-$clave->setClave('uzgprvmqagqiriib');
+
 
 // Función para enviar correo de verificación
 function enviarCorreoVerificacion($email, $codigo)
 {
+    include('classAcceso.php');
     require '../phpMailer/Exception.php';
     require '../phpMailer/PHPMailer.php';
     require '../phpMailer/SMTP.php';
 
+    // crear objetos
+    $encapsularEmail = new Acceso();
+    
+    // establecer datos
+    $encapsularEmail->setEmail('thegoodofthewhole@gmail.com');
+    $encapsularEmail->setClave('uzgprvmqagqiriib');
+
+    // obtener los datos
+    $correo_admin = $encapsularEmail->getEmail();
+    $correo_password = $encapsularEmail->getClave();
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'thegoodofthewhole@gmail.com';
-        $mail->Password   = $clave->getClave();
+        $mail->Username   = $correo_admin;
+        $mail->Password   = $correo_password;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
         $mail->CharSet    = 'UTF-8';
 
-        $mail->setFrom('thegoodofthewhole@gmail.com', 'ADMINISTRADOR');
+        $mail->setFrom($correo_admin, 'ADMINISTRADOR');
         $mail->addAddress($email);
         $mail->Subject = 'Código de Verificación de Registro';
         $mail->isHTML(true);
@@ -142,51 +151,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </script>";
             exit;
         }
-    } elseif (isset($_POST['codigo']) && isset($_POST['codigo_original'])) {
-        // Unir el código ingresado en un solo string
-        $codigoIngresado = trim(implode('', $_POST['codigo']));
-        $codigoOriginal = $_POST['codigo_original'];
-
-        // Validar el código
-        if ($codigoIngresado === $codigoOriginal) {
-            // Código correcto, proceder con la inserción del usuario
-            $query = "INSERT INTO public.usuario (\"nombreUsuario\", email, clave) VALUES (?, ?, ?)";
-            $conexion->insertarDatos($query, [
-                $_SESSION['temp_user']['nombre'],
-                $_SESSION['temp_user']['email'],
-                $_SESSION['temp_user']['password']
-            ]);
-
-            unset($_SESSION['temp_user']);
-            echo "
-            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-            <script>
-            window.onload = function() {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Registro Verificado',
-                    text: 'Tu cuenta ha sido verificada exitosamente.'
-                }).then(() => {
-                    window.location = '../login/iniciarSesion.php';
-                });
-            };
-            </script>";
-            exit;
-        } else {
-            echo "
-            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-            <script>
-            window.onload = function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Código incorrecto',
-                    text: 'El código de verificación ingresado es incorrecto.'
-                }).then(() => {
-                    window.location = '../login/validarCodigo.php';
-                });
-            };
-            </script>";
-            exit;
-        }
+    } else {
     }
 }

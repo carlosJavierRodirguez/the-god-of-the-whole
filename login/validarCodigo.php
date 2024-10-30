@@ -32,7 +32,7 @@
                     unset($_SESSION['error']);
                 }
                 ?>
-                <form action="../libreria/registrarUsuario.php" method="post" class="pergamino p-4 p-md-5 ">
+                <form action="../libreria/validarCodigos/validarCodigoRegistro.php" method="post" class="pergamino p-4 p-md-5 ">
                     <!-- Campos de código de recuperación -->
                     <div class="mt-5 ">
                         <div class="codigo mb-4 d-flex justify-content-center bajarInput">
