@@ -4,6 +4,7 @@
 <head>
     <?php include('../principal/head.php'); ?>
     <link rel="stylesheet" href="../css/estilosJuego.css" />
+    <link rel="stylesheet" href="../css/dioses.css" />
 </head>
 
 <body class="pantano">
@@ -51,7 +52,7 @@
                 <div class="text-center mt-3 d-flex flex-column align-items-center">
                     <div class="contenedor-botones">
                         <div class="terminaste"></div>
-                        <div class="listo"></div>
+                        <div class="listo" id="validateButton"div></div>
                     </div>
                 </div>
             </div>
@@ -63,6 +64,7 @@
     <script src="../js/socket.js"></script>
     <script src="../js/generarDioses.js"></script>
     <script src="../js/devolverDrag.js"></script> <!-- Nuevo script añadido -->
+    <script src="../js/validacionDioses.js"></script>
 </body>
 
 </html>
