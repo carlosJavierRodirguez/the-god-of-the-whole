@@ -8,7 +8,6 @@
 
 <body class="pantano">
     <div class="container">
-
         <!-- Row superior para la imagen -->
         <div class="row mb-3">
             <div class="col-12 text-center">
@@ -62,7 +61,8 @@
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/dragdrop.js"></script>
     <script src="../js/socket.js"></script>
-    <script src="../js/generarDioses.js"></script> <!-- Nuevo script añadido -->
+    <script src="../js/generarDioses.js"></script>
+    <script src="../js/devolverDrag.js"></script> <!-- Nuevo script añadido -->
 </body>
 
 </html>

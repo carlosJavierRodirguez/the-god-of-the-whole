@@ -61,6 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
         draggedElement.style.top = `${offsetY}px`;
 
         dropzone.appendChild(draggedElement); // Mover el elemento a la dropzone
+
+        // Agregar un evento de clic para devolver la imagen a su posición original
+        draggedElement.addEventListener("click", returnToOriginalPosition);
     });
 
     // Evento para manejar si se suelta fuera de la dropzone
@@ -81,6 +84,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// Función para devolver la imagen a su posición original
+function returnToOriginalPosition(event) {
+    const draggedElement = event.target;
+    const originalIndex = draggedElement.dataset.index;
+    const originalRowSize = draggedElement.dataset.rowSize;
+    const rowDivs = document.getElementById("drag-container").getElementsByClassName("row");
+
+    // Obtener el div de la fila original
+    const originalRowDiv = rowDivs[Math.floor(originalIndex / originalRowSize)];
+
+    // Reubicar el elemento en su posición original
+    if (originalRowDiv) {
+        originalRowDiv.appendChild(draggedElement);
+        // Opcional: restablecer el estilo de posición
+        draggedElement.style.position = "";
+        draggedElement.style.left = "";
+        draggedElement.style.top = "";
+    }
+}
 
 // Función para mezclar el array de dioses aleatoriamente
 function shuffleArray(array) {
