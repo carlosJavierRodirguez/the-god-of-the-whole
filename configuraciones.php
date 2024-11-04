@@ -48,7 +48,7 @@
             </div>
 
             <div class="col-12 btn botonIngresar">
-              <a href="index.php" class=" " id="botonGuardar"><img
+              <a href="index.php" class="" id="botonGuardar"><img
                   src="img/botonGuardar.png"
                   alt="imagen de boton de guardar"
                   class="img-fluid" /></a>
@@ -59,7 +59,7 @@
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
-
+  
   <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
   <script src="js/controlVolumen.js"></script>
 

@@ -1,0 +1,42 @@
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url("../img/prueba.jpg"); /* Ruta de la imagen */
+    background-size: cover; /* Ajusta la imagen al tamaño completo */
+    background-position: center; /* Centra la imagen */
+    z-index: 1000;
+}
+
+.scroll-bar-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px; /* Espacio entre el logo y la barra */
+}
+
+.scroll-bar {
+    width: 100%;
+    height: 60px;
+    position: relative;
+    background-color: transparent; /* Elimina cualquier fondo en la barra */
+}
+
+.progress-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Asegura que el pergamino no muestre áreas fuera del contenedor */
+}
+
+.progress {
+    height: 100%;
+    width: 10px; /* Comienza vacía */
+    object-fit: cover;
+    transition: width 0.1s ease-in-out; /* Suave transición de llenado */
+}
+

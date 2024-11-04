@@ -23,11 +23,11 @@
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4">
         <div class="d-flex justify-content-center">
-          <a href="unirse.php" class="boton"><img src="img/botonUnirse.png" alt="imagen de boton para unirse" /></a>
+          <a href="unirse.php" class="buton"><img src="img/botonUnirse.png" alt="imagen de boton para unirse" /></a>
         </div>
         <br />
         <div class="d-flex justify-content-center">
-          <a href="login/iniciarSesion.php" class="boton"><img
+          <a href="login/iniciarSesion.php" class="buton"><img
               src="img/botonCrearSala.png"
               alt="imagen de boton para crear la sala" /></a>
         </div>
@@ -35,7 +35,7 @@
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
-
+  <script src="js/carga.js"></script>
   <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
   
 
