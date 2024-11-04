@@ -1,11 +1,10 @@
-function mostrarAlerta(icon, title, text, redirectUrl) {
+function mostrarAlerta(icon, title, text, redirectUrl= null) {
   Swal.fire({
     icon: icon,
     title: title,
     text: text,
-  }).then(() => {
-    if (redirectUrl) {
+    willClose: () => {
       window.location.href = redirectUrl;
-    }
+    },
   });
 }

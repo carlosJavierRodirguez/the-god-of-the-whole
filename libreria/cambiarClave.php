@@ -15,16 +15,16 @@ if ($clave->getClave() === $clave->getClaveConfirmada()) {
     $_SESSION['clave'] = $clave->getClave();
 
     // Obtiene el ID del usuario basado en el email
-    $sql = "SELECT \"usuarioID\" FROM usuario WHERE email = :email"; 
+    $sql = "SELECT \"usuarioID\" FROM usuario WHERE email = :email";
     $values = [':email' => $clave->getEmail()];
     $resultado = $conexion->consultaIniciarSesion($sql, $values);
 
     // Verificar que se haya obtenido un ID
     if (!empty($resultado)) {
-        $usuarioID = $resultado[0]['usuarioID']; 
+        $usuarioID = $resultado[0]['usuarioID'];
 
         // Actualiza la contraseña
-        $sql = "UPDATE usuario SET clave = :clave WHERE \"usuarioID\" = :id"; 
+        $sql = "UPDATE usuario SET clave = :clave WHERE \"usuarioID\" = :id";
         $values = [
             ':clave' => $hashedClave,
             ':id' => $usuarioID // Usar el ID obtenido
@@ -32,15 +32,34 @@ if ($clave->getClave() === $clave->getClaveConfirmada()) {
         $cambioClave = $conexion->ejecutar($sql, $values);
 
         if ($cambioClave > 0) {
-            echo "Clave guardada correctamente";
-            header('Location: ../login/iniciarSesion.php');
+            echo "    <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+        <script src='../js/alertas/mostrarAlertas.js'></script>
+          <script>
+                window.addEventListener('DOMContentLoaded', function() {
+                    mostrarAlerta('success','Exito','Clave guardada correctamente','../login/iniciarSesion.php');
+                });
+            </script>";
+
             exit();
         } else {
-            echo "Error al guardar la clave";
+            echo "
+             <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+        <script src='../js/alertas/mostrarAlertas.js'></script>
+          <script>
+                window.addEventListener('DOMContentLoaded', function() {
+                    mostrarAlerta('error','Error','Error al guardar la clave');
+                });
+            </script>
+            ";
         }
     } else {
     }
 } else {
-    echo "Las contraseñas no coinciden. Intenta nuevamente.";
-    header('Location: ../login/nuevaClave.php');
+    echo "   <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+        <script src='../js/alertas/mostrarAlertas.js'></script>
+          <script>
+                window.addEventListener('DOMContentLoaded', function() {
+                    mostrarAlerta('error','Error','Error las claves no coinciden');
+                });
+            </script>";
 }

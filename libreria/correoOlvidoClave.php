@@ -98,47 +98,31 @@ try {
         // Redireccionar después de mostrar el mensaje de éxito
         echo "
         <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Swal.fire({
-                    title: 'Éxito',
-                    text: 'El código de verificación ha sido enviado a tu correo.',
-                    icon: 'success',
-                    confirmButtonText: 'Aceptar'
-                }).then(() => {
-                    window.location.href = '../login/validarCodigoClave.php';
+        <script src='../js/alertas/mostrarAlertas.js'></script>
+          <script>
+                window.addEventListener('DOMContentLoaded', function() {
+                    mostrarAlerta('success','Éxito','El código de verificación ha sido enviado a tu correo.','../login/validarCodigoClave.php');
                 });
-            });
-        </script>";
+            </script>";
     } else {
         // Si el correo no está registrado, mostrar error
         echo "
         <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Correo no registrado',
-                    text: 'El correo ingresado no está en nuestra base de datos.'
-                }).then(() => {
-                    window.location.href = '../login/recuperarClave.php';
-                });
+        <script src='../js/alertas/mostrarAlertas.js'></script>
+          <script>
+             window.addEventListener('DOMContentLoaded', function() {
+                mostrarAlerta('error','Correo no registrado','El correo ingresado no está en nuestra base de datos.','../login/recuperarClave.php');
             });
-        </script>";
+            </script>";
     }
 } catch (Exception $e) {
     // Mostrar error si ocurre algún problema con el correo o la conexión
     echo "
     <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error en el envío',
-                text: 'No se pudo enviar el correo: {$mail->ErrorInfo}'
-            }).then(() => {
-                window.location.href = '../login/recuperarClave.php';
+    <script src='../js/alertas/mostrarAlertas.js'></script>
+     <script>
+             window.addEventListener('DOMContentLoaded', function() {
+                mostrarAlerta('error','Error en el envío','No se pudo enviar el correo: {$mail->ErrorInfo}','../login/recuperarClave.php');
             });
-        });
-    </script>";
+            </script>";
 }

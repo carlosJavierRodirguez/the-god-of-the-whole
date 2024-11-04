@@ -33,8 +33,12 @@ document
             $("#actualizarNombreModal").modal("hide");
           });
         } else {
-          // Manejar error
-          alert(data.message || "Ocurrió un error al actualizar el nombre.");
+          Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: "Nombre ya en uso",
+            confirmButtonText: "Aceptar",
+          });
         }
       })
       .catch((error) => {

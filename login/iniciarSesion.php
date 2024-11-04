@@ -26,9 +26,9 @@
               placeholder="correo@gmail.com"
               required
               autocomplete="off" />
-              <div class="invalid-feedback text-black">
-          Se espera un @
-          </div>
+            <div class="invalid-feedback text-black">
+              Se espera un @
+            </div>
           </div>
 
           <div class="form-group mb-2">
@@ -42,10 +42,19 @@
               placeholder="********"
               required
               autocomplete="off" />
-              <div class="invalid-feedback text-black">
-          Contraseña minimo 8 caracteres
+              
+            <div class="d-flex justify-content-end">
+              <button type="button" id="togglePassword" class="btn btn-light btn-sm">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+
+            <div class="invalid-feedback text-black">
+              Contraseña mínimo 8 caracteres
+            </div>
           </div>
-          </div>
+
+
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
             <div>
@@ -67,6 +76,7 @@
   </div>
   <iframe id="musicaIframe" src="../musica.html" style="display:none;"></iframe>
   <script src="../js/validacionFormulario/validacionIni.js"></script>
+  <script src="../js/clave/mirarClave.js"></script>
 </body>
 
 </html>

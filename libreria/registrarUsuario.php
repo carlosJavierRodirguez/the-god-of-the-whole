@@ -99,7 +99,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!$email) {
             echo "
-             <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+              <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+            <script src='../js/alertas/mostrarAlertas.js'></script>
             <script>
             window.onload = function() {
                 Swal.fire({
@@ -124,30 +125,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (enviarCorreoVerificacion($email, $codigo)) {
             echo "
-             <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+            <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+            <script src='../js/alertas/mostrarAlertas.js'></script>
             <script>
-            window.onload = function() {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Código de Verificación Enviado',
-                    text: 'Se ha enviado un código de verificación a tu correo electrónico.'
-                }).then(() => {
-                    window.location = '../login/validarCodigo.php';
+                window.addEventListener('DOMContentLoaded', function() {
+                    mostrarAlerta('success','Código de Verificación Enviado','Se ha enviado un código de verificación a tu correo electrónico.','../login/validarCodigo.php');
                 });
-            };
             </script>";
             exit;
         } else {
             echo "
-             <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
-            <script>
-            window.onload = function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Hubo un error al enviar el correo de verificación.'
+              <script src='../node_modules/sweetalert2/dist/sweetalert2.all.min.js'></script>
+             <script src='../js/alertas/mostrarAlertas.js'></script>
+               <script>
+                window.addEventListener('DOMContentLoaded', function() {
+                    mostrarAlerta('error','Error','Hubo un error al enviar el correo de verificación.','../login/validarCodigo.php');
                 });
-            };
             </script>";
             exit;
         }

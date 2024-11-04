@@ -142,3 +142,16 @@ form {
   margin: 0 5px;
   /* Margen entre campos */
 }
+
+.form-group {
+  position: relative;
+}
+
+#togglePassword {
+  position: absolute;
+  background: none;
+  margin-top: -20%;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
