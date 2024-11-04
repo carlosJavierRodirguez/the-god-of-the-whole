@@ -26,9 +26,9 @@
               placeholder="correo@gmail.com"
               required
               autocomplete="off" />
-            <div class="invalid-feedback text-black">
-              Datos Incorrectos
-            </div>
+              <div class="invalid-feedback text-black">
+          Se espera un @
+          </div>
           </div>
 
           <div class="form-group mb-2">
@@ -42,9 +42,9 @@
               placeholder="********"
               required
               autocomplete="off" />
-            <div class="invalid-feedback text-black">
-              Datos Incorrectos
-            </div>
+              <div class="invalid-feedback text-black">
+          Contraseña minimo 8 caracteres
+          </div>
           </div>
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
