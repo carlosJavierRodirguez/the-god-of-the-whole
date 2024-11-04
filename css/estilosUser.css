@@ -145,7 +145,12 @@ h5 {
   border-bottom: 2px solid #d4af37; /* Línea dorada */
   padding-bottom: 5px;
 }
-
+.tituloAlertaBienvenida {
+  background-color: #fffefe00;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #d4af37;
+  border-bottom: 2px solid #d4af37; /* Línea dorada */
+}
 /* Barra de progreso personalizada */
 .progress-bar {
   background-image: url("../img/columnas.png"); /* Fondo con patrón de columna griega */
@@ -221,6 +226,6 @@ h5 {
   color: #f0f0f0; /* Cambia el color al hacer hover */
   transform: scale(1.1); /* Efecto de agrandamiento al pasar el mouse */
 }
-.subir{
+.subir {
   padding-top: 33%;
 }

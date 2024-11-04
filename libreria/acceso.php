@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['txtEmail']) && isset(
         header('Location: ../login/iniciarSesion.php?error=1');
         exit();
     }
+} else {
 }
 
 // Manejar la actualización del nombre del usuario
@@ -83,4 +84,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['
         echo json_encode(['success' => false, 'message' => 'Usuario no autenticado']);
         exit();
     }
+} else {
 }

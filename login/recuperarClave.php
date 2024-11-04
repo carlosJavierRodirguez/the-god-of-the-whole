@@ -1,9 +1,3 @@
-<?php
-include('../libreria/conexion.php');
-$conectar = new Conexion();
-
-$conectar->conectar();
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -40,7 +34,7 @@ $conectar->conectar();
                                 required />
                     </div>
                     <br>
-                    
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-sm botonIngresar">
                             <img

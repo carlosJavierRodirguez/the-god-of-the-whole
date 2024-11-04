@@ -1,11 +1,3 @@
-<?php
-include('../libreria/conexion.php');
-
-$conectar = new Conexion();
-
-$conectar->conectar();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,17 +6,6 @@ $conectar->conectar();
 </head>
 
 <body>
-  <?php
-  // Verificar si el parámetro 'verificado' está presente en la URL
-  if (isset($_GET['verificado']) && $_GET['verificado'] === 'true') {
-    echo "<script>mostrarAlertaRegistroVerificado();</script>";
-  }
-
-  // Verificar si hay un error
-  if (isset($_GET['error']) && $_GET['error'] === 'true') {
-    echo "<script>mostrarAlertaError('Código de verificación incorrecto.');</script>";
-  }
-  ?>
   <div class="container">
     <div class="row justify-content-center">
       <!-- Logo y Título -->
@@ -34,7 +15,7 @@ $conectar->conectar();
         </div>
         <!-- Formulario de inicio de sesión -->
         <form action="../libreria/acceso.php" method="post" class="pergamino p-4 p-md-5 needs-validation" novalidate>
-          <div class="form-group mb-2 email"> 
+          <div class="form-group mb-2 email">
             <!-- Email -->
             <span class="text-white fw-bold tipoLetra">Email <i class="fa-solid fa-envelope"></i></span>
             <input
@@ -45,9 +26,9 @@ $conectar->conectar();
               placeholder="correo@gmail.com"
               required
               autocomplete="off" />
-              <div class="invalid-feedback text-black">
-          Datos Incorrectos
-          </div>
+            <div class="invalid-feedback text-black">
+              Datos Incorrectos
+            </div>
           </div>
 
           <div class="form-group mb-2">
@@ -61,9 +42,9 @@ $conectar->conectar();
               placeholder="********"
               required
               autocomplete="off" />
-              <div class="invalid-feedback text-black">
-          Datos Incorrectos
-          </div>
+            <div class="invalid-feedback text-black">
+              Datos Incorrectos
+            </div>
           </div>
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
