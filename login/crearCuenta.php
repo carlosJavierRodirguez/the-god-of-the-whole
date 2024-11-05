@@ -34,11 +34,11 @@ $conectar->conectar();
               placeholder="Usuario15000"
               required
               autocomplete="off" />
-              <div class="invalid-feedback text-black">
-          Mínimo 5 caracteres.
+            <div class="invalid-feedback text-black">
+              Mínimo 5 caracteres.
+            </div>
           </div>
-          </div>
-          
+
 
           <div class="form-group mb-2">
             <!-- Contraseña -->
@@ -52,11 +52,11 @@ $conectar->conectar();
               placeholder="correo@gmail.com"
               required
               autocomplete="off" />
-              <div class="invalid-feedback text-black">
-          Introduce un email válido
+            <div class="invalid-feedback text-black">
+              Introduce un email válido
+            </div>
           </div>
-          </div>
-          
+
           <div class="form-group mb-2">
             <!-- Contraseña -->
             <span class="text-white fw-bold tipoLetra">Contraseña <i class="fa-solid fa-key"></i></span>
@@ -68,11 +68,16 @@ $conectar->conectar();
               placeholder="*******"
               required
               autocomplete="off" />
-              <div class="invalid-feedback text-black">
+            <div class="d-flex justify-content-end">
+              <button type="button" id="togglePassword" class="btn btn-light btn-sm">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback text-black">
               Contraseña al menos de 8 caracteres
-              </div>
+            </div>
           </div>
-          
+
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
             <div class="text-white">
@@ -92,6 +97,7 @@ $conectar->conectar();
   </div>
   <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
   <script src="../js/validacionFormulario/validacion.js"></script>
+  <script src="../js/clave/mirarClave.js"></script>
 </body>
 
 </html>

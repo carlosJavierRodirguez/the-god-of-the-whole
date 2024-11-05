@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+include('../libreria/datosUsuario/imagenPerfil.php');
+include('../libreria/datosUsuario/selectPerfilImagenes.php');
+
 // Verificar si la sesión 'nombreUsuario' está configurada
 if (!isset($_SESSION['nombreUsuario'])) {
     header('Location: ../login/iniciarSesion.php'); // Redirigir a la página de inicio de sesión
@@ -65,7 +68,21 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             <!-- Imagen y Nombre del Usuario en Flexbox -->
                             <div class="d-flex align-items-center mb-4">
                                 <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <img src="../img/afrodita.png" alt="Afrodita" class="user-icon mr-3">
+                                    <?php
+                                    if (count($resultado) > 0) {
+                                        // Recorrer los resultados
+                                        foreach ($resultado as $fila) {
+                                            $urlImagen = $fila['url_imagen'];
+                                            // Imprimir o mostrar los datos
+                                            echo "<img src='" . htmlspecialchars($urlImagen) . "' alt='Afrodita' class='user-icon mr-3'/>"; // Mostrar la imagen de perfil
+
+                                        }
+                                    } else {
+                                        exit();
+                                    }
+
+                                    ?>
+                                    <!-- <img src="../img/diosesVerdaderos/afrodita.png" alt="Afrodita" class="user-icon mr-3"> -->
                                 </button>
                                 <span id="nombreUsuarioDisplay" class="username"><?php echo $_SESSION['nombreUsuario']; ?></span>
 
@@ -143,48 +160,25 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                         <p>Elige una imagen que te represente en el juego:</p>
                         <form action="guardar_imagen.php" method="post">
                             <div class="row">
-                                <div class="col-6 d-flex justify-content-center mb-3">
-                                    <input type="radio" id="imagen1" name="imagen_id" value="1" required>
-                                    <label for="imagen1" class="text-center" style="cursor: pointer;">
-                                        <img src="../img/afrodita.png" alt="Imagen 1" class="selecionPerfilImagen" />
-                                        <span>Imagen 1</span>
-                                    </label>
-                                </div>
-                                <div class="col-6 d-flex justify-content-center mb-3">
-                                    <input type="radio" id="imagen2" name="imagen_id" value="2" required>
-                                    <label for="imagen2" class="text-center" style="cursor: pointer;">
-                                        <img src="../img/ares.png" alt="Imagen 2" class="selecionPerfilImagen" />
-                                        <span>Imagen 2</span>
-                                    </label>
-                                </div>
-                                <div class="col-6 d-flex justify-content-center mb-3">
-                                    <input type="radio" id="imagen3" name="imagen_id" value="3" required>
-                                    <label for="imagen3" class="text-center" style="cursor: pointer;">
-                                        <img src="../img/atenea.png" alt="Imagen 3" class="selecionPerfilImagen" />
-                                        <span>Imagen 3</span>
-                                    </label>
-                                </div>
-                                <div class="col-6 d-flex justify-content-center mb-3">
-                                    <input type="radio" id="imagen4" name="imagen_id" value="4" required>
-                                    <label for="imagen4" class="text-center" style="cursor: pointer;">
-                                        <img src="../img/gemini.png" alt="Imagen 4" class="selecionPerfilImagen" />
-                                        <span>Imagen 4</span>
-                                    </label>
-                                </div>
-                                <div class="col-6 d-flex justify-content-center mb-3">
-                                    <input type="radio" id="imagen5" name="imagen_id" value="5" required>
-                                    <label for="imagen5" class="text-center" style="cursor: pointer;">
-                                        <img src="../img/poseidon.png" alt="Imagen 5" class="selecionPerfilImagen" />
-                                        <span>Imagen 5</span>
-                                    </label>
-                                </div>
-                                <div class="col-6 d-flex justify-content-center mb-3">
-                                    <input type="radio" id="imagen6" name="imagen_id" value="6" required>
-                                    <label for="imagen6" class="text-center" style="cursor: pointer;">
-                                        <img src="../img/hera.png" alt="Imagen 6" class="selecionPerfilImagen" />
-                                        <span>Imagen 6</span>
-                                    </label>
-                                </div>
+                                <?php
+                                if (count($resultado) > 0) {
+                                    foreach ($resultado as $fila) {
+                                        $idUrl = $fila['id_url'];
+                                        $urlImagen = $fila['url_imagen'];
+                                        $nombreImagen = $fila['nombre_imagen'];
+
+                                        echo "<div class='col-6 d-flex justify-content-center mb-3'>
+                                                            <input type='radio' id='imagen$idUrl' name='imagen_id' value='$idUrl' required>
+                                                            <label for='imagen$idUrl' class='text-center' style='cursor: pointer;'>
+                                                                <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen' />
+                                                                <span>$nombreImagen</span>
+                                                            </label>
+                                                          </div>";
+                                    }
+                                } else {
+                                    echo "No se encontraron imágenes.";
+                                } ?>
+
                             </div>
 
                             <div class="modal-footer border-0">
