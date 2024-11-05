@@ -144,6 +144,11 @@
     min-height: 80px;
   }
 
+  .correcto {
+    border: 3px solid green;
+    background-color: rgba(0, 255, 0, 0.2); /* Fondo verde translúcido */
+  }
+  
   .draggable {
     width: 80px;
     height: 80px;
