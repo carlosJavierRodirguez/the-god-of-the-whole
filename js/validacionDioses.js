@@ -16,8 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (diosesVerdaderos.includes(claseDios)) {
                 elemento.style.backgroundColor = "green"; // Color para dioses verdaderos
+                elemento.style.borderRadius = "60%"; // Borde redondeado
             } else if (semiDioses.includes(claseDios) || criaturasMitologicas.includes(claseDios)) {
                 elemento.style.backgroundColor = "red"; // Color para elementos incorrectos
+                elemento.style.borderRadius = "60%"; // Borde redondeado
                 todosCorrectos = false;
             }
         });
@@ -32,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para restablecer el color y devolver el elemento al contenedor inicial
     function devolverAlContenedorInicial(elemento) {
         elemento.style.backgroundColor = ""; // Restablecer color
+        elemento.style.borderRadius = ""; // Restablecer borde
         dragContainer.appendChild(elemento); // Devolver al contenedor inicial
     }
 
@@ -49,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         elemento.addEventListener("dragend", () => {
             if (!elemento.closest("#dropzone")) {
                 elemento.style.backgroundColor = "";
+                elemento.style.borderRadius = ""; // Restablecer borde
             }
         });
 
