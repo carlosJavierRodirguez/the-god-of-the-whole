@@ -3,6 +3,7 @@
 
 <head>
   <?php include('../principal/head.php'); ?>
+  <link rel="stylesheet" href="../css/estilosCarga.css">
 </head>
 
 <body>
@@ -74,9 +75,11 @@
       </div>
     </div>
   </div>
+  <div class="lds-ring loader" id="loader"><div></div><div></div><div></div><div></div></div>
   <iframe id="musicaIframe" src="../musica.html" style="display:none;"></iframe>
   <script src="../js/validacionFormulario/validacionIni.js"></script>
   <script src="../js/clave/mirarClave.js"></script>
+  <script src="../js/carga.js"></script>
 </body>
 
 </html>

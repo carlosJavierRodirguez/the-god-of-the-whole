@@ -5,6 +5,7 @@
   <?php include('principal/head.php') ?>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="css/estilosCarga.css">
   <link rel="stylesheet" href="fontawesome/css/all.css" />
 </head>
 
@@ -59,9 +60,11 @@
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
-  
+  <div class="lds-ring loader" id="loader"><div></div><div></div><div></div><div></div></div>
   <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
   <script src="js/controlVolumen.js"></script>
+  <script src="js/carga.js"></script>
+
 
 
 
