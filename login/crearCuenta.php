@@ -11,6 +11,7 @@ $conectar->conectar();
 
 <head>
   <?php include('../principal/head.php') ?>
+  <link rel="stylesheet" href="../css/estilosCarga.css">
 </head>
 
 <body>
@@ -95,9 +96,11 @@ $conectar->conectar();
       </div>
     </div>
   </div>
+  <div class="lds-ring loader" id="loader"><h2 class="loading-text">Loading...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>
   <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
   <script src="../js/validacionFormulario/validacion.js"></script>
   <script src="../js/clave/mirarClave.js"></script>
+  <script src="../js/carga.js"></script>
 </body>
 
 </html>
