@@ -2,6 +2,7 @@
 session_start();
 
 include('../libreria/datosUsuario/imagenPerfil.php');
+include('../libreria/datosUsuario/partidas.php');
 include('../libreria/datosUsuario/selectPerfilImagenes.php');
 
 // Verificar si la sesión 'nombreUsuario' está configurada
@@ -69,25 +70,25 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             <div class="d-flex align-items-center mb-4">
                                 <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <?php
-                                    if (count($resultado) > 0) {
-                                        // Recorrer los resultados
-                                        foreach ($resultado as $fila) {
-                                            $urlImagen = $fila['url_imagen'];
-                                            // Imprimir o mostrar los datos
-                                            echo "<img src='" . htmlspecialchars($urlImagen) . "' alt='Afrodita' class='user-icon mr-3'/>"; // Mostrar la imagen de perfil
 
-                                        }
+                                    // Supongamos que $resultado es el array que obtuviste de tu consulta SQL
+                                    if (!empty($resultado)) {
+                                        // Asumiendo que solo se devuelve una fila en el resultado, puedes acceder directamente:
+                                        $usuarioID = $resultado[0]['usuarioID'];
+                                        $urlImagen = $resultado[0]['url_imagen'];
+                                        $nombre_imagen = $resultado[0]['nombre_imagen'];
+
+                                        echo "<img src='" . htmlspecialchars($urlImagen) . "' alt='" . htmlspecialchars($nombre_imagen) . "' class='user-icon mr-3'/>";
                                     } else {
                                         exit();
                                     }
-
                                     ?>
-                                    <!-- <img src="../img/diosesVerdaderos/afrodita.png" alt="Afrodita" class="user-icon mr-3"> -->
+
                                 </button>
                                 <span id="nombreUsuarioDisplay" class="username"><?php echo $_SESSION['nombreUsuario']; ?></span>
 
-                                <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#actualizarNombreModal">
-                                    <i class="fa-solid fa-user-pen"></i>
+                                <button type="button" class="btn  border-0 " data-bs-toggle="modal" data-bs-target="#actualizarNombreModal">
+                                    <i class="fa-solid fa-user-pen iconoCamabiarNombre"></i>
                                 </button>
 
                             </div>
@@ -99,34 +100,60 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <h5><i class="fas fa-bolt"></i> Partidas Ganadas:</h5>
-                                    <p>10</p>
+                                    <?php
+                                    if (!empty($partidas)) {
+
+                                        $partidasGanadas = $partidas[0]['partidasGanadas'];
+
+                                        echo "<p>$partidasGanadas<p>";
+                                    } else {
+                                        exit();
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <h5><i class="fas fa-skull"></i> Partidas Perdidas:</h5>
-                                    <p>5</p>
+                                    <?php
+                                    if (!empty($partidas)) {
+
+                                        $partidasPerdidas = $partidas[0]['partidasPerdidas'];
+
+                                        echo "<p>$partidasPerdidas<p>";
+                                    } else {
+                                        exit();
+                                    }
+                                    ?>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <h5><i class="fas fa-chart-line"></i> Porcentaje de Victorias:</h5>
                                     <div class="progress barras">
-                                        <div class="progress-bar victorias" role="progressbar">
-                                            66%
+                                        <div class="progress-bar porcentajePartidas" role="progressbar" style="width: <?php echo $porcentajeVictorias; ?>%;">
+                                            <?php
+                                            if ($totalPartidas > 0) {
+                                                echo round($porcentajeVictorias, 2) . "%";
+                                            } else {
+                                                echo $mensaje; // Mostrar mensaje solo si no hay partidas
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <h5><i class="fas fa-chart-line-down"></i> Porcentaje de Derrotas:</h5>
                                     <div class="progress barras">
-                                        <div class="progress-bar derrotas" role="progressbar">
-                                            33%
+                                        <div class="progress-bar porcentajePartidas" role="progressbar" style="width: <?php echo $porcentajeDerrotas; ?>%;">
+                                        <?php
+                                            if ($totalPartidas > 0) {
+                                                echo round($porcentajeDerrotas, 2) . "%";
+                                            } else {
+                                                echo $mensaje;
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -150,40 +177,41 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
         <!-- Modal para escoger la imagen de perfil -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content user-profile ">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content user-profile">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Selecciona tu Imagen de Perfil</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body ">
+                    <div class="modal-body">
                         <p>Elige una imagen que te represente en el juego:</p>
-                        <form action="guardar_imagen.php" method="post">
+                        <form id="actilizarImagenPerfil" action="../libreria/datosUsuario/actualizarImagenPerfil.php" method="POST">
                             <div class="row">
                                 <?php
-                                if (count($resultado) > 0) {
-                                    foreach ($resultado as $fila) {
+                                if (count($selectImagenes) > 0) {
+                                    foreach ($selectImagenes as $fila) {
                                         $idUrl = $fila['id_url'];
                                         $urlImagen = $fila['url_imagen'];
                                         $nombreImagen = $fila['nombre_imagen'];
 
-                                        echo "<div class='col-6 d-flex justify-content-center mb-3'>
-                                                            <input type='radio' id='imagen$idUrl' name='imagen_id' value='$idUrl' required>
-                                                            <label for='imagen$idUrl' class='text-center' style='cursor: pointer;'>
-                                                                <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen' />
-                                                                <span>$nombreImagen</span>
-                                                            </label>
-                                                          </div>";
+                                        echo "
+                                <div class='col-6 d-flex justify-content-center mb-3'>
+                                    <input type='radio' id='imagen_$idUrl' name='imagen_$idUrl' value='$idUrl'>
+                                    <label for='imagen_$idUrl' class='text-center'>
+                                        <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen' />
+                                        <br>
+                                        <span>$nombreImagen</span>
+                                    </label>
+                                </div>";
                                     }
                                 } else {
-                                    echo "No se encontraron imágenes.";
-                                } ?>
-
+                                    echo "<p>No hay imágenes disponibles.</p>";
+                                }
+                                ?>
                             </div>
-
                             <div class="modal-footer border-0">
-                                <button type="submit" class="btn border-0 ">
-                                    <img src="../img/botonGuardar.png" alt="" srcset="">
+                                <button type="submit" class="btn border-0">
+                                    <img src="../img/botonGuardar.png" alt="">
                                 </button>
                             </div>
                         </form>
@@ -191,6 +219,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                 </div>
             </div>
         </div>
+
 
         <!-- Modal de crear a partida -->
         <div class="modal fade" id="crearSala" tabindex="-1" aria-labelledby="crearSalaLabel" aria-hidden="true">
@@ -342,6 +371,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
         <script src="../js/jQuery/jquery-migrate-3.5.0.min.js"></script> <!-- Luego jQuery Migrate -->
         <script src="../js/actualizarNombre.js"></script>
         <script src="../js/alertas/alertaBienvenida.js"></script>
+        <script src="js/json/actulizarImagenPerfil.js"></script>
 </body>
 
 </html>

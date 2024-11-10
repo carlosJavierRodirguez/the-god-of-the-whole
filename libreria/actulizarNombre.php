@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conexion.php'; 
+require 'conexion.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -14,7 +14,6 @@ if (isset($data->usuarioID) && isset($data->nuevoNombre)) {
     $stmt->bindParam(':usuarioID', $usuarioID);
 
     if ($stmt->execute()) {
-        // Opcional: Actualizar la sesión si es necesario
         $_SESSION['nombreUsuario'] = $nuevoNombre;
 
         echo json_encode(['success' => true]);

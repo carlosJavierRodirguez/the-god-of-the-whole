@@ -2,7 +2,7 @@
 set_time_limit(60);
 session_start();
 
-include('excepcionesPhpMailer/phpmailer.lang-es.php');
+include('excepciones/phpmailer.lang-es.php');
 include('classAcceso.php');
 require '../phpMailer/Exception.php';
 require '../phpMailer/PHPMailer.php';

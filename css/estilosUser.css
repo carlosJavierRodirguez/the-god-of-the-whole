@@ -37,7 +37,10 @@
 .contenedor-item i {
   transition: transform 0.3s ease, color 0.3s ease;
 }
-
+.iconoCamabiarNombre:hover {
+  transform: scale(1.2);
+  color: #d4af37;
+}
 .contenedor-item:hover i {
   transform: scale(1.2); /* Aumentar tamaño al pasar el ratón */
   color: #d4af37; /* Cambia a dorado cuando se pasa el cursor */
@@ -153,7 +156,7 @@ h5 {
 }
 /* Barra de progreso personalizada */
 .progress-bar {
-  background-image: url("../img/columnas.png"); /* Fondo con patrón de columna griega */
+  background-color: #d4af37;
   transition: width 1s ease; /* Transición suave en la barra de progreso */
 }
 
@@ -171,18 +174,14 @@ h5 {
   height: 20px;
   border: 1px solid #d4af37;
 }
-.victorias {
-  width: 66%;
-  color: #ff0000;
+
+.porcentajePartidas {
+  width: auto;
+  color: #000000;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   font-size: 20px;
 }
-.derrotas {
-  width: 33%;
-  color: #ff0000;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-}
+
 .contenedor-item {
   text-align: center; /* Centra el texto */
   padding: 10px; /* Espaciado interno */
@@ -228,4 +227,18 @@ h5 {
 }
 .subir {
   padding-top: 33%;
+}
+.seleccionPerfilImagen {
+  width: 100%;
+  max-width: 85px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+.seleccionPerfilImagen:hover {
+  transform: scale(1.05);
+  border: 2px solid #007bff;
 }

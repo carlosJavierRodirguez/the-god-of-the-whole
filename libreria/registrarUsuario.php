@@ -2,7 +2,7 @@
 set_time_limit(60);
 
 //cargar archivos
-include('excepcionesPhpMailer/phpmailer.lang-es.php');
+include('excepciones/phpmailer.lang-es.php');
 
 
 session_start();
