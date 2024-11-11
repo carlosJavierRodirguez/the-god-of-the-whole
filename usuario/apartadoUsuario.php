@@ -68,23 +68,21 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             </div>
                             <!-- Imagen y Nombre del Usuario en Flexbox -->
                             <div class="d-flex align-items-center mb-4">
-                                <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" class="btn border border-0"  data-bs-toggle="modal" data-bs-target="#actulizarImagenPerfilModal">
                                     <?php
-
-                                    // Supongamos que $resultado es el array que obtuviste de tu consulta SQL
                                     if (!empty($resultado)) {
-                                        // Asumiendo que solo se devuelve una fila en el resultado, puedes acceder directamente:
+                                        // devuelve una fila en el resultado
                                         $usuarioID = $resultado[0]['usuarioID'];
                                         $urlImagen = $resultado[0]['url_imagen'];
                                         $nombre_imagen = $resultado[0]['nombre_imagen'];
 
-                                        echo "<img src='" . htmlspecialchars($urlImagen) . "' alt='" . htmlspecialchars($nombre_imagen) . "' class='user-icon mr-3'/>";
+                                        echo "<img src='" . htmlspecialchars($urlImagen) . "' alt='" . htmlspecialchars($nombre_imagen) . "' class='user-icon mr-3' id='imagenPerfil'/>";
                                     } else {
                                         exit();
                                     }
                                     ?>
-
                                 </button>
+
                                 <span id="nombreUsuarioDisplay" class="username"><?php echo $_SESSION['nombreUsuario']; ?></span>
 
                                 <button type="button" class="btn  border-0 " data-bs-toggle="modal" data-bs-target="#actualizarNombreModal">
@@ -130,7 +128,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                         <div class="progress-bar porcentajePartidas" role="progressbar" style="width: <?php echo $porcentajeVictorias; ?>%;">
                                             <?php
                                             if ($totalPartidas > 0) {
-                                                echo round($porcentajeVictorias, 2) . "%";
+                                                echo $porcentajeVictorias . "%";
                                             } else {
                                                 echo $mensaje; // Mostrar mensaje solo si no hay partidas
                                             }
@@ -142,9 +140,9 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                     <h5><i class="fas fa-chart-line-down"></i> Porcentaje de Derrotas:</h5>
                                     <div class="progress barras">
                                         <div class="progress-bar porcentajePartidas" role="progressbar" style="width: <?php echo $porcentajeDerrotas; ?>%;">
-                                        <?php
+                                            <?php
                                             if ($totalPartidas > 0) {
-                                                echo round($porcentajeDerrotas, 2) . "%";
+                                                echo $porcentajeDerrotas. "%";
                                             } else {
                                                 echo $mensaje;
                                             }
@@ -176,7 +174,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
         </div>
 
         <!-- Modal para escoger la imagen de perfil -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="actulizarImagenPerfilModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content user-profile">
                     <div class="modal-header">
@@ -185,7 +183,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                     </div>
                     <div class="modal-body">
                         <p>Elige una imagen que te represente en el juego:</p>
-                        <form id="actilizarImagenPerfil" action="../libreria/datosUsuario/actualizarImagenPerfil.php" method="POST">
+                        <form id="formActualizarImagenPerfil" method="POST">
                             <div class="row">
                                 <?php
                                 if (count($selectImagenes) > 0) {
@@ -196,7 +194,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
                                         echo "
                                 <div class='col-6 d-flex justify-content-center mb-3'>
-                                    <input type='radio' id='imagen_$idUrl' name='imagen_$idUrl' value='$idUrl'>
+                                    <input type='radio' id='imagen_$idUrl' name='imagen_id' value='$idUrl'>
                                     <label for='imagen_$idUrl' class='text-center'>
                                         <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen' />
                                         <br>
@@ -219,7 +217,6 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                 </div>
             </div>
         </div>
-
 
         <!-- Modal de crear a partida -->
         <div class="modal fade" id="crearSala" tabindex="-1" aria-labelledby="crearSalaLabel" aria-hidden="true">
@@ -369,9 +366,9 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
         <script src="../js/jQuery/jquery-3.6.0.min.js"></script> <!-- Primero carga jQuery -->
         <script src="../js/jQuery/jquery-migrate-3.5.0.min.js"></script> <!-- Luego jQuery Migrate -->
-        <script src="../js/actualizarNombre.js"></script>
+        <script src="../js/json/actualizarNombre.js"></script>
         <script src="../js/alertas/alertaBienvenida.js"></script>
-        <script src="js/json/actulizarImagenPerfil.js"></script>
+        <script src="../js/json/actulizarImagenPerfil.js"></script>
 </body>
 
 </html>

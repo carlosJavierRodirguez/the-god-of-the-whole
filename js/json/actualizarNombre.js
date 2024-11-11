@@ -6,7 +6,7 @@ document
     const nuevoNombre = document.getElementById("nuevoNombre").value;
 
     // Realizar la llamada AJAX
-    fetch("../libreria/acceso.php", {
+    fetch("../libreria/datosUsuario/actualizarNombre.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
