@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (todosCorrectos) {
-            window.location.href = "pagina_correcta.html";
+            window.location.href = "pantallaCarga.php";
         } else {
             alert("Error: Hay elementos que no son dioses verdaderos. Revisa tu selección.");
         }

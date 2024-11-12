@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalla de Carga</title>
+    <title>Pantalla de carga</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/cargaJuego.css">
 </head>
-<body>
-    <!-- Pantalla de carga -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="scroll-container">
-            <!-- Imagen/logo centrado -->
-            <div class=""></div>
-            <!-- Barra de carga -->
-            <div class="loading-bar">
-                <div class="progress"></div>
-            </div>
+<body class="pantano">
+    <div class="loading-screen">
+        <!-- Logo en el centro -->
+        <div class="logo">
+            <img src="../img/basilis.png" alt="Logo"> <!-- Asegúrate de reemplazar con la ruta correcta de tu logo -->
         </div>
+
+        <!-- GIF de carga -->
+        <div class="loading-gif">
+            <img src="../gif/pergaminogift.gif" alt="Cargando..."> <!-- Asegúrate de poner la ruta correcta de tu GIF -->
+        </div>
+
+        <!-- Mensaje de carga -->
+        <p class="loading-text">Cargando...</p>
     </div>
 
-    <!-- Contenido principal de la página -->
-    <div id="mainContent" style="display: none;">
-        <h1>Contenido de la página</h1>
-        <p>Este es el contenido de la página que se mostrará después de la pantalla de carga.</p>
+    <!-- Contenido principal -->
+    <div class="content">
+        <!-- Aquí irá el contenido de tu página que se mostrará después de que se complete la carga -->
     </div>
 
     <script src="../js/cargaJuego.js"></script>

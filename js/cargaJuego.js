@@ -1,15 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const loadingScreen = document.getElementById("loadingScreen");
-    const progressBar = document.querySelector(".progress");
-
-    // Simulación de carga
+    // Simular el tiempo de carga (3 segundos en este caso)
     setTimeout(() => {
-        progressBar.style.width = "100%";
-    }, 100);
+        // Ocultar la pantalla de carga
+        document.querySelector(".loading-screen").style.display = "none";
 
-    // Espera a que la animación de la barra termine
-    setTimeout(() => {
-        loadingScreen.classList.add("hidden"); // Oculta la pantalla de carga
-        document.getElementById("mainContent").style.display = "block"; // Muestra el contenido principal
-    }, 3100); // 3 segundos para la animación + 100ms de margen
+        // Mostrar el contenido principal
+        document.querySelector(".content").style.display = "block";
+
+        // Redirigir a otra página después de 3 segundos
+        window.location.href = "juego.php"; // Cambia esto a la URL de la página a la que deseas redirigir
+    }, 3000); // Tiempo de espera de 3 segundos (ajústalo según sea necesario)
 });
