@@ -16,7 +16,7 @@
 
         <!-- GIF de carga -->
         <div class="loading-gif">
-            <img src="../gif/pergaminogift.gif" alt="Cargando..."> <!-- Asegúrate de poner la ruta correcta de tu GIF -->
+            <img src="../gif/espiral.gif" alt="Cargando..."> <!-- Asegúrate de poner la ruta correcta de tu GIF -->
         </div>
 
         <!-- Mensaje de carga -->
@@ -28,6 +28,6 @@
         <!-- Aquí irá el contenido de tu página que se mostrará después de que se complete la carga -->
     </div>
 
-    <script src="../js/cargaJuego.js"></script>
+    <script src="./js/cargaJuego.js"></script>
 </body>
 </html>

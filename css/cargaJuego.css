@@ -11,7 +11,6 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f8;
 }
 
 /* Pantalla de carga */
@@ -39,7 +38,7 @@ body, html {
 
 /* GIF de carga */
 .loading-gif img {
-    width: 150px; /* Ajusta el tamaño del GIF */
+    width: 25vh; /* Ajusta el tamaño del GIF */
     height: auto;
     margin-top: 20px;
 }
