@@ -115,7 +115,7 @@
 }
 
 .user-icon {
-  max-width: 60px; /* Limitar el tamaño de la imagen de usuario */
+  max-width: 80px; /* Limitar el tamaño de la imagen de usuario */
 }
 
 .user-icon:hover {
@@ -241,4 +241,8 @@ h5 {
 .seleccionPerfilImagen:hover {
   transform: scale(1.05);
   border: 2px solid #007bff;
+}
+
+.input-nombre{
+  width: 60%;
 }

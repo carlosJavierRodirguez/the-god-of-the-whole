@@ -68,7 +68,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             </div>
                             <!-- Imagen y Nombre del Usuario en Flexbox -->
                             <div class="d-flex align-items-center mb-4">
-                                <button type="button" class="btn border border-0"  data-bs-toggle="modal" data-bs-target="#actulizarImagenPerfilModal">
+                                <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#actulizarImagenPerfilModal">
                                     <?php
                                     if (!empty($resultado)) {
                                         // devuelve una fila en el resultado
@@ -76,7 +76,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                         $urlImagen = $resultado[0]['url_imagen'];
                                         $nombre_imagen = $resultado[0]['nombre_imagen'];
 
-                                        echo "<img src='" . htmlspecialchars($urlImagen) . "' alt='" . htmlspecialchars($nombre_imagen) . "' class='user-icon mr-3' id='imagenPerfil'/>";
+                                        echo "<img src='" . htmlspecialchars($urlImagen) . "' alt='" . htmlspecialchars($nombre_imagen) . "' class='user-icon mr-3' id='imagenPerfilActual'/>";
                                     } else {
                                         exit();
                                     }
@@ -142,7 +142,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                         <div class="progress-bar porcentajePartidas" role="progressbar" style="width: <?php echo $porcentajeDerrotas; ?>%;">
                                             <?php
                                             if ($totalPartidas > 0) {
-                                                echo $porcentajeDerrotas. "%";
+                                                echo $porcentajeDerrotas . "%";
                                             } else {
                                                 echo $mensaje;
                                             }
@@ -186,6 +186,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                         <form id="formActualizarImagenPerfil" method="POST">
                             <div class="row">
                                 <?php
+                                // Asumiendo que ya tienes la consulta para obtener las imágenes disponibles.
                                 if (count($selectImagenes) > 0) {
                                     foreach ($selectImagenes as $fila) {
                                         $idUrl = $fila['id_url'];
@@ -193,14 +194,14 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                                         $nombreImagen = $fila['nombre_imagen'];
 
                                         echo "
-                                <div class='col-6 d-flex justify-content-center mb-3'>
-                                    <input type='radio' id='imagen_$idUrl' name='imagen_id' value='$idUrl'>
-                                    <label for='imagen_$idUrl' class='text-center'>
-                                        <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen' />
-                                        <br>
-                                        <span>$nombreImagen</span>
-                                    </label>
-                                </div>";
+        <div class='col-6 d-flex justify-content-center mb-3'>
+            <input type='radio' id='imagen_$idUrl' name='imagen_id' value='$idUrl'>
+            <label for='imagen_$idUrl' class='text-center'>
+                <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen'/>
+                <br>
+                <span>$nombreImagen</span>
+            </label>
+        </div>";
                                     }
                                 } else {
                                     echo "<p>No hay imágenes disponibles.</p>";
@@ -352,7 +353,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                     <div class="modal-body">
                         <form id="formActualizarNombre" action="../libreria/acceso.php" method="POST">
                             <input type="hidden" name="usuarioID" id="usuarioID" value="<?php echo $_SESSION['usuarioID']; ?>">
-                            <input type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nuevo nombre" required>
+                            <input type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nuevo nombre" class="rounded input-nombre" required>
                             <div class="modal-footer border-0 d-flex justify-content-center">
                                 <button type="submit" class="btn border-0" id="actualizarNombreBtn">
                                     <img src="../img/botonGuardar.png" alt="Guardar" srcset="">

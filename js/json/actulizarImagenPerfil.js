@@ -14,16 +14,25 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((data) => {
-
           if (data.success) {
+            // Si la actualización fue exitosa, obtenemos la URL de la nueva imagen
+            const nuevaUrlImagen = data.urlNuevaImagen;
+
+            // Actualizamos la imagen de perfil visible en el DOM
+            const imagenPerfilActual =
+              document.getElementById("imagenPerfilActual"); // Asegúrate de que este ID es correcto
+            if (imagenPerfilActual) {
+              // Agregamos un parámetro único para evitar la caché
+              imagenPerfilActual.src = `${nuevaUrlImagen}?_=${new Date().getTime()}`;
+            }
+
             Swal.fire({
               icon: "success",
               title: "¡Éxito!",
               text: "Imagen de perfil actualizada con éxito.",
               confirmButtonText: "Aceptar",
             }).then(() => {
-              location.reload();
-              // Cierra el modal
+              // Cierra el modal si lo tienes
               $("#actulizarImagenPerfilModal").modal("hide");
             });
           } else {
