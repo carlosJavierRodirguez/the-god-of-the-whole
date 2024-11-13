@@ -73,6 +73,23 @@ class Conexion
         }
     }
 
+    public function insertarObtenerId($querysql, $values)
+{
+    try {
+        // Prepara y ejecuta la consulta de inserción
+        $queryEjecutar = $this->conexion->prepare($querysql);
+        $queryEjecutar->execute($values);
+
+        // Retorna el último ID insertado
+        return $this->conexion->lastInsertId();
+    } catch (PDOException $e) {
+        // Manejo de errores con código de error de PostgreSQL
+        $this->manejarError($e);
+        return false; // Retorna false si ocurrió un error
+    }
+}
+
+
     private function manejarError($e)
     {
         // Código de error

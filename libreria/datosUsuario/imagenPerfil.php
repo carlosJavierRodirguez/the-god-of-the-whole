@@ -3,7 +3,6 @@ session_start();
 include('../libreria/conexion.php');
 
 $conexion = new Conexion();
-$conexion->conectar();
 $usuarioID = $_SESSION['usuarioID'];
 
 $sqlQuery =' 
