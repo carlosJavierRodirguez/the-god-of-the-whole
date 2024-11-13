@@ -27,7 +27,6 @@
     <div class="content">
         <!-- Aquí irá el contenido de tu página que se mostrará después de que se complete la carga -->
     </div>
-
-    <script src="./js/cargaJuego.js"></script>
+    <script src="../js/cargaJuego.js"></script>
 </body>
 </html>
