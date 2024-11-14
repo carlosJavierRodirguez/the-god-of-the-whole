@@ -70,7 +70,7 @@
             <div class="col-12 col-md-4"></div>
         </div>
     </div>
-    <div class="lds-ring loader" id="loader"><h2 class="loading-text">Loading...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>    <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
+    <div class="lds-ring loader" id="loader"><h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>    <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
     <script src="../js/codigos.js"></script>
     <script src="../js/carga.js"></script>
 </body>
