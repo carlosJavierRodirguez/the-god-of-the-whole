@@ -214,3 +214,7 @@ body {
     margin-top: -60px;
   }
 }
+
+.modal-lg {
+  max-width: 60%; /* O cualquier valor que te guste */
+}
