@@ -96,7 +96,7 @@ $conectar->conectar();
       </div>
     </div>
   </div>
-  <div class="lds-ring loader" id="loader"><h2 class="loading-text">Loading...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>
+  <div class="lds-ring loader" id="loader"><h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>
   <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
   <script src="../js/validacionFormulario/validacion.js"></script>
   <script src="../js/clave/mirarClave.js"></script>
