@@ -31,7 +31,7 @@ include('../libreria/juego/listarPreguntas.php');
                         if (count($resultado) > 0) {
                             // Obtener la pregunta aleatoria
                             $pregunta = $resultado[0];
-                            echo '¿' . $pregunta['pregunta'] . '?';
+                            echo  $pregunta['pregunta'];
 
                             // Agregar la pregunta a la lista de preguntas ya mostradas
                             $_SESSION['preguntas_mostradas'][] = $pregunta['pregunta_id'];
