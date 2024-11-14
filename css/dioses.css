@@ -1,171 +1,149 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+.hera {
+  background-image: url("../img/diosesVerdaderos/hera.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
 
-  body {
-    overflow: hidden;
-  }
+.ares {
+  background-image: url("../img/diosesVerdaderos/ares.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
 
-  .hera {
-    background-image: url("../img/diosesVerdaderos/hera.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .ares {
-    background-image: url("../img/diosesVerdaderos/ares.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .poseidon {
-    background-image: url("../img/diosesVerdaderos/poseidon.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .gemini {
-    background-image: url("../img/semiDioses/gemini.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .sirenas {
-    background-image: url("../img/criaturasMitologicas/sirenas.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .hades {
-    background-image: url("../img/diosesVerdaderos/hades.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .hercules {
-    background-image: url("../img/semiDioses/hercules.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .atenea {
-    background-image: url("../img/diosesVerdaderos/atenea.png");
-    background-size: 11vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .afrodita {
-    background-image: url("../img/diosesVerdaderos/afrodita.png");
-    background-size: 11vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .zeus {
-    background-image: url("../img/diosesVerdaderos/zeus.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .apolo {
-    background-image: url("../img/diosesVerdaderos/apolo.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .hefesto {
-    background-image: url("../img/diosesVerdaderos/Hefesto.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .artemisa {
-    background-image: url("../img/diosesVerdaderos/artemisa.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
+.poseidon {
+  background-image: url("../img/diosesVerdaderos/poseidon.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
 
-  .minotauro {
-    background-image: url("../img/criaturasMitologicas/minotauro.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
-  
-  .griffo {
-    background-image: url("../img/criaturasMitologicas/griffo.png");
-    background-size: 10vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 80px;
-  }
+.gemini {
+  background-image: url("../img/semiDioses/gemini.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
 
-  .correcto {
-    border: 3px solid green;
-    background-color: rgba(0, 255, 0, 0.2); /* Fondo verde translúcido */
-    border-radius: 50%;
-  }
-  
-  .draggable {
-    width: 80px;
-    height: 80px;
-    margin: 12px;
-    justify-content: center;
-    cursor: grab;
-    z-index: 3;
-  }
-  
-  #drag-container {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    row-gap: 0;
-    column-gap: 2vh;
-    flex-wrap: wrap;
-    height: 100%;
-  }
-  
+.sirenas {
+  background-image: url("../img/criaturasMitologicas/sirenas.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.hades {
+  background-image: url("../img/diosesVerdaderos/hades.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.hercules {
+  background-image: url("../img/semiDioses/hercules.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.atenea {
+  background-image: url("../img/diosesVerdaderos/atenea.png");
+  background-size: 11vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.afrodita {
+  background-image: url("../img/diosesVerdaderos/afrodita.png");
+  background-size: 11vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.zeus {
+  background-image: url("../img/diosesVerdaderos/zeus.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.apolo {
+  background-image: url("../img/diosesVerdaderos/apolo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.hefesto {
+  background-image: url("../img/diosesVerdaderos/Hefesto.png");
+  background-size: 10vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.artemisa {
+  background-image: url("../img/diosesVerdaderos/artemisa.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.minotauro {
+  background-image: url("../img/criaturasMitologicas/minotauro.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.griffo {
+  background-image: url("../img/criaturasMitologicas/griffo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.correcto {
+  border: 3px solid green;
+  background-color: rgba(0, 255, 0, 0.2); /* Fondo verde translúcido */
+  border-radius: 50%;
+}
+
+.draggable {
+  width: 80px;
+  height: 80px;
+  margin: 12px;
+  justify-content: center;
+  cursor: grab;
+  z-index: 3;
+}
+
+#drag-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  row-gap: 0;
+  column-gap: 2vh;
+  flex-wrap: wrap;
+  height: 100%;
+}

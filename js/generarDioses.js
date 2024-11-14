@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     let gods = [
-        "hera", "afrodita", "ares", "atenea", "hercules",
         "hades", "poseidon", "gemini", "sirenas", "zeus",
         "apolo", "hefesto", "artemisa", "minotauro", "griffo"
     ];
 
-    const rowConfig = [5, 5, 5]; // Configuración de columnas por fila
+    const rowConfig = [5, 5]; // Configuración de columnas por fila
 
     // Mezcla aleatoria del array de dioses
     gods = shuffleArray(gods);

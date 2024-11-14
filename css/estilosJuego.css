@@ -17,13 +17,12 @@ body {
   min-height: 100vh;
 }
 
-.rondatexto {
-  color: red;
-  line-height: 2.3;
-}
-
-.preguntatexto {
-  color: rgb(10, 209, 10);
+.pregunta-texto {
+  font-family: "Cinzel", serif; /* Tipografía estilo griego */
+  font-size: 1.8rem;
+  color: #d4af37; /* Color dorado */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+  text-align: center;
 }
 
 .container {
@@ -69,14 +68,13 @@ body {
 
 #dropzone {
   position: relative;
-  background-color: rgba(175, 34, 34, 0.5);
   width: 100%;
   min-height: 210px;
 }
 
 .pergaminove {
   background-image: url("../img/Perga.png");
-  background-size: 80vh;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -119,13 +117,12 @@ body {
   background-size: 80vh;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
   min-height: 195px;
 }
 
 .tablajuego {
   background-image: url("../img/tablon.png");
-  background-size: 90vh;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -166,7 +163,9 @@ body {
     min-height: 150px;
   }
 
-  .tablajuego, .woodquest, .pergaminove {
+  .tablajuego,
+  .woodquest,
+  .pergaminove {
     background-size: contain;
     min-height: 150px;
   }

@@ -1,3 +1,8 @@
+<?php
+
+include('../libreria/juego/listarPreguntas.php');
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,9 +24,22 @@
         <div class="row">
             <!-- Columna para el dropzone -->
             <div class="col-lg-9 col-md-8 col-sm-12">
-                <div class="woodquest text-center">
-                    <h1 class="rondatexto">Ronda: 1</h1>
-                    <h2 class="preguntatexto">¿qué considera a los dioses olímpicos?</h2>
+                <div class="woodquest text-center ">
+                    <h2 class="pregunta-texto text-center">
+                        <?php
+                        // Verificar el resultado de la consulta
+                        if (count($resultado) > 0) {
+                            // Obtener la pregunta aleatoria
+                            $pregunta = $resultado[0];
+                            echo '¿' . $pregunta['pregunta'] . '?';
+
+                            // Agregar la pregunta a la lista de preguntas ya mostradas
+                            $_SESSION['preguntas_mostradas'][] = $pregunta['pregunta_id'];
+                        } else {
+                            echo "No hay más preguntas disponibles";
+                        }
+                        ?>
+                    </h2>
                 </div>
                 <div class="item4" id="dropzone">
                     <div class="pergaminove"></div>
@@ -37,7 +55,7 @@
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="chat container border rounded p-2 justify-content-start">
                     <div class="text-center mb-2">
-                        <div class="basi">1</div>
+                        <div class="basi"></div>
                     </div>
                     <div class="messages p-3 mb-3" id="messages"></div>
                     <div class="send-message d-flex">
@@ -52,7 +70,7 @@
                 <div class="text-center mt-3 d-flex flex-column align-items-center">
                     <div class="contenedor-botones">
                         <div class="terminaste"></div>
-                        <div class="listo" id="validateButton"div></div>
+                        <div class="listo" id="validateButton" div></div>
                     </div>
                 </div>
             </div>
