@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para validar los elementos en la zona de drop
     function validarDioses() {
         const elementosDropzone = document.querySelectorAll("#dropzone .draggable");
-        let diosesValidos = false;
-        let diosesInvalidos = false;
+        let cantidadDiosesValidos = 0;
+        let hayDiosesInvalidos = false;
 
         // Recorremos todos los elementos en la zona de drop
         elementosDropzone.forEach(elemento => {
@@ -16,22 +16,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 diosesVerdaderos.includes(cls) || semiDioses.includes(cls) || criaturasMitologicas.includes(cls)
             );
 
-            // Si el dios es verdadero, marcamos el dios como válido
+            // Si el dios es verdadero, incrementamos el contador de dioses válidos
             if (diosesVerdaderos.includes(claseDios)) {
                 elemento.style.backgroundColor = "green"; // Color para dioses verdaderos
                 elemento.style.borderRadius = "60%"; // Borde redondeado
-                diosesValidos = true;
+                cantidadDiosesValidos++;
             } 
             // Si el dios es semiDios o criatura mitológica, lo marcamos como inválido
             else if (semiDioses.includes(claseDios) || criaturasMitologicas.includes(claseDios)) {
                 elemento.style.backgroundColor = "red"; // Color para elementos incorrectos
                 elemento.style.borderRadius = "60%"; // Borde redondeado
-                diosesInvalidos = true;
+                hayDiosesInvalidos = true;
             }
         });
 
-        // Devolvemos si hay dioses válidos y no hay dioses inválidos
-        return diosesValidos && !diosesInvalidos;
+        // Devolvemos true si hay al menos 4 dioses válidos y no hay dioses inválidos
+        return cantidadDiosesValidos >= 4 && !hayDiosesInvalidos;
     }
 
     // Función para restablecer el color y devolver el elemento al contenedor inicial
@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const diosesValidados = validarDioses();
 
             if (diosesValidados) {
-                // Si hay dioses válidos y no hay dioses inválidos, redirigir
+                // Si hay al menos 4 dioses válidos y no hay dioses inválidos, redirigir
                 window.location.href = "pantallaCarga.php";
             } else {
-                // Si hay dioses inválidos o no hay dioses válidos, mostrar un error
-                alert("Error: Hay dioses incorrectos en la zona de drop. Revisa tu selección.");
+                // Si hay dioses inválidos o menos de 4 dioses válidos, mostrar un error
+                alert("Error: Debes tener al menos 4 dioses correctos en la zona de drop. Revisa tu selección.");
             }
         });
     } else {
