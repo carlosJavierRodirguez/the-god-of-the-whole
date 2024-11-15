@@ -154,7 +154,7 @@ include('../libreria/juego/listarPreguntas.php');
 
 
 
-
+<iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/dragdrop.js"></script>
     <script src="../js/socket.js"></script>

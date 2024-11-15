@@ -119,3 +119,24 @@
 .loader2 {
   clip-path: circle(0% at 50% 0);
 }
+
+/* Remueve los iconos de validación en los campos inválidos y válidos */
+.needs-validation .was-validated .form-control:valid,
+.needs-validation .was-validated .form-control:invalid,
+.needs-validation .is-valid,
+.needs-validation .is-invalid {
+    appearance: none; /* Remueve apariencia predeterminada */
+    background-image: none !important; /* Elimina íconos de validación */
+    box-shadow: none !important; /* Elimina sombra de validación */
+}
+
+/* Bordes personalizados para campos válidos e inválidos */
+.needs-validation .was-validated .form-control:invalid {
+    border-color: #dc3545; /* Color rojo para inválido */
+}
+
+.needs-validation .was-validated .form-control:valid {
+    border-color: #28a745; /* Color verde para válido */
+}
+
+
