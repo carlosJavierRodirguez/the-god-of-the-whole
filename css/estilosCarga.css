@@ -38,38 +38,37 @@
 .loading-text {
   position: absolute;
   top: 20%;
-  color: rgba(0, 242, 255, 0.595);
-  text-shadow: 0 0 30px #0f0,
-  0 0 50px #00ff00,
-  inset 0 0 20px #0f0;
+  -webkit-background-clip: text;
+  background-clip: text;
   animation: blink 2.5s linear infinite;
+  -webkit-animation: blink 2.5s linear infinite;
 }
 
 @keyframes blink {
   0% {
-    text-shadow: 0 0 20px #0f0, inset 0 0 20px #0f0;
-    filter: hue-rotate(0deg);
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0
+   
   }
 
   20% {
-    text-shadow: 0 0 40px #0f0, inset 0 0 40px #0f0;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0
   }
 
   40% {
-    text-shadow: 0 0 60px #0f0, inset 0 0 60px #0f0;
+    text-shadow: 0 0 15px #0f0, 0 0 20px #0f0, 0 0 40px #0f0
   }
 
   60% {
-    text-shadow: 0 0 80px #0f0, inset 0 0 80px #0f0;
+    text-shadow: 0 0 20px #0f0, 0 0 20px #0f0, 0 0 50px #0f0
   }
 
   80% {
-    text-shadow: 0 0 100px #0f0, inset 0 0 100px #0f0;
+    text-shadow: 0 0 25px #0f0, 0 0 20px #0f0, 0 0 60px #0f0
   }
 
   100% {
-    text-shadow: 0 0 80px #0f0, inset 0 0 80px #0f0;
-    filter: hue-rotate(360deg);
+    text-shadow: 0 0 30px #0f0, 0 0 10px #0f0, 0 0 15px #0f0
+    
   }
 }
 
@@ -120,3 +119,24 @@
 .loader2 {
   clip-path: circle(0% at 50% 0);
 }
+
+/* Remueve los iconos de validación en los campos inválidos y válidos */
+.needs-validation .was-validated .form-control:valid,
+.needs-validation .was-validated .form-control:invalid,
+.needs-validation .is-valid,
+.needs-validation .is-invalid {
+    appearance: none; /* Remueve apariencia predeterminada */
+    background-image: none !important; /* Elimina íconos de validación */
+    box-shadow: none !important; /* Elimina sombra de validación */
+}
+
+/* Bordes personalizados para campos válidos e inválidos */
+.needs-validation .was-validated .form-control:invalid {
+    border-color: #dc3545; /* Color rojo para inválido */
+}
+
+.needs-validation .was-validated .form-control:valid {
+    border-color: #28a745; /* Color verde para válido */
+}
+
+

@@ -34,12 +34,43 @@ document.addEventListener("DOMContentLoaded", () => {
         return cantidadDiosesValidos >= 4 && !hayDiosesInvalidos;
     }
 
-    // Función para restablecer el color y devolver el elemento al contenedor inicial
-    function devolverAlContenedorInicial(elemento) {
-        elemento.style.backgroundColor = ""; // Restablecer color
-        elemento.style.borderRadius = ""; // Restablecer borde
-        dragContainer.appendChild(elemento); // Devolver al contenedor inicial
-    }
+    // Función para mostrar alerta personalizada
+function mostrarAlerta(mensaje, esValido) {
+    const alertContainer = document.getElementById("alert-container");
+    
+    // Crear el div de alerta
+    const alerta = document.createElement("div");
+    alerta.classList.add("alert", "alert-dismissible", "fade", "show");
+    alerta.classList.add(esValido ? "alert-success" : "alert-danger"); // Cambiar el color según si es válido o no
+    alerta.style.backgroundImage = "url('../img/texturaMarmol.jpg')"; // Imagen de fondo
+    alerta.style.backgroundSize = "cover";
+    alerta.style.backgroundPosition = "center"; // Asegurarse de que la imagen cubra todo el área
+    alerta.style.color = "black"; // Color blanco para el texto
+    alerta.style.position = "fixed"; // Fija la alerta en la pantalla
+    alerta.style.top = "10px"; // Colocarla cerca de la parte superior
+    alerta.style.left = "50%"; // Centrarla horizontalmente
+    alerta.style.transform = "translateX(-50%)"; // Ajustar para un centrado perfecto
+    alerta.style.zIndex = "1050"; // Asegurar que esté encima de otros elementos
+    alerta.style.borderRadius = "10px"; // Borde redondeado de la alerta
+    
+    alerta.innerHTML = `
+        <strong>${esValido ? "¡Éxito!" : "Error:"}</strong> ${mensaje}
+        <button type="button" class="btn-close" aria-label="Close"></button>
+    `;
+
+    // Agregar el evento de cierre
+const closeButton = alerta.querySelector(".btn-close");
+closeButton.addEventListener("click", () => {
+    alerta.classList.remove("show"); // Esconde la alerta
+    alerta.classList.add("fade"); // Añadir fade para la animación
+    setTimeout(() => alerta.remove(), 500); // Eliminar la alerta después de la animación
+});
+
+// Agregar la alerta al contenedor
+alertContainer.appendChild(alerta);
+}
+
+
 
     // Agregar evento de clic al botón de validación
     const validateButton = document.getElementById("validateButton");
@@ -56,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "pantallaCarga.php";
             } else {
                 // Si hay dioses inválidos o menos de 4 dioses válidos, mostrar un error
-                alert("Error: Debes tener al menos 4 dioses correctos en la zona de drop. Revisa tu selección.");
+                mostrarAlerta("Error: Debes tener al menos 4 dioses correctos en la zona de drop. Revisa tu selección.");
             }
         });
     } else {

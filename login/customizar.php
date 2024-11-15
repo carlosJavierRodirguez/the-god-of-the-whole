@@ -50,7 +50,7 @@ include('../libreria/datosUsuario/selectPerfilImagenes.php');
     <div class="lds-ring loader" id="loader">
         <h2 class="loading-text">Cargando...</h2><img src="gif/jorgu.gif" alt="" class="loading-gif">
         <div>
-            <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
+            <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
             <script src="../js/icon.js"></script>
             <script src="../js/carga.js"></script>
 </body>
