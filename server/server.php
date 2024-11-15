@@ -13,7 +13,7 @@ class Chat implements MessageComponentInterface
 {
     public function __construct(
         protected SplObjectStorage $clients = new SplObjectStorage
-    ){}
+    ) {}
 
     public function onOpen(ConnectionInterface $conn)
     {

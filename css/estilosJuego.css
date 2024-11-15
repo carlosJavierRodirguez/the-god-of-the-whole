@@ -3,9 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
-  overflow: hidden;
+  overflow: hidden; /* Esto desactiva el scroll */
 }
 
 .pantano {
@@ -18,11 +17,10 @@ body {
 }
 
 .pregunta-texto {
-  font-family: "Cinzel", serif; /* Tipografía estilo griego */
+  font-family: "Cinzel", serif;
   font-size: 1.8rem;
-  color: #d4af37; /* Color dorado */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
-  text-align: center;
+  color: #d4af37;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .container {
@@ -40,17 +38,20 @@ body {
 }
 
 .chat {
-  max-width: 300px;
-  height: auto;
+  max-width: 300px; /* Ajusta el ancho máximo según sea necesario */
+  height: 240px; /* Fija la altura */
   margin: auto;
+
+  position: relative; /* Asegura que puedas usar z-index si es necesario */
+  z-index: 10; /* Asegura que esté por encima de otros elementos, si es necesario */
 }
 
 .messages {
   border: 1px solid #dee2e6;
   border-radius: 5px;
-  height: 150px;
-  overflow: hidden;
-  background-color: #8a7d7d6b;
+  height: 100px; /* Ajusta esta altura para tu diseño */
+  overflow-y: auto; /* Permite scroll si hay mensajes adicionales */
+  background-color: #f1f1f1;
   padding: 10px;
 }
 
@@ -81,52 +82,44 @@ body {
   min-height: 195px;
 }
 
-.contenedor-botones {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.terminaste {
-  background-image: url("../img/Terminaste.png");
-  background-size: 45vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 350px;
-  height: 300px;
-}
-
 .listo {
   background-image: url("../img/listo.png");
-  background-size: 30vh;
+  background-size: 40vh;
   background-repeat: no-repeat;
   background-position: center;
-  width: 200px;
-  height: 80px;
-  margin-top: -95px;
-  cursor: pointer; /* Cambia el cursor a un puntero */
-  transition: opacity 0.3s; /* Suaviza la transición de opacidad */
+  height: 100px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  margin-top: 20px; /* Ajusta el margen superior */
 }
 
 .listo:hover {
-  opacity: 0.8; /* Reduce la opacidad al pasar el mouse */
+  opacity: 0.8;
 }
+/* .terminaste {
+  background-image: url("../img/Terminaste.png");
+  background-size: 50vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: auto;
+  height: 200px;
+} */
 
 .woodquest {
   background-image: url("../img/Maderamorada.png");
-  background-size: 80vh;
+  background-size: 100vh;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 195px;
+  height: 100px;
 }
 
 .tablajuego {
   background-image: url("../img/tablon.png");
-  background-size: cover;
+  background-size: 100vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 300px;
+  max-height: 240px;
 }
 
 .basi {
@@ -138,79 +131,39 @@ body {
   min-height: 80px;
 }
 
-/* Media query para pantallas medianas */
+.contenedor-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Media Queries */
 @media (max-width: 1024px) {
   .chat {
     max-width: 250px;
   }
-
-  .terminaste {
-    width: 300px;
-    height: 250px;
-    background-size: 40vh;
-  }
-
-  .listo {
-    width: 150px;
-    height: 60px;
-    margin-top: -80px;
-  }
 }
 
-/* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
   #dropzone {
     min-height: 150px;
   }
-
   .tablajuego,
   .woodquest,
   .pergaminove {
     background-size: contain;
     min-height: 150px;
   }
-
   .chat {
     max-width: 100%;
   }
-
-  .terminaste {
-    width: 250px;
-    height: 200px;
-    background-size: 35vh;
-  }
-
-  .listo {
-    width: 130px;
-    height: 50px;
-    margin-top: -70px;
-  }
 }
 
-/* Media query para pantallas muy pequeñas */
 @media (max-width: 576px) {
   .messages {
     height: 100px;
   }
-
-  .draggable {
-    width: 30px;
-    height: 30px;
-  }
-
   .chat {
     max-width: 100%;
-  }
-
-  .terminaste {
-    width: 200px;
-    height: 150px;
-    background-size: 30vh;
-  }
-
-  .listo {
-    width: 100px;
-    height: 40px;
-    margin-top: -60px;
   }
 }

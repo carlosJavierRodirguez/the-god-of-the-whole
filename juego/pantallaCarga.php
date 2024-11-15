@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalla de carga</title>
+    <?php include('../principal/head.php'); ?>
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/cargaJuego.css">
 </head>
+
 <body class="pantano">
     <div class="loading-screen">
         <!-- Logo en el centro -->
@@ -29,4 +29,5 @@
     </div>
     <script src="../js/cargaJuego.js"></script>
 </body>
+
 </html>
