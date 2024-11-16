@@ -1,6 +1,6 @@
 .hera {
   background-image: url("../img/diosesVerdaderos/hera.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -8,15 +8,15 @@
 
 .ares {
   background-image: url("../img/diosesVerdaderos/ares.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
+  width: 50%;
 }
 
 .poseidon {
   background-image: url("../img/diosesVerdaderos/poseidon.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -48,7 +48,7 @@
 
 .hercules {
   background-image: url("../img/semiDioses/hercules.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -98,7 +98,7 @@
 
 .artemisa {
   background-image: url("../img/diosesVerdaderos/artemisa.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -107,7 +107,7 @@
 
 .minotauro {
   background-image: url("../img/criaturasMitologicas/minotauro.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -116,7 +116,7 @@
 
 .griffo {
   background-image: url("../img/criaturasMitologicas/griffo.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -141,7 +141,7 @@
 #drag-container {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10vh;
   row-gap: 0;
   column-gap: 2vh;
   flex-wrap: wrap;

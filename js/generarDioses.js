@@ -1,123 +1,135 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let gods = [
-        "hades", "poseidon", "gemini", "sirenas", "zeus",
-        "apolo", "hefesto", "artemisa", "minotauro", "griffo"
-    ];
+  // 1. Mezcla el array de dioses
+  let gods = shuffleArray([
+    "hades",
+    "poseidon",
+    "gemini",
+    "sirenas",
+    "zeus",
+    "apolo",
+    "hefesto",
+    "artemisa",
+    "minotauro",
+    "griffo",
+  ]);
 
-    const rowConfig = [5, 5]; // Configuración de columnas por fila
+  // 2. Configuración del contenedor
+  const dragContainer = document.getElementById("drag-container");
+  const rowConfig = [6, 4];
 
-    // Mezcla aleatoria del array de dioses
-    gods = shuffleArray(gods);
+  // 3. Inicializa las filas y elementos
+  initializeRows(dragContainer, gods, rowConfig);
 
-    const dragContainer = document.getElementById("drag-container");
-    let godIndex = 0;
-
-    // Crear el contenedor de dioses
-    rowConfig.forEach(rowSize => {
-        const rowDiv = document.createElement("div");
-        rowDiv.className = "row";
-
-        for (let iteracion = 0; iteracion < rowSize; iteracion++) {
-            if (godIndex >= gods.length) break;
-
-            const godDiv = document.createElement("div");
-            godDiv.className = `col-3 draggable ${gods[godIndex]}`;
-            godDiv.id = `item${godIndex + 1}`;
-            godDiv.draggable = true;
-
-            // Guardar la posición original (en relación al contenedor)
-            godDiv.dataset.index = godIndex; // Almacena el índice original
-            godDiv.dataset.rowSize = rowSize; // Almacena el tamaño de la fila
-
-            godDiv.addEventListener("dragstart", handleDragStart);
-            godDiv.addEventListener("dragend", handleDragEnd);
-
-            rowDiv.appendChild(godDiv);
-            godIndex++;
-        }
-
-        dragContainer.appendChild(rowDiv);
-    });
-
-    const dropzone = document.getElementById("dropzone");
-
-    dropzone.addEventListener("dragover", (elementos) => {
-        elementos.preventDefault(); // Permitir que se pueda soltar en la zona
-    });
-
-    dropzone.addEventListener("drop", (elementos) => {
-        elementos.preventDefault(); // Prevenir el comportamiento predeterminado
-        const id = elementos.dataTransfer.getData("text/plain");
-        const draggedElement = document.getElementById(id);
-        
-        // Colocar el elemento en la posición del cursor al soltar
-        const rect = dropzone.getBoundingClientRect();
-        const offsetX = elementos.clientX - rect.left;
-        const offsetY = elementos.clientY - rect.top;
-
-        draggedElement.style.position = "absolute"; // Cambiar posición a absoluta
-        draggedElement.style.left = `${offsetX}px`;
-        draggedElement.style.top = `${offsetY}px`;
-
-        dropzone.appendChild(draggedElement); // Mover el elemento a la dropzone
-
-        // Agregar un evento de clic para devolver la imagen a su posición original
-        draggedElement.addEventListener("click", returnToOriginalPosition);
-    });
-
-    // Evento para manejar si se suelta fuera de la dropzone
-    document.addEventListener("dragend", (elementos) => {
-        if (!dropzone.contains(elementos.target)) {
-            const originalIndex = elementos.target.dataset.index;
-            const originalRowSize = elementos.target.dataset.rowSize;
-            const rowDivs = dragContainer.getElementsByClassName("row");
-            
-            // Obtener el div de la fila original
-            const originalRowDiv = rowDivs[Math.floor(originalIndex / originalRowSize)];
-            const originalPositionInRow = originalIndex % originalRowSize;
-
-            // Reubicar el elemento en su posición original
-            if (originalRowDiv) {
-                originalRowDiv.appendChild(elementos.target);
-            }
-        }
-    });
+  // 4. Configura la zona de soltado
+  setupDropzone();
 });
 
-// Función para devolver la imagen a su posición original
+// Función para inicializar las filas y elementos
+function initializeRows(container, gods, rowConfig) {
+  let godIndex = 0;
+
+  rowConfig.forEach((rowSize) => {
+    const rowDiv = createRow();
+    for (let i = 0; i < rowSize; i++) {
+      if (godIndex >= gods.length) break;
+      const godDiv = createGodElement(gods[godIndex], godIndex, rowSize);
+      rowDiv.appendChild(godDiv);
+      godIndex++;
+    }
+    container.appendChild(rowDiv);
+  });
+}
+
+// Función para crear una fila
+function createRow() {
+  const rowDiv = document.createElement("div");
+  rowDiv.className = "row";
+  return rowDiv;
+}
+
+// Función para crear un elemento (dios)
+function createGodElement(godName, index, rowSize) {
+  const godDiv = document.createElement("div");
+  godDiv.className = `col-1 draggable ${godName}`;
+  godDiv.id = `item${index + 1}`;
+  godDiv.draggable = true;
+
+  // Almacena datos necesarios para el posicionamiento original
+  godDiv.dataset.index = index;
+  godDiv.dataset.rowSize = rowSize;
+
+  // Eventos de arrastre
+  godDiv.addEventListener("dragstart", handleDragStart);
+  godDiv.addEventListener("dragend", handleDragEnd);
+
+  return godDiv;
+}
+
+// Configura la zona de soltado
+function setupDropzone() {
+  const dropzone = document.getElementById("dropzone");
+
+  dropzone.addEventListener("dragover", (event) => {
+    event.preventDefault();
+  });
+
+  dropzone.addEventListener("drop", (event) => {
+    event.preventDefault();
+    handleDrop(event, dropzone);
+  });
+}
+
+// Función para manejar el evento de soltado
+function handleDrop(event, dropzone) {
+  const id = event.dataTransfer.getData("text/plain");
+  const draggedElement = document.getElementById(id);
+
+  // Ajusta la posición relativa
+  const rect = dropzone.getBoundingClientRect();
+  const offsetX = event.clientX - rect.left;
+  const offsetY = event.clientY - rect.top;
+
+  // En lugar de cambiar a posición absoluta
+  draggedElement.style.position = "relative";
+  draggedElement.style.left = `${offsetX - draggedElement.offsetLeft}px`;
+  draggedElement.style.top = `${offsetY - draggedElement.offsetTop}px`;
+
+  dropzone.appendChild(draggedElement);
+}
+
+// Función para devolver la posición original
 function returnToOriginalPosition(event) {
-    const draggedElement = event.target;
-    const originalIndex = draggedElement.dataset.index;
-    const originalRowSize = draggedElement.dataset.rowSize;
-    const rowDivs = document.getElementById("drag-container").getElementsByClassName("row");
+  const draggedElement = event.target;
+  const originalIndex = draggedElement.dataset.index;
+  const originalRowSize = draggedElement.dataset.rowSize;
+  const rowDivs = document
+    .getElementById("drag-container")
+    .getElementsByClassName("row");
 
-    // Obtener el div de la fila original
-    const originalRowDiv = rowDivs[Math.floor(originalIndex / originalRowSize)];
-
-    // Reubicar el elemento en su posición original
-    if (originalRowDiv) {
-        originalRowDiv.appendChild(draggedElement);
-        // Opcional: restablecer el estilo de posición
-        draggedElement.style.position = "";
-        draggedElement.style.left = "";
-        draggedElement.style.top = "";
-    }
+  const originalRowDiv = rowDivs[Math.floor(originalIndex / originalRowSize)];
+  if (originalRowDiv) {
+    originalRowDiv.appendChild(draggedElement);
+    draggedElement.style.position = "";
+    draggedElement.style.left = "";
+    draggedElement.style.top = "";
+  }
 }
 
-// Función para mezclar el array de dioses aleatoriamente
+// Función para mezclar el array de dioses
 function shuffleArray(array) {
-    for (let iteracion = array.length - 1; iteracion > 0; iteracion--) {
-        const iterar2 = Math.floor(Math.random() * (iteracion + 1));
-        [array[iteracion], array[iterar2]] = [array[iterar2], array[iteracion]]; // Intercambio de elementos
-    }
-    return array;
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
-function handleDragStart(elementos) {
-    elementos.dataTransfer.setData("text/plain", elementos.target.id);
-    setTimeout(() => elementos.target.classList.add("invisible"), 0);
+// Funciones de manejo de arrastre
+function handleDragStart(event) {
+  event.dataTransfer.setData("text/plain", event.target.id);
+  setTimeout(() => event.target.classList.add("invisible"), 0);
 }
 
-function handleDragEnd(elementos) {
-    elementos.target.classList.remove("invisible");
+function handleDragEnd(event) {
+  event.target.classList.remove("invisible");
 }

@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+
+// Tu código restante aquí
 require_once('../libreria/conexion.php');
 $conexion = new Conexion();
 
@@ -7,15 +10,13 @@ if (!isset($_SESSION['preguntas_mostradas'])) {
     $_SESSION['preguntas_mostradas'] = [];
 }
 
-// Construir la consulta SQL para obtener una pregunta aleatoria que no esté en las preguntas ya mostradas
+// El resto del código sigue igual
 $placeholders = count($_SESSION['preguntas_mostradas']) > 0
     ? implode(',', array_fill(0, count($_SESSION['preguntas_mostradas']), '?'))
     : 'NULL';
 
-$sqlQuery = "SELECT * FROM preguntas WHERE pregunta_id NOT IN ($placeholders) ORDER BY RANDOM() LIMIT 1";
+$sqlQuery = "SELECT * FROM preguntas  ORDER BY RANDOM() LIMIT 1";
 
-// Preparar los valores para la consulta
-$values = $_SESSION['preguntas_mostradas'];
-
-// Ejecutar la consulta
+// $values = $_SESSION['preguntas_mostradas'];
+$values=[];
 $resultado = $conexion->consultaIniciarSesion($sqlQuery, $values);

@@ -28,6 +28,7 @@
         <!-- Aquí irá el contenido de tu página que se mostrará después de que se complete la carga -->
     </div>
     <script src="../js/cargaJuego.js"></script>
+    <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
 </body>
 
 </html>

@@ -21,6 +21,8 @@ body {
   font-size: 1.8rem;
   color: #d4af37;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  padding-top: 25px; /* Ajusta el valor según necesites para moverlo hacia abajo */
+  /* O usa padding-bottom para moverlo hacia arriba */
 }
 
 .container {
@@ -38,12 +40,9 @@ body {
 }
 
 .chat {
-  max-width: 300px; /* Ajusta el ancho máximo según sea necesario */
-  height: 240px; /* Fija la altura */
+  height: auto;
   margin: auto;
-
-  position: relative; /* Asegura que puedas usar z-index si es necesario */
-  z-index: 10; /* Asegura que esté por encima de otros elementos, si es necesario */
+  position: relative;
 }
 
 .messages {
@@ -75,66 +74,57 @@ body {
 
 .pergaminove {
   background-image: url("../img/Perga.png");
-  background-size: cover;
+  background-size: 125vh;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
-  min-height: 195px;
 }
 
 .listo {
   background-image: url("../img/listo.png");
-  background-size: 40vh;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100px;
+  min-height: 100px;
   cursor: pointer;
   transition: opacity 0.3s;
-  margin-top: 20px; /* Ajusta el margen superior */
 }
 
 .listo:hover {
   opacity: 0.8;
 }
-/* .terminaste {
+.terminaste {
   background-image: url("../img/Terminaste.png");
-  background-size: 50vh;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: auto;
-  height: 200px;
-} */
+  min-height: 90px;
+  position: relative;
+}
 
 .woodquest {
   background-image: url("../img/Maderamorada.png");
-  background-size: 100vh;
+  background-size: cover; /* O usa 'contain' si deseas que se mantenga la proporción sin recorte */
   background-repeat: no-repeat;
   background-position: center;
-  height: 100px;
+  width: 80vh;
+  height: 20vh; /* Ajustamos el tamaño de la altura para que sea grande */
+  margin: auto; /* Centra el elemento si es necesario */
 }
 
 .tablajuego {
   background-image: url("../img/tablon.png");
-  background-size: 100vh;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
-  max-height: 240px;
 }
 
 .basi {
   background-image: url("../img/basilis.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
-  min-height: 80px;
-}
-
-.contenedor-botones {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  min-height: 102px;
 }
 
 /* Media Queries */
@@ -169,5 +159,18 @@ body {
 }
 
 .modal-lg {
-  max-width: 60%; /* O cualquier valor que te guste */
+  max-width: 60%;
+}
+.highlight {
+  border: 2px dashed #3498db; /* Color y estilo del borde de la zona activa */
+  background-color: rgba(
+    52,
+    152,
+    219,
+    0.1
+  ); /* Color de fondo de la zona activa */
+}
+
+.invisible {
+  opacity: 0.5; /* Cambia la opacidad cuando el elemento está siendo arrastrado */
 }
