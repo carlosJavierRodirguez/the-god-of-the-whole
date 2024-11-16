@@ -364,7 +364,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                 </div>
             </div>
         </div>
-
+        <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
         <script src="../js/jQuery/jquery-3.6.0.min.js"></script> <!-- Primero carga jQuery -->
         <script src="../js/jQuery/jquery-migrate-3.5.0.min.js"></script> <!-- Luego jQuery Migrate -->
         <script src="../js/json/actualizarNombre.js"></script>
