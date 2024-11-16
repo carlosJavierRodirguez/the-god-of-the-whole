@@ -56,7 +56,7 @@
 
 .atenea {
   background-image: url("../img/diosesVerdaderos/atenea.png");
-  background-size: 11vh;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -64,7 +64,7 @@
 
 .afrodita {
   background-image: url("../img/diosesVerdaderos/afrodita.png");
-  background-size: 11vh;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -80,11 +80,10 @@
 
 .apolo {
   background-image: url("../img/diosesVerdaderos/apolo.png");
-  background-size: cover;
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 80px;
 }
 
 .hefesto {
@@ -93,7 +92,6 @@
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 80px;
 }
 
 .artemisa {
@@ -102,7 +100,6 @@
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 80px;
 }
 
 .minotauro {
@@ -111,7 +108,6 @@
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 80px;
 }
 
 .griffo {
@@ -120,7 +116,6 @@
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 80px;
 }
 
 .correcto {
@@ -138,12 +133,3 @@
   z-index: 3;
 }
 
-#drag-container {
-  display: flex;
-  align-items: center;
-  padding: 10vh;
-  row-gap: 0;
-  column-gap: 2vh;
-  flex-wrap: wrap;
-  height: 100%;
-}
