@@ -227,22 +227,20 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
 
                     </div>
                     <div class="modal-body pergamino">
-                        <form action="../sala/salaEsperaCreador.php" method="post" class="bajarFormulario">
+                        <form id="formCrearSala" class="bajarFormulario">
+
                             <button type="button" class="text-white bg-transparent border-0 btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
                                 <i class="fa-solid fa-x"></i>
                             </button>
                             <div class="col-2"></div>
                             <div class="mb-3 col-8">
+                                <input type="hidden" id="txtCodigoSala" value="txtCodigoSala" />
+                                <input type="hidden" id="userId" value="<?php echo $_SESSION['usuarioID']; ?>" />
                                 <label for="txtNombreSala" class="form-label text-white">Nombre de la Sala <i class="fa-solid fa-door-open"></i></label>
                                 <input type="text" class="form-control" name="txtNombreSala" id="txtNombreSala" placeholder="Escribe el nombre de la sala" required>
                             </div>
                             <div class="col-2"></div>
-                            <div class="col-2"></div>
-                            <div class="mb-3 col-8">
-                                <label for="txtNumJugadores" class="form-label text-white">Número de Jugadores <i class="fa-solid fa-gamepad"></i></label>
-                                <input type="number" class="form-control" name="txtNumJugadores" id="txtNumJugadores" placeholder="Máximo 4 jugadores" required min="2" max="4">
-                            </div>
-                            <div class="col-2"></div>
+
                             <div class="col2"></div>
                             <div class="col-8 border"></div>
                             <div class="col-2"></div>
@@ -364,6 +362,8 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                 </div>
             </div>
         </div>
+
+        <script src="../js/socket/crearSala.js"></script>
         <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
         <script src="../js/jQuery/jquery-3.6.0.min.js"></script> <!-- Primero carga jQuery -->
         <script src="../js/jQuery/jquery-migrate-3.5.0.min.js"></script> <!-- Luego jQuery Migrate -->

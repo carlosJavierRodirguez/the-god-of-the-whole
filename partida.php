@@ -29,7 +29,7 @@
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4">
         <div class="d-flex justify-content-center">
-          <a href="unirse.php" class="buton"><img src="img/botonUnirse.png" alt="imagen de boton para unirse" /></a>
+          <a href="invitado/unirse.php" class="buton"><img src="img/botonUnirse.png" alt="imagen de boton para unirse" /></a>
         </div>
         <br />
         <div class="d-flex justify-content-center">
@@ -46,7 +46,8 @@
     <div>
       <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
       <script src="js/carga.js"></script>
-
+    </div>
+  </div>
 
 
 
