@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Mezcla el array de dioses
   let gods = shuffleArray([
@@ -16,30 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. Configuración del contenedor
   const dragContainer = document.getElementById("drag-container");
 
-  // 3. Genera los elementos de los dioses en una sola fila
+  // 3. Genera los elementos de los dioses
   initializeRow(dragContainer, gods);
 
   // 4. Configura la zona de soltado
   setupDropzone();
 });
 
-// Función para inicializar una sola fila
+// Función para inicializar una fila con elementos
 function initializeRow(container, gods) {
-  const rowDiv = document.createElement("div");
-  rowDiv.className = "row d-flex justify-content-center"; // Asegura alineación horizontal
-
   gods.forEach((godName, index) => {
     const godDiv = createGodElement(godName, index);
-    rowDiv.appendChild(godDiv);
+    
+    // Guardar la posición original del elemento
+    godDiv.dataset.originalParent = container.id;
+    container.appendChild(godDiv);
   });
-
-  container.appendChild(rowDiv);
 }
 
-// Función para crear un elemento (dios)
+// Función para crear un elemento de dios
 function createGodElement(godName, index) {
   const godDiv = document.createElement("div");
-  godDiv.className = ` draggable ${godName}`;
+  godDiv.className = `draggable ${godName}`;
   godDiv.id = `item${index + 1}`;
   godDiv.draggable = true;
   godDiv.textContent = godName; // Opcional, para mostrar el nombre del dios
@@ -47,6 +46,11 @@ function createGodElement(godName, index) {
   // Eventos de arrastre
   godDiv.addEventListener("dragstart", handleDragStart);
   godDiv.addEventListener("dragend", handleDragEnd);
+
+  // Evento para devolver al contenedor inicial al hacer clic
+  godDiv.addEventListener("dblclick", () => {
+    devolverAlContenedorInicial(godDiv);
+  });
 
   return godDiv;
 }
@@ -70,16 +74,28 @@ function handleDrop(event, dropzone) {
   const id = event.dataTransfer.getData("text/plain");
   const draggedElement = document.getElementById(id);
 
-  // Ajusta la posición relativa al contenedor de la zona de drop
-  const rect = dropzone.getBoundingClientRect();
-  const offsetX = event.clientX - rect.left;
-  const offsetY = event.clientY - rect.top;
-
-  draggedElement.style.position = "relative";
-  draggedElement.style.left = `${offsetX - draggedElement.offsetLeft}px`;
-  draggedElement.style.top = `${offsetY - draggedElement.offsetTop}px`;
+  // Ajustar estilos de posición
+  draggedElement.style.position = "";
+  draggedElement.style.left = "";
+  draggedElement.style.top = "";
 
   dropzone.appendChild(draggedElement);
+}
+
+// Función para devolver el elemento al contenedor inicial
+function devolverAlContenedorInicial(elemento) {
+  const originalParentId = elemento.dataset.originalParent;
+  const originalParent = document.getElementById(originalParentId);
+
+  if (originalParent) {
+    // Restablecer cualquier estilo personalizado
+    elemento.style.position = "";
+    elemento.style.left = "";
+    elemento.style.top = "";
+
+    // Agregar el elemento al contenedor inicial
+    originalParent.appendChild(elemento);
+  }
 }
 
 // Función para mezclar el array de dioses

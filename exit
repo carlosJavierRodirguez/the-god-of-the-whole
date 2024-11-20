@@ -1,0 +1,210 @@
+[33mcommit 0f577c810e08e2944d1106bf4c3a51d2e168dd31[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Tue Nov 19 20:55:34 2024 -0500
+
+    19/11/2024 Mejore los estilos de la sala de espera de creador pero todabia falta
+
+[33mcommit 23ada477019725735b5932dfb8ee6718f30a0bfd[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Mon Nov 18 22:52:37 2024 -0500
+
+    18/11/2024 Se esta insertando el nombre de la sala, se llama el codigo y el nombre de la sala ademas el sokect detecta la cración de la sala
+
+[33mcommit 9d2c8dba7fb1af0e69d148a91d52d127768d9a25[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Sat Nov 16 18:07:58 2024 -0500
+
+    16/11/2024 Soluciones un problema con el servidor de web sokect
+
+[33mcommit 9b68cf0789550b5091c8943780a2dd9cb82c056b[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Sat Nov 16 17:44:24 2024 -0500
+
+    16/11/2024 estilos del juego ya organizados falta responsive
+
+[33mcommit ce51a1e525f3a3b8a0b4099ff0b8ddbf24a52f4f[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Sat Nov 16 15:39:13 2024 -0500
+
+    16/11/2024 Organice los estilos Juego y restructure por funciones los JS del movimiento de las imágenes para que sea más fácil modificarlos
+
+[33mcommit 8a9dcb55f3bf61a521e781de18d11a7d1c867642[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Thu Nov 14 22:39:51 2024 -0500
+
+    14/11/2024
+
+[33mcommit 74d6cfe4c5d9be9bccdf825c83f6487339b83ced[m
+Merge: 16f6e7f 9eeb96e
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Thu Nov 14 22:39:49 2024 -0500
+
+    Merge branch 'master' of https://github.com/carlosJavierRodirguez/the-god-of-the-whole
+
+[33mcommit 16f6e7fb77cd6b357f4707a69c4a7b643fbcb8e9[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Thu Nov 14 22:28:21 2024 -0500
+
+    14/11/2024 Cambio de estilos la partado del juego, se enlazo correctamente algunos archivos en el index, partida, unirse y pantalla de carga
+
+[33mcommit 9eeb96e573154445b0bf9ef0084b0c09c6be58d8[m
+Author: Darwin-9 <darwincuellarmorales.2006@gmail.com>
+Date:   Thu Nov 14 22:19:38 2024 -0500
+
+    14/112024 musica que no se repita cuando pasa a otra pagina y siga en el mismo segundo que estaba en la anterior y pues le puse otra cancion
+
+[33mcommit 7296838a51ee4de79bda9268614a2cbf7b8be825[m
+Author: Darwin-9 <darwincuellarmorales.2006@gmail.com>
+Date:   Thu Nov 14 16:08:32 2024 -0500
+
+    14/112024 lo que hice esta mañana, me toco pasarle a claudia fotos del codigo para que me lo diera  jsjsjs
+
+[33mcommit 08c1384adacf3f3eb9f1403faa49066929579698[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Thu Nov 14 10:02:42 2024 -0500
+
+    14/11/2024 backup
+
+[33mcommit 1525dc3f9e6614d95760e62096d82db333a83acd[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Thu Nov 14 09:59:01 2024 -0500
+
+    14/11/2024
+
+[33mcommit f3a24a8708f7bd273ddf60159b77adfeb5148edf[m
+Merge: 143c487 440f6e6
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Thu Nov 14 09:38:21 2024 -0500
+
+    Merge branch 'master' of https://github.com/carlosJavierRodirguez/the-god-of-the-whole
+
+[33mcommit 143c4879f235f81ebed67c779800ba1655683931[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Thu Nov 14 09:37:57 2024 -0500
+
+    14/11/2024 Se listaron las preguntas desde la base de datos
+
+[33mcommit 440f6e6870859c966a6227f3c7d10c24d27ca086[m
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Thu Nov 14 02:25:52 2024 -0500
+
+    14/11/2024 no funciona el cochino ronda 2pero
+    ya mañana veo que peo con eso.
+
+[33mcommit a3bc0236172f775b90bc74ec76047082c39851e8[m
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Thu Nov 14 02:06:48 2024 -0500
+
+    13/11/2024 por lo menos 4 dioses verdaderos
+
+[33mcommit b4cf69c5e645777bab7ba4f849a0deb4bae7569d[m
+Author: Darwin-9 <darwincuellarmorales.2006@gmail.com>
+Date:   Wed Nov 13 22:55:39 2024 -0500
+
+    13/11/2024 posibles canciones de fondo supongo
+
+[33mcommit 597c0447551b830ef0be608d3a336d8483589e1d[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Wed Nov 13 17:29:12 2024 -0500
+
+    13/11/2024 cambio de imagen de perfil con jsoon
+
+[33mcommit c9cb5f42ce08f8b965f36f731ba0d0cb2c88a3f0[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Wed Nov 13 15:58:51 2024 -0500
+
+    13/11/2024 Al usuario registrarse y validarce correctamente le da por defecto los datos de la partidas y una imagen de perfil para esto se creo una nueva función que insertar y trae el ultimo id
+
+[33mcommit b32b2a95aa5c0f055a9fc2eaddfe1bca177c76f5[m
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Tue Nov 12 22:37:42 2024 -0500
+
+    12/11/2024 arreglado el link que daba paso aunque
+    no hubieran dioes en la drop zone
+
+[33mcommit 4f0af0354b55eda2c835b5e087f7ff4dac233602[m
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Tue Nov 12 18:33:37 2024 -0500
+
+    12/11/2024 se cambio el gif de pantallaCarga.php
+
+[33mcommit 2e4ad5317c0c9e718f792a3e2c087f36c2eb97f6[m
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Tue Nov 12 02:07:14 2024 -0500
+
+    11/11/2024 y 12/11/2024 avances de esos dos dias
+    pantallas de cargas realizadas falta crear bien el
+    gif pero todo lo demas bien y en proceso
+
+[33mcommit 67db2a1c59f0da15fc19b350b10125cad5b01f7f[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Mon Nov 11 11:53:52 2024 -0500
+
+    11/11/2024 actualizacion de imagen de perfil completada
+
+[33mcommit fb4b7033e8a3b6b253e11d01141bb97f96ab79ec[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Sun Nov 10 00:02:20 2024 -0500
+
+    10/1/2024 Conecte la barra de porcentaje con los datos de la database, cree un archivo de excepciones para la base de datos, y agregue un archivo de mensajes de error de PostgreSQL en español
+
+[33mcommit 0c46aab623a58a10eafb77b42c5e662e6b8b1aa4[m
+Author: Darwin-9 <darwincuellarmorales.2006@gmail.com>
+Date:   Thu Nov 7 20:07:39 2024 -0500
+
+    7/11/2024 pantalla de carga con otro estilo
+
+[33mcommit d5e0003a0d085f98791e43d9152197215e6d532e[m
+Author: Keinernarvaez <ckeinercano@gmail.com>
+Date:   Thu Nov 7 07:48:27 2024 -0500
+
+    7/11/2024 verificacion colores redonda
+
+[33mcommit 0d276c8131bc2753a33a89788370fb44cc2dad19[m
+Author: Keinernarvaez <ckeinercano@gmail.com>
+Date:   Thu Nov 7 07:46:59 2024 -0500
+
+    7/11/2024 verificaccion con colores redonda
+    arreglado
+
+[33mcommit a564b2e43cad8d4c2ece5befb303048fee98cf2f[m
+Author: Darwin-9 <darwincuellarmorales.2006@gmail.com>
+Date:   Thu Nov 7 00:34:13 2024 -0500
+
+    pantalla de carga supongo como queria Don Carlos ksjsjsj
+
+[33mcommit ce7c4a64e1667e64ed2e94d0ec4d30aab837a967[m
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Tue Nov 5 23:52:50 2024 -0500
+
+    5/11/2024 pantalla de carga media realizada
+
+[33mcommit 8131c6bb2cf05b05b232399981f14d877626fe31[m
+Merge: 65e2624 5ae89e7
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Tue Nov 5 13:34:45 2024 -0500
+
+    Merge branch 'master' of https://github.com/carlosJavierRodirguez/the-god-of-the-whole
+
+[33mcommit 65e2624432e0479585be19e4089994c6a9e80b4d[m
+Author: criss300 <cristianelpro004@gmail.com>
+Date:   Tue Nov 5 13:33:29 2024 -0500
+
+    5/11/2024 se arreglaron los colores al rato subo
+    lo que hice en local
+
+[33mcommit 5ae89e7e949e73259013f73688b8c367005601db[m
+Merge: 824b3ea cec06cf
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Tue Nov 5 00:35:20 2024 -0500
+
+    Merge branch 'master' of https://github.com/carlosJavierRodirguez/the-god-of-the-whole
+
+[33mcommit 824b3eac9cb9792dd17692af4bfbf081929325a1[m
+Author: Carlos Javier Rodríguez Manchola <carlosjavi1887@gmail.com>
+Date:   Tue Nov 5 00:34:02 2024 -0500
+
+    5/11/2024 Listar imagen de perfil y para seleccionar imagen de
+    perfil falta configurar esto es una prueba
+
+[33mcommit cec06cfa4d1b4f6ec291d16cd71
