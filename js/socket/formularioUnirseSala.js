@@ -1,49 +1,50 @@
 document
   .getElementById("btnIngresarSala")
-  .addEventListener("click", function (event) {
-    // Prevenir el comportamiento predeterminado del formulario
-    event.preventDefault();
-
-    // Capturar los valores del formulario
+  .addEventListener("click", function () {
     const nombreJugador = document.getElementById("txtNombreJugador").value;
     const codigoSala = document.getElementById("txtCodigoSala").value;
 
-    // Validar los campos (puedes agregar más validaciones si lo deseas)
-    if (nombreJugador.length >= 3 && codigoSala.length >= 5) {
-      // Establecer la conexión al WebSocket
-      conectarWebSocket(codigoSala, nombreJugador);
+    if (nombreJugador.length >= 2 && codigoSala.length === 5) {
+      // Enviar los datos al servidor PHP usando Fetch
+      fetch("../ruta/a/tu/archivoPHP.php", {
+        // Cambia esta ruta según tu estructura
+        method: "POST",
+        body: new URLSearchParams({
+          txtNombreJugador: nombreJugador,
+          txtCodigoSala: codigoSala,
+        }),
+      })
+        .then((response) => response.json()) // Suponiendo que PHP devuelve JSON
+        .then((data) => {
+          if (data.status === "success") {
+            // Redirige a la sala si la respuesta es exitosa
+            window.location.href = "../sala/salaEsperaInvitado.php";
+          } else {
+            // Alerta de error
+            Swal.fire({
+              icon: "error",
+              title: "Error al unirse a la sala",
+              text: data.mensaje,
+              confirmButtonText: "Aceptar",
+            });
+          }
+        })
+        .catch((error) => {
+          // En caso de error en la petición
+          Swal.fire({
+            icon: "error",
+            title: "Error de conexión",
+            text: "Hubo un problema al procesar tu solicitud.",
+            confirmButtonText: "Aceptar",
+          });
+          console.error("Error en la solicitud:", error);
+        });
     } else {
-      alert("Por favor, complete correctamente los campos.");
+      Swal.fire({
+        icon: "error",
+        title: "Campos Invalidos",
+        text: "Por favor, asegúrate de que el nombre del jugador tenga al menos 2 caracteres y el código de la sala sea de 5 caracteres.",
+        confirmButtonText: "Aceptar",
+      });
     }
   });
-
-function conectarWebSocket(codigoSala, nombreJugador) {
-  const socket = new WebSocket("ws://localhost:8080"); // Reemplaza 'PORT' con tu puerto WebSocket.
-
-  socket.onopen = () => {
-    // Enviar el código de la sala y el nombre del jugador al servidor WebSocket
-    const mensaje = JSON.stringify({
-      tipo: "conectar_sala",
-      sala: codigoSala,
-      jugador: nombreJugador,
-    });
-    socket.send(mensaje);
-    console.log(
-      "Conectado al servidor WebSocket y enviado el código de sala y nombre del jugador."
-    );
-  };
-
-  socket.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    // Manejar mensajes recibidos desde el servidor
-    console.log("Mensaje recibido:", data);
-  };
-
-  socket.onclose = () => {
-    console.log("Conexión cerrada.");
-  };
-
-  socket.onerror = (error) => {
-    console.error("Error en la conexión:", error);
-  };
-}
