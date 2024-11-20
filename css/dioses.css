@@ -128,7 +128,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 columnas */
   grid-template-rows: repeat(2, auto); /* 2 filas */
-  gap: 10px; /* Espaciado entre elementos */
+  gap: 1vh; /* Espaciado entre elementos */
   justify-content: center; /* Centra el contenido horizontalmente */
 }
 .draggable {
@@ -138,5 +138,9 @@
   cursor: grab;
   user-select: none;
 }
-
+#dropzone {
+  position: relative;
+  width: 100%;
+  min-height: 210px;
+}
 
