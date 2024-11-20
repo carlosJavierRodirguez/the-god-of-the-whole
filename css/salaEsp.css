@@ -28,10 +28,8 @@
     margin-bottom: 10px;
   }
   .rueda{
-    max-height: 200px; /* Altura máxima antes de que se active el scroll */
-    overflow-y: auto; /* Agrega el scroll vertical */
-    padding-right: 10px;
-    margin-top: 5px;
+    max-height: 240px; 
+    overflow-y: auto; 
   }
   
   .user-icon {

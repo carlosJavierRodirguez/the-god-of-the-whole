@@ -16,6 +16,7 @@ if (!isset($_SESSION['nombreUsuario'])) {
   <?php include('../principal/head.php') ?>
   <link rel="stylesheet" href="../css/salaEsp.css">
   <link rel="stylesheet" href="../css/esperaCrea.css">
+  <link rel="stylesheet" href="../css/estilosCarga.css">
 </head>
 
 <body>
@@ -28,15 +29,14 @@ if (!isset($_SESSION['nombreUsuario'])) {
             <div>Nombre Sala: <?php echo $sala->getNombreSala(); ?></div>
             <div>Codigo: <?php echo $sala->getCodigoSala(); ?> <button type="button" class="btn border-0"><i class="fa-solid fa-copy"></i></button> </div>
           </div>
-          <div class="p-4">
+
+          <div class="p-4 mt-4 rueda">
             <div class="user-profile form-group mt-2 rounded ">
               <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
               <span class="username">Carlos Javier Rodriguez</span>
             </div>
-            <div class="user-profile form-group mt-2 rounded ">
-              <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
-              <span class="username">Carlos Javier Rodriguez</span>
-            </div>
+
+
           </div>
         </div>
 
@@ -55,12 +55,16 @@ if (!isset($_SESSION['nombreUsuario'])) {
 
   </div>
 
-
-
-  <!-- Iframe para mostrar el archivo HTML --> -
-  <iframe id="iframe-cargando" src="../cargando.php"></iframe>
+  <!-- pantalla de carga -->
+  <div class="lds-ring loader" id="loader">
+    <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
+    <div>
+      <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
+      <script src="../js/validacionFormulario/validacionUnirse.js"></script>
+      <script src="../js/carga.js"></script>
+    </div>
   </div>
-  </div>
+
   <script src="../js/eliminar.js"></script>
   <script src="../js/transicion.js"></script>
 </body>

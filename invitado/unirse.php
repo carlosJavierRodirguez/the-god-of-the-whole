@@ -66,12 +66,13 @@
             </div>
           </div>
         </form>
+
       </div>
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
 
-
+  <!-- pantalla de carga -->
   <div class="lds-ring loader" id="loader">
     <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
     <div>
@@ -80,7 +81,8 @@
       <script src="../js/carga.js"></script>
     </div>
   </div>
-<script src="../js/socket/formularioUnirseSala.js"></script>
+
+  <script src="../js/socket/formularioUnirseSala.js"></script>
 </body>
 
 </html>

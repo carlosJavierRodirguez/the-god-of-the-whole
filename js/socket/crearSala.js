@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const form = document.getElementById("formCrearSala");
   const inputCodigoSala = document.getElementById("txtCodigoSala");
   const userId = document.getElementById("userId").value; // Obtener el ID del usuario
 
-  // Generar un código de sala aleatorio al cargar la página
-  function generarCodigoSala() {
+  // Función para generar un código aleatorio
+  function generarCodigo() {
     let codigo = "";
     for (let i = 0; i < 5; i++) {
       let numeroAleatorio = Math.floor(Math.random() * 10);
@@ -13,16 +13,49 @@ document.addEventListener("DOMContentLoaded", function () {
     return codigo;
   }
 
-  // Asignar el código generado al campo de texto oculto
-  const codigoGenerado = generarCodigoSala();
+  // Función para verificar si el código ya existe en la base de datos
+  async function verificarCodigoEnBD(codigo) {
+    try {
+      const response = await fetch("../../libreria/validarCodigos/codigoSala.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ codigo }),
+      });
+
+      const data = await response.json();
+      return !data.existe; // Devuelve true si no existe
+    } catch (error) {
+      console.error("Error al verificar el código:", error);
+      return false; // En caso de error, considerar el código no válido
+    }
+  }
+
+  // Generar un código único
+  async function generarCodigoUnico() {
+    let codigoValido = false;
+    let codigo;
+
+    while (!codigoValido) {
+      codigo = generarCodigo(); // Generar un código
+      codigoValido = await verificarCodigoEnBD(codigo); // Verificar en la base de datos
+    }
+
+    return codigo;
+  }
+
+  // Asignar el código único generado al campo de texto oculto
+  const codigoGenerado = await generarCodigoUnico();
   inputCodigoSala.value = codigoGenerado;
 
+  // Manejar el envío del formulario
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevenir el envío tradicional del formulario
 
     // Capturar los valores de los campos del formulario
     const nombreSala = document.getElementById("txtNombreSala").value;
-    const codigoSala = inputCodigoSala.value; // Usar el valor generado
+    const codigoSala = inputCodigoSala.value; // Usar el código generado
 
     // Validar los campos
     if (nombreSala.trim() !== "" && codigoSala.trim() !== "") {

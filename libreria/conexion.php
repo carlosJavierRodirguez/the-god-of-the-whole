@@ -104,6 +104,3 @@ class Conexion
         echo "Lo sentimos, ha ocurrido un error. Nuestro equipo está trabajando para resolverlo.";
     }
 }
-
-$conecto = new Conexion();
-$conecto->conectar();
