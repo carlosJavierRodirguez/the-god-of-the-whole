@@ -22,61 +22,43 @@ if (!isset($_SESSION['nombreUsuario'])) {
   <div class="container">
     <div class="row justify-content-center">
       <!-- Logo y Título -->
-      <div class="col-lg-4 col-md-8 col-sm-10">
-        <div class="pergamino p-4 p-md-5">
-          <div class="form-group mb-2 text-white email infoSala">
+      <div class="col-lg-4 col-md-8 col-sm-10 ">
+        <div class="pergamino md-5 mt-3 ">
+          <div class="form-group mb-2 text-white infoSala p-4">
             <div>Nombre Sala: <?php echo $sala->getNombreSala(); ?></div>
             <div>Codigo: <?php echo $sala->getCodigoSala(); ?> <button type="button" class="btn border-0"><i class="fa-solid fa-copy"></i></button> </div>
-
           </div>
-          <div class="user-profile form-group mt-2 rounded ">
-            <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
-            <span class="username">Carlos Javier Rodriguez</span>
+          <div class="p-4">
+            <div class="user-profile form-group mt-2 rounded ">
+              <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
+              <span class="username">Carlos Javier Rodriguez</span>
+            </div>
+            <div class="user-profile form-group mt-2 rounded ">
+              <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
+              <span class="username">Carlos Javier Rodriguez</span>
+            </div>
           </div>
-        </div>
-        <button type="button" class="btn btn-sm botonIngresar" onclick="iniciarTransicion()">
-          <img
-            src="../img/botonIniciarJuego.png"
-            class="img-fluid"
-            style="margin-top: 100px;"
-            alt="Iniciar Sesión" />
-        </button>
-
-      </div>
-    </div>
-    <!-- <div class="-ontainer"> -->
-    <!-- <div class="pergaminoCu">
-
-      <div class="infoSala col-9 text-white">
-        <div>Nombre Sala: <?php echo $sala->getNombreSala(); ?></div>
-        <div>Codigo: <?php echo $sala->getCodigoSala(); ?> <button type="button" class="btn border-0"><i class="fa-solid fa-copy"></i></button> </div>
-
-      </div>
-      <div class="text-white">Jugadores: 4/4 <i class="fa-solid fa-user"></i> </div>
-      <div class="rueda col-9">
-
-        <div class="user-profile col-12">
-          <img class="user-icon" src="../img/afrodita.png" alt="">
-          <span class="username">Carlos Javier Rodriguez</span>
         </div>
 
 
+        <!-- botón de iniciarl la sala -->
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-sm text-center border-0 " onclick="iniciarTransicion()">
+            <img
+              src="../img/botonIniciarJuego.png"
+              class="botonIniciarJuego"
+              alt="Iniciar Juego" />
+          </button>
+        </div>
       </div>
-
-
     </div>
 
-    <div class="contenedor">
-      <button type="button" class="btn btn-sm botonIngresar" onclick="iniciarTransicion()">
-        <img
-          src="../img/botonIniciarJuego.png"
-          class="img-fluid"
-          style="margin-top: 100px;"
-          alt="Iniciar Sesión" />
-      </button> -->
+  </div>
 
-    <!-- Iframe para mostrar el archivo HTML --> -
-    <iframe id="iframe-cargando" src="../cargando.php"></iframe>
+
+
+  <!-- Iframe para mostrar el archivo HTML --> -
+  <iframe id="iframe-cargando" src="../cargando.php"></iframe>
   </div>
   </div>
   <script src="../js/eliminar.js"></script>

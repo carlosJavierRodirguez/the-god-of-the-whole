@@ -6,7 +6,7 @@ use Ratchet\WebSocket\WsServer;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
-include('../libreria/conexion.php');
+include('./libreria/conexion.php');
 $conexion = new Conexion();
 
 require __DIR__ . '/vendor/autoload.php';
