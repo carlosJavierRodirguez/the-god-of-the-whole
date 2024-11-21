@@ -6,7 +6,7 @@ document
 
     if (nombreJugador.length >= 2 && codigoSala.length === 5) {
       // Enviar los datos al servidor PHP usando Fetch
-      fetch("../ruta/a/tu/archivoPHP.php", {
+      fetch("../libreria/datosInvitado/Accesoinvitado.php", {
         // Cambia esta ruta según tu estructura
         method: "POST",
         body: new URLSearchParams({

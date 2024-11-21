@@ -77,11 +77,11 @@
     <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
     <div>
       <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
-      <script src="../js/validacionFormulario/validacionUnirse.js"></script>
-      <script src="../js/carga.js"></script>
     </div>
   </div>
 
+  <script src="../js/validacionFormulario/validacionUnirse.js"></script>
+  <script src="../js/carga.js"></script>
   <script src="../js/socket/formularioUnirseSala.js"></script>
 </body>
 

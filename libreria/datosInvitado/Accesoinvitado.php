@@ -17,7 +17,7 @@ if ($nombreInvitado && $codigoSala) {
     $encapsularAcceso->setCodigoSala($codigoSala);
 
     // Insertar el jugador en la base de datos
-    $query = "INSERT INTO public.invitado(\"nombreInvitado\") VALUES (?);";
+    $query = "INSERT INTO public.invitado(\"nombreInvitado\" ,imagen_id) VALUES (?,1);";
     $values = [$nombreInvitado];
 
     $resultados = $conexion->insertarDatos($query, $values);
