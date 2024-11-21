@@ -3,7 +3,6 @@
 
 <head>
   <?php include('../principal/head.php'); ?>
-  <link rel="stylesheet" href="../css/estilosCarga.css">
 </head>
 
 <body>
@@ -23,6 +22,7 @@
               type="email"
               class="form-control campo-email"
               id="txtEmail"
+              maxlength="100"
               name="txtEmail"
               placeholder="correo@gmail.com"
               required
@@ -39,6 +39,7 @@
               type="password"
               class="form-control campo-email"
               id="txtClave"
+              maxlength="30"
               name="txtClave"
               placeholder="********"
               required

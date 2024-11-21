@@ -3,7 +3,7 @@
 
 <head>
     <?php include('../principal/head.php') ?>
-    <link rel="stylesheet" href="../css/estilosCarga.css">
+ 
 </head>
 
 <body>

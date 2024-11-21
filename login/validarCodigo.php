@@ -4,7 +4,7 @@
 <head>
     <?php include('../principal/head.php') ?>
     <link rel="stylesheet" href="../css/codigo.css">
-    <link rel="stylesheet" href="../css/estilosCarga.css">
+
     <style>
 
     </style>
