@@ -25,21 +25,23 @@
           <img src="img/logo.png" class="logo fa-bounce" alt="" />
         </div>
       </div>
-
+         
       <div class="col-12 col-md-4"></div>
+      
       <!--botones-->
+      
       <div class="col-12 col-md-4"></div>
+      
       <div class="col-12 col-md-4">
+      <br/>
         <div class="d-flex justify-content-center">
-          <a href="partida.php" class="buton"><img
+        <a href="partida.php" class="buton"><img
               src="img/botonJugarOnline.png"
               alt="imagen de boton de jugar online" /></a>
         </div>
         <br />
         <div class="d-flex justify-content-center">
-          <a href="configuraciones.php" class="buton"><img
-              src="img/botonConfiguracion.png"
-              alt="imagen de boton de configuraciones" /></a>
+        <button class="btn btn-mythological">Configuraciones</button>
         </div>
       </div>
       <div class="col-12 col-md-4"></div>

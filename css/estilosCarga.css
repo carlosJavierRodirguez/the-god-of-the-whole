@@ -139,4 +139,29 @@
     border-color: #28a745; /* Color verde para válido */
 }
 
+.btn-mythological {
+  background: linear-gradient(45deg, #630e0eed, #B22222);
+  color: white;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  border: 2px solid #ffaa00;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  transition: all 0.3s ease;
+}
+
+.btn-mythological:hover {
+  background: linear-gradient(45deg, #B22222, #8B0000); /* Invertir colores al pasar el mouse */
+  color: #fff;
+  border: 2px solid #B22222;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumentar sombra en hover */
+}
+
+.btn-mythological:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.8); /* Resplandor rojizo al hacer foco */
+}
+
 
