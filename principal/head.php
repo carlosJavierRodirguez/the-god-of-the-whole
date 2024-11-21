@@ -8,6 +8,7 @@
 <!-- Hojas de estilo -->
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../css/estilos.css" />
+<link rel="stylesheet" href="../css/estilosCarga.css">
 <link rel="stylesheet" href="../fontawesome/css/all.css" />
 
 <!-- Fuentes -->

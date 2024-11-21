@@ -11,7 +11,6 @@ $conectar->conectar();
 
 <head>
   <?php include('../principal/head.php') ?>
-  <link rel="stylesheet" href="../css/estilosCarga.css">
 </head>
 
 <body>
@@ -31,6 +30,7 @@ $conectar->conectar();
               type="text"
               class="form-control campo-email"
               id="txtNombreUsuario"
+              maxlength="25"
               name="txtNombreUsuario"
               placeholder="Usuario15000"
               required
@@ -49,6 +49,7 @@ $conectar->conectar();
               type="email"
               class="form-control campo-email"
               id="txtEmailRegistro"
+              maxlength="100"
               name="txtEmailRegistro"
               placeholder="correo@gmail.com"
               required
@@ -65,6 +66,7 @@ $conectar->conectar();
               type="password"
               class="form-control campo-email"
               id="txtClaveRegistro"
+              maxlength="30"
               name="txtClaveRegistro"
               placeholder="*******"
               required

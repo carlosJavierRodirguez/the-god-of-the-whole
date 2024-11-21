@@ -363,6 +363,9 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
             </div>
         </div>
 
+        <div class="lds-ring loader" id="loader">
+    <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
+    <div>
         <script src="../js/socket/crearSala.js"></script>
         <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
         <script src="../js/jQuery/jquery-3.6.0.min.js"></script> <!-- Primero carga jQuery -->
@@ -370,6 +373,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
         <script src="../js/json/actualizarNombre.js"></script>
         <script src="../js/alertas/alertaBienvenida.js"></script>
         <script src="../js/json/actulizarImagenPerfil.js"></script>
+        <script src="../js/carga.js"></script>
 </body>
 
 </html>
