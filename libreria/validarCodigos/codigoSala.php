@@ -1,5 +1,5 @@
 <?php
-require '../conexion.php'; // Ajusta la ruta según tu estructura
+require '../conexion.php';
 
 header('Content-Type: application/json');
 

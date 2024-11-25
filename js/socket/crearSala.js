@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const form = document.getElementById("formCrearSala");
   const inputCodigoSala = document.getElementById("txtCodigoSala");
-  const userId = document.getElementById("userId").value; // Obtener el ID del usuario
+  const userId = document.getElementById("usuarioId").value; // Obtener el ID del usuario
 
   // Función para generar un código aleatorio
   function generarCodigo() {
@@ -16,13 +16,16 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Función para verificar si el código ya existe en la base de datos
   async function verificarCodigoEnBD(codigo) {
     try {
-      const response = await fetch("../../libreria/validarCodigos/codigoSala.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ codigo }),
-      });
+      const response = await fetch(
+        "../libreria/validarCodigos/codigoSala.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ codigo }),
+        }
+      );
 
       const data = await response.json();
       return !data.existe; // Devuelve true si no existe
@@ -56,6 +59,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Capturar los valores de los campos del formulario
     const nombreSala = document.getElementById("txtNombreSala").value;
     const codigoSala = inputCodigoSala.value; // Usar el código generado
+    const usuarioId = document.getElementById("usuarioId"); //id de del usuario
 
     // Validar los campos
     if (nombreSala.trim() !== "" && codigoSala.trim() !== "") {
@@ -68,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           tipo: "crear_sala",
           nombreSala: nombreSala,
           codigoSala: codigoSala,
-          userId: userId, // Incluir el ID del usuario que crea la sala
+          usuarioId: userId, 
         };
 
         // Enviar el mensaje al servidor

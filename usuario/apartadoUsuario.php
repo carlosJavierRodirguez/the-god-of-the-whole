@@ -235,7 +235,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             <div class="col-2"></div>
                             <div class="mb-3 col-8">
                                 <input type="hidden" id="txtCodigoSala" value="txtCodigoSala" />
-                                <input type="hidden" id="userId" value="<?php echo $_SESSION['usuarioID']; ?>" />
+                                <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $_SESSION['usuarioID']; ?>" />
                                 <label for="txtNombreSala" class="form-label text-white">Nombre de la Sala <i class="fa-solid fa-door-open"></i></label>
                                 <input type="text" class="form-control" name="txtNombreSala" id="txtNombreSala" placeholder="Escribe el nombre de la sala" required>
                             </div>
@@ -363,9 +363,14 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
             </div>
         </div>
 
+        <!-- pantalla de carga
         <div class="lds-ring loader" id="loader">
-    <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
-    <div>
+            <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
+            <div>
+                <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
+            </div>
+        </div> -->
+
         <script src="../js/socket/crearSala.js"></script>
         <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
         <script src="../js/jQuery/jquery-3.6.0.min.js"></script> <!-- Primero carga jQuery -->
@@ -373,7 +378,7 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
         <script src="../js/json/actualizarNombre.js"></script>
         <script src="../js/alertas/alertaBienvenida.js"></script>
         <script src="../js/json/actulizarImagenPerfil.js"></script>
-        <script src="../js/carga.js"></script>
+        <!-- <script src="../js/carga.js"></script> -->
 </body>
 
 </html>

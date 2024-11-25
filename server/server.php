@@ -80,11 +80,11 @@ class SalaManager implements MessageComponentInterface
     {
         $nombreSala = $data['nombreSala'];
         $codigoSala = $data['codigoSala'];
-        $usuarioId = $data['usuarioId'];
+        $usuarioId = $data['userId'];
 
         // Insertar la sala en la base de datos
-        $query = "INSERT INTO sala(nombre_sala, codigo_sala, creador_sala) VALUES (:nombreSala, :codigoSala, :usuarioId)";
-        $values = [':nombreSala' => $nombreSala, ':codigoSala' => $codigoSala, ':usuarioId' => $usuarioId];
+        $query = "INSERT INTO sala (nombre_sala, codigo_sala, creador_sala) VALUES (:nombreSala, :codigoSala, :usuarioId)";
+        $values = [':nombreSala' => $nombreSala, ':codigoSala' => $codigoSala, ':userId' => $usuarioId];
         $respuesta = $this->conexion->insertarDatos($query, $values);
 
         if ($respuesta) {
@@ -110,7 +110,6 @@ class SalaManager implements MessageComponentInterface
     }
 
     // Función para unirse a una sala existente
-    // Función para unirse a una sala existente
     private function unirseASala($from, $data)
     {
         $codigoSala = $data['codigoSala'];
@@ -118,7 +117,7 @@ class SalaManager implements MessageComponentInterface
 
         // Crear la conexión a la base de datos
         $conexionBD = new Conexion();
-        
+
         // Verificar si la sala existe en la base de datos
         $query = "SELECT * FROM sala WHERE codigo_sala = :codigoSala";
         $values = [':codigoSala' => $codigoSala];
