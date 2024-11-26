@@ -19,7 +19,7 @@ include('../libreria/juego/listarPreguntas.php');
             <div class="col-8  mt-1">
                 <div class="woodquest mt-2 ">
                     <?php
-                    // Verificar el resultado de la consulta
+                    // Verificar el resultado de la consulta 
                     if (count($resultado) > 0) {
                         // Obtener la pregunta aleatoria
                         $pregunta = $resultado[0];
