@@ -12,6 +12,7 @@ include('../libreria/juego/listarPreguntas.php');
     <link rel="stylesheet" href="../css/dioses.css" />
 </head>
 
+
 <body class="pantano">
     <div class="container">
         <!-- Columna para la pregunta y chat -->
@@ -19,7 +20,7 @@ include('../libreria/juego/listarPreguntas.php');
             <div class="col-8  mt-1">
                 <div class="woodquest mt-2 ">
                     <?php
-                    // Verificar el resultado de la consulta 
+                    // Verificar el resultado de la consulta  //Verificar si criss es gay.
                     if (count($resultado) > 0) {
                         // Obtener la pregunta aleatoria
                         $pregunta = $resultado[0];
