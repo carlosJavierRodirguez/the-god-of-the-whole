@@ -75,11 +75,10 @@ include('../libreria/juego/listarPreguntas.php');
 
     <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/dragdrop.js"></script>
     <script src="../js/socket/socket.js"></script>
-    <script src="../js/generarDioses.js"></script>
-    <script src="../js/devolverDrag.js"></script>
-    <script src="../js/validacionDioses.js"></script>
+    <script src="../js/juego-js/dragDrop/generarDioses.js"></script>
+    <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
+    <script src="../js/juego-js/validacion/validacionDioses.js"></script>
 </body>
 
 </html>
