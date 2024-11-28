@@ -10,26 +10,43 @@ $conexion = new Conexion();
 $nombreInvitado = isset($_POST['txtNombreJugador']) ? htmlspecialchars(trim($_POST['txtNombreJugador'])) : null;
 $codigoSala = isset($_POST['txtCodigoSala']) ? htmlspecialchars(trim($_POST['txtCodigoSala'])) : null;
 
+// Se establece el código de sala
+$encapsularAcceso->setCodigoSala($codigoSala);
+$codigoEncapsulado = $encapsularAcceso->getCodigoSala();
+
+//encapsular nombre de invitado
+$encapsularAcceso->setNombre($nombreInvitado);
+$nombreInvitadoEncapsulado = $encapsularAcceso->getNombre();
+
 $response = [];
 
-if ($nombreInvitado && $codigoSala) {
-    // Se establece el código de sala
-    $encapsularAcceso->setCodigoSala($codigoSala);
+if ($nombreInvitadoEncapsulado && $codigoEncapsulado) {
+
 
     // Insertar el jugador en la base de datos
     $query = "INSERT INTO public.invitado(\"nombreInvitado\" ,imagen_id) VALUES (?,1);";
-    $values = [$nombreInvitado];
+    $values = [$nombreInvitadoEncapsulado];
 
     $resultados = $conexion->insertarDatos($query, $values);
 
     if ($resultados) {
-        // Guardar el nombre del invitado en la sesión
-        $_SESSION['nombreInvitado'] = $nombreInvitado;  // Guardamos en sesión
+        $sqlDatosSala = "SELECT nombre_sala, codigo_sala FROM public.sala WHERE codigo_sala = ?";
+        $valoresDatosSala = [$codigoEncapsulado];
+        $resultadosSala = $conexion->consultaIniciarSesion($sqlDatosSala, $valoresDatosSala);
 
-        // Respuesta exitosa, enviar al cliente
-        $response['status'] = 'success';
-        echo json_encode($response);  // Enviar respuesta JSON
-        exit();  // Terminar el script aquí
+        if (!empty($resultadosSala)) {
+            $_SESSION['datosSala'] = $resultadosSala[0];
+            $_SESSION['nombreInvitado'] = $nombreInvitadoEncapsulado;
+
+            $response['status'] = 'success';
+            echo json_encode($response);
+            exit();
+        } else {
+            $response['status'] = 'error';
+            $response['mensaje'] = 'No se encontró la sala.';
+            echo json_encode($response);
+            exit();
+        }
     } else {
         // Respuesta de error si no se pudo insertar
         $response['status'] = 'error';
