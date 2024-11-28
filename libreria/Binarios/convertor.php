@@ -27,19 +27,19 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     }
 
     // Preparar la consulta SQL para insertar la imagen en la base de datos
-    $query = "INSERT INTO imagen_titanes (nombre, titanes_url) VALUES (:nombre, :titanes_url)";
+    $query = "INSERT INTO imagen_criaturas (nombre, criaturas_url) VALUES (:nombre, :criaturas_url)";
     $stmt = $db->prepare($query);
 
     // Ejecutar la consulta con los valores
     try {
         // Usamos PDO::PARAM_LOB para asegurarnos de que los datos sean tratados como binarios
         $stmt->bindParam(':nombre', $nombre_imagen, PDO::PARAM_STR);
-        $stmt->bindParam(':titanes_url', $imagen, PDO::PARAM_LOB);  // Especificamos que el campo es binario (LOB)
+        $stmt->bindParam(':criaturas_url', $imagen, PDO::PARAM_LOB); // Especificamos que el campo es binario (LOB)
 
         // Ejecutar la consulta
         $stmt->execute();
 
-        echo "Imagen cargada con éxito.";
+        echo "Imagen cargada con éxito en la tabla 'imagen_criaturas'.";
     } catch (PDOException $e) {
         // Mostrar el error si ocurre
         echo "Error al cargar la imagen: " . $e->getMessage();
