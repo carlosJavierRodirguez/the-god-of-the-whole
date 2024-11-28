@@ -1,5 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
+  
   // 1. Mezcla el array de dioses
   let gods = shuffleArray([
     "hades",
