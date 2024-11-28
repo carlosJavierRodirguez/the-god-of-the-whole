@@ -23,11 +23,19 @@ class SalaManager implements MessageComponentInterface
         $this->conexion = new Conexion();
     }
 
-    public function onOpen(ConnectionInterface $conn)
-    {
-        $this->clients->attach($conn);
-        echo "Nueva conexión: ({$conn->resourceId})\n";
-    }
+public function onOpen(ConnectionInterface $conn)
+{
+    $this->clients->attach($conn);
+    echo "Nueva conexión: ({$conn->resourceId})\n";
+
+    // Mensaje de prueba
+    $conn->send(json_encode([
+        'type' => 'usuarios_en_sala',
+        'codigoSala' => '12345',
+        'usuarios' => ['UsuarioPrueba1', 'UsuarioPrueba2']
+    ]));
+}
+
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
@@ -93,7 +101,7 @@ class SalaManager implements MessageComponentInterface
                 'nombreSala' => $nombreSala,
                 'usuarios' => []
             ];
-            
+
             // Enviar un mensaje a todos los clientes conectados
             $from->send(json_encode([
                 'status' => 'success',
@@ -115,50 +123,39 @@ class SalaManager implements MessageComponentInterface
         $codigoSala = $data['codigoSala'];
         $nombreJugador = $data['nombreJugador'];
 
-        // Crear la conexión a la base de datos
         $conexionBD = new Conexion();
-
-        // Verificar si la sala existe en la base de datos
         $query = "SELECT * FROM sala WHERE codigo_sala = :codigoSala";
         $values = [':codigoSala' => $codigoSala];
         $resultado = $conexionBD->consultaIniciarSesion($query, $values);
 
         if ($resultado) {
-            // Añadir el jugador a la sala
             if (!isset($this->salas[$codigoSala])) {
                 $this->salas[$codigoSala] = [
                     'codigoSala' => $codigoSala,
-                    'nombreSala' => $resultado['nombre_sala'], // Asumiendo que la respuesta de la consulta tiene este campo
+                    'nombreSala' => $resultado['nombre_sala'],
                     'usuarios' => []
                 ];
             }
 
-            // Agregar el jugador a la lista de usuarios de la sala
             $this->salas[$codigoSala]['usuarios'][$from->resourceId] = $nombreJugador;
 
-            // Responder con éxito
+            // Llama a actualizarUsuariosSala
+            $this->actualizarUsuariosSala($codigoSala);
+
             $response = [
                 'status' => 'success',
                 'mensaje' => 'Te has unido a la sala con éxito.',
                 'nombreSala' => $this->salas[$codigoSala]['nombreSala']
             ];
         } else {
-            // Sala no encontrada, responde con error
             $response = [
                 'status' => 'error',
                 'mensaje' => 'El código de la sala no es válido.',
             ];
         }
 
-        // Enviar la respuesta al cliente
-        $from->send(json_encode($response)); // Enviando respuesta al cliente
+        $from->send(json_encode($response));
     }
-
-
-
-
-
-
 
     // Función para actualizar la lista de usuarios en una sala
     private function actualizarUsuariosSala($codigoSala)
@@ -166,11 +163,13 @@ class SalaManager implements MessageComponentInterface
         $usuarios = array_values($this->salas[$codigoSala]['usuarios']);
         foreach ($this->clients as $client) {
             if (isset($this->salas[$codigoSala]['usuarios'][$client->resourceId])) {
-                $client->send(json_encode([
+                $mensaje = json_encode([
                     'type' => 'usuarios_en_sala',
                     'codigoSala' => $codigoSala,
                     'usuarios' => $usuarios
-                ]));
+                ]);
+                echo "Enviando a cliente {$client->resourceId}: $mensaje\n"; // Log para depuración
+                $client->send($mensaje);
             }
         }
     }

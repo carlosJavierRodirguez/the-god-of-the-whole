@@ -31,10 +31,11 @@ if (!isset($_SESSION['nombreUsuario'])) {
           </div>
 
           <div class="p-4 mt-4 rueda">
-            <div class="user-profile form-group mt-2 rounded ">
+            <ul id="lista-usuarios"></ul>
+            <!-- <div class="user-profile form-group mt-2 rounded ">
               <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
               <span class="username">Carlos Javier Rodriguez</span>
-            </div>
+            </div> -->
 
 
           </div>
@@ -60,11 +61,11 @@ if (!isset($_SESSION['nombreUsuario'])) {
     <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
     <div>
       <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
-      <script src="../js/validacionFormulario/validacionUnirse.js"></script>
       <script src="../js/carga.js"></script>
     </div>
   </div>
 
+  <script src="../js/socket/usuarioOnline.js"></script>
   <script src="../js/eliminar.js"></script>
   <script src="../js/transicion.js"></script>
 </body>
