@@ -93,7 +93,7 @@ class SalaManager implements MessageComponentInterface
                 'nombreSala' => $nombreSala,
                 'usuarios' => []
             ];
-
+            
             // Enviar un mensaje a todos los clientes conectados
             $from->send(json_encode([
                 'status' => 'success',

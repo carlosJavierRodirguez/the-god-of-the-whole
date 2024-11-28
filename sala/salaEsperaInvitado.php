@@ -2,14 +2,19 @@
 session_start();  // Inicia la sesión
 
 // Verificar si el nombre del invitado está en la sesión
-if (!isset($_SESSION['nombreInvitado'])) {
-    // Si no está en la sesión, redirige a la página de inicio o a una página de error
-    header("Location: ../invitado/unirse.php");  
+if (!isset($_SESSION['nombreInvitado']) || !isset($_SESSION['datosSala'])) {
+    // Si cualquiera de las dos variables de sesión no está definida, redirige
+    header("Location: ../invitado/unirse.php");
     exit();
 }
 
-// Si el nombre está en la sesión, lo mostramos o procesamos
-$nombreInvitado = $_SESSION['nombreInvitado'];  // Nombre del invitado desde la sesión
+// Nombre del invitado desde la sesión
+$nombreInvitado = $_SESSION['nombreInvitado'];  
+
+//Datos de la sala
+$nombreSala = $_SESSION['datosSala']['nombre_sala']?? 'No disponible';
+$codigoSala = $_SESSION['datosSala']['codigo_sala']?? 'No disponible';
+
 ?>
 
 <!DOCTYPE html>
@@ -27,16 +32,16 @@ $nombreInvitado = $_SESSION['nombreInvitado'];  // Nombre del invitado desde la 
 
             <div class="infoSala col-9 text-white">
                 <!-- Asignar dinámicamente el nombre de la sala (puedes ajustar de dónde viene este valor) -->
-                <div>Nombre Sala: <?php   ?></div>
+                <div>Nombre Sala: <?php  echo $nombreSala; ?></div>
                 <!-- Mostrar el código de la sala desde la sesión -->
-                <div>Codigo: <?php ?>
+                <div>Codigo: <?php echo $codigoSala; ?>
                     <button class=" bg-transparent border-0">
                         <i class="fa-solid fa-copy"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="text-white">Jugadores: / <i class="fa-solid fa-user"></i> </div>
+            <div class="text-white">Jugadores: <i class="fa-solid fa-user"></i> </div>
 
             <div class="rueda col-9">
                 <div class="user-profile form-group mt-2 rounded ">

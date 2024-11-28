@@ -4,6 +4,7 @@ class Acceso
     private $email;
     private $clave;
     private $codigo;
+    private $nombre;
 
     public function setEmail($email)
     {
@@ -43,5 +44,13 @@ class Acceso
     public function getClaveConfirmada()
     {
         return $this->clave;
+    }
+
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+    }
+
+    public function getNombre(){
+        return $this->nombre;
     }
 }

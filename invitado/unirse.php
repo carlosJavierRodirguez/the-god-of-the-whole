@@ -3,7 +3,6 @@
 
 <head>
   <?php include('../principal/head.php') ?>
-
 </head>
 
 
@@ -79,7 +78,6 @@
     </div>
   </div>
 
-  <script src="../js/validacionFormulario/validacionUnirse.js"></script>
   <script src="../js/carga.js"></script>
   <script src="../js/socket/formularioUnirseSala.js"></script>
 </body>
