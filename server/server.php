@@ -23,18 +23,11 @@ class SalaManager implements MessageComponentInterface
         $this->conexion = new Conexion();
     }
 
-public function onOpen(ConnectionInterface $conn)
-{
-    $this->clients->attach($conn);
-    echo "Nueva conexión: ({$conn->resourceId})\n";
-
-    // Mensaje de prueba
-    $conn->send(json_encode([
-        'type' => 'usuarios_en_sala',
-        'codigoSala' => '12345',
-        'usuarios' => ['UsuarioPrueba1', 'UsuarioPrueba2']
-    ]));
-}
+    public function onOpen(ConnectionInterface $conn)
+    {
+        $this->clients->attach($conn);
+        echo "Nueva conexión: ({$conn->resourceId})\n";
+    }
 
 
     public function onMessage(ConnectionInterface $from, $msg)
@@ -160,16 +153,15 @@ public function onOpen(ConnectionInterface $conn)
     // Función para actualizar la lista de usuarios en una sala
     private function actualizarUsuariosSala($codigoSala)
     {
-        $usuarios = array_values($this->salas[$codigoSala]['usuarios']);
+        $usuarios = array_values($this->salas[$codigoSala]['usuarios']); // Usuarios actuales en la sala
+
         foreach ($this->clients as $client) {
             if (isset($this->salas[$codigoSala]['usuarios'][$client->resourceId])) {
-                $mensaje = json_encode([
+                $client->send(json_encode([
                     'type' => 'usuarios_en_sala',
                     'codigoSala' => $codigoSala,
                     'usuarios' => $usuarios
-                ]);
-                echo "Enviando a cliente {$client->resourceId}: $mensaje\n"; // Log para depuración
-                $client->send($mensaje);
+                ]));
             }
         }
     }

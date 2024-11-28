@@ -5,26 +5,28 @@ socket.onopen = () => {
 };
 
 socket.onmessage = (event) => {
-  const data = JSON.parse(event.data);
-  console.log("Mensaje recibido del servidor:", data);
+  console.log("Mensaje recibido:", event.data);
 
-  if (data.type === "usuarios_en_sala") {
-    console.log(`Usuarios en la sala ${data.codigoSala}:`, data.usuarios);
-    console.table(data.usuarios);
+  try {
+    const data = JSON.parse(event.data);
 
-    const listaUsuarios = document.getElementById("lista-usuarios");
-    if (listaUsuarios) {
-      listaUsuarios.innerHTML = "";
-      data.usuarios.forEach((usuario) => {
-        const li = document.createElement("li");
-        li.textContent = usuario;
-        listaUsuarios.appendChild(li);
-      });
-    } else {
-      console.warn("Elemento #lista-usuarios no encontrado en el DOM.");
+    if (data.type === "usuarios_en_sala") {
+      console.log(`Usuarios en la sala ${data.codigoSala}:`, data.usuarios);
+      console.table(data.usuarios);
+
+      // Actualiza la lista de usuarios en la interfaz
+      const listaUsuarios = document.getElementById("lista-usuarios");
+      if (listaUsuarios) {
+        listaUsuarios.innerHTML = ""; // Limpia la lista actual
+        data.usuarios.forEach((usuario) => {
+          const li = document.createElement("li");
+          li.textContent = usuario;
+          listaUsuarios.appendChild(li);
+        });
+      }
     }
-  } else {
-    console.log("Mensaje no relacionado con usuarios en sala:", data);
+  } catch (error) {
+    console.error("Error procesando el mensaje:", error);
   }
 };
 
