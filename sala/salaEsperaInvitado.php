@@ -1,5 +1,7 @@
 <?php
-session_start();  // Inicia la sesión
+session_start();  
+
+// include('../libreria/datosInvitado/imagenPerfilInvitado.php');
 
 // Verificar si el nombre del invitado está en la sesión
 if (!isset($_SESSION['nombreInvitado']) || !isset($_SESSION['datosSala'])) {
@@ -9,7 +11,7 @@ if (!isset($_SESSION['nombreInvitado']) || !isset($_SESSION['datosSala'])) {
 }
 
 // Nombre del invitado desde la sesión
-$nombreInvitado = $_SESSION['nombreInvitado'];
+$nombreInvitado = $_SESSION['nombreInvitado'] ?? 'No disponible';
 
 //Datos de la sala
 $nombreSala = $_SESSION['datosSala']['nombre_sala'] ?? 'No disponible';
@@ -43,15 +45,65 @@ $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
 
             <div class="rueda col-9">
                 <ul id="lista-usuarios"></ul>
-                <!-- <div class="user-profile form-group mt-2 rounded ">
-                    <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
+                <div class="user-profile form-group mt-2 rounded ">
+                    <button type="button" class="btn border-0 border seleccionPerfilImagen" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img class="user-icon " src="../img/diosesVerdaderos/afrodita.png" alt="">
+                    </button>
+
                     <span class="username"><?php echo $nombreInvitado; ?></span>
-                </div> -->
+                </div>
             </div>
 
         </div>
+
     </div>
 
+    <!-- Modal para escoger la imagen de perfil -->
+    <div class="modal fade" id="actulizarImagenPerfilModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content user-profile">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Selecciona tu Imagen de Perfil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Elige una imagen que te represente en el juego:</p>
+                    <form id="formActualizarImagenPerfil" method="POST">
+                        <div class="row">
+                            <?php
+                            // Asumiendo que ya tienes la consulta para obtener las imágenes disponibles.
+                            if (count($selectImagenes) > 0) {
+                                foreach ($selectImagenes as $fila) {
+                                    $idUrl = $fila['id_url'];
+                                    $urlImagen = $fila['url_imagen'];
+                                    $nombreImagen = $fila['nombre_imagen'];
+
+                                    echo "
+        <div class='col-6 d-flex justify-content-center mb-3'>
+            <input type='radio' id='imagen_$idUrl' name='imagen_id' value='$idUrl'>
+            <label for='imagen_$idUrl' class='text-center'>
+                <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen'/>
+                <br>
+                <span>$nombreImagen</span>
+            </label>
+        </div>";
+                                }
+                            } else {
+                                echo "<p>No hay imágenes disponibles.</p>";
+                            }
+                            ?>
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="submit" class="btn border-0">
+                                <img src="../img/botonGuardar.png" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/socket/socket.js"></script>
     <script src="../js/socket/usuarioOnline.js"></script>
 </body>
 

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const form = document.getElementById("formCrearSala");
   const inputCodigoSala = document.getElementById("txtCodigoSala");
-  const userId = document.getElementById("usuarioId").value; // Obtener el ID del usuario
+  const userId = document.getElementById("usuarioId").value; 
 
   // Función para generar un código aleatorio
   function generarCodigo() {

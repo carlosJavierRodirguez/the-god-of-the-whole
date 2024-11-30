@@ -68,11 +68,11 @@ $nombreUsuario = $_SESSION['nombreUsuario'];
                             </div>
                             <!-- Imagen y Nombre del Usuario en Flexbox -->
                             <div class="d-flex align-items-center mb-4">
-                                <button type="button" class="btn border border-0" data-bs-toggle="modal" data-bs-target="#actulizarImagenPerfilModal">
+                                <button type="button" class="btn border border-0 " data-bs-toggle="modal" data-bs-target="#actulizarImagenPerfilModal">
                                     <?php
                                     if (!empty($resultado)) {
                                         // devuelve una fila en el resultado
-                                        $usuarioID = $resultado[0]['usuarioID'];
+                                        $invitadoID = $resultado[0]['usuarioID'];
                                         $urlImagen = $resultado[0]['url_imagen'];
                                         $nombre_imagen = $resultado[0]['nombre_imagen'];
 

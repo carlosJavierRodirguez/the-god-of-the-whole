@@ -5,45 +5,44 @@ document
     const codigoSala = document.getElementById("txtCodigoSala").value;
 
     if (nombreJugador.length >= 2 && codigoSala.length === 5) {
-      // Enviar los datos al servidor PHP usando Fetch
       fetch("../libreria/datosInvitado/Accesoinvitado.php", {
-        // Cambia esta ruta según tu estructura
         method: "POST",
         body: new URLSearchParams({
           txtNombreJugador: nombreJugador,
           txtCodigoSala: codigoSala,
         }),
       })
-        .then((response) => response.json()) // Suponiendo que PHP devuelve JSON
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+          }
+          return response.json();
+        })
         .then((data) => {
           if (data.status === "success") {
-            // Redirige a la sala si la respuesta es exitosa
             window.location.href = "../sala/salaEsperaInvitado.php";
           } else {
-            // Alerta de error
             Swal.fire({
               icon: "error",
-              title: "Error al unirse a la sala",
+              title: "Error",
               text: data.mensaje,
               confirmButtonText: "Aceptar",
             });
           }
         })
         .catch((error) => {
-          // En caso de error en la petición
           Swal.fire({
             icon: "error",
             title: "Error de conexión",
-            text: "Hubo un problema al procesar tu solicitud.",
+            text: `Detalles: ${error.message}`,
             confirmButtonText: "Aceptar",
           });
-          console.error("Error en la solicitud:", error);
         });
     } else {
       Swal.fire({
         icon: "error",
-        title: "Campos Invalidos",
-        text: "Por favor, asegúrate de que el nombre del jugador tenga al menos 2 caracteres y el código de la sala sea de 5 caracteres.",
+        title: "Campos inválidos",
+        text: "Revisa el nombre y el código de la sala.",
         confirmButtonText: "Aceptar",
       });
     }

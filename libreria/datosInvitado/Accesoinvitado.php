@@ -1,63 +1,71 @@
 <?php
-session_start();  // Inicia la sesión
+session_start();
 
 include('../conexion.php');
 include('../classAcceso.php');
 
-$encapsularAcceso = new Acceso();
-$conexion = new Conexion();
+// Configurar manejo de errores
+error_reporting(E_ALL);
+ini_set('display_errors', 0); // No mostrar errores directamente
+$logFile = '../error_log.txt';
 
-$nombreInvitado = isset($_POST['txtNombreJugador']) ? htmlspecialchars(trim($_POST['txtNombreJugador'])) : null;
-$codigoSala = isset($_POST['txtCodigoSala']) ? htmlspecialchars(trim($_POST['txtCodigoSala'])) : null;
+// Función para registrar errores
+function registrarError($mensaje)
+{
+    global $logFile;
+    file_put_contents($logFile, date('Y-m-d H:i:s') . ' - ' . $mensaje . PHP_EOL, FILE_APPEND);
+}
 
-// Se establece el código de sala
-$encapsularAcceso->setCodigoSala($codigoSala);
-$codigoEncapsulado = $encapsularAcceso->getCodigoSala();
+try {
+    $encapsularAcceso = new Acceso();
+    $conexion = new Conexion();
 
-//encapsular nombre de invitado
-$encapsularAcceso->setNombre($nombreInvitado);
-$nombreInvitadoEncapsulado = $encapsularAcceso->getNombre();
+    $nombreInvitado = isset($_POST['txtNombreJugador']) ? htmlspecialchars(trim($_POST['txtNombreJugador'])) : null;
+    $codigoSala = isset($_POST['txtCodigoSala']) ? htmlspecialchars(trim($_POST['txtCodigoSala'])) : null;
 
-$response = [];
+    // Validar datos recibidos
+    if (!$nombreInvitado || !$codigoSala) {
+        echo json_encode(['status' => 'error', 'mensaje' => 'Datos incompletos.']);
+        exit();
+    }
 
-if ($nombreInvitadoEncapsulado && $codigoEncapsulado) {
+    // Encapsular los datos
+    $encapsularAcceso->setCodigoSala($codigoSala);
+    $codigoEncapsulado = $encapsularAcceso->getCodigoSala();
+
+    $encapsularAcceso->setNombre($nombreInvitado);
+    $nombreInvitadoEncapsulado = $encapsularAcceso->getNombre();
+
+    // Validar si la sala existe
+    $sqlValidarSala = "SELECT nombre_sala, codigo_sala FROM public.sala WHERE codigo_sala = ?";
+    $valoresValidarSala = [$codigoEncapsulado];
+    $resultadoValidarSala = $conexion->consultaIniciarSesion($sqlValidarSala, $valoresValidarSala);
 
 
-    // Insertar el jugador en la base de datos
-    $query = "INSERT INTO public.invitado(\"nombreInvitado\" ,imagen_id) VALUES (?,1);";
-    $values = [$nombreInvitadoEncapsulado];
+    if (!empty($resultadoValidarSala)) {
 
-    $resultados = $conexion->insertarDatos($query, $values);
+        // Si la sala existe, insertar el invitado
+        $queryInsertarInvitado = "INSERT INTO public.invitado(\"nombreInvitado\", imagen_id) VALUES (?, 1)";
+        $valoresInvitado = [$nombreInvitadoEncapsulado];
+        $resultadoInsertar = $conexion->consultaIniciarSesion($queryInsertarInvitado, $valoresInvitado);
 
-    if ($resultados) {
-        $sqlDatosSala = "SELECT nombre_sala, codigo_sala FROM public.sala WHERE codigo_sala = ?";
-        $valoresDatosSala = [$codigoEncapsulado];
-        $resultadosSala = $conexion->consultaIniciarSesion($sqlDatosSala, $valoresDatosSala);
-
-        if (!empty($resultadosSala)) {
-            $_SESSION['datosSala'] = $resultadosSala[0];
+        if ($resultadoInsertar) {
+            // Guardar los datos en la sesión
+            $_SESSION['invitadoID'] = $resultadoInsertar[0]['invitadoID'];
             $_SESSION['nombreInvitado'] = $nombreInvitadoEncapsulado;
-
-            $response['status'] = 'success';
-            echo json_encode($response);
+            $_SESSION['datosSala'] = $resultadoValidarSala[0];
+            echo json_encode(['status' => 'success', 'mensaje' => 'Invitado registrado correctamente.']);
             exit();
         } else {
-            $response['status'] = 'error';
-            $response['mensaje'] = 'No se encontró la sala.';
-            echo json_encode($response);
+            echo json_encode(['status' => 'error', 'mensaje' => 'Error al guardar los datos del invitado.']);
             exit();
         }
     } else {
-        // Respuesta de error si no se pudo insertar
-        $response['status'] = 'error';
-        $response['mensaje'] = 'Error al añadir el invitado.';
-        echo json_encode($response);  // Enviar respuesta JSON
+        echo json_encode(['status' => 'error', 'mensaje' => 'El código de sala no es válido.']);
         exit();
     }
-} else {
-    // En caso de que falten los datos necesarios
-    $response['status'] = 'error';
-    $response['mensaje'] = 'El nombre del invitado o el código de sala no están definidos.';
-    echo json_encode($response);  // Enviar respuesta JSON
+} catch (Exception $e) {
+    registrarError($e->getMessage());
+    echo json_encode(['status' => 'error', 'mensaje' => 'Ocurrió un error interno.']);
     exit();
 }

@@ -93,14 +93,18 @@ class Conexion
 
     private function manejarError($e)
     {
-        // Código de error
-        $errorCode = $e->getCode();
-
-        // Obtener el mensaje de error de PostgreSQL
         global $PGSQL_ERRORS;
-        $errorMessage = isset($PGSQL_ERRORS[$errorCode]) ? $PGSQL_ERRORS[$errorCode] : $PGSQL_ERRORS['default'];
 
-        // Mostrar un mensaje genérico al usuario (sin guardar el error en un archivo)
-        echo "Lo sentimos, ha ocurrido un error. Nuestro equipo está trabajando para resolverlo.";
+        // Obtener el código y mensaje de error de PostgreSQL
+        $errorCode = $e->getCode();
+        $errorMessage = isset($PGSQL_ERRORS[$errorCode]) ? $PGSQL_ERRORS[$errorCode] : 'Error desconocido';
+
+        // Mostrar un mensaje de error controlado en formato JSON
+        echo json_encode([
+            'status' => 'error',
+            'mensaje' => $errorMessage,
+            'detalle' => $e->getMessage() // Puedes omitir esto en producción si no quieres mostrar el detalle
+        ]);
+        exit();
     }
 }

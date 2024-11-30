@@ -1,55 +1,54 @@
 .pergaminoCu-Container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .pergaminoCu {
-    background-image: url('../img/pergamino.png'); /* Imagen del pergamino */
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 400px; /* Ajusta el ancho según el tamaño de tu pergamino */
-    height: 600px; /* Ajusta la altura */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    position: relative;
-    margin-top: 70px;
-    gap: 10px;
-  }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pergaminoCu {
+  background-image: url("../img/pergamino.png"); /* Imagen del pergamino */
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 400px; /* Ajusta el ancho según el tamaño de tu pergamino */
+  height: 600px; /* Ajusta la altura */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  margin-top: 70px;
+  gap: 10px;
+}
 .user-profile {
-    background-image: url('../img/marmolNegro.jpg');
-    background-size: cover;
-    background-position: center; 
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-  .rueda{
-    max-height: 240px; 
-    overflow-y: auto; 
-  }
-  
-  .user-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 5px;
-  }
-  
-  .username {
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    
-  } 
+  background-image: url("../img/marmolNegro.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.rueda {
+  max-height: 240px;
+  overflow-y: auto;
+}
 
-  .infoSala{
-    height: 50px;
-    margin-top: 50px;
-  }
+.user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.infoSala {
+  height: 50px;
+  margin-top: 50px;
+}
 
 #iframe-cargando {
   display: none; /* Inicialmente oculto */
@@ -61,4 +60,13 @@
   left: 0; /* Cubre toda la ventana */
   background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
   z-index: 1000; /* En la parte superior */
+}
+.seleccionPerfilImagen {
+  width: 100%;
+  max-width: 85px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
 }

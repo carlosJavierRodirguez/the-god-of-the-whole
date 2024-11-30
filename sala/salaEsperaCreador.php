@@ -28,6 +28,7 @@ if (!isset($_SESSION['nombreUsuario'])) {
           <div class="form-group mb-2 text-white infoSala p-4">
             <div>Nombre Sala: <?php echo $sala->getNombreSala(); ?></div>
             <div>Codigo: <?php echo $sala->getCodigoSala(); ?> <button type="button" class="btn border-0"><i class="fa-solid fa-copy"></i></button> </div>
+            <div class="text-white text-center">Jugadores:<i class="fa-solid fa-user"></i> </div>
           </div>
 
           <div class="p-4 mt-4 rueda">
