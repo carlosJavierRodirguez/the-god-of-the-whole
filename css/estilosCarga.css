@@ -143,25 +143,39 @@
   background: linear-gradient(45deg, #630e0eed, #B22222);
   color: white;
   font-weight: bold;
+  width: 220px; /* Ancho fijo para ambos botones */
+  text-align: center;
   padding: 12px 30px;
   border-radius: 50px;
   text-transform: uppercase;
   border: 2px solid #ffaa00;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  font-family: "Jeju Hallasan";
+  
+  
+ 
 }
 
 .btn-mythological:hover {
-  background: linear-gradient(45deg, #B22222, #8B0000); /* Invertir colores al pasar el mouse */
+  background: linear-gradient(45deg, #B22222, #8B0000);
   color: #fff;
   border: 2px solid #B22222;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumentar sombra en hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn-mythological:focus {
   outline: none;
-  box-shadow: 0 0 10px rgba(255, 99, 71, 0.8); /* Resplandor rojizo al hacer foco */
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+}
+
+@media (max-width: 768px) {
+  .btn-mythological {
+    font-size: 14px; /* Reduce el tamaño de la fuente en dispositivos pequeños */
+    padding: 10px 20px;
+    width: 180px; /* Ajusta el ancho del botón */
+  }
 }
 
 

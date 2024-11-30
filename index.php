@@ -33,15 +33,13 @@
       <div class="col-12 col-md-4"></div>
       
       <div class="col-12 col-md-4">
-      <br/>
+      <br/><br/>
         <div class="d-flex justify-content-center">
-        <a href="partida.php" class="buton"><img
-              src="img/botonJugarOnline.png"
-              alt="imagen de boton de jugar online" /></a>
+        <a href="partida.php" class="btn btn-mythological">Jugar Online</a>
         </div>
         <br />
         <div class="d-flex justify-content-center">
-        <button class="btn btn-mythological">Configuraciones</button>
+        <a href="configuraciones.php" class="btn btn-mythological">Configuraciones</a>
         </div>
       </div>
       <div class="col-12 col-md-4"></div>
