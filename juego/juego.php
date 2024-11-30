@@ -32,6 +32,7 @@ include('../libreria/juego/listarPreguntas.php');
                         echo '<h1 class="pregunta-texto text-center">No hay más preguntas disponibles</h1>';
                     }
                     ?>
+                     <p id="contador" class="text-center">Tiempo restante: 20s</p>
                 </div>
             </div>
             <div class="col-1"></div>
@@ -73,12 +74,23 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
+    <div id="loseModal" class="modal">
+    <div class="modal-content">
+        <h2>¡Perdiste!</h2>
+        <p>No alcanzaste a presionar el botón a tiempo.</p>
+        <p>Puntos ganados: 0</p>
+        <button id="retryButton" class="btn btn-warning">Seguir jugando</button>
+    </div>
+</div>
+
+
     <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/socket/socket.js"></script>
     <script src="../js/juego-js/dragDrop/generarDioses.js"></script>
     <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
     <script src="../js/juego-js/validacion/validacionDioses.js"></script>
+    <script src="../js/tempori.js"></script>
 </body>
 
 </html>
