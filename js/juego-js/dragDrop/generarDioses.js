@@ -1,114 +1,71 @@
-
-document.addEventListener("DOMContentLoaded", () => {
-  
-  // 1. Mezcla el array de dioses
-  let gods = shuffleArray([
-    "hades",
-    "poseidon",
-    "gemini",
-    "sirenas",
-    "zeus",
-    "apolo",
-    "hefesto",
-    "artemisa",
-    "minotauro",
-    "griffo",
-  ]);
-
-  // 2. Configuración del contenedor
+document.addEventListener("DOMContentLoaded", async () => {
+  const preguntaContainer = document.querySelector(".woodquest");
   const dragContainer = document.getElementById("drag-container");
 
-  // 3. Genera los elementos de los dioses
-  initializeRow(dragContainer, gods);
+  try {
+      // Llamar al endpoint PHP con el ID de la pregunta
+      const preguntaId = 1; // Cambiar dinámicamente según la pregunta
+      const response = await fetch(`parametros.php?pregunta_id=${preguntaId}`);
+      const data = await response.json();
 
-  // 4. Configura la zona de soltado
-  setupDropzone();
+      if (data.error) {
+          throw new Error(data.error);
+      }
+
+      // Mostrar la pregunta
+      if (preguntaContainer) {
+          preguntaContainer.innerHTML = `
+              <h1 class="pregunta-texto text-center">${data.pregunta}</h1>
+              <p id="contador" class="text-center">Tiempo restante: 20s</p>
+          `;
+      }
+
+      // Generar las imágenes en un grid de 2 filas y 5 columnas
+      const imagenes = data.imagenes;
+      if (imagenes.length === 0) {
+          throw new Error("No se encontraron imágenes.");
+      }
+
+      dragContainer.innerHTML = ""; // Limpiar contenedor
+
+      imagenes.forEach((imagen, index) => {
+          // Crear el contenedor de cada imagen
+          const imgDiv = document.createElement("div");
+          imgDiv.className = "draggable text-center";
+          imgDiv.id = `item${index + 1}`;
+          imgDiv.draggable = true;
+
+          // Crear el elemento de imagen
+          const imgElement = document.createElement("img");
+          imgElement.src = imagen.imagen_url;
+          imgElement.alt = imagen.nombre;
+          imgElement.className = "img-thumbnail";
+
+          // Crear el elemento de texto (nombre del dios)
+          const nameElement = document.createElement("p");
+          nameElement.textContent = imagen.nombre;
+          nameElement.className = "nombre-dios";
+
+          // Insertar elementos en el contenedor
+          imgDiv.appendChild(imgElement);
+          imgDiv.appendChild(nameElement);
+          dragContainer.appendChild(imgDiv);
+
+          // Eventos para arrastrar
+          imgDiv.addEventListener("dragstart", handleDragStart);
+          imgDiv.addEventListener("dragend", handleDragEnd);
+      });
+  } catch (error) {
+      console.error("Error al cargar los datos:", error);
+      if (preguntaContainer) {
+          preguntaContainer.innerHTML = `
+              <h1 class="text-danger text-center">Error al cargar los datos.</h1>
+          `;
+      }
+  }
 });
 
-// Función para inicializar una fila con elementos
-function initializeRow(container, gods) {
-  gods.forEach((godName, index) => {
-    const godDiv = createGodElement(godName, index);
-    
-    // Guardar la posición original del elemento
-    godDiv.dataset.originalParent = container.id;
-    container.appendChild(godDiv);
-  });
-}
-
-// Función para crear un elemento de dios
-function createGodElement(godName, index) {
-  const godDiv = document.createElement("div");
-  godDiv.className = `draggable ${godName}`;
-  godDiv.id = `item${index + 1}`;
-  godDiv.draggable = true;
-  godDiv.textContent = godName; // Opcional, para mostrar el nombre del dios
-
-  // Eventos de arrastre
-  godDiv.addEventListener("dragstart", handleDragStart);
-  godDiv.addEventListener("dragend", handleDragEnd);
-
-  // Evento para devolver al contenedor inicial al hacer clic
-  godDiv.addEventListener("dblclick", () => {
-    devolverAlContenedorInicial(godDiv);
-  });
-
-  return godDiv;
-}
-
-// Configura la zona de soltado
-function setupDropzone() {
-  const dropzone = document.getElementById("dropzone");
-
-  dropzone.addEventListener("dragover", (event) => {
-    event.preventDefault();
-  });
-
-  dropzone.addEventListener("drop", (event) => {
-    event.preventDefault();
-    handleDrop(event, dropzone);
-  });
-}
-
-// Función para manejar el evento de soltado
-function handleDrop(event, dropzone) {
-  const id = event.dataTransfer.getData("text/plain");
-  const draggedElement = document.getElementById(id);
-
-  // Ajustar estilos de posición
-  draggedElement.style.position = "";
-  draggedElement.style.left = "";
-  draggedElement.style.top = "";
-
-  dropzone.appendChild(draggedElement);
-}
-
-// Función para devolver el elemento al contenedor inicial
-function devolverAlContenedorInicial(elemento) {
-  const originalParentId = elemento.dataset.originalParent;
-  const originalParent = document.getElementById(originalParentId);
-
-  if (originalParent) {
-    // Restablecer cualquier estilo personalizado
-    elemento.style.position = "";
-    elemento.style.left = "";
-    elemento.style.top = "";
-
-    // Agregar el elemento al contenedor inicial
-    originalParent.appendChild(elemento);
-  }
-}
-
-// Función para mezclar el array de dioses
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
-// Funciones de manejo de arrastre
+// Eventos de arrastre
 function handleDragStart(event) {
   event.dataTransfer.setData("text/plain", event.target.id);
   setTimeout(() => event.target.classList.add("invisible"), 0);
