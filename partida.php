@@ -28,14 +28,13 @@
       <!--botones-->
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4">
+      <br/><br/>
         <div class="d-flex justify-content-center">
-          <a href="invitado/unirse.php" class="buton"><img src="img/botonUnirse.png" alt="imagen de boton para unirse" /></a>
+        <a href="invitado/unirse.php" class="btn btn-mythological">Unirse</a>
         </div>
         <br />
         <div class="d-flex justify-content-center">
-          <a href="login/iniciarSesion.php" class="buton"><img
-              src="img/botonCrearSala.png"
-              alt="imagen de boton para crear la sala" /></a>
+        <a href="login/iniciarSesion.php" class="btn btn-mythological">Crear Sala</a>>
         </div>
       </div>
       <div class="col-12 col-md-4"></div>

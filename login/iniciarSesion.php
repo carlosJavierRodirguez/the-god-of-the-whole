@@ -65,11 +65,7 @@
             <div>
               <a href="crearCuenta.php" class="link tipoLetra">¿No tienes cuenta?</a>
             </div>
-            <button type="submit" class="btn btn-sm botonIngresar">
-              <img
-                src="../img/botonIniciarSesion.png"
-                class="img-fluid"
-                alt="Iniciar Sesión" />
+            <button type="submit" class="btn btn-mythological">Iniciar Sesión
             </button>
           </div>
         </form>

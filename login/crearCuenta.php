@@ -87,11 +87,8 @@ $conectar->conectar();
               ¿Ya tienes cuenta?
               <a href="iniciarSesion.php" class="link tipoLetra">Iniciar Sesión</a>
             </div>
-            <button type="submit" class="btn btn-sm botonIngresar">
-              <img
-                src="../img/botonRegistrarse.png"
-                class="img-fluid"
-                alt="Iniciar Sesión" />
+            <button type="submit" class="btn btn-mythological">
+              Registrarse
             </button>
           </div>
         </form>

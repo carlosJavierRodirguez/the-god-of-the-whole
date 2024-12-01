@@ -50,14 +50,10 @@
               El código debe tener mínimo 5 números
             </div>
           </div>
+          <br>
           <!-- Botón de conexión -->
           <div class="text-center">
-            <button type="button" id="btnIngresarSala" class="btn btn-sm botonIngresar">
-              <img
-                src="../img/botonIngresar.png"
-                class="img-fluid"
-                alt="Botón de ingresar" />
-            </button>
+          <button type="button" id="btnIngresarSala" class="btn btn-mythological">Ingresar</button>
             <div>
               <h5 class="tipoLetra text-white">Crea tu propia sala</h5>
               <a href="../login/iniciarSesion.php" class="link tipoLetra">Iniciar sesión</a>

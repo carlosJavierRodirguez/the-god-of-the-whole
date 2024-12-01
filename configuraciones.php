@@ -49,10 +49,8 @@
             </div>
 
             <div class="col-12 btn botonIngresar">
-              <a href="index.php" class="" id="botonGuardar"><img
-                  src="img/botonGuardar.png"
-                  alt="imagen de boton de guardar"
-                  class="img-fluid" /></a>
+            <a href="invitado/unirse.php" class="btn btn-mythological" id="botonGuardar">Guardar</a>
+              
             </div>
           </div>
         </form>

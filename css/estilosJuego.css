@@ -165,8 +165,9 @@ body {
   opacity: 0.5; /* Cambia la opacidad cuando el elemento está siendo arrastrado */
 }
 /* Estilo para el fondo del modal */
-.modal {
-  display: none; /* Oculto por defecto */
+
+.custom-lose-modal {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -179,32 +180,23 @@ body {
 }
 
 /* Contenido del modal */
-.modal-content {
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo negro */
-  color: #fff; /* Texto blanco */
-  border: 4px solid #ffd700; /* Borde dorado */
-  border-radius: 10px;
-  padding: 20px;
+.custom-lose-modal .modal-content {
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+  color: #ff0000; /* Texto rojo */
+  border: 4px solid #ff4500; /* Borde rojo fuego */
+  border-radius: 15px;
+  padding: 25px;
   text-align: center;
-  width: 50%;
-  max-width: 500px;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Brillo dorado */
+  width: 40%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.8); /* Brillo rojo */
 }
 
-/* Botón dentro del modal */
-#retryButton {
-  margin-top: 20px;
-  font-size: 16px;
-  padding: 10px 20px;
-  color: #000;
-  background-color: #ffd700;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
+/* Personalización del modal de ganar */
+.custom-win-modal .modal-content {
+  color: #00ff00; /* Texto verde */
+  border-color: #32cd32; /* Borde verde brillante */
+  box-shadow: 0 0 15px rgba(50, 205, 50, 0.8); /* Brillo verde */
 }
 
-#retryButton:hover {
-  background-color: #ffcc00;
-}
 

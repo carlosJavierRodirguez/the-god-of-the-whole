@@ -2,74 +2,68 @@ document.addEventListener("DOMContentLoaded", () => {
     const diosesVerdaderos = ["afrodita", "apolo", "ares", "artemisa", "atenea", "hades", "hefesto", "hera", "poseidon", "zeus"];
     const semiDioses = ["gemini", "hercules"];
     const criaturasMitologicas = ["griffo", "minotauro", "sirenas"];
-    const dragContainer = document.getElementById("drag-container");
+
+    const contador = document.getElementById("contador");
+    const loseModal = document.getElementById("loseModal");
+    const winModal = document.getElementById("winModal"); // Modal de felicitaciones
+    const validateButton = document.getElementById("validateButton");
+    const puntosElement = document.getElementById("puntos"); // Para mostrar los puntos en el modal
+
+    let timeLeft = 20;
+    let timer;
 
     // Función para validar los elementos en la zona de drop
-    function validarDioses() {
+    function contarElementosEnDropzone() {
         const elementosDropzone = document.querySelectorAll("#dropzone .draggable");
-        let cantidadDiosesValidos = 0;
-        let hayDiosesInvalidos = false;
-
-        // Recorremos todos los elementos en la zona de drop
-        elementosDropzone.forEach(elemento => {
-            const claseDios = Array.from(elemento.classList).find(cls =>
-                diosesVerdaderos.includes(cls) || semiDioses.includes(cls) || criaturasMitologicas.includes(cls)
-            );
-
-            // Si el dios es verdadero, incrementamos el contador de dioses válidos
-            if (diosesVerdaderos.includes(claseDios)) {
-                elemento.style.backgroundColor = "green"; // Color para dioses verdaderos
-                elemento.style.borderRadius = "60%"; // Borde redondeado
-                cantidadDiosesValidos++;
-            } 
-            // Si el dios es semiDios o criatura mitológica, lo marcamos como inválido
-            else if (semiDioses.includes(claseDios) || criaturasMitologicas.includes(claseDios)) {
-                elemento.style.backgroundColor = "red"; // Color para elementos incorrectos
-                elemento.style.borderRadius = "60%"; // Borde redondeado
-                hayDiosesInvalidos = true;
-            }
-        });
-
-        // Devolvemos true si hay al menos 4 dioses válidos y no hay dioses inválidos
-        return cantidadDiosesValidos >= 4 && !hayDiosesInvalidos;
+        return elementosDropzone.length; // Devuelve la cantidad de elementos en la zona de drop
     }
-    // Agregar evento de clic al botón de validación
-    const validateButton = document.getElementById("validateButton");
+
+    // Mostrar el modal de pérdida y redirigir después de 2 segundos
+    function showLoseModal() {
+        loseModal.style.display = "flex";
+        setTimeout(() => {
+            window.location.href = "pantallaCarga.php"; // Redirigir a la pantalla de carga
+        }, 2000);
+    }
+
+    // Mostrar el modal de felicitaciones y redirigir a pantalla de carga
+    function showWinModal(puntos) {
+        winModal.style.display = "flex";
+        puntosElement.textContent = puntos; // Mostrar los puntos
+        setTimeout(() => {
+            window.location.href = "pantallaCarga.php"; // Redirigir a la pantalla de carga
+        }, 2000);
+    }
+
+    // Función para iniciar el temporizador
+    function startTimer() {
+        timer = setInterval(() => {
+            timeLeft--;
+            contador.textContent = `Tiempo restante: ${timeLeft}s`;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                showLoseModal(); // Mostrar el modal de pérdida y redirigir
+            }
+        }, 1000);
+    }
+
+    // Evento al hacer clic en el botón "Listo"
     if (validateButton) {
-        validateButton.addEventListener("click", function(event) {
-            // Prevenir la acción por defecto del enlace y evitar redirección inmediata
+        validateButton.addEventListener("click", (event) => {
             event.preventDefault();
 
-            // Validar dioses en la zona de drop
-            const diosesValidados = validarDioses();
+            const cantidadElementos = contarElementosEnDropzone();
 
-            if (diosesValidados) {
-                // Si hay al menos 4 dioses válidos y no hay dioses inválidos, redirigir
-                window.location.href = "pantallaCarga.php";
+            if (cantidadElementos >= 4) {
+                const puntos = cantidadElementos * 10; // Ejemplo: cada elemento da 10 puntos
+                showWinModal(puntos); // Mostrar modal de felicitaciones con puntos
             } else {
-                // Si hay dioses inválidos o menos de 4 dioses válidos, mostrar un error
-                mostrarAlerta("Error: Debes tener al menos 4 dioses correctos en la zona de drop. Revisa tu selección.");
+                alert("Error: Debes tener al menos 4 elementos en la zona de drop.");
             }
         });
-    } else {
-        console.error("El botón de validación no se encontró en el DOM.");
     }
 
-    // Escuchar el evento dragend para restablecer el color cuando el elemento se suelta fuera del dropzone
-    const elementosDraggables = document.querySelectorAll(".draggable");
-    elementosDraggables.forEach(elemento => {
-        elemento.addEventListener("dragend", () => {
-            if (!elemento.closest("#dropzone")) {
-                elemento.style.backgroundColor = "";
-                elemento.style.borderRadius = ""; // Restablecer borde
-            }
-        });
-
-        // Evento de clic para devolver el elemento al contenedor inicial si está en el dropzone
-        elemento.addEventListener("click", () => {
-            if (elemento.closest("#dropzone")) {
-                devolverAlContenedorInicial(elemento);
-            }
-        });
-    });
+    // Iniciar el temporizador al cargar la página
+    startTimer();
 });

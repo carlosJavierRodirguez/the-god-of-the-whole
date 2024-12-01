@@ -53,7 +53,7 @@ include('../libreria/juego/listarPreguntas.php');
             <!-- chat -->
             <div class="col-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Launch static backdrop modal
+                <i class="fa-brands fa-rocketchat"></i>
                 </button>
             </div>
 
@@ -68,8 +68,32 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
     <!-- modales -->
+
+    
+ 
+<!-- Modal de Felicitaciones -->
+<div id="winModal" class="modal custom-lose-modal custom-win-modal" style="display: none;">
+    <div class="modal-content">
+        <h2>¡Felicidades!</h2>
+        <p>Puntos ganados: <span id="puntos"></span></p>
+    </div>
+</div>
+
+<!-- Modal de Pérdida -->
+<div id="loseModal" class="modal custom-lose-modal">
+    <div class="modal-content">
+        <h2>¡Perdiste!</h2>
+        <p>No alcanzaste a presionar el botón a tiempo.</p>
+        <p>Puntos ganados: 0</p>
+    </div>
+</div>
+
+
+
+
     <!-- Modal para el chat -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header border-0">
@@ -92,15 +116,6 @@ include('../libreria/juego/listarPreguntas.php');
                     </div>
 
                 </div>
-            </div>
-        </div>
-        <!-- modal de perdiste -->
-        <div id="loseModal" class="modal">
-            <div class="modal-content">
-                <h2>¡Perdiste!</h2>
-                <p>No alcanzaste a presionar el botón a tiempo.</p>
-                <p>Puntos ganados: 0</p>
-                <button id="retryButton" class="btn btn-warning">Seguir jugando</button>
             </div>
         </div>
 
