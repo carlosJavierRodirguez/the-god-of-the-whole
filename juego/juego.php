@@ -20,7 +20,7 @@ include('../libreria/juego/listarPreguntas.php');
             <div class="col-8  mt-1">
                 <div class="woodquest mt-2 ">
                     <?php
-                    // Verificar el resultado de la consulta  //Verificar si criss es gay.
+                    // Verificar el resultado de la consulta  
                     if (count($resultado) > 0) {
                         // Obtener la pregunta aleatoria
                         $pregunta = $resultado[0];
@@ -52,8 +52,8 @@ include('../libreria/juego/listarPreguntas.php');
 
             <!-- chat -->
             <div class="col-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="fa-brands fa-rocketchat"></i>
+                <button type="button" class="btn btn-primary" onclick="openChatModal()">
+                    <i class="fa-brands fa-rocketchat" ></i>
                 </button>
             </div>
 
@@ -69,75 +69,65 @@ include('../libreria/juego/listarPreguntas.php');
     </div>
     <!-- modales -->
 
-    
- 
 
-<div id="winModal" class="modal custom-win-modal" style="display: none;">
-    <div class="modal-wrapper">
-        <div class="gif-container">
-            <img src="../gif/demonn.gif" alt="Win Celebration" class="modal-gif">
-        </div>
-        <div class="modal-content">
-            <h2>¡Felicidades!</h2>
-            <p>Puntos ganados: <span id="puntos"></span></p>
-        </div>
-    </div>
-</div>
 
-<!-- Modal de Perder -->
-<div id="loseModal" class="modal custom-lose-modal" style="display: none;">
-    <div class="modal-wrapper">
-        <div class="gif-container">
-            <img src="../gif/demonn.gif" alt="Lose Animation" class="modal-gif">
-        </div>
-        <div class="modal-content">
-            <h2>¡Perdiste!</h2>
-            <p>No alcanzaste a presionar el botón a tiempo.</p>
-            <p>Puntos ganados: 0</p>
+
+    <div id="winModal" class="modal custom-win-modal" style="display: none;">
+        <div class="modal-wrapper">
+            <div class="gif-container">
+                <img src="../gif/demonn.gif" alt="Win Celebration" class="modal-gif">
+            </div>
+            <div class="modal-content">
+                <h2>¡Felicidades!</h2>
+                <p>Puntos ganados: <span id="puntos"></span></p>
+            </div>
         </div>
     </div>
-</div>
 
-
-
+    <!-- Modal de Perder -->
+    <div id="loseModal" class="modal custom-lose-modal" style="display: none;">
+        <div class="modal-wrapper">
+            <div class="gif-container">
+                <img src="../gif/demonn.gif" alt="Lose Animation" class="modal-gif">
+            </div>
+            <div class="modal-content">
+                <h2>¡Perdiste!</h2>
+                <p>No alcanzaste a presionar el botón a tiempo.</p>
+                <p>Puntos ganados: 0</p>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Modal para el chat -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-modal-content border">
+            <div class="chat-modal-header basi" id="chatModalHeader">
+                <i class="fa-solid fa-xmark chat-close-btn"></i>
+            </div>
+            <div class="chat mt-2  rounded p-2">
 
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <div class=" chat mt-2 border rounded p-2">
-                        <div class="text-center mb-2">
-                            <div class="basi"></div>
-                        </div>
-                        <div class="messages  mb-3" id="messages"></div>
-                        <div class="send-message d-flex">
-                            <input type="text" class="form-control me-2" id="message">
-                            <button class="btn btn-primary" type="button" id="send">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </div>
-
+                <div class="messages mb-3" id="messages"></div>
+                <div class="send-message d-flex">
+                    <input type="text" class="form-control me-2" id="message">
+                    <button class="btn btn-primary" type="button" id="send">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
-        <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../js/socket/socket.js"></script>
-        <script src="../js/juego-js/dragDrop/generarDioses.js"></script>
-        <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
-        <script src="../js/juego-js/validacion/validacionDioses.js"></script>
-        <script src="../js/tempori.js"></script>
+
+    <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/socket/socket.js"></script>
+    <!-- <script src="../js/juego-js/dragDrop/generarDioses.js"></script> -->
+    <!-- <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
+        <script src="../js/juego-js/validacion/validacionDioses.js"></script> -->
+    <script src="../js/tempori.js"></script>
+    <script src="../js/juego-js/modalChat.js"></script>
 </body>
 
 </html>

@@ -111,10 +111,16 @@ body {
 
 .basi {
   background-image: url("../img/basilis.png");
-  background-size: cover;
+  background-size: cover; /* La imagen se ajustará para cubrir completamente el área */
   background-repeat: no-repeat;
-  background-position: center;
-  min-height: 102px;
+  background-position: center; /* Centrar la imagen */
+  min-height: 107px; /* Establece un mínimo para el encabezado */
+  height: auto;
+  width: 100%; /* Asegura que cubra todo el ancho */
+  display: flex; /* Permite alinear elementos internos */
+  justify-content: space-between; /* Espacio entre los elementos (como el botón de cierre) */
+  align-items: center; /* Centra verticalmente los elementos */
+  padding: 10px; /* Agrega un relleno para los contenidos */
 }
 
 /* Media Queries */
@@ -199,7 +205,7 @@ body {
 
 /* Contenido del modal de ganar */
 .custom-win-modal .modal-content {
-  background-image: url('../img/pegaWin.jpg');
+  background-image: url("../img/pegaWin.jpg");
   background-size: cover;
   background-position: center;
   color: #000000;
@@ -214,7 +220,7 @@ body {
 
 /* Modal de Perder */
 .custom-lose-modal .modal-content {
-  background-image: url('../img/pergaPerd.jpg');
+  background-image: url("../img/pergaPerd.jpg");
   background-size: cover;
   background-position: center;
   color: #000000;
@@ -226,5 +232,35 @@ body {
   max-width: 400px;
   box-shadow: 0 0 20px 5px red;
 }
+.chat-modal {
+  display: none; /* Oculto inicialmente */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.chat-modal-content {
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
 
-
+.chat-modal-content {
+  position: absolute;
+  bottom: auto; /* Para que el modal sea movible */
+  top: 30%;
+}
+.chat-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+}
