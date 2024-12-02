@@ -71,22 +71,33 @@ include('../libreria/juego/listarPreguntas.php');
 
     
  
-<!-- Modal de Felicitaciones -->
-<div id="winModal" class="modal custom-lose-modal custom-win-modal" style="display: none;">
-    <div class="modal-content">
-        <h2>¡Felicidades!</h2>
-        <p>Puntos ganados: <span id="puntos"></span></p>
+
+<div id="winModal" class="modal custom-win-modal" style="display: none;">
+    <div class="modal-wrapper">
+        <div class="gif-container">
+            <img src="../gif/demonn.gif" alt="Win Celebration" class="modal-gif">
+        </div>
+        <div class="modal-content">
+            <h2>¡Felicidades!</h2>
+            <p>Puntos ganados: <span id="puntos"></span></p>
+        </div>
     </div>
 </div>
 
-<!-- Modal de Pérdida -->
-<div id="loseModal" class="modal custom-lose-modal">
-    <div class="modal-content">
-        <h2>¡Perdiste!</h2>
-        <p>No alcanzaste a presionar el botón a tiempo.</p>
-        <p>Puntos ganados: 0</p>
+<!-- Modal de Perder -->
+<div id="loseModal" class="modal custom-lose-modal" style="display: none;">
+    <div class="modal-wrapper">
+        <div class="gif-container">
+            <img src="../gif/demonn.gif" alt="Lose Animation" class="modal-gif">
+        </div>
+        <div class="modal-content">
+            <h2>¡Perdiste!</h2>
+            <p>No alcanzaste a presionar el botón a tiempo.</p>
+            <p>Puntos ganados: 0</p>
+        </div>
     </div>
 </div>
+
 
 
 

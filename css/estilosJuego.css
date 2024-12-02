@@ -164,39 +164,67 @@ body {
 .invisible {
   opacity: 0.5; /* Cambia la opacidad cuando el elemento está siendo arrastrado */
 }
-/* Estilo para el fondo del modal */
-
-.custom-lose-modal {
-  display: none;
+/* Estilos para el modal con gif */
+.modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo negro transparente */
   z-index: 1000;
-  justify-content: center;
-  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* Contenido del modal */
-.custom-lose-modal .modal-content {
-  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
-  color: #ff0000; /* Texto rojo */
-  border: 4px solid #ff4500; /* Borde rojo fuego */
+.gif-container {
+  margin-bottom: 20px;
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.modal-gif {
+  width: 160px;
+  height: 160px;
+  /* Tamaño personalizado del GIF */
+  border-radius: 50%;
+  /* Hace el GIF circular */
+  object-fit: cover;
+  /* Asegura que el contenido se ajuste al círculo */
+}
+
+/* Contenido del modal de ganar */
+.custom-win-modal .modal-content {
+  background-image: url('../img/pegaWin.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #000000;
+  border: 4px solid green;
   border-radius: 15px;
   padding: 25px;
   text-align: center;
   width: 40%;
   max-width: 400px;
-  box-shadow: 0 0 15px rgba(255, 69, 0, 0.8); /* Brillo rojo */
+  box-shadow: 0 0 20px 5px green;
 }
 
-/* Personalización del modal de ganar */
-.custom-win-modal .modal-content {
-  color: #00ff00; /* Texto verde */
-  border-color: #32cd32; /* Borde verde brillante */
-  box-shadow: 0 0 15px rgba(50, 205, 50, 0.8); /* Brillo verde */
+/* Modal de Perder */
+.custom-lose-modal .modal-content {
+  background-image: url('../img/pergaPerd.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #000000;
+  border: 4px solid red;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  width: 40%;
+  max-width: 400px;
+  box-shadow: 0 0 20px 5px red;
 }
 
 
