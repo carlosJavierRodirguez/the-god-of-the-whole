@@ -33,10 +33,36 @@ class SalaManager implements MessageComponentInterface
         echo "Mensaje recibido: " . $msg . "\n";
         $data = json_decode($msg, true);
 
-        if ($data['tipo'] === 'unirse_sala') {
-            $this->unirseASala($from, $data);
-        } elseif ($data['tipo'] === 'crear_sala') {
-            $this->crearSala($from, $data);
+        if (!isset($data['tipo'])) {
+            $from->send(json_encode([
+                'status' => 'error',
+                'mensaje' => 'El mensaje no contiene el tipo de operación.'
+            ]));
+            return;
+        }
+
+        switch ($data['tipo']) {
+            case 'unirse_sala':
+                $this->unirseASala($from, $data);
+                break;
+
+            case 'crear_sala':
+                $this->crearSala($from, $data);
+                break;
+
+            case 'mensaje':
+                $this->retransmitirMensaje($from, $data);
+                break;
+
+            case 'broadcast':
+                $this->enviarABroadcast($from, $data);
+                break;
+
+            default:
+                $from->send(json_encode([
+                    'status' => 'error',
+                    'mensaje' => 'Tipo de operación no reconocido.'
+                ]));
         }
     }
 
@@ -67,9 +93,17 @@ class SalaManager implements MessageComponentInterface
 
     private function crearSala(ConnectionInterface $from, $data)
     {
-        $nombreSala = $data['nombreSala'];
-        $codigoSala = $data['codigoSala'];
-        $usuarioId = $data['usuarioId'];
+        $nombreSala = $data['nombreSala'] ?? '';
+        $codigoSala = $data['codigoSala'] ?? '';
+        $usuarioId = $data['usuarioId'] ?? '';
+
+        if (empty($nombreSala) || empty($codigoSala) || empty($usuarioId)) {
+            $from->send(json_encode([
+                'status' => 'error',
+                'mensaje' => 'Datos insuficientes para crear la sala.'
+            ]));
+            return;
+        }
 
         $query = "INSERT INTO sala (nombre_sala, codigo_sala, creador_sala) VALUES (?, ?, ?)";
         $values = [$nombreSala, $codigoSala, $usuarioId];
@@ -97,8 +131,16 @@ class SalaManager implements MessageComponentInterface
 
     private function unirseASala($from, $data)
     {
-        $codigoSala = $data['codigoSala'];
-        $nombreJugador = $data['nombreJugador'];
+        $codigoSala = $data['codigoSala'] ?? '';
+        $nombreJugador = $data['nombreJugador'] ?? '';
+
+        if (empty($codigoSala) || empty($nombreJugador)) {
+            $from->send(json_encode([
+                'status' => 'error',
+                'mensaje' => 'Código de sala o nombre de jugador inválido.'
+            ]));
+            return;
+        }
 
         $query = "SELECT * FROM sala WHERE codigo_sala = :codigoSala";
         $values = [':codigoSala' => $codigoSala];
@@ -131,6 +173,66 @@ class SalaManager implements MessageComponentInterface
         $from->send(json_encode($response));
     }
 
+    private function retransmitirMensaje(ConnectionInterface $from, $data)
+    {
+        $mensaje = $data['mensaje'] ?? '';
+        $codigoSala = $data['codigoSala'] ?? '';
+
+        if (empty($mensaje)) {
+            $from->send(json_encode([
+                'status' => 'error',
+                'mensaje' => 'El mensaje no puede estar vacío.'
+            ]));
+            return;
+        }
+
+        if (!empty($codigoSala) && isset($this->salas[$codigoSala])) {
+            // Mensajes específicos de sala
+            foreach ($this->clients as $client) {
+                if (isset($this->salas[$codigoSala]['usuarios'][$client->resourceId])) {
+                    $client->send(json_encode([
+                        'tipo' => 'mensaje',
+                        'codigoSala' => $codigoSala,
+                        'mensaje' => $mensaje,
+                        'autor' => $this->salas[$codigoSala]['usuarios'][$from->resourceId] ?? "Anonimo"
+                    ]));
+                }
+            }
+        } else {
+            // Mensajes globales (sin sala)
+            foreach ($this->clients as $client) {
+                $client->send(json_encode([
+                    'tipo' => 'mensaje',
+                    'mensaje' => $mensaje,
+                    'autor' => "Cliente ({$from->resourceId})"
+                ]));
+            }
+        }
+    }
+
+
+
+    private function enviarABroadcast(ConnectionInterface $from, $data)
+    {
+        $mensaje = $data['mensaje'] ?? '';
+
+        if (empty($mensaje)) {
+            $from->send(json_encode([
+                'status' => 'error',
+                'mensaje' => 'El mensaje no puede estar vacío.'
+            ]));
+            return;
+        }
+
+        foreach ($this->clients as $client) {
+            $client->send(json_encode([
+                'tipo' => 'broadcast',
+                'mensaje' => $mensaje,
+                'autor' => 'Broadcast'
+            ]));
+        }
+    }
+
     private function actualizarUsuariosSala($codigoSala)
     {
         $usuarios = array_values($this->salas[$codigoSala]['usuarios']);
@@ -138,7 +240,7 @@ class SalaManager implements MessageComponentInterface
         foreach ($this->clients as $client) {
             if (isset($this->salas[$codigoSala]['usuarios'][$client->resourceId])) {
                 $client->send(json_encode([
-                    'type' => 'usuarios_en_sala',
+                    'tipo' => 'usuarios_en_sala',
                     'codigoSala' => $codigoSala,
                     'usuarios' => $usuarios
                 ]));
@@ -147,6 +249,7 @@ class SalaManager implements MessageComponentInterface
     }
 }
 
+// Inicia el servidor WebSocket
 $server = IoServer::factory(
     new HttpServer(
         new WsServer(

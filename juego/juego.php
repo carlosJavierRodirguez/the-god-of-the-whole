@@ -53,7 +53,7 @@ include('../libreria/juego/listarPreguntas.php');
             <!-- chat -->
             <div class="col-3">
                 <button type="button" class="btn btn-primary" onclick="openChatModal()">
-                    <i class="fa-brands fa-rocketchat" ></i>
+                    <i class="fa-brands fa-rocketchat"></i>
                 </button>
             </div>
 
@@ -123,10 +123,10 @@ include('../libreria/juego/listarPreguntas.php');
     <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/socket/socket.js"></script>
-    <!-- <script src="../js/juego-js/dragDrop/generarDioses.js"></script> -->
-    <!-- <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
-        <script src="../js/juego-js/validacion/validacionDioses.js"></script> -->
-    <script src="../js/tempori.js"></script>
+    <!-- <script src="../js/juego-js/dragDrop/generarDioses.js"></script>
+    <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
+    <script src="../js/juego-js/validacion/validacionDioses.js"></script> -->
+    <!-- <script src="../js/tempori.js"></script>--> 
     <script src="../js/juego-js/modalChat.js"></script>
 </body>
 

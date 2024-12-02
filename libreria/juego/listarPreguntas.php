@@ -6,9 +6,9 @@ session_start();
 require_once('../libreria/conexion.php');
 $conexion = new Conexion();
 
-if (!isset($_SESSION['preguntas_mostradas'])) {
-    $_SESSION['preguntas_mostradas'] = [];
-}
+// if (!isset($_SESSION['preguntas_mostradas'])) {
+//     $_SESSION['preguntas_mostradas'] = [];
+// }
 
 // El resto del código sigue igual
 $placeholders = count($_SESSION['preguntas_mostradas']) > 0
