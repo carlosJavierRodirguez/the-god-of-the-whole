@@ -1,3 +1,4 @@
+import mostrarAlerta from "../alertas/mostrarAlertas.js";
 const socket = new WebSocket("ws://localhost:8080");
 
 socket.onopen = () => {
@@ -22,8 +23,15 @@ socket.onmessage = (event) => {
 
     if (data.tipo === "mensaje") {
       const text = document.createElement("div");
-      text.classList.add("other");
-      text.innerText = `${data.autor}: ${data.mensaje}`;
+
+      if (data.esTuMensaje) {
+        text.classList.add("me"); // Mensaje propio
+        text.innerText = `Tú: ${data.mensaje}`;
+      } else {
+        text.classList.add("other"); // Mensaje de otro usuario
+        text.innerText = `${data.autor}: ${data.mensaje}`;
+      }
+
       document.getElementById("messages").appendChild(text);
     } else {
       console.log("Mensaje no reconocido:", data);
@@ -38,16 +46,20 @@ document.getElementById("send").addEventListener("click", () => {
   const codigoSala = document.getElementById("sala")?.value || ""; // Opcional para salas
 
   if (message === "") {
-    alert("No puedes enviar un mensaje vacío.");
+    mostrarAlerta(
+      "error",
+      "No puedes enviar un mensaje vacío.",
+      "El mensaje no puede estar vacío.",
+      ""
+    );
     return;
   }
 
   document.getElementById("message").value = "";
 
   const text = document.createElement("div");
-  text.classList.add("me");
+  text.classList.add("me"); // Mensaje propio
   text.innerText = `Tú: ${message}`;
-  document.getElementById("messages").appendChild(text);
 
   socket.send(
     JSON.stringify({

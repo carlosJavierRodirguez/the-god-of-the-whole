@@ -186,29 +186,16 @@ class SalaManager implements MessageComponentInterface
             return;
         }
 
-        if (!empty($codigoSala) && isset($this->salas[$codigoSala])) {
-            // Mensajes específicos de sala
-            foreach ($this->clients as $client) {
-                if (isset($this->salas[$codigoSala]['usuarios'][$client->resourceId])) {
-                    $client->send(json_encode([
-                        'tipo' => 'mensaje',
-                        'codigoSala' => $codigoSala,
-                        'mensaje' => $mensaje,
-                        'autor' => $this->salas[$codigoSala]['usuarios'][$from->resourceId] ?? "Anonimo"
-                    ]));
-                }
-            }
-        } else {
-            // Mensajes globales (sin sala)
-            foreach ($this->clients as $client) {
-                $client->send(json_encode([
-                    'tipo' => 'mensaje',
-                    'mensaje' => $mensaje,
-                    'autor' => "Cliente ({$from->resourceId})"
-                ]));
-            }
+        foreach ($this->clients as $client) {
+            $client->send(json_encode([
+                'tipo' => 'mensaje',
+                'mensaje' => $mensaje,
+                'autor' => $client === $from ? "Tú" : "Cliente ({$from->resourceId})",
+                'esTuMensaje' => $client === $from // true si el mensaje es del cliente receptor
+            ]));
         }
     }
+
 
 
 
