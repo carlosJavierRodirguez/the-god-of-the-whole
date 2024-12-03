@@ -10,9 +10,6 @@ if (!isset($_SESSION['nombreInvitado']) || !isset($_SESSION['datosSala'])) {
     exit();
 }
 
-// Nombre del invitado desde la sesión
-$nombreInvitado = $_SESSION['nombreInvitado'] ?? 'No disponible';
-
 //Datos de la sala
 $nombreSala = $_SESSION['datosSala']['nombre_sala'] ?? 'No disponible';
 $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
@@ -44,15 +41,8 @@ $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
 
             <div class="text-white">Jugadores: <i class="fa-solid fa-user"></i> </div>
 
-            <div class="rueda col-9">
-                <ul id="lista-usuarios"></ul>
-                <div class="user-profile form-group mt-2 rounded ">
-                    <button type="button" class="btn border-0 border seleccionPerfilImagen" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img class="user-icon " src="../img/diosesVerdaderos/afrodita.png" alt="">
-                    </button>
+            <div class="rueda col-9" id="lista-usuarios">
 
-                    <span class="username"><?php echo $nombreInvitado; ?></span>
-                </div>
             </div>
 
         </div>

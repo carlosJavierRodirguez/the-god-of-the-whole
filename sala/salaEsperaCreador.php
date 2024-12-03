@@ -37,14 +37,8 @@ if (!isset($_SESSION['nombreUsuario'])) {
             <div class="text-white text-center">Jugadores: <i class="fa-solid fa-user"></i> </div>
           </div>
 
-          <div class="p-4 mt-4 rueda">
-            <ul id="lista-usuarios"></ul>
-            <!-- <div class="user-profile form-group mt-2 rounded ">
-              <img class="user-icon" src="../img/diosesVerdaderos/afrodita.png" alt="">
-              <span class="username">Carlos Javier Rodriguez</span>
-            </div> -->
-
-
+          <div class="p-4 mt-4 rueda" id="lista-usuarios">
+        
           </div>
         </div>
 

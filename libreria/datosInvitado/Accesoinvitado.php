@@ -37,25 +37,24 @@ try {
     $nombreInvitadoEncapsulado = $encapsularAcceso->getNombre();
 
     // Validar si la sala existe
-    $sqlValidarSala = "SELECT sala_id,nombre_sala, codigo_sala FROM public.sala WHERE codigo_sala = ?";
+    $sqlValidarSala = "SELECT sala_id, nombre_sala, codigo_sala FROM public.sala WHERE codigo_sala = ?";
     $valoresValidarSala = [$codigoEncapsulado];
     $resultadoValidarSala = $conexion->consultaIniciarSesion($sqlValidarSala, $valoresValidarSala);
 
-
     if (!empty($resultadoValidarSala)) {
-
-        // guarda los datos de la sala en la sesión
+        // Guarda los datos de la sala en la sesión
         $_SESSION['datosSala'] = $resultadoValidarSala[0];
-        // llamo el id de la sala para insertar el invitado
+        // Llama el id de la sala para insertar el invitado
         $id_sala = $_SESSION['datosSala']['sala_id'];
 
         // Si la sala existe, insertar el invitado
-        $queryInsertarInvitado = "INSERT INTO public.invitado(\"nombreInvitado\", imagen_id,id_sala) VALUES (?, 1,?)";
+        $queryInsertarInvitado = "INSERT INTO public.invitado(nombre_invitado, imagen_id, id_sala) VALUES (?, 1, ?)";
         $valoresInvitado = [$nombreInvitadoEncapsulado, $id_sala];
-        $resultadoInsertar = $conexion->consultaIniciarSesion($queryInsertarInvitado, $valoresInvitado);
+        $idInvitado = $conexion->insertarObtenerId($queryInsertarInvitado, $valoresInvitado);
 
-        if ($resultadoInsertar) {
+        if ($idInvitado) {
             // Guardar los datos en la sesión
+            $_SESSION['idInvitado'] = $idInvitado;
             $_SESSION['nombreInvitado'] = $nombreInvitadoEncapsulado;
 
             echo json_encode(['status' => 'success', 'mensaje' => 'Invitado registrado correctamente.']);

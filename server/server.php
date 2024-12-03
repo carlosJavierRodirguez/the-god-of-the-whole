@@ -129,7 +129,7 @@ class SalaManager implements MessageComponentInterface
         }
     }
 
-    private function unirseASala($from, $data)
+    private function unirseASala(ConnectionInterface $from, $data)
     {
         $codigoSala = $data['codigoSala'] ?? '';
         $nombreJugador = $data['nombreJugador'] ?? '';
@@ -137,40 +137,35 @@ class SalaManager implements MessageComponentInterface
         if (empty($codigoSala) || empty($nombreJugador)) {
             $from->send(json_encode([
                 'status' => 'error',
-                'mensaje' => 'Código de sala o nombre de jugador inválido.'
+                'mensaje' => 'Código de sala o nombre de jugador inválido.',
             ]));
             return;
         }
 
-        $query = "SELECT * FROM sala WHERE codigo_sala = :codigoSala";
-        $values = [':codigoSala' => $codigoSala];
-        $resultado = $this->conexion->consultaIniciarSesion($query, $values);
-
-        if ($resultado) {
-            if (!isset($this->salas[$codigoSala])) {
-                $this->salas[$codigoSala] = [
-                    'codigoSala' => $codigoSala,
-                    'nombreSala' => $resultado['nombre_sala'],
-                    'usuarios' => []
-                ];
-            }
-
-            $this->salas[$codigoSala]['usuarios'][$from->resourceId] = $nombreJugador;
-            $this->actualizarUsuariosSala($codigoSala);
-
-            $response = [
-                'status' => 'success',
-                'mensaje' => 'Te has unido a la sala.',
-                'nombreSala' => $this->salas[$codigoSala]['nombreSala']
-            ];
-        } else {
-            $response = [
-                'status' => 'error',
-                'mensaje' => 'El código de sala no es válido.'
+        // Verifica si la sala existe en el registro del servidor
+        if (!isset($this->salas[$codigoSala])) {
+            $this->salas[$codigoSala] = [
+                'codigoSala' => $codigoSala,
+                'nombreSala' => $codigoSala, // Puedes reemplazarlo con el nombre real si lo tienes
+                'usuarios' => [],
             ];
         }
 
-        $from->send(json_encode($response));
+        // Añade el usuario a la lista de la sala
+        $this->salas[$codigoSala]['usuarios'][$from->resourceId] = [
+            'nombre' => $nombreJugador,
+            'id_imagen' => 1, // ID de la imagen por defecto
+        ];
+
+        // Notifica a todos los usuarios de la sala
+        $this->actualizarUsuariosSala($codigoSala);
+
+        // Responde al cliente que se unió
+        $from->send(json_encode([
+            'status' => 'success',
+            'mensaje' => 'Te has unido a la sala.',
+            'nombreSala' => $this->salas[$codigoSala]['nombreSala'],
+        ]));
     }
 
     private function retransmitirMensaje(ConnectionInterface $from, $data)
@@ -219,19 +214,20 @@ class SalaManager implements MessageComponentInterface
             ]));
         }
     }
-
     private function actualizarUsuariosSala($codigoSala)
     {
+        if (!isset($this->salas[$codigoSala])) {
+            return;
+        }
+
         $usuarios = array_values($this->salas[$codigoSala]['usuarios']);
 
         foreach ($this->clients as $client) {
-            if (isset($this->salas[$codigoSala]['usuarios'][$client->resourceId])) {
-                $client->send(json_encode([
-                    'tipo' => 'usuarios_en_sala',
-                    'codigoSala' => $codigoSala,
-                    'usuarios' => $usuarios
-                ]));
-            }
+            $client->send(json_encode([
+                'tipo' => 'usuarios_en_sala',
+                'codigoSala' => $codigoSala,
+                'usuarios' => $usuarios,
+            ]));
         }
     }
 }

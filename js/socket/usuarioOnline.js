@@ -1,39 +1,34 @@
-const socket = new WebSocket("ws://localhost:8080");
-
-socket.onopen = () => {
-  console.log("Conectado al servidor WebSocket");
-};
-
-socket.onmessage = (event) => {
-  console.log("Mensaje recibido:", event.data);
-
-  try {
-    const data = JSON.parse(event.data);
-
-    if (data.type === "usuarios_en_sala") {
-      console.log(`Usuarios en la sala ${data.codigoSala}:`, data.usuarios);
-      console.table(data.usuarios);
-
-      // Actualiza la lista de usuarios en la interfaz
+fetch("../libreria/datosInvitado/imagenPerfilInvitado.php")
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.url_imagen && data.nombre_invitado && data.nombre_imagen) {
       const listaUsuarios = document.getElementById("lista-usuarios");
-      if (listaUsuarios) {
-        listaUsuarios.innerHTML = ""; // Limpia la lista actual
-        data.usuarios.forEach((usuario) => {
-          const li = document.createElement("li");
-          li.textContent = usuario;
-          listaUsuarios.appendChild(li);
-        });
-      }
+
+      const divUserProfile = document.createElement("div");
+      divUserProfile.className = "user-profile form-group mt-2 rounded";
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn border-0 border seleccionPerfilImagen";
+
+      const img = document.createElement("img");
+      img.className = "user-icon";
+      img.src = data.url_imagen;
+      img.alt = data.nombre_imagen;
+
+      const span = document.createElement("span");
+      span.className = "username";
+      span.textContent = data.nombre_invitado;
+
+      button.appendChild(img);
+      divUserProfile.appendChild(button);
+      divUserProfile.appendChild(span);
+
+      listaUsuarios.appendChild(divUserProfile);
+    } else {
+      console.error(data.error || "No se encontró la imagen.");
     }
-  } catch (error) {
-    console.error("Error procesando el mensaje:", error);
-  }
-};
-
-socket.onerror = (error) => {
-  console.error("Error en el WebSocket:", error);
-};
-
-socket.onclose = () => {
-  console.log("Conexión cerrada.");
-};
+  })
+  .catch((error) => {
+    console.error("Error en la solicitud:", error);
+  });

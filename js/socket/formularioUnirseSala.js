@@ -20,6 +20,25 @@ document
         })
         .then((data) => {
           if (data.status === "success") {
+            // Envía un mensaje al servidor WebSocket
+            const socket = new WebSocket("ws://localhost:8080"); // Ajusta la URL según corresponda
+            socket.onopen = () => {
+              socket.send(
+                JSON.stringify({
+                  tipo: "unirse_sala",
+                  codigoSala: codigoSala,
+                  nombreJugador: nombreJugador,
+                })
+              );
+              console.log("Mensaje enviado al servidor WebSocket");
+            };
+
+            socket.onmessage = (event) => {
+              const mensaje = JSON.parse(event.data);
+              console.log("Mensaje recibido del servidor:", mensaje);
+            };
+
+            // Redirige a la sala de espera
             window.location.href = "../sala/salaEsperaInvitado.php";
           } else {
             Swal.fire({

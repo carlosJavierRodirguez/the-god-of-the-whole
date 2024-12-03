@@ -1,37 +1,48 @@
 <?php
 session_start();
-include('../libreria/conexion.php');
-
+include('../conexion.php');
 $conexion = new Conexion();
 
-// Verificar si el invitadoID está definido en la sesión
-if (!isset($_SESSION['invitadoID'])) {
-    echo json_encode(['status' => 'error', 'mensaje' => 'ID del invitado no está definido.']);
-    exit();
-}
+header('Content-Type: application/json'); // Asegura que la respuesta sea interpretada como JSON
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
 
-$invitadoID = $_SESSION['invitadoID'];
+try {
+    // Valida la sesión
+    if (!isset($_SESSION['idInvitado']) || !isset($_SESSION['nombreInvitado'])) {
+        echo json_encode(['error' => 'Sesión no válida o no inicializada']);
+        exit;
+    }
 
-// Consulta para obtener la información de la imagen
-$sqlQuery = ' 
-SELECT i."invitadoID", i.imagen_id, ip.url_imagen, ip.nombre_imagen
-FROM invitado i
-INNER JOIN "imagenPerfil" ip ON i.imagen_id = ip.id_url
-WHERE i."invitadoID" = ?; 
-';
+    $id_invitado = intval($_SESSION['idInvitado']);
+    $nombreInvitado = $_SESSION['nombreInvitado'];
 
-$values = [$invitadoID];
+    if ($id_invitado <= 0) {
+        echo json_encode(['error' => 'ID de invitado no válido']);
+        exit;
+    }
 
-// Ejecutar la consulta
-$resultadoImagenInvitado = $conexion->consultaIniciarSesion($sqlQuery, $values);
+    // Consulta SQL para obtener la URL de la imagen
+    $sqlImagenInvitado = '
+    SELECT ip.url_imagen, ip.nombre_imagen
+    FROM invitado i
+    INNER JOIN "imagenPerfil" ip ON i.imagen_id = ip.id_url
+    WHERE i.id_invitado = ?;
+    ';
+    $valoresImagenInvitado = [$id_invitado];
+    $resultadoImagenInvitado = $conexion->consultaIniciarSesion($sqlImagenInvitado, $valoresImagenInvitado);
 
-if (!empty($resultadoImagenInvitado)) {
-    // Asignar los datos de la primera fila del resultado
-    $usuarioID = $resultadoImagenInvitado[0]['invitadoID'];
-    $urlImagen = $resultadoImagenInvitado[0]['url_imagen'];
-    $nombreImagen = $resultadoImagenInvitado[0]['nombre_imagen'];
-} else {
-    // Si no hay resultados, establecer valores predeterminados
-    $urlImagen = '/ruta/a/imagen/default.png';
-    $nombreImagen = 'Imagen predeterminada';
+    // Verifica si se encontró una URL
+    if ($resultadoImagenInvitado && count($resultadoImagenInvitado) > 0) {
+        echo json_encode([
+            'url_imagen' => $resultadoImagenInvitado[0]['url_imagen'],
+            'nombre_imagen' => $resultadoImagenInvitado[0]['nombre_imagen'],
+            'nombre_invitado' => $nombreInvitado
+        ]);
+    } else {
+        echo json_encode(['error' => 'No se encontró el invitado o imagen']);
+    }
+} catch (PDOException $e) {
+    error_log("Error en la base de datos: " . $e->getMessage());
+    echo json_encode(['error' => 'Error en la base de datos.']);
 }
