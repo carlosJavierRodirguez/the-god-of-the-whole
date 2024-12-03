@@ -8,3 +8,4 @@ function mostrarAlerta(icon, title, text, redirectUrl= null) {
     },
   });
 }
+export default mostrarAlerta;

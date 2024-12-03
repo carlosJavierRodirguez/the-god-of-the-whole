@@ -1,10 +1,38 @@
+import {
+  resetUnreadMessages,
+  updateMessageCount,
+  updateChatState,
+} from "../socket/socket.js";
+
 const chatModal = document.getElementById("chatModal");
 const chatModalHeader = document.getElementById("chatModalHeader");
+const closeModalButton = document.querySelector(".chat-close-btn");
 
 let isDragging = false;
 let offsetX, offsetY;
 
-// Función para iniciar el arrastre
+// Función para abrir el modal
+export function openChatModal() {
+  updateChatState(true); // Actualiza el estado del chat como abierto
+  resetUnreadMessages(); // Reinicia el contador de mensajes no leídos
+  updateMessageCount(); // Oculta el badge de mensajes no leídos
+
+  chatModal.style.display = "block";
+  chatModal.style.left = "50%";
+  chatModal.style.top = "50%";
+  chatModal.style.transform = "translate(-50%, -50%)";
+}
+
+// Función para cerrar el modal
+export function closeChatModal() {
+  updateChatState(false); // Actualiza el estado del chat como cerrado
+  chatModal.style.display = "none";
+}
+
+// Manejo del botón de cierre del modal
+closeModalButton.addEventListener("click", closeChatModal);
+
+// Función para iniciar el arrastre del modal
 chatModalHeader.addEventListener("mousedown", (e) => {
   isDragging = true;
   offsetX = e.clientX - chatModal.getBoundingClientRect().left;
@@ -18,7 +46,7 @@ function dragModal(e) {
   if (isDragging) {
     chatModal.style.left = `${e.clientX - offsetX}px`;
     chatModal.style.top = `${e.clientY - offsetY}px`;
-    chatModal.style.transform = "none"; // Asegura que no haya transformaciones conflictivas
+    chatModal.style.transform = "none"; // Elimina cualquier transformación previa
   }
 }
 
@@ -28,16 +56,3 @@ function stopDragging() {
   document.removeEventListener("mousemove", dragModal);
   document.removeEventListener("mouseup", stopDragging);
 }
-
-// Mostrar el modal
-function openChatModal() {
-  chatModal.style.display = "block";
-  chatModal.style.left = "50%"; // Posiciona al centro inicial
-  chatModal.style.top = "50%";
-  chatModal.style.transform = "translate(-50%, -50%)";
-}
-
-// Cerrar el modal
-document.querySelector(".chat-close-btn").addEventListener("click", () => {
-  chatModal.style.display = "none";
-});
