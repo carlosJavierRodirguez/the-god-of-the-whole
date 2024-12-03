@@ -17,9 +17,9 @@ try {
     }
 
     $pregunta = $preguntaResult[0];
+    $preguntaId = $pregunta['pregunta_id'];
 
     // 2. Determinar el rango de imágenes según el ID de la pregunta
-    $preguntaId = $pregunta['pregunta_id'];
     $rangoMap = [
         1 => [11, 20],
         2 => [1, 10],
@@ -51,8 +51,15 @@ try {
         ':rango_fin' => $rangoFin
     ]);
 
-    if (count($imagenesPrincipales) < 6) {
-        die(json_encode(["error" => "No se encontraron suficientes imágenes principales en el rango especificado."]));
+    // Depuración: Verificar imágenes principales encontradas
+    if (!$imagenesPrincipales || count($imagenesPrincipales) < 6) {
+        die(json_encode([
+            "error" => "No se encontraron suficientes imágenes principales en el rango especificado.",
+            "encontradas" => count($imagenesPrincipales),
+            "rango" => [$rangoInicio, $rangoFin],
+            "pregunta_id" => $preguntaId,
+            "consulta" => $queryPrincipales // Mostrar la consulta para depurar
+        ]));
     }
 
     // 4. Consultar imágenes adicionales para completar 10
@@ -83,7 +90,7 @@ try {
 
     // 7. Respuesta en formato JSON
     echo json_encode([
-        "pregunta_id" => $pregunta['pregunta_id'],
+        "pregunta_id" => $preguntaId,
         "pregunta" => $pregunta['pregunta'],
         "imagenes" => $imagenesFinales
     ]);
