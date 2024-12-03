@@ -1,5 +1,5 @@
 <?php
-session_start();  
+session_start();
 
 // include('../libreria/datosInvitado/imagenPerfilInvitado.php');
 
@@ -34,8 +34,9 @@ $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
 
             <div class="infoSala col-9 text-white">
                 <div>Nombre Sala: <?php echo $nombreSala; ?></div>
-                <div>Codigo: <?php echo $codigoSala; ?>
-                    <button class=" bg-transparent border-0">
+                <div>
+                    Código: <span id="codigo-sala"><?php echo $codigoSala; ?></span>
+                    <button class="btn-copy bg-transparent border-0">
                         <i class="fa-solid fa-copy"></i>
                     </button>
                 </div>
@@ -72,25 +73,25 @@ $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
                         <div class="row">
                             <?php
                             // Asumiendo que ya tienes la consulta para obtener las imágenes disponibles.
-                            if (count($selectImagenes) > 0) {
-                                foreach ($selectImagenes as $fila) {
-                                    $idUrl = $fila['id_url'];
-                                    $urlImagen = $fila['url_imagen'];
-                                    $nombreImagen = $fila['nombre_imagen'];
+                            //                     if (count($selectImagenes) > 0) {
+                            //                         foreach ($selectImagenes as $fila) {
+                            //                             $idUrl = $fila['id_url'];
+                            //                             $urlImagen = $fila['url_imagen'];
+                            //                             $nombreImagen = $fila['nombre_imagen'];
 
-                                    echo "
-        <div class='col-6 d-flex justify-content-center mb-3'>
-            <input type='radio' id='imagen_$idUrl' name='imagen_id' value='$idUrl'>
-            <label for='imagen_$idUrl' class='text-center'>
-                <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen'/>
-                <br>
-                <span>$nombreImagen</span>
-            </label>
-        </div>";
-                                }
-                            } else {
-                                echo "<p>No hay imágenes disponibles.</p>";
-                            }
+                            //                             echo "
+                            // <div class='col-6 d-flex justify-content-center mb-3'>
+                            //     <input type='radio' id='imagen_$idUrl' name='imagen_id' value='$idUrl'>
+                            //     <label for='imagen_$idUrl' class='text-center'>
+                            //         <img src='" . htmlspecialchars($urlImagen) . "' alt='$nombreImagen' class='seleccionPerfilImagen'/>
+                            //         <br>
+                            //         <span>$nombreImagen</span>
+                            //     </label>
+                            // </div>";
+                            //     }
+                            // } else {
+                            //     echo "<p>No hay imágenes disponibles.</p>";
+                            // }
                             ?>
                         </div>
                         <div class="modal-footer border-0">
@@ -103,8 +104,8 @@ $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
             </div>
         </div>
     </div>
-    <script src="../js/socket/socket.js"></script>
     <script src="../js/socket/usuarioOnline.js"></script>
+    <script type="module" src="../js/main.js"></script>
 </body>
 
 </html>
