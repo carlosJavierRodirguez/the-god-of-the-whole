@@ -111,18 +111,28 @@ body {
 
 .basi {
   background-image: url("../img/basilis.png");
-  background-size: cover; /* La imagen se ajustará para cubrir completamente el área */
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; /* Centrar la imagen */
-  min-height: 107px; /* Establece un mínimo para el encabezado */
-  height: auto;
-  width: 100%; /* Asegura que cubra todo el ancho */
-  display: flex; /* Permite alinear elementos internos */
-  justify-content: space-between; /* Espacio entre los elementos (como el botón de cierre) */
-  align-items: center; /* Centra verticalmente los elementos */
-  padding: 10px; /* Agrega un relleno para los contenidos */
+  background-position: center;
+  min-height: 145px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: grab;
+ 
 }
 
+@media (max-width: 600px) {
+  .basi {
+    padding: 5px; /* Reducir relleno para pantallas pequeñas */
+  }
+}
+
+.basi:active {
+  cursor: grabbing;
+}
 /* Media Queries */
 @media (max-width: 1024px) {
   .chat {

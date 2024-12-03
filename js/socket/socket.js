@@ -1,71 +1,97 @@
 import mostrarAlerta from "../alertas/mostrarAlertas.js";
-const socket = new WebSocket("ws://localhost:8080");
+export let unreadMessages = 0;
+export let chatOpen = false;
 
+// Función para actualizar el estado del chat
+export function updateChatState(isOpen) {
+  chatOpen = isOpen;
+}
+
+// Función para reiniciar el contador de mensajes no leídos
+export function resetUnreadMessages() {
+  unreadMessages = 0;
+}
+
+// Función para actualizar el badge de mensajes no leídos
+export function updateMessageCount() {
+  const messageCount = document.getElementById("messageCount");
+  if (unreadMessages > 0) {
+    messageCount.innerText = unreadMessages;
+    messageCount.style.display = "inline";
+  } else {
+    messageCount.style.display = "none";
+  }
+}
+
+// WebSocket configuración
+const socket = new WebSocket("ws://localhost:8080");
+const sendButton = document.getElementById("send");
+const messageInput = document.getElementById("message");
+const messagesContainer = document.getElementById("messages");
+
+// Manejo de conexión WebSocket
 socket.onopen = () => {
   console.log("Conectado al servidor WebSocket");
 };
 
-socket.onclose = (event) => {
-  if (event.wasClean) {
-    console.log("Conexión cerrada limpiamente");
-  } else {
-    console.log("Conexión cerrada inesperadamente");
-  }
-};
-
-socket.onerror = (error) => {
-  console.error("Error en la conexión WebSocket:", error);
-};
-
+// Manejo de mensajes entrantes
 socket.onmessage = (event) => {
   try {
     const data = JSON.parse(event.data);
 
     if (data.tipo === "mensaje") {
-      const text = document.createElement("div");
-
+      // Evita duplicar mensajes para el remitente
       if (data.esTuMensaje) {
-        text.classList.add("me"); // Mensaje propio
-        text.innerText = `Tú: ${data.mensaje}`;
-      } else {
-        text.classList.add("other"); // Mensaje de otro usuario
-        text.innerText = `${data.autor}: ${data.mensaje}`;
+        console.log("Mensaje propio reenviado por el servidor, ignorado.");
+        return;
       }
 
-      document.getElementById("messages").appendChild(text);
-    } else {
-      console.log("Mensaje no reconocido:", data);
+      const text = document.createElement("div");
+      text.classList.add("other");
+      text.innerText = `${data.autor}: ${data.mensaje}`;
+
+      // Incrementar contador de mensajes no leídos si el chat está cerrado
+      if (!chatOpen) {
+        unreadMessages++;
+        updateMessageCount();
+      }
+
+      messagesContainer.appendChild(text);
     }
   } catch (error) {
     console.error("Error procesando el mensaje recibido:", error);
   }
 };
 
-document.getElementById("send").addEventListener("click", () => {
-  const message = document.getElementById("message").value.trim();
-  const codigoSala = document.getElementById("sala")?.value || ""; // Opcional para salas
+// Función para manejar el envío de mensajes
+function handleSendMessage() {
+  const message = messageInput.value.trim();
 
   if (message === "") {
-    mostrarAlerta(
-      "error",
-      "No puedes enviar un mensaje vacío.",
-      "El mensaje no puede estar vacío.",
-      ""
-    );
+    mostrarAlerta('error', 'Error', 'El mensaje no puede estar vacío.', '');
     return;
   }
 
-  document.getElementById("message").value = "";
+  // Limpia el campo de entrada
+  messageInput.value = "";
 
+  // Agrega el mensaje localmente
   const text = document.createElement("div");
-  text.classList.add("me"); // Mensaje propio
+  text.classList.add("me");
   text.innerText = `Tú: ${message}`;
+  messagesContainer.appendChild(text);
 
+  // Envía el mensaje a través del WebSocket
   socket.send(
     JSON.stringify({
       tipo: "mensaje",
-      codigoSala: codigoSala,
       mensaje: message,
     })
   );
-});
+}
+
+// Asegurar que el evento solo se registre una vez
+if (sendButton) {
+  sendButton.removeEventListener("click", handleSendMessage); // Elimina cualquier listener previo
+  sendButton.addEventListener("click", handleSendMessage); // Registra el nuevo listener
+}

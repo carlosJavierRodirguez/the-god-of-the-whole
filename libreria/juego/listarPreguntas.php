@@ -11,9 +11,9 @@ $conexion = new Conexion();
 // }
 
 // El resto del código sigue igual
-$placeholders = count($_SESSION['preguntas_mostradas']) > 0
-    ? implode(',', array_fill(0, count($_SESSION['preguntas_mostradas']), '?'))
-    : 'NULL';
+// $placeholders = count($_SESSION['preguntas_mostradas']) > 0
+//     ? implode(',', array_fill(0, count($_SESSION['preguntas_mostradas']), '?'))
+//     : 'NULL';
 
 $sqlQuery = "SELECT * FROM preguntas  ORDER BY RANDOM() LIMIT 1";
 

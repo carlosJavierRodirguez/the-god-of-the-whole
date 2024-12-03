@@ -50,10 +50,13 @@ include('../libreria/juego/listarPreguntas.php');
             </div>
             <div class="col-1 "></div>
 
-            <!-- chat -->
+            <!-- boton para abrir el chat -->
             <div class="col-3">
-                <button type="button" class="btn btn-primary" onclick="openChatModal()">
+                <button type="button" class="btn btn-primary position-relative">
                     <i class="fa-brands fa-rocketchat"></i>
+                    <span id="messageCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
                 </button>
             </div>
 
@@ -68,9 +71,6 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
     <!-- modales -->
-
-
-
 
     <div id="winModal" class="modal custom-win-modal" style="display: none;">
         <div class="modal-wrapper">
@@ -100,7 +100,7 @@ include('../libreria/juego/listarPreguntas.php');
 
 
     <!-- Modal para el chat -->
-    <div id="chatModal" class="chat-modal">
+    <div id="chatModal" class="chat-modal" style="display: none;">
         <div class="chat-modal-content border">
             <div class="chat-modal-header basi" id="chatModalHeader">
                 <i class="fa-solid fa-xmark chat-close-btn"></i>
@@ -122,12 +122,13 @@ include('../libreria/juego/listarPreguntas.php');
 
     <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="../js/socket/socket.js"></script>
+    <script type="module" src="../js/main.js"></script>
+    <!-- <script type="module" src="../js/socket/socket.js"></script> -->
     <!-- <script src="../js/juego-js/dragDrop/generarDioses.js"></script>
     <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
     <script src="../js/juego-js/validacion/validacionDioses.js"></script> -->
-    <!-- <script src="../js/tempori.js"></script>--> 
-    <script src="../js/juego-js/modalChat.js"></script>
+    <!-- <script src="../js/tempori.js"></script>-->
+    <!-- <script type="module" src="../js/juego-js/modalChat.js"></script> -->
 </body>
 
 </html>
