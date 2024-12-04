@@ -20,7 +20,7 @@
         </div>
 
         <!-- Mensaje de carga -->
-        <p class="loading-text">Cargando...</p>
+        <p class="loading-text"></p>
     </div>
 
     <!-- Contenido principal -->
