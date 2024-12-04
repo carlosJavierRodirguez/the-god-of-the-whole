@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const imgElement = document.createElement("img");
             imgElement.src = imagen.imagen_url;
             imgElement.alt = imagen.nombre;
-            imgElement.className = "img-thumbnail";
+            imgElement.className = "img-dios";
 
             // Crear el texto debajo de la imagen
             const nameElement = document.createElement("p");

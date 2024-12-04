@@ -143,4 +143,11 @@
   width: 100%;
   min-height: 210px;
 }
-
+.img-dios {
+  border: none; /* Sin borde */
+  background-color: transparent; /* Fondo transparente */
+  padding: 0; /* Sin relleno */
+  box-shadow: none; /* Sin sombra */
+  width: 100%; /* Ajustar ancho */
+  height: auto; /* Mantener proporción */
+}
