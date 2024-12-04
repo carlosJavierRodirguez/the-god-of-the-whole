@@ -3,6 +3,7 @@
 
 <head>
     <?php include('../principal/head.php') ?>
+    <link rel="stylesheet" href="../css/ocultar.css">
 
 </head>
 
