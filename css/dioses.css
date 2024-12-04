@@ -124,6 +124,7 @@
   border-radius: 50%;
 }
 
+
 #drag-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 columnas */
@@ -131,23 +132,41 @@
   gap: 1vh; /* Espaciado entre elementos */
   justify-content: center; /* Centra el contenido horizontalmente */
 }
+
 .draggable {
   width: 15vh; /* Tamaño de los elementos */
-  height:15vh;
+  height: 15vh;
   text-align: center;
   cursor: grab;
   user-select: none;
 }
+
 #dropzone {
-  position: relative;
-  width: 100%;
-  min-height: 210px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  grid-template-rows: repeat(2, 1fr); /* 2 filas */
+  gap: 10px; /* Espaciado entre celdas */
+  justify-content: center;
 }
+
+.drop-cell {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 2px dashed #aaa; /* Bordes para identificar las celdas */
+  border-radius: 5px; /* Bordes redondeados */
+  height: 120px; /* Altura fija */
+  width: 120px; /* Ancho fijo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.drop-cell:hover {
+  background-color: rgba(0, 255, 0, 0.2); /* Cambiar fondo al pasar el mouse */
+}
+
 .img-dios {
-  border: none; /* Sin borde */
-  background-color: transparent; /* Fondo transparente */
-  padding: 0; /* Sin relleno */
-  box-shadow: none; /* Sin sombra */
-  width: 100%; /* Ajustar ancho */
-  height: auto; /* Mantener proporción */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }

@@ -178,7 +178,8 @@ include('../libreria/juego/listarPreguntas.php');
     <script type="module" src="../js/main.js"></script>
     <script src="../js/audio.js"></script>
     <script src="../js/juego-js/dragDrop/generarDioses.js"></script>
-    <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
+    <script src="../js/juego-js/dragDrop/arrastrarYsoltar.js"></script>
+    <script src="../js/juego-js/dragDrop/crearDropZone.js"></script>
     <script src="../js/juego-js/validacion/validacionDioses.js"></script>
     <script src="../js/tempori.js"></script>
  
