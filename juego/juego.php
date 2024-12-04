@@ -180,6 +180,7 @@ include('../libreria/juego/listarPreguntas.php');
     <script src="../js/juego-js/dragDrop/generarDioses.js"></script>
     <script src="../js/juego-js/dragDrop/arrastrarYsoltar.js"></script>
     <script src="../js/juego-js/dragDrop/crearDropZone.js"></script>
+    <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
     <script src="../js/juego-js/validacion/validacionDioses.js"></script>
     <script src="../js/tempori.js"></script>
  
