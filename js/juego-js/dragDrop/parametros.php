@@ -3,7 +3,7 @@ include('../../../libreria/conexion.php');
 $conexion = new Conexion();
 
 try {
-    // 1. Consultar una pregunta aleatoria
+    // Consultar una pregunta aleatoria
     $queryPregunta = "
         SELECT pregunta_id, pregunta 
         FROM preguntas
@@ -19,7 +19,7 @@ try {
     $pregunta = $preguntaResult[0];
     $preguntaId = $pregunta['pregunta_id'];
 
-    // 2. Determinar el rango de imágenes según el ID de la pregunta
+    // Determinar el rango de imágenes según el ID de la pregunta
     $rangoMap = [
         1 => [11, 20],
         2 => [1, 10],
@@ -35,7 +35,7 @@ try {
 
     [$rangoInicio, $rangoFin] = $rangoMap[$preguntaId];
 
-    // 3. Consultar 6 imágenes principales del rango
+    // Consultar 6 imágenes principales del rango
     $queryPrincipales = "
         SELECT ib.imagen_id, ib.nombre, ib.imagen_url
         FROM imagen_binarios ib
@@ -51,18 +51,16 @@ try {
         ':rango_fin' => $rangoFin
     ]);
 
-    // Depuración: Verificar imágenes principales encontradas
     if (!$imagenesPrincipales || count($imagenesPrincipales) < 6) {
         die(json_encode([
             "error" => "No se encontraron suficientes imágenes principales en el rango especificado.",
             "encontradas" => count($imagenesPrincipales),
             "rango" => [$rangoInicio, $rangoFin],
-            "pregunta_id" => $preguntaId,
-            "consulta" => $queryPrincipales // Mostrar la consulta para depurar
+            "pregunta_id" => $preguntaId
         ]));
     }
 
-    // 4. Consultar imágenes adicionales para completar 10
+    // Consultar imágenes adicionales para completar 10
     $queryAdicionales = "
         SELECT ib.imagen_id, ib.nombre, ib.imagen_url
         FROM imagen_binarios ib
@@ -80,15 +78,16 @@ try {
         ':faltantes' => $faltantes
     ]);
 
-    // 5. Combinar imágenes principales y adicionales
     $imagenesFinales = array_merge($imagenesPrincipales, $imagenesAdicionales);
 
-    // 6. Convertir imágenes de binario a base64
+    // Convertir imágenes de binario a base64
     foreach ($imagenesFinales as &$imagen) {
-        $imagen['imagen_url'] = 'data:image/png;base64,' . base64_encode($imagen['imagen_url']);
+        // Convertir el recurso bytea a cadena
+        $imagenBinaria = stream_get_contents($imagen['imagen_url']);
+        $imagen['imagen_url'] = 'data:image/png;base64,' . base64_encode($imagenBinaria);
     }
 
-    // 7. Respuesta en formato JSON
+    // Respuesta en formato JSON
     echo json_encode([
         "pregunta_id" => $preguntaId,
         "pregunta" => $pregunta['pregunta'],
