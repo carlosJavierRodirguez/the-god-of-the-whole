@@ -24,9 +24,11 @@
                 <form action="../libreria/correoOlvidoClave.php" method="post" class="pergamino p-4 p-md-5">
                     <br>
                     <div class="form-group mb-2 email">
-                        <span class="text-white fw-bold tipoLetra">Email <i class="fa-solid fa-envelope"></i>
+                        <span class="text-white fw-bold tipoLetra" data-i18n="email">Email</span>  <i class="fa-solid fa-envelope text-white"></i>
                             <!-- Email -->
                             <input
+                                data-i18n="email"
+                                data-i18n-placeholder="correo"
                                 type="email"
                                 class="form-control campo-email"
                                 id="txtEmailRecuperar"
@@ -37,11 +39,7 @@
                     <br>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-sm botonIngresar">
-                            <img
-                                src="../img/botonEnviar.png"
-                                class="img-fluid"
-                                alt="Boton de ingresar" />
+                    <button type="submit" class="btn btn-mythological">Enviar
                         </button>
 
                     </div>
@@ -53,6 +51,7 @@
     <div class="lds-ring loader" id="loader"><h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>
     <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
     <script src="../js/carga.js"></script>
+    <script src="../js/idioma.js"></script>
 </body>
 
 </html>

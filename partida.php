@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/estilos.css" />
   <link rel="stylesheet" href="css/estilosCarga.css">
   <link rel="stylesheet" href="fontawesome/css/all.css" />
+  <link rel="stylesheet" href="css/ocultar.css">
 </head>
 
 <body>
@@ -30,21 +31,22 @@
       <div class="col-12 col-md-4">
       <br/><br/>
         <div class="d-flex justify-content-center">
-        <a href="invitado/unirse.php" class="btn btn-mythological">Unirse</a>
+        <a href="invitado/unirse.php" class="btn btn-mythological" data-i18n="unirse">Unirse</a>
         </div>
         <br />
         <div class="d-flex justify-content-center">
-        <a href="login/iniciarSesion.php" class="btn btn-mythological">Crear Sala</a>>
+        <a href="login/iniciarSesion.php" class="btn btn-mythological" data-i18n="crear">Crear Sala</a>>
         </div>
       </div>
       <div class="col-12 col-md-4"></div>
     </div>
   </div>
   <div class="lds-ring loader" id="loader">
-    <h2 class="loading-text">Cargando...</h2><img src="gif/jorgu.gif" alt="" class="loading-gif">
+    <h2 class="loading-text" data-i18n="cargando">Cargando...</h2><img src="gif/jorgu.gif" alt="" class="loading-gif">
     <div>
       <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
       <script src="js/carga.js"></script>
+      <script src="js/idioma.js"></script>
     </div>
   </div>
 

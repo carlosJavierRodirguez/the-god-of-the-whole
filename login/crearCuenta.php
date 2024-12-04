@@ -11,6 +11,7 @@ $conectar->conectar();
 
 <head>
   <?php include('../principal/head.php') ?>
+  <link rel="stylesheet" href="../css/ocultar.css">
 </head>
 
 <body>
@@ -25,8 +26,10 @@ $conectar->conectar();
         <form action="../libreria/registrarUsuario.php" method="POST" class="pergamino p-4 p-md-5 needs-validation" novalidate>
           <div class="form-group mb-2 email">
             <!-- Email -->
-            <span class="text-white fw-bold tipoLetra">Nombre <i class="fa-solid fa-user"></i></span>
+            <span class="text-white fw-bold tipoLetra" data-i18n="name" >Nombre </span> <i class="fa-solid fa-user text-white"></i>
             <input
+            data-i18n="user"
+            data-i18n-placeholder="user"
               type="text"
               class="form-control campo-email"
               id="txtNombreUsuario"
@@ -43,9 +46,11 @@ $conectar->conectar();
 
           <div class="form-group mb-2">
             <!-- Contraseña -->
-            <span class="text-white fw-bold tipoLetra">Email <i class="fa-solid fa-envelope"></i>
-            </span>
+            <span class="text-white fw-bold tipoLetra" data-i18n="email">Email
+            </span>  <i class="fa-solid fa-envelope text-white"></i>
             <input
+              data-i18n="correo"
+              data-i18n-placeholder="correo"
               type="email"
               class="form-control campo-email"
               id="txtEmailRegistro"
@@ -61,7 +66,7 @@ $conectar->conectar();
 
           <div class="form-group mb-2">
             <!-- Contraseña -->
-            <span class="text-white fw-bold tipoLetra">Contraseña <i class="fa-solid fa-key"></i></span>
+            <span class="text-white fw-bold tipoLetra" data-i18n="contra">Contraseña</span> <i class="fa-solid fa-key text-white"></i>
             <input
               type="password"
               class="form-control campo-email"
@@ -76,18 +81,20 @@ $conectar->conectar();
                 <i class="fa-solid fa-eye"></i>
               </button>
             </div>
-            <div class="invalid-feedback text-black">
+            <div class="invalid-feedback text-black" data-i18n="minp">
               Contraseña al menos de 8 caracteres
             </div>
           </div>
 
           <!-- Botón de inicio de sesión -->
           <div class="text-center">
-            <div class="text-white">
-              ¿Ya tienes cuenta?
-              <a href="iniciarSesion.php" class="link tipoLetra">Iniciar Sesión</a>
-            </div>
-            <button type="submit" class="btn btn-mythological">
+          <a href="iniciarSesion.php" class="link tipoLetra" data-i18n="tener">¿Ya tienes una cuenta?</a>
+
+              <div>
+             
+              </div></div>
+              <br>
+            <button type="submit" class="btn btn-mythological" data-i18n="registrar">
               Registrarse
             </button>
           </div>
@@ -95,11 +102,13 @@ $conectar->conectar();
       </div>
     </div>
   </div>
-  <div class="lds-ring loader" id="loader"><h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>
+  <div class="lds-ring loader" id="loader" ><h2 class="loading-text" data-i18n="cargando">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif"><div>
   <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
   <script src="../js/validacionFormulario/validacion.js"></script>
   <script src="../js/clave/mirarClave.js"></script>
   <script src="../js/carga.js"></script>
+  <script src="../js/idioma.js"></script>
+ 
 </body>
 
 </html>

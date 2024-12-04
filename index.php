@@ -35,11 +35,11 @@
       <div class="col-12 col-md-4">
       <br/><br/>
         <div class="d-flex justify-content-center">
-        <a href="partida.php" class="btn btn-mythological">Jugar Online</a>
+        <a href="partida.php" class="btn btn-mythological" data-i18n="jugar">Jugar Online</a>
         </div>
         <br />
         <div class="d-flex justify-content-center">
-        <a href="configuraciones.php" class="btn btn-mythological">Configuraciones</a>
+        <a href="configuraciones.php" class="btn btn-mythological" data-i18n="configuraciones">Configuraciones</a>
         </div>
       </div>
       <div class="col-12 col-md-4"></div>
@@ -47,10 +47,11 @@
   </div>
 
   <div class="lds-ring loader" id="loader">
-    <h2 class="loading-text">Cargando...</h2><img src="gif/jorgu.gif" alt="" class="loading-gif">
+    <h2 class="loading-text" data-i18n="cargando">Cargando...</h2><img src="gif/jorgu.gif" alt="" class="loading-gif">
     <div>
       <iframe id="musicaIframe" src="musica/musica.html" style="display:none;"></iframe>
       <script src="js/carga.js"></script>
+      <script src="js/idioma.js"></script>
 
 
 </body>

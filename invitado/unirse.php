@@ -22,16 +22,18 @@
       <div class="col-12 col-md-4"></div>
       <div class="col-12 col-md-4 subir">
 
-        <form id="formIngresoSala" class="pergamino p-4 p-md-5 needs-validation" novalidate>
+        <form id="formIngresoSala" class="pergamino p-4 p-md-5 needs-validation" novalidate >
           <br>
-          <div class="form-group mb-2 email">
+          <div class="form-group mb-2 email" >
             <!-- Nombre del Jugador -->
-            <input
+            <input  
+              data-i18n="nombre"
+              data-i18n-placeholder="nombre"
               type="text"
               class="form-control campo-email"
               id="txtNombreJugador"
-              name="txtNombreJugador"
-              placeholder="Nombre del Jugador"
+              name="txtNombreJugador" 
+              placeholder = "Nombre del Jugador"
               required />
             <div class="invalid-feedback text-black">
               Nombre con al menos 3 caracteres
@@ -40,6 +42,8 @@
           <div class="form-group mb-2">
             <!-- Pin de Juego -->
             <input
+            data-i18n="pin"
+              data-i18n-placeholder="pin"
               type="number"
               class="form-control campo-email"
               id="txtCodigoSala"
@@ -53,10 +57,11 @@
           <br>
           <!-- Botón de conexión -->
           <div class="text-center">
-            <button type="button" id="btnIngresarSala" class="btn btn-mythological">Ingresar</button>
+            <button type="button" id="btnIngresarSala" class="btn btn-mythological" data-i18n="ingresar">Ingresar</button>
             <div>
-              <h5 class="tipoLetra text-white">Crea tu propia sala</h5>
-              <a href="../login/iniciarSesion.php" class="link tipoLetra">Iniciar sesión</a>
+              <br>
+              <h5 class="tipoLetra text-white" data-i18n="propia">Crea tu propia sala</h5>
+              <a href="../login/iniciarSesion.php" class="link tipoLetra" data-i18n="iniciarSe">Iniciar sesión</a>
             </div>
           </div>
         </form>
@@ -68,7 +73,7 @@
 
   <!-- pantalla de carga -->
   <div class="lds-ring loader" id="loader">
-    <h2 class="loading-text">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
+    <h2 class="loading-text" data-i18n="cargando">Cargando...</h2><img src="../gif/jorgu.gif" alt="" class="loading-gif">
     <div>
       <iframe id="musicaIframe" src="../musica/musica.html" style="display:none;"></iframe>
     </div>
@@ -76,6 +81,7 @@
 
   <script src="../js/carga.js"></script>
   <script src="../js/socket/formularioUnirseSala.js"></script>
+  <script src="../js/idioma.js"></script>
 </body>
 
 </html>

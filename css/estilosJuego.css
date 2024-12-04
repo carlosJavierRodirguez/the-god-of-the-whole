@@ -274,3 +274,209 @@ body {
   cursor: pointer;
   color: #666;
 }
+/* Centrado y ajuste de dimensiones del modal */
+.custom-gif-modal .modal-dialog {
+  max-width: none; /* Permitir personalización del ancho */
+  width: 40%; /* Ajustado a un 40% del ancho de la pantalla */
+  height: 60vh; /* Ajustado al 60% del alto de la ventana */
+  margin: auto; /* Centrar horizontal y vertical */
+  display: flex; /* Asegurar el centrado */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo del contenido del modal */
+.custom-gif-modal .modal-content {
+  background-color: #f4f4f4; /* Fondo gris claro */
+  border: none; /* Sin bordes */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7); /* Sombra dorada */
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+  height: 80%; /* Hace que ocupe todo el alto del modal */
+}
+
+/* Encabezado del modal (ocultado) */
+.custom-gif-modal .modal-header {
+  display: none; /* Ocultar el encabezado */
+}
+
+/* Botón de cierre */
+.custom-gif-modal .btn-close {
+  background-color: #fff; /* Fondo blanco */
+  opacity: 1; /* Más visible */
+}
+
+.custom-gif-modal .btn-close-white {
+  filter: brightness(0.8); /* Ajustar el brillo */
+}
+
+/* Cuerpo del modal */
+.custom-gif-modal .modal-body {
+  display: flex; /* Centrar el contenido */
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ocupa todo el alto del modal */
+  padding: 0; /* Sin padding adicional */
+}
+
+/* Pie del modal */
+.custom-gif-modal .modal-footer {
+  border-top: none; /* Sin borde */
+  background: transparent; /* Fondo transparente */
+}
+
+/* Ajustes globales para asegurar el centrado del modal */
+.modal.show {
+  display: flex !important; /* Asegurar uso de flexbox */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para el modal de configuración de audio */
+.custom-gif-modal#audioConfigModal .modal-dialog {
+  max-width: none;
+  width: 40%;
+  height: 60vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-gif-modal#audioConfigModal .modal-content {
+  background-color: #f4f4f4;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7);
+  overflow: hidden;
+  height: 80%;
+}
+
+.custom-gif-modal#audioConfigModal .modal-header {
+  display: block;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.custom-gif-modal#audioConfigModal .btn-close {
+  background-color: #fff;
+  opacity: 1;
+}
+
+.custom-gif-modal#audioConfigModal .btn-close-white {
+  filter: brightness(0.8);
+}
+
+.custom-gif-modal#audioConfigModal .modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.custom-gif-modal#audioConfigModal .modal-footer {
+  border-top: none;
+  background: transparent;
+}
+
+.custom-gif-modal#audioConfigModal .audio-config-container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.custom-gif-modal#audioConfigModal .audio-slider-container {
+  margin-top: 20px;
+}
+
+.custom-gif-modal#audioConfigModal .form-range {
+  width: 100%;
+  margin-top: 10px;
+}
+
+body.modal-open {
+  overflow: auto !important;
+  padding-right: 0 !important;
+}
+
+.modal-backdrop {
+  display: none !important;
+}
+
+/* Estilo específico para el modal de configuración de audio */
+.custom-audio-modal .modal-dialog {
+  max-width: none; /* Permitir personalización del ancho */
+  width: 40%; /* Ajustado al 40% del ancho de la pantalla */
+  height: 60vh; /* Ajustado al 60% del alto de la ventana */
+  margin: auto; /* Centrar horizontal y vertical */
+  display: flex; /* Asegurar el centrado */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido del modal */
+.custom-audio-modal .modal-content {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente negro */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin bordes */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5); /* Sombra negra */
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+  height: 80%; /* Hace que ocupe todo el alto del modal */
+}
+
+/* Ocultar el encabezado del modal */
+.custom-audio-modal .modal-header {
+  display: none;
+}
+
+/* Botón de cierre */
+.custom-audio-modal .btn-close {
+  background-color: #fff; /* Fondo blanco */
+  opacity: 1; /* Más visible */
+}
+
+.custom-audio-modal .btn-close-white {
+  filter: brightness(0.8); /* Ajustar el brillo */
+}
+
+/* Cuerpo del modal */
+.custom-audio-modal .modal-body {
+  display: flex; /* Centrar el contenido */
+  flex-direction: column; /* Apilar contenido */
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ocupa todo el alto del modal */
+  padding: 20px; /* Espaciado interno */
+}
+
+/* Contenedor de la configuración de audio */
+.custom-audio-modal .audio-config-container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Contenedor del slider de audio */
+.custom-audio-modal .audio-slider-container {
+  margin-top: 20px;
+}
+
+/* Estilo del rango */
+.custom-audio-modal .form-range {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Pie del modal */
+.custom-audio-modal .modal-footer {
+  border-top: none; /* Sin borde */
+  background: transparent; /* Fondo transparente */
+}
+
+/* Ajustes para el fondo semitransparente negro */
+.custom-audio-modal .modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important; /* Fondo negro semitransparente */
+}
+
