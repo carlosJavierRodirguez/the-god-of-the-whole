@@ -166,9 +166,9 @@ form {
 
 /* Estilos para el select */
 #langSelect {
-  background: linear-gradient(145deg, #6a0dad, #2d0b3d);
-  color: #ffffff;
-  border: 2px solid #8b5fbf;
+  background: linear-gradient(145deg, #fbff00, #ff0000ca);
+  color: #000000;
+  border: 2px solid #ff0000;
   padding: 8px 30px 8px 15px; 
   border-radius: 25px;
   font-family: 'Poppins', sans-serif;
@@ -178,7 +178,7 @@ form {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgb(255, 0, 0);
   transition: all 0.3s ease;
 }
 
@@ -186,19 +186,19 @@ form {
 #langSelect:hover {
   border-color: #ffd700;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(106, 13, 173, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 200, 0, 0.4);
 }
 
 /* Focus effect */
 #langSelect:focus {
-  border-color: #ffd700;
-  box-shadow: 0 0 0 3px rgba(139, 95, 191, 0.3);
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Estilos para las opciones del select */
 #langSelect option {
-  background-color: #2d0b3d;
-  color: #ffffff;
+  background-color: #fbff00cd;
+  color: #020202;
   padding: 10px;
 }
 
