@@ -24,8 +24,8 @@ try {
         1 => [11, 20],
         2 => [1, 10],
         3 => [21, 30],
-        4 => [11, 16],
-        5 => [33, 42],
+        4 => [11, 20],
+        5 => [31, 40],
         6 => [1, 10],
     ];
 
@@ -37,11 +37,11 @@ try {
 
     // Consultar 6 imágenes principales del rango
     $queryPrincipales = "
-        SELECT ib.imagen_id, ib.nombre, ib.imagen_url
-        FROM imagen_binarios ib
-        INNER JOIN imagen_pregunta ip ON ib.imagen_id = ip.imagen_id
+        SELECT iu.imagen_id, iu.nombre, iu.imagen_url
+        FROM imagen_url iu
+        INNER JOIN imagen_pregunta ip ON iu.imagen_id = ip.imagen_id
         WHERE ip.pregunta_id = :pregunta_id
-        AND ib.imagen_id BETWEEN :rango_inicio AND :rango_fin
+        AND iu.imagen_id BETWEEN :rango_inicio AND :rango_fin
         ORDER BY RANDOM()
         LIMIT 6
     ";
@@ -62,9 +62,9 @@ try {
 
     // Consultar imágenes adicionales para completar 10
     $queryAdicionales = "
-        SELECT ib.imagen_id, ib.nombre, ib.imagen_url
-        FROM imagen_binarios ib
-        WHERE ib.imagen_id NOT IN (
+        SELECT iu.imagen_id, iu.nombre, iu.imagen_url
+        FROM imagen_url iu
+        WHERE iu.imagen_id NOT IN (
             SELECT ip.imagen_id
             FROM imagen_pregunta ip
             WHERE ip.pregunta_id = :pregunta_id
@@ -79,13 +79,6 @@ try {
     ]);
 
     $imagenesFinales = array_merge($imagenesPrincipales, $imagenesAdicionales);
-
-    // Convertir imágenes de binario a base64
-    foreach ($imagenesFinales as &$imagen) {
-        // Convertir el recurso bytea a cadena
-        $imagenBinaria = stream_get_contents($imagen['imagen_url']);
-        $imagen['imagen_url'] = 'data:image/png;base64,' . base64_encode($imagenBinaria);
-    }
 
     // Respuesta en formato JSON
     echo json_encode([
