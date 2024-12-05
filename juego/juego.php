@@ -18,7 +18,7 @@ include('../libreria/juego/listarPreguntas.php');
         <!-- Columna para la pregunta y chat -->
         <div class="row">
             <div class="col-8  mt-1">
-                <div class="woodquest mt-2 ">
+                <div class="woodquest mt-2 mostrar-preguntas">
                     <?php
                     // Verificar el resultado de la consulta  
                     if (count($resultado) > 0) {
@@ -38,36 +38,46 @@ include('../libreria/juego/listarPreguntas.php');
             <div class="col-1"></div>
             <div class="col-3">
                 <div class="contenedor-botones mt-1">
-                    <!-- <div class="terminaste "></div> -->
-                    <div class="listo text-center " id="validateButton"></div>
+                    <div class="listo" id="validateButton"></div>
                 </div>
             </div>
         </div>
 
         <div class="row ">
-            <div class="col-8  pergaminove">
-                <div class="text-center " id="dropzone"></div>
+            <div class="col-8  ">
+                <div class="text-center pergaminove" id="dropzone"></div>
             </div>
             <div class="col-1 "></div>
 
-            <!-- boton para abrir el chat -->
-            <div class="col-3 ">
-                <button type="button" class="btn btn-primary position-relative ">
-                    <i class="fa-brands fa-rocketchat"></i>
-                    <span id="messageCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
-                    </span>
-                </button>
 
-                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#gifModal">
-                    <i class="fa-solid fa-circle-info"></i>
-                </button>
+            <div class="col-3">
+                <!-- Botón de Chat -->
+                <div class="text-center mt-2">
+                    <button type="button" class="btn btn-primary position-relative">
+                        Chat <i class="fa-brands fa-rocketchat"></i>
+                        <span id="messageCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
+                    </button>
+                </div>
 
-                <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#audioConfigModal">
-                    <i class="fa-solid fa-music"></i>
-                </button>
-                <div class="border rounded p-2 mt-2">
-                    <div class="zeus-gif">..</div>
+                <!-- Botón para abrir el tutorial -->
+                <div class="text-center mt-2">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#gifModal">
+                        Tutorial <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </div>
+
+                <!-- Botón para configuración de audio -->
+                <div class="text-center mt-2">
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#audioConfigModal">
+                        Musica <i class="fa-solid fa-music"></i>
+                    </button>
+                </div>
+
+                <!-- GIF de Zeus -->
+                <div class="text-center mt-3">
+                    <div class="zeus-gif"></div>
                 </div>
             </div>
 
@@ -112,15 +122,22 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
-    <!-- Modal para el GIF con clases personalizadas -->
+    <!-- Modal para explicarle al usuario como jugar -->
     <div class="modal fade custom-gif-modal" id="gifModal" tabindex="-1" aria-labelledby="gifModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
                 <div class="modal-body text-center">
-                    <img src="../gif/pregunta.gif" alt="GIF" class="img-fluid rounded">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="pregunta-texto text-center">
+                                Observa cómo se seleccionan las opciones correctas y arrástralas al área correspondiente. <br>
+                                Asegúrate de completarlas antes de que el tiempo se acabe. ¡Suerte! <i class="fa-regular fa-face-smile-wink"></i>
+                            </p>
+
+
+                        </div>
+                        <div class="col-12"> <img src="../gif/pregunta.gif" alt="GIF" class="img-fluid rounded"></div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -129,6 +146,7 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
+    <!-- modal de para configurar el audio -->
     <div class="modal fade custom-audio-modal" id="audioConfigModal" tabindex="-1" aria-labelledby="audioConfigModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -171,12 +189,6 @@ include('../libreria/juego/listarPreguntas.php');
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
     <iframe id="musicaIframe" src="../musica/musicaJuego.html" allow="autoplay" style="display:none;"></iframe>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
