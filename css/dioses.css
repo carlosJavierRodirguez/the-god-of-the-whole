@@ -118,6 +118,16 @@
   width: 100%;
 }
 
+.zeus-gif {
+  background-image: url("../gif/zeusJuego.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30vh; /* Ajusta el ancho según lo necesites */
+  height: 35vh; /* Ajusta la altura según lo necesites */
+  display: inline-block; /* Asegura que funcione como un elemento de bloque para aplicar fondo */
+}
+
 .correcto {
   border: 3px solid green;
   background-color: rgba(0, 255, 0, 0.2); /* Fondo verde translúcido */
