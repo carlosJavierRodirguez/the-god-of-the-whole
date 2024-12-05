@@ -51,21 +51,24 @@ include('../libreria/juego/listarPreguntas.php');
             <div class="col-1 "></div>
 
             <!-- boton para abrir el chat -->
-            <div class="col-3">
-                <button type="button" class="btn btn-primary position-relative">
+            <div class="col-3 ">
+                <button type="button" class="btn btn-primary position-relative ">
                     <i class="fa-brands fa-rocketchat"></i>
                     <span id="messageCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                         0
                     </span>
                 </button>
 
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#gifModal">
+                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#gifModal">
                     <i class="fa-solid fa-circle-info"></i>
                 </button>
 
-                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#audioConfigModal">
+                <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#audioConfigModal">
                     <i class="fa-solid fa-music"></i>
                 </button>
+                <div class="border rounded p-2 mt-2">
+                    <h1 class="text-white text-center">gif aca</h1>
+                </div>
             </div>
 
 
@@ -75,7 +78,9 @@ include('../libreria/juego/listarPreguntas.php');
             <div class="col-8  tablajuego rounded" id="drag-container">
                 <!-- Aquí se generarán los elementos de los dioses aleatoriamente -->
             </div>
-            <div class="col-4 ">
+            <div class="col-1"></div>
+            <div class="col-3 border">
+                <h1 class="text-white text-center">usuarios en linea o ranking</h1>
             </div>
         </div>
     </div>
