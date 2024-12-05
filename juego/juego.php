@@ -60,14 +60,14 @@ include('../libreria/juego/listarPreguntas.php');
                 </button>
 
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#gifModal">
-                <i class="fa-solid fa-circle-info"></i>
+                    <i class="fa-solid fa-circle-info"></i>
                 </button>
 
                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#audioConfigModal">
-    <i class="fa-solid fa-music"></i>
-</button>
+                    <i class="fa-solid fa-music"></i>
+                </button>
             </div>
-            
+
 
         </div>
 
@@ -107,45 +107,45 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
-<!-- Modal para el GIF con clases personalizadas -->
-<div class="modal fade custom-gif-modal" id="gifModal" tabindex="-1" aria-labelledby="gifModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <img src="../gif/tu-gif.gif" alt="GIF" class="img-fluid rounded">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    <!-- Modal para el GIF con clases personalizadas -->
+    <div class="modal fade custom-gif-modal" id="gifModal" tabindex="-1" aria-labelledby="gifModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="../gif/Mano.gif" alt="GIF" class="img-fluid rounded">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade custom-audio-modal" id="audioConfigModal" tabindex="-1" aria-labelledby="audioConfigModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <div class="audio-config-container">
-          <h3 class="tipoLetra mb-4">Configuración de Audio</h3>
-          <div class="audio-slider-container">
-            <label for="rangoMusica" class="form-label">Volumen de Música</label>
-            <input type="range" min="0" max="10" class="form-range" id="rangoMusica" />
-          </div>
+    <div class="modal fade custom-audio-modal" id="audioConfigModal" tabindex="-1" aria-labelledby="audioConfigModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="audio-config-container">
+                        <h3 class="tipoLetra mb-4">Configuración de Audio</h3>
+                        <div class="audio-slider-container">
+                            <label for="rangoMusica" class="form-label">Volumen de Música</label>
+                            <input type="range" min="0" max="10" class="form-range" id="rangoMusica" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarConfigAudio">Guardar</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="guardarConfigAudio">Guardar</button>
-      </div>
     </div>
-  </div>
-</div>
 
 
     <!-- Modal para el chat -->
@@ -167,9 +167,9 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
-    
 
-    
+
+
 
 
 
@@ -182,8 +182,7 @@ include('../libreria/juego/listarPreguntas.php');
     <script src="../js/juego-js/dragDrop/crearDropZone.js"></script>
     <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
     <script src="../js/juego-js/validacion/validacionDioses.js"></script>
-    <script src="../js/tempori.js"></script>
- 
+
 </body>
 
 </html>

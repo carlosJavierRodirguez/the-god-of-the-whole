@@ -39,24 +39,31 @@ socket.onmessage = (event) => {
   try {
     const data = JSON.parse(event.data);
 
-    if (data.tipo === "mensaje") {
-      // Evita duplicar mensajes para el remitente
-      if (data.esTuMensaje) {
-        console.log("Mensaje propio reenviado por el servidor, ignorado.");
-        return;
-      }
+    switch (data.tipo) {
+      case "mensaje":
+        // Solo procesar mensajes de otros clientes
+        if (data.autor !== "Tú") {
+          const text = document.createElement("div");
+          text.classList.add("other");
+          text.innerText = `${data.autor}: ${data.mensaje}`;
 
-      const text = document.createElement("div");
-      text.classList.add("other");
-      text.innerText = `${data.autor}: ${data.mensaje}`;
+          // Incrementar contador de mensajes no leídos si el chat está cerrado
+          if (!chatOpen) {
+            unreadMessages++;
+            updateMessageCount();
+          }
 
-      // Incrementar contador de mensajes no leídos si el chat está cerrado
-      if (!chatOpen) {
-        unreadMessages++;
-        updateMessageCount();
-      }
+          messagesContainer.appendChild(text);
+        }
+        break;
 
-      messagesContainer.appendChild(text);
+      case "confirmacion_envio":
+        // Confirmación de envío para el cliente actual
+        console.log("Confirmación de envío:", data.mensaje);
+        break;
+
+      default:
+        console.log("Tipo de mensaje no reconocido:", data.tipo);
     }
   } catch (error) {
     console.error("Error procesando el mensaje recibido:", error);
@@ -68,14 +75,14 @@ function handleSendMessage() {
   const message = messageInput.value.trim();
 
   if (message === "") {
-    mostrarAlerta('error', 'Error', 'El mensaje no puede estar vacío.', '');
+    mostrarAlerta("error", "Error", "El mensaje no puede estar vacío.", "");
     return;
   }
 
   // Limpia el campo de entrada
   messageInput.value = "";
 
-  // Agrega el mensaje localmente
+  // Agrega el mensaje localmente (sin duplicar)
   const text = document.createElement("div");
   text.classList.add("me");
   text.innerText = `Tú: ${message}`;
@@ -95,3 +102,13 @@ if (sendButton) {
   sendButton.removeEventListener("click", handleSendMessage); // Elimina cualquier listener previo
   sendButton.addEventListener("click", handleSendMessage); // Registra el nuevo listener
 }
+
+// Manejo de desconexión
+socket.onclose = () => {
+  console.log("Desconexión del servidor WebSocket");
+};
+
+// Manejo de errores
+socket.onerror = (error) => {
+  console.error("Error en el WebSocket:", error);
+};

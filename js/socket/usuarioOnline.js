@@ -1,34 +1,56 @@
-fetch("../libreria/datosInvitado/imagenPerfilInvitado.php")
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.url_imagen && data.nombre_invitado && data.nombre_imagen) {
-      const listaUsuarios = document.getElementById("lista-usuarios");
+// Inicializa la conexión WebSocket
+const socket = new WebSocket("ws://localhost:8080");
 
-      const divUserProfile = document.createElement("div");
-      divUserProfile.className = "user-profile form-group mt-2 rounded";
+// Configura los eventos del WebSocket
+socket.onopen = () => {
+  console.log("Conexión WebSocket establecida");
+};
 
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "btn border-0 border seleccionPerfilImagen";
+socket.onerror = (error) => {
+  console.error("Error en la conexión WebSocket:", error);
+};
 
-      const img = document.createElement("img");
-      img.className = "user-icon";
-      img.src = data.url_imagen;
-      img.alt = data.nombre_imagen;
+socket.onmessage = (event) => {
+  console.log("Mensaje recibido del servidor:", event.data);
 
-      const span = document.createElement("span");
-      span.className = "username";
-      span.textContent = data.nombre_invitado;
+  try {
+    const data = JSON.parse(event.data);
 
-      button.appendChild(img);
-      divUserProfile.appendChild(button);
-      divUserProfile.appendChild(span);
+    socket.onmessage = (event) => {
+      const mensaje = JSON.parse(event.data);
+      console.log("Mensaje recibido del servidor:", mensaje);
 
-      listaUsuarios.appendChild(divUserProfile);
-    } else {
-      console.error(data.error || "No se encontró la imagen.");
-    }
-  })
-  .catch((error) => {
-    console.error("Error en la solicitud:", error);
-  });
+      if (mensaje.tipo === "usuarios_en_sala") {
+        // Renderiza la lista de usuarios conectados
+        const listaUsuarios = document.getElementById("lista-usuarios");
+        listaUsuarios.innerHTML = "";
+
+        mensaje.usuarios.forEach((usuario) => {
+          const divUserProfile = document.createElement("div");
+          divUserProfile.className = "user-profile form-group mt-2 rounded";
+
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "btn border-0 border seleccionPerfilImagen";
+
+          const img = document.createElement("img");
+          img.className = "user-icon";
+          img.src = usuario.url_imagen;
+          img.alt = usuario.nombre_imagen;
+
+          const span = document.createElement("span");
+          span.className = "username";
+          span.textContent = usuario.nombre_invitado;
+
+          button.appendChild(img);
+          divUserProfile.appendChild(button);
+          divUserProfile.appendChild(span);
+
+          listaUsuarios.appendChild(divUserProfile);
+        });
+      }
+    };
+  } catch (error) {
+    console.error("Error al procesar el mensaje del servidor:", error);
+  }
+};

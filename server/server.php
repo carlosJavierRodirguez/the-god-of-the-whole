@@ -7,7 +7,8 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
 require __DIR__ . '/vendor/autoload.php';
-include('./libreria/conexion.php');
+include __DIR__ . '/../libreria/conexion.php';
+
 
 class SalaManager implements MessageComponentInterface
 {
@@ -25,12 +26,12 @@ class SalaManager implements MessageComponentInterface
     public function onOpen(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
-        echo "Nueva conexión: ({$conn->resourceId})\n";
+        echo "Nueva conexión establecida: ({$conn->resourceId})\n";
     }
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
-        echo "Mensaje recibido: " . $msg . "\n";
+        echo "Mensaje recibido: $msg\n";
         $data = json_decode($msg, true);
 
         if (!isset($data['tipo'])) {
@@ -38,16 +39,17 @@ class SalaManager implements MessageComponentInterface
                 'status' => 'error',
                 'mensaje' => 'El mensaje no contiene el tipo de operación.'
             ]));
+            echo "Error: Mensaje sin tipo definido.\n";
             return;
         }
 
         switch ($data['tipo']) {
-            case 'unirse_sala':
-                $this->unirseASala($from, $data);
-                break;
-
             case 'crear_sala':
                 $this->crearSala($from, $data);
+                break;
+
+            case 'unirse_sala':
+                $this->unirseASala($from, $data);
                 break;
 
             case 'mensaje':
@@ -61,24 +63,26 @@ class SalaManager implements MessageComponentInterface
             default:
                 $from->send(json_encode([
                     'status' => 'error',
-                    'mensaje' => 'Tipo de operación no reconocido.'
+                    'mensaje' => 'Operación no reconocida.'
                 ]));
+                echo "Error: Operación no reconocida: {$data['tipo']}\n";
         }
     }
 
     public function onClose(ConnectionInterface $conn)
     {
         $this->clients->detach($conn);
-        echo "Conexión {$conn->resourceId} cerrada\n";
+        echo "Conexión cerrada: ({$conn->resourceId})\n";
 
-        foreach ($this->salas as $codigo => $sala) {
-            if (isset($this->salas[$codigo]['usuarios'][$conn->resourceId])) {
-                unset($this->salas[$codigo]['usuarios'][$conn->resourceId]);
+        foreach ($this->salas as $codigoSala => $sala) {
+            if (isset($this->salas[$codigoSala]['usuarios'][$conn->resourceId])) {
+                unset($this->salas[$codigoSala]['usuarios'][$conn->resourceId]);
 
-                if (empty($this->salas[$codigo]['usuarios'])) {
-                    unset($this->salas[$codigo]);
+                if (empty($this->salas[$codigoSala]['usuarios'])) {
+                    unset($this->salas[$codigoSala]);
+                    echo "Sala '{$codigoSala}' eliminada (sin usuarios).\n";
                 } else {
-                    $this->actualizarUsuariosSala($codigo);
+                    $this->enviarUsuariosSala($codigoSala);
                 }
                 break;
             }
@@ -87,7 +91,7 @@ class SalaManager implements MessageComponentInterface
 
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
-        echo "Error: {$e->getMessage()}\n";
+        echo "Error en la conexión: {$e->getMessage()}\n";
         $conn->close();
     }
 
@@ -102,6 +106,7 @@ class SalaManager implements MessageComponentInterface
                 'status' => 'error',
                 'mensaje' => 'Datos insuficientes para crear la sala.'
             ]));
+            echo "Error: Datos insuficientes para crear la sala.\n";
             return;
         }
 
@@ -121,11 +126,13 @@ class SalaManager implements MessageComponentInterface
                 'mensaje' => 'Sala creada con éxito',
                 'codigoSala' => $codigoSala
             ]));
+            echo "Sala '{$nombreSala}' creada con el código '{$codigoSala}'.\n";
         } else {
             $from->send(json_encode([
                 'status' => 'error',
                 'mensaje' => 'No se pudo crear la sala.'
             ]));
+            echo "Error: No se pudo crear la sala '{$nombreSala}'.\n";
         }
     }
 
@@ -137,36 +144,76 @@ class SalaManager implements MessageComponentInterface
         if (empty($codigoSala) || empty($nombreJugador)) {
             $from->send(json_encode([
                 'status' => 'error',
-                'mensaje' => 'Código de sala o nombre de jugador inválido.',
+                'mensaje' => 'Código de sala o nombre de jugador inválido.'
+            ]));
+            echo "Error: Código de sala o nombre de jugador inválido.\n";
+            return;
+        }
+
+        // Inserta al usuario en la base de datos
+        $query = "INSERT INTO invitado (nombre_invitado, id_sala, imagen_id) 
+                  SELECT ?, id_sala, ? FROM sala WHERE codigo_sala = ?";
+        $valores = [$nombreJugador, rand(1, 15), $codigoSala];
+
+        try {
+            $this->conexion->insertarDatos($query, $valores);
+        } catch (Exception $e) {
+            echo "Error al registrar el usuario en la base de datos: {$e->getMessage()}\n";
+            $from->send(json_encode([
+                'status' => 'error',
+                'mensaje' => 'No se pudo registrar el usuario en la sala.'
             ]));
             return;
         }
 
-        // Verifica si la sala existe en el registro del servidor
-        if (!isset($this->salas[$codigoSala])) {
-            $this->salas[$codigoSala] = [
-                'codigoSala' => $codigoSala,
-                'nombreSala' => $codigoSala, // Puedes reemplazarlo con el nombre real si lo tienes
-                'usuarios' => [],
-            ];
-        }
+        // Actualiza la lista de usuarios conectados
+        $this->enviarUsuariosSala($codigoSala);
+        echo "Usuario '{$nombreJugador}' se unió a la sala '{$codigoSala}'.\n";
 
-        // Añade el usuario a la lista de la sala
-        $this->salas[$codigoSala]['usuarios'][$from->resourceId] = [
-            'nombre' => $nombreJugador,
-            'id_imagen' => 1, // ID de la imagen por defecto
-        ];
-
-        // Notifica a todos los usuarios de la sala
-        $this->actualizarUsuariosSala($codigoSala);
-
-        // Responde al cliente que se unió
         $from->send(json_encode([
             'status' => 'success',
-            'mensaje' => 'Te has unido a la sala.',
-            'nombreSala' => $this->salas[$codigoSala]['nombreSala'],
+            'mensaje' => "Te has unido a la sala '{$codigoSala}'."
         ]));
     }
+
+
+    private function enviarUsuariosSala($codigoSala)
+    {
+        $query = "
+        SELECT i.nombre_invitado, ip.url_imagen, ip.nombre_imagen
+        FROM invitado i
+        JOIN sala s ON i.id_sala = s.id_sala
+        JOIN \"imagenPerfil\" ip ON i.imagen_id = ip.id_url
+        WHERE s.codigo_sala = ?";
+        $valores = [$codigoSala];
+
+        try {
+            $usuarios = $this->conexion->consultaIniciarSesion($query, $valores);
+        } catch (Exception $e) {
+            echo "Error al obtener usuarios de la base de datos: {$e->getMessage()}\n";
+            return;
+        }
+
+        $usuariosList = array_map(function ($usuario) {
+            return [
+                'nombre_invitado' => $usuario['nombre_invitado'],
+                'url_imagen' => $usuario['url_imagen'],
+                'nombre_imagen' => $usuario['nombre_imagen']
+            ];
+        }, $usuarios);
+
+        foreach ($this->clients as $client) {
+            $client->send(json_encode([
+                'tipo' => 'usuarios_en_sala',
+                'codigoSala' => $codigoSala,
+                'usuarios' => $usuariosList,
+            ]));
+        }
+
+        echo "Lista actualizada enviada para la sala '{$codigoSala}': " . json_encode($usuariosList) . "\n";
+    }
+
+
 
     private function retransmitirMensaje(ConnectionInterface $from, $data)
     {
@@ -178,21 +225,22 @@ class SalaManager implements MessageComponentInterface
                 'status' => 'error',
                 'mensaje' => 'El mensaje no puede estar vacío.'
             ]));
+            echo "Error: Mensaje vacío.\n";
             return;
         }
 
         foreach ($this->clients as $client) {
-            $client->send(json_encode([
-                'tipo' => 'mensaje',
-                'mensaje' => $mensaje,
-                'autor' => $client === $from ? "Tú" : "Cliente ({$from->resourceId})",
-                'esTuMensaje' => $client === $from // true si el mensaje es del cliente receptor
-            ]));
+            // Solo envía a los demás clientes, no al remitente
+            if ($client !== $from) {
+                $client->send(json_encode([
+                    'tipo' => 'mensaje',
+                    'codigoSala' => $codigoSala,
+                    'mensaje' => $mensaje,
+                    'autor' => "Cliente ({$from->resourceId})"
+                ]));
+            }
         }
     }
-
-
-
 
     private function enviarABroadcast(ConnectionInterface $from, $data)
     {
@@ -203,6 +251,7 @@ class SalaManager implements MessageComponentInterface
                 'status' => 'error',
                 'mensaje' => 'El mensaje no puede estar vacío.'
             ]));
+            echo "Error: Mensaje vacío en broadcast.\n";
             return;
         }
 
@@ -213,22 +262,8 @@ class SalaManager implements MessageComponentInterface
                 'autor' => 'Broadcast'
             ]));
         }
-    }
-    private function actualizarUsuariosSala($codigoSala)
-    {
-        if (!isset($this->salas[$codigoSala])) {
-            return;
-        }
 
-        $usuarios = array_values($this->salas[$codigoSala]['usuarios']);
-
-        foreach ($this->clients as $client) {
-            $client->send(json_encode([
-                'tipo' => 'usuarios_en_sala',
-                'codigoSala' => $codigoSala,
-                'usuarios' => $usuarios,
-            ]));
-        }
+        echo "Broadcast enviado: $mensaje\n";
     }
 }
 
@@ -241,5 +276,5 @@ $server = IoServer::factory(
     ),
     8080
 );
-
+echo "Servidor WebSocket corriendo en ws://localhost:8080\n";
 $server->run();

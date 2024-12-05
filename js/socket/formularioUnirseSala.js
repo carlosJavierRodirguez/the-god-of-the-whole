@@ -1,62 +1,72 @@
 document
   .getElementById("btnIngresarSala")
-  .addEventListener("click", function () {
+  .addEventListener("click", async function () {
     const nombreJugador = document.getElementById("txtNombreJugador").value;
     const codigoSala = document.getElementById("txtCodigoSala").value;
 
     if (nombreJugador.length >= 2 && codigoSala.length === 5) {
-      fetch("../libreria/datosInvitado/Accesoinvitado.php", {
-        method: "POST",
-        body: new URLSearchParams({
-          txtNombreJugador: nombreJugador,
-          txtCodigoSala: codigoSala,
-        }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Error HTTP: ${response.status}`);
+      try {
+        // Valida el acceso a la sala con una solicitud HTTP
+        const response = await fetch(
+          "../libreria/datosInvitado/Accesoinvitado.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({
+              txtNombreJugador: nombreJugador,
+              txtCodigoSala: codigoSala,
+            }),
           }
-          return response.json();
-        })
-        .then((data) => {
-          if (data.status === "success") {
-            // Envía un mensaje al servidor WebSocket
-            const socket = new WebSocket("ws://localhost:8080"); // Ajusta la URL según corresponda
-            socket.onopen = () => {
-              socket.send(
-                JSON.stringify({
-                  tipo: "unirse_sala",
-                  codigoSala: codigoSala,
-                  nombreJugador: nombreJugador,
-                })
-              );
-              console.log("Mensaje enviado al servidor WebSocket");
-            };
+        );
 
-            socket.onmessage = (event) => {
-              const mensaje = JSON.parse(event.data);
-              console.log("Mensaje recibido del servidor:", mensaje);
-            };
+        if (!response.ok) {
+          throw new Error(`Error HTTP: ${response.status}`);
+        }
 
-            // Redirige a la sala de espera
-            window.location.href = "../sala/salaEsperaInvitado.php";
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Error",
-              text: data.mensaje,
-              confirmButtonText: "Aceptar",
-            });
-          }
-        })
-        .catch((error) => {
+        const data = await response.json();
+
+        if (data.status === "success") {
+          // Conexión WebSocket para manejar la sala
+          const socket = new WebSocket("ws://localhost:8080");
+
+          socket.onopen = () => {
+            console.log("Conexión WebSocket establecida");
+            socket.send(
+              JSON.stringify({
+                tipo: "unirse_sala",
+                codigoSala: codigoSala,
+                nombreJugador: nombreJugador,
+              })
+            );
+            console.log("Mensaje enviado al servidor WebSocket");
+          };
+
+          socket.onerror = (error) => {
+            console.error("Error en la conexión WebSocket:", error);
+          };
+
+          socket.onclose = () => {
+            console.log("Conexión WebSocket cerrada.");
+          };
+
+          // Redirige a la sala de espera después de validar y enviar los datos
+          // window.location.href = "../sala/salaEsperaInvitado.php";
+        } else {
           Swal.fire({
             icon: "error",
-            title: "Error de conexión",
-            text: `Detalles: ${error.message}`,
+            title: "Error",
+            text: data.mensaje,
             confirmButtonText: "Aceptar",
           });
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error de conexión",
+          text: `Detalles: ${error.message}`,
+          confirmButtonText: "Aceptar",
         });
+      }
     } else {
       Swal.fire({
         icon: "error",

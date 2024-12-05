@@ -1,74 +1,33 @@
 <?php
 session_start();
-
 include('../conexion.php');
-include('../classAcceso.php');
 
-// Configurar manejo de errores
-error_reporting(E_ALL);
-ini_set('display_errors', 0); // No mostrar errores directamente
-$logFile = '../error_log.txt';
-
-// Función para registrar errores
-function registrarError($mensaje)
-{
-    global $logFile;
-    file_put_contents($logFile, date('Y-m-d H:i:s') . ' - ' . $mensaje . PHP_EOL, FILE_APPEND);
-}
+header('Content-Type: application/json');
 
 try {
-    $encapsularAcceso = new Acceso();
     $conexion = new Conexion();
 
-    $nombreInvitado = isset($_POST['txtNombreJugador']) ? htmlspecialchars(trim($_POST['txtNombreJugador'])) : null;
-    $codigoSala = isset($_POST['txtCodigoSala']) ? htmlspecialchars(trim($_POST['txtCodigoSala'])) : null;
+    $nombreInvitado = htmlspecialchars(trim($_POST['txtNombreJugador'] ?? ''));
+    $codigoSala = htmlspecialchars(trim($_POST['txtCodigoSala'] ?? ''));
 
-    // Validar datos recibidos
-    if (!$nombreInvitado || !$codigoSala) {
+    if (empty($nombreInvitado) || empty($codigoSala)) {
         echo json_encode(['status' => 'error', 'mensaje' => 'Datos incompletos.']);
-        exit();
+        exit;
     }
-
-    // Encapsular los datos
-    $encapsularAcceso->setCodigoSala($codigoSala);
-    $codigoEncapsulado = $encapsularAcceso->getCodigoSala();
-
-    $encapsularAcceso->setNombre($nombreInvitado);
-    $nombreInvitadoEncapsulado = $encapsularAcceso->getNombre();
 
     // Validar si la sala existe
-    $sqlValidarSala = "SELECT sala_id, nombre_sala, codigo_sala FROM public.sala WHERE codigo_sala = ?";
-    $valoresValidarSala = [$codigoEncapsulado];
-    $resultadoValidarSala = $conexion->consultaIniciarSesion($sqlValidarSala, $valoresValidarSala);
+    $sqlValidarSala = "SELECT sala_id FROM sala WHERE codigo_sala = ?";
+    $resultado = $conexion->consultaIniciarSesion($sqlValidarSala, [$codigoSala]);
 
-    if (!empty($resultadoValidarSala)) {
-        // Guarda los datos de la sala en la sesión
-        $_SESSION['datosSala'] = $resultadoValidarSala[0];
-        // Llama el id de la sala para insertar el invitado
-        $id_sala = $_SESSION['datosSala']['sala_id'];
+    if ($resultado) {
+        // Configurar sesión del invitado
+        $_SESSION['codigoSala'] = $codigoSala;
+        $_SESSION['nombreInvitado'] = $nombreInvitado;
 
-        // Si la sala existe, insertar el invitado
-        $queryInsertarInvitado = "INSERT INTO public.invitado(nombre_invitado, imagen_id, id_sala) VALUES (?, 1, ?)";
-        $valoresInvitado = [$nombreInvitadoEncapsulado, $id_sala];
-        $idInvitado = $conexion->insertarObtenerId($queryInsertarInvitado, $valoresInvitado);
-
-        if ($idInvitado) {
-            // Guardar los datos en la sesión
-            $_SESSION['idInvitado'] = $idInvitado;
-            $_SESSION['nombreInvitado'] = $nombreInvitadoEncapsulado;
-
-            echo json_encode(['status' => 'success', 'mensaje' => 'Invitado registrado correctamente.']);
-            exit();
-        } else {
-            echo json_encode(['status' => 'error', 'mensaje' => 'Error al guardar los datos del invitado.']);
-            exit();
-        }
+        echo json_encode(['status' => 'success', 'mensaje' => 'Validación completada.']);
     } else {
-        echo json_encode(['status' => 'error', 'mensaje' => 'El código de sala no es válido.']);
-        exit();
+        echo json_encode(['status' => 'error', 'mensaje' => 'La sala no existe.']);
     }
 } catch (Exception $e) {
-    registrarError($e->getMessage());
-    echo json_encode(['status' => 'error', 'mensaje' => 'Ocurrió un error interno.']);
-    exit();
+    echo json_encode(['status' => 'error', 'mensaje' => 'Error interno.']);
 }
