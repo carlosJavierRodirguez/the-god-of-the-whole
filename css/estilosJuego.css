@@ -226,6 +226,7 @@ body {
   width: 40%;
   max-width: 400px;
   box-shadow: 0 0 20px 5px green;
+  font-family: "Jeju Hallasan";
 }
 
 /* Modal de Perder */
@@ -241,6 +242,7 @@ body {
   width: 40%;
   max-width: 400px;
   box-shadow: 0 0 20px 5px red;
+  font-family: "Jeju Hallasan";
 }
 .chat-modal {
   display: none; /* Oculto inicialmente */
@@ -424,6 +426,7 @@ body.modal-open {
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5); /* Sombra negra */
   overflow: hidden; /* Asegura que el contenido no se desborde */
   height: 80%; /* Hace que ocupe todo el alto del modal */
+  font-family: 'Jeju Hallasan';
 }
 
 /* Ocultar el encabezado del modal */

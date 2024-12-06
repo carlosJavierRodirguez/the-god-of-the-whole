@@ -1,0 +1,147 @@
+body {
+    font-family: 'Jeju Hallasan';
+    background-image: url("../img/pantano.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.ranking-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.ranking-podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    gap: 0px;
+    margin-bottom: 100px;
+}
+
+.ranking-position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.ranking-position .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid gold;
+    transition: transform 0.3s ease;
+}
+
+.ranking-position .avatar:hover {
+    transform: scale(1.1);
+}
+
+.ranking-position .name {
+    margin-top: 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.ranking-position .puntos {
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+.ranking-position .pillar {
+    width: 80px;
+    height: auto;
+}
+
+#first-place {
+    order: 2;
+    height: 300px;
+    margin-bottom: 100px;
+}
+
+#second-place {
+    order: 1;
+    height: 250px;
+    margin-bottom: 50px;
+}
+
+#third-place {
+    order: 3;
+    height: 200px;
+}
+
+.user-ranking {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid silver;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .ranking-podium {
+        flex-direction: row; /* Mantiene la fila horizontal */
+        flex-wrap: nowrap; /* Evita que los elementos se apilen */
+        justify-content: space-around; /* Espaciado uniforme */
+        align-items: flex-end; /* Alinea las posiciones desde abajo */
+    }
+
+    #first-place {
+        height: 250px; /* Mantén el tamaño proporcional al escritorio */
+        margin-bottom: 0; /* Elimina márgenes adicionales */
+    }
+
+    #second-place {
+        height: 200px;
+        margin-bottom: 0;
+    }
+
+    #third-place {
+        height: 150px;
+        margin-bottom: 0;
+    }
+
+    .ranking-position {
+        flex: 1; /* Permite que los elementos se adapten al espacio disponible */
+        text-align: center;
+        margin: 0 5px; /* Añade un pequeño espacio entre columnas */
+    }
+
+    .ranking-position .avatar {
+        width: 60px; /* Ajusta el tamaño de los avatares */
+        height: 60px;
+    }
+
+    .ranking-position .pillar {
+        width: 50px; /* Ajusta el tamaño del pilar */
+    }
+
+    .ranking-position .name,
+    .ranking-position .puntos {
+        font-size: 14px; /* Texto adaptado para pantallas pequeñas */
+    }
+}
+
+
+
+
+
