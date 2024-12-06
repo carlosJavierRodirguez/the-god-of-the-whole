@@ -169,7 +169,6 @@
     <script src="../js/juego-js/dragDrop/arrastrarYsoltar.js"></script>
     <script src="../js/juego-js/dragDrop/crearDropZone.js"></script>
     <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
-    <script src="../js/juego-js/validacion/validacionesID.js"></script>
     <script src="../js/juego-js/validacion/validacionDioses.js"></script>
 
 </body>

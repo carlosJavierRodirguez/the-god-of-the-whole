@@ -48,7 +48,7 @@ async function validarRespuestas(idsImagenesSeleccionadas) {
 // Función para capturar dinámicamente los IDs de las imágenes seleccionadas
 function obtenerIdsSeleccionados() {
     const elementosDropzone = document.querySelectorAll("#dropzone .draggable");
-    return Array.from(elementosDropzone).map(el => parseInt(el.dataset.id)); // Supone que los IDs están en data-id
+    return Array.from(elementosDropzone).map(el => parseInt(el.dataset.id)); // Recuperar los data-id
 }
 
 // Función para mostrar el modal con los puntos obtenidos y actualizar el puntaje global
@@ -65,7 +65,7 @@ function mostrarModalPuntos(puntos) {
         html: `
             <p>${puntos >= 0 
                 ? `Has obtenido <strong>${puntos} puntos</strong> en esta ronda.` 
-                : `Has perdido puntos. Puntos totales: <strong>${puntajeTotal}</strong>`}</p>
+                : `Has perdido puntos. Puntos totales: <strong>${puntos}</strong>`}</p>
             <p><strong>Puntaje acumulado:</strong> ${puntajeTotal} puntos</p>
         `,
         icon: puntos >= 0 ? 'success' : 'error',
