@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const puntosElement = document.getElementById("puntos");
 
     const roundConfigs = [
-        { time: 90, roundNumber: 1 },  // 1 minute 30 seconds
-        { time: 60, roundNumber: 2 },  // 1 minute
-        { time: 30, roundNumber: 3 }   // 30 seconds
+        { time: 90, roundNumber: 1 },
+        { time: 60, roundNumber: 2 },
+        { time: 30, roundNumber: 3 }
     ];
 
     let currentRoundIndex = parseInt(localStorage.getItem('currentRoundIndex') || '0');
@@ -25,54 +25,52 @@ document.addEventListener("DOMContentLoaded", () => {
         return elementosDropzone.length;
     }
 
+    function redirectToNextPage() {
+        // Crear un elemento de carga temporal
+        const loadingDiv = document.createElement('div');
+        loadingDiv.innerHTML = `
+            <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); 
+                        display: flex; justify-content: center; align-items: center; z-index: 1000; color: white; font-size: 24px;">
+                Cargando siguiente nivel...
+            </div>
+        `;
+        document.body.appendChild(loadingDiv);
+
+        // Simular tiempo de carga
+        setTimeout(() => {
+            // Eliminar div de carga
+            document.body.removeChild(loadingDiv);
+
+            // Verificar si es la última ronda
+            if (currentRoundIndex >= roundConfigs.length - 1) {
+                // Redirigir a ranking
+                window.location.href = 'ranking.php';
+            } else {
+                // Ir a siguiente ronda
+                window.location.href = 'juego.php';
+            }
+        }, 2000);
+    }
+
     function showLoseModal() {
         loseModal.style.display = "flex";
+        clearInterval(timer);
         setTimeout(() => {
-            if (currentRoundIndex < roundConfigs.length - 1) {
-                localStorage.setItem('currentRoundIndex', currentRoundIndex + 1);
-                window.location.href = "pantallaCarga.php";
-            } else {
-                window.location.href = "pantallaCarga.php";
-            }
+            currentRoundIndex++;
+            localStorage.setItem('currentRoundIndex', currentRoundIndex);
+            redirectToNextPage();
         }, 2000);
     }
 
     function showWinModal(puntos) {
         winModal.style.display = "flex";
+        clearInterval(timer);
         puntosElement.textContent = puntos;
         setTimeout(() => {
-            if (currentRoundIndex < roundConfigs.length - 1) {
-                localStorage.setItem('currentRoundIndex', currentRoundIndex + 1);
-                window.location.href = "pantallaCarga.php";
-            } else {
-                window.location.href = "pantallaCarga.php";
-            }
+            currentRoundIndex++;
+            localStorage.setItem('currentRoundIndex', currentRoundIndex);
+            redirectToNextPage();
         }, 2000);
-    }
-
-    function startNextRound() {
-        // Ocultar modales
-        loseModal.style.display = "none";
-        winModal.style.display = "none";
-
-        // Reset dropzone
-        const dropzone = document.getElementById("dropzone");
-        dropzone.innerHTML = '';
-
-        // Reset drag container with new items
-        const dragContainer = document.getElementById("drag-container");
-        dragContainer.innerHTML = '';
-
-        // Regenerate draggable items
-        if (typeof generarDioses === 'function') {
-            generarDioses();
-        }
-
-        // Reset timer
-        timeLeft = roundConfigs[currentRoundIndex].time;
-        contador.textContent = `Tiempo restante: ${timeLeft}s (Ronda ${roundConfigs[currentRoundIndex].roundNumber})`;
-
-        startTimer();
     }
 
     function startTimer() {
@@ -91,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (validateButton) {
         validateButton.addEventListener("click", (event) => {
             event.preventDefault();
+            clearInterval(timer);
 
             const cantidadElementos = contarElementosEnDropzone();
 
@@ -100,11 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 showWinModal(puntos);
             } else {
                 alert("Error: Debes tener al menos 4 elementos en la zona de drop.");
+                startTimer();
             }
         });
     }
 
-    // Start first/current round
+    // Iniciar primera ronda
     timeLeft = roundConfigs[currentRoundIndex].time;
     contador.textContent = `Tiempo restante: ${timeLeft}s (Ronda ${roundConfigs[currentRoundIndex].roundNumber})`;
     startTimer();
