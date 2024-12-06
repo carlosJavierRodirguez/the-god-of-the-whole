@@ -71,14 +71,10 @@
 
 .drop-cell {
   background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
-  border: 2px dashed #aaa; /* Bordes para identificar las celdas */
-  border-radius: 5px; /* Bordes redondeados */
-  height: 120px; /* Altura fija */
-  width: 120px; /* Ancho fijo */
-  display: flex;
-  justify-content: center;
+  border: 1px dashed solid #aaa; /* Bordes para identificar las celdas */
   align-items: center;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  border-radius: 50%;
 }
 
 .drop-cell:hover {
@@ -124,4 +120,14 @@
   .btn {
     width: 90%; /* Botones ocupan casi todo el ancho en móviles */
   }
+}
+/* tamaño de los elemento que hay que arrastrar */
+.img-dios {
+  width: 12vh;
+  height: auto;
+}
+.nombre-dios {
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000;
 }
