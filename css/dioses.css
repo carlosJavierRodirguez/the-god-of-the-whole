@@ -1,121 +1,34 @@
-.hera {
-  background-image: url("../img/diosesVerdaderos/hera.png");
-  background-size: 15vh;
+.hera,
+.ares,
+.poseidon,
+.gemini,
+.sirenas,
+.hades,
+.hercules,
+.atenea,
+.afrodita,
+.zeus,
+.apolo,
+.hefesto,
+.artemisa,
+.minotauro,
+.griffo {
+  background-size: 10vh;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
+}
+
+.hera {
+  background-image: url("../img/diosesVerdaderos/hera.png");
 }
 
 .ares {
   background-image: url("../img/diosesVerdaderos/ares.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 50%;
 }
 
 .poseidon {
   background-image: url("../img/diosesVerdaderos/poseidon.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.gemini {
-  background-image: url("../img/semiDioses/gemini.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.sirenas {
-  background-image: url("../img/criaturasMitologicas/sirenas.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.hades {
-  background-image: url("../img/diosesVerdaderos/hades.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.hercules {
-  background-image: url("../img/semiDioses/hercules.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.atenea {
-  background-image: url("../img/diosesVerdaderos/atenea.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.afrodita {
-  background-image: url("../img/diosesVerdaderos/afrodita.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.zeus {
-  background-image: url("../img/diosesVerdaderos/zeus.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.apolo {
-  background-image: url("../img/diosesVerdaderos/apolo.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.hefesto {
-  background-image: url("../img/diosesVerdaderos/Hefesto.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.artemisa {
-  background-image: url("../img/diosesVerdaderos/artemisa.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.minotauro {
-  background-image: url("../img/criaturasMitologicas/minotauro.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-}
-
-.griffo {
-  background-image: url("../img/criaturasMitologicas/griffo.png");
-  background-size: 10vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
 }
 
 .zeus-gif {
@@ -123,9 +36,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 30vh; /* Ajusta el ancho según lo necesites */
-  height: 35vh; /* Ajusta la altura según lo necesites */
-  display: inline-block; /* Asegura que funcione como un elemento de bloque para aplicar fondo */
+  margin: auto;
 }
 
 .correcto {
@@ -133,7 +44,6 @@
   background-color: rgba(0, 255, 0, 0.2); /* Fondo verde translúcido */
   border-radius: 50%;
 }
-
 
 #drag-container {
   display: grid;
@@ -161,14 +71,10 @@
 
 .drop-cell {
   background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
-  border: 2px dashed #aaa; /* Bordes para identificar las celdas */
-  border-radius: 5px; /* Bordes redondeados */
-  height: 120px; /* Altura fija */
-  width: 120px; /* Ancho fijo */
-  display: flex;
-  justify-content: center;
+  border: 1px dashed solid #aaa; /* Bordes para identificar las celdas */
   align-items: center;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  border-radius: 50%;
 }
 
 .drop-cell:hover {
@@ -179,4 +85,49 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+/* GIF de Zeus */
+.zeus-gif {
+  background-image: url("../gif/zeusJuego.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 20vh; /* Ajusta la altura a un valor específico relativo al viewport */
+  max-height: 200px;
+  border-radius: 10px;
+}
+/* Responsividad */
+@media (max-width: 768px) {
+  .zeus-gif {
+    height: 50vh; /* Reduce la altura en pantallas más pequeñas */
+  }
+
+  .btn {
+    width: 70%; /* Botones ocupan 70% del ancho del contenedor */
+  }
+
+  .text-center {
+    margin-bottom: 10px; /* Espaciado entre elementos */
+  }
+}
+
+@media (max-width: 576px) {
+  .zeus-gif {
+    height: 10vh; /* Reduce más la altura del GIF */
+  }
+
+  .btn {
+    width: 90%; /* Botones ocupan casi todo el ancho en móviles */
+  }
+}
+/* tamaño de los elemento que hay que arrastrar */
+.img-dios {
+  width: 12vh;
+  height: auto;
+}
+.nombre-dios {
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000;
 }

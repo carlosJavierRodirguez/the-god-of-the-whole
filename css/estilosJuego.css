@@ -3,9 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  overflow: hidden; /* Esto desactiva el scroll */
-}
+/* body {
+  overflow: hidden; /* Esto desactiva el scroll 
+} */
 
 .pantano {
   background-image: url("../img/pantano.png");
@@ -61,46 +61,42 @@ body {
 
 .pergaminove {
   background-image: url("../img/Perga.png");
-  background-size: 100vh;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  max-height: 90vh;
+  /* max-height: 90vh; */
   min-height: 40vh;
 }
 
 .listo {
   background-image: url("../img/listo.png");
-  background-size: cover;
+  background-size: 40vh;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 128px;
+  min-height: 25vh;
   cursor: pointer;
   transition: opacity 0.3s;
+  width: auto;
+  margin: auto;
 }
 
 .listo:hover {
   opacity: 0.8;
 }
-.terminaste {
-  background-image: url("../img/Terminaste.png");
-  background-size: cover;
+.woodquest {
+  background-image: url("../img/Maderamorada.png");
+  background-size: 95vh;
   background-repeat: no-repeat;
   background-position: center;
   width: auto;
-  min-height: 90px;
-  position: relative;
-}
-
-.woodquest {
-  background-image: url("../img/Maderamorada.png");
-  background-size: cover; /* O usa 'contain' si deseas que se mantenga la proporción sin recorte */
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 80vh;
-  height: 20vh; /* Ajustamos el tamaño de la altura para que sea grande */
+  height: 25vh;
   margin: auto; /* Centra el elemento si es necesario */
 }
-
+.mostrar-preguntas,
+.contenedor-botones {
+  width: auto;
+  min-height: 80%;
+}
 .tablajuego {
   background-image: url("../img/tablon.png");
   background-repeat: no-repeat;
@@ -121,7 +117,6 @@ body {
   align-items: center;
   padding: 10px;
   cursor: grab;
- 
 }
 
 @media (max-width: 600px) {
@@ -148,10 +143,13 @@ body {
   .woodquest,
   .pergaminove {
     background-size: contain;
-    min-height: 150px;
+    height: auto;
   }
   .chat {
     max-width: 100%;
+  }
+  .pregunta-texto {
+    font-size: 1.5rem;
   }
 }
 
@@ -480,6 +478,10 @@ body.modal-open {
 
 /* Ajustes para el fondo semitransparente negro */
 .custom-audio-modal .modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.5) !important; /* Fondo negro semitransparente */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ) !important; /* Fondo negro semitransparente */
 }
-

@@ -68,7 +68,7 @@ if (!isset($_SESSION['nombreUsuario'])) {
 
   <script src="../js/socket/usuarioOnline.js"></script>
   <script src="../js/eliminar.js"></script>
-  <!-- <script src="../js/transicion.js"></script> -->
+  <script src="../js/transicion.js"></script>
   <script type="module" src="../js/main.js"></script>
 </body>
 
