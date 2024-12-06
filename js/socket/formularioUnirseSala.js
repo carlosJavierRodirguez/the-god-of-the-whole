@@ -6,7 +6,7 @@ document
 
     if (nombreJugador.length >= 2 && codigoSala.length === 5) {
       try {
-        // Valida el acceso a la sala con una solicitud HTTP
+        // Enviar datos al servidor para validar
         const response = await fetch(
           "../libreria/datosInvitado/Accesoinvitado.php",
           {
@@ -26,7 +26,7 @@ document
         const data = await response.json();
 
         if (data.status === "success") {
-          // Conexión WebSocket para manejar la sala
+          // Establecer conexión WebSocket y redirigir
           const socket = new WebSocket("ws://localhost:8080");
 
           socket.onopen = () => {
@@ -39,6 +39,9 @@ document
               })
             );
             console.log("Mensaje enviado al servidor WebSocket");
+
+            // Redirigir a la sala de espera
+            window.location.href = "../sala/salaEsperaInvitado.php";
           };
 
           socket.onerror = (error) => {
@@ -48,9 +51,6 @@ document
           socket.onclose = () => {
             console.log("Conexión WebSocket cerrada.");
           };
-
-          // Redirige a la sala de espera después de validar y enviar los datos
-          // window.location.href = "../sala/salaEsperaInvitado.php";
         } else {
           Swal.fire({
             icon: "error",

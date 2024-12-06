@@ -14,42 +14,37 @@ socket.onmessage = (event) => {
   console.log("Mensaje recibido del servidor:", event.data);
 
   try {
-    const data = JSON.parse(event.data);
+    const mensaje = JSON.parse(event.data);
 
-    socket.onmessage = (event) => {
-      const mensaje = JSON.parse(event.data);
-      console.log("Mensaje recibido del servidor:", mensaje);
+    if (mensaje.tipo === "usuarios_en_sala") {
+      // Renderiza la lista de usuarios conectados
+      const listaUsuarios = document.getElementById("lista-usuarios");
+      listaUsuarios.innerHTML = ""; // Limpia la lista existente
 
-      if (mensaje.tipo === "usuarios_en_sala") {
-        // Renderiza la lista de usuarios conectados
-        const listaUsuarios = document.getElementById("lista-usuarios");
-        listaUsuarios.innerHTML = "";
+      mensaje.usuarios.forEach((usuario) => {
+        const divUserProfile = document.createElement("div");
+        divUserProfile.className = "user-profile form-group mt-2 rounded";
 
-        mensaje.usuarios.forEach((usuario) => {
-          const divUserProfile = document.createElement("div");
-          divUserProfile.className = "user-profile form-group mt-2 rounded";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "btn border-0 border seleccionPerfilImagen";
 
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = "btn border-0 border seleccionPerfilImagen";
+        const img = document.createElement("img");
+        img.className = "user-icon";
+        img.src = usuario.url_imagen;
+        img.alt = usuario.nombre_imagen;
 
-          const img = document.createElement("img");
-          img.className = "user-icon";
-          img.src = usuario.url_imagen;
-          img.alt = usuario.nombre_imagen;
+        const span = document.createElement("span");
+        span.className = "username";
+        span.textContent = usuario.nombre_invitado;
 
-          const span = document.createElement("span");
-          span.className = "username";
-          span.textContent = usuario.nombre_invitado;
+        button.appendChild(img);
+        divUserProfile.appendChild(button);
+        divUserProfile.appendChild(span);
 
-          button.appendChild(img);
-          divUserProfile.appendChild(button);
-          divUserProfile.appendChild(span);
-
-          listaUsuarios.appendChild(divUserProfile);
-        });
-      }
-    };
+        listaUsuarios.appendChild(divUserProfile);
+      });
+    }
   } catch (error) {
     console.error("Error al procesar el mensaje del servidor:", error);
   }

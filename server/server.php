@@ -152,7 +152,9 @@ class SalaManager implements MessageComponentInterface
 
         // Inserta al usuario en la base de datos
         $query = "INSERT INTO invitado (nombre_invitado, id_sala, imagen_id) 
-                  SELECT ?, id_sala, ? FROM sala WHERE codigo_sala = ?";
+        SELECT ?, sala.sala_id, ? 
+        FROM sala 
+        WHERE sala.codigo_sala = ?;";
         $valores = [$nombreJugador, rand(1, 15), $codigoSala];
 
         try {
@@ -182,7 +184,7 @@ class SalaManager implements MessageComponentInterface
         $query = "
         SELECT i.nombre_invitado, ip.url_imagen, ip.nombre_imagen
         FROM invitado i
-        JOIN sala s ON i.id_sala = s.id_sala
+        JOIN sala s ON i.id_sala = s.sala_id
         JOIN \"imagenPerfil\" ip ON i.imagen_id = ip.id_url
         WHERE s.codigo_sala = ?";
         $valores = [$codigoSala];

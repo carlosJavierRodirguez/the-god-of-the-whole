@@ -5,12 +5,11 @@ session_start();
 
 // Verificar si el nombre del invitado está en la sesión
 if (!isset($_SESSION['nombreInvitado']) || !isset($_SESSION['datosSala'])) {
-    // Si cualquiera de las dos variables de sesión no está definida, redirige
+    // Si las variables de sesión no están configuradas, redirige al inicio
     header("Location: ../invitado/unirse.php");
     exit();
 }
 
-//Datos de la sala
 $nombreSala = $_SESSION['datosSala']['nombre_sala'] ?? 'No disponible';
 $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
 
