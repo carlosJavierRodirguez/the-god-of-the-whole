@@ -13,7 +13,7 @@ function createDropzoneGrid() {
   for (let i = 0; i < 10; i++) {
     const cell = document.createElement("div");
     cell.classList.add("drop-cell");
-    cell.dataset.cellIndex = i + 1; // Índice de la celda
+    cell.dataset.cellIndex = i + 1;
     cell.style.border = "2px dashed #ccc";
     cell.style.height = "100px";
     cell.style.width = "100px";
@@ -33,8 +33,6 @@ function handleDragOver(event) {
 
 function handleDrop(event) {
   event.preventDefault();
-
-  // Obtener el ID del elemento arrastrado
   const draggedElementId = event.dataTransfer.getData("text/plain");
   const draggedElement = document.getElementById(draggedElementId);
 
@@ -43,21 +41,11 @@ function handleDrop(event) {
     return; // Salir si el elemento no se encuentra
   }
 
-  // Asegurarse de que la celda esté vacía antes de agregar el elemento
   if (!event.target.hasChildNodes()) {
     event.target.appendChild(draggedElement);
-
-    // Ajustar estilos del elemento arrastrado
     draggedElement.style.position = "relative";
     draggedElement.style.margin = "0 auto";
-
-    // **Actualizar el `data-id` del elemento dentro de la celda**
-    const cellDataId = event.target.dataset.cellIndex;
-    draggedElement.dataset.cell = cellDataId;
-
-    console.log(
-      `Elemento ${draggedElementId} colocado en la celda ${cellDataId}.`
-    );
+    console.log(`Elemento ${draggedElementId} colocado en la celda.`);
   } else {
     console.warn("La celda ya tiene un elemento.");
   }
