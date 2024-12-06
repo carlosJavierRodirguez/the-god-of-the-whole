@@ -1,8 +1,3 @@
-<?php
-
-include('../libreria/juego/listarPreguntas.php');
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,28 +7,15 @@ include('../libreria/juego/listarPreguntas.php');
     <link rel="stylesheet" href="../css/dioses.css" />
 </head>
 
-
 <body class="pantano">
     <div class="container">
         <!-- Columna para la pregunta y chat -->
         <div class="row">
             <div class="col-8  mt-1">
-                <div class="woodquest mt-2 mostrar-preguntas">
-                    <?php
-                    // Verificar el resultado de la consulta  
-                    if (count($resultado) > 0) {
-                        // Obtener la pregunta aleatoria
-                        $pregunta = $resultado[0];
-                        echo '<h1 class="pregunta-texto  text-center">' . $pregunta['pregunta'] . '</h1>';
-
-                        // Agregar la pregunta a la lista de preguntas ya mostradas
-                        // $_SESSION['preguntas_mostradas'][] = $pregunta['pregunta_id'];
-                    } else {
-                        echo '<h1 class="pregunta-texto text-center">No hay más preguntas disponibles</h1>';
-                    }
-                    ?>
-                    <p id="contador" class="text-center">Tiempo restante: 20s</p>
-                </div>
+            <div class="woodquest mt-2 mostrar-preguntas">
+    <h1 id="pregunta" class="pregunta-texto text-center">Cargando pregunta...</h1>
+    <p id="contador" class="text-center">Tiempo restante: 20s</p>
+</div>
             </div>
             <div class="col-1"></div>
             <div class="col-3">
@@ -43,15 +25,13 @@ include('../libreria/juego/listarPreguntas.php');
             </div>
         </div>
 
-        <div class="row ">
-            <div class="col-8  ">
+        <div class="row">
+            <div class="col-8">
                 <div class="text-center pergaminove" id="dropzone"></div>
             </div>
-            <div class="col-1 "></div>
-
-
+            <div class="col-1"></div>
             <div class="col-3">
-                <!-- Botón de Chat -->
+                <!-- Botones de interacción -->
                 <div class="text-center mt-2">
                     <button type="button" class="btn btn-primary position-relative">
                         Chat <i class="fa-brands fa-rocketchat"></i>
@@ -61,41 +41,36 @@ include('../libreria/juego/listarPreguntas.php');
                     </button>
                 </div>
 
-                <!-- Botón para abrir el tutorial -->
                 <div class="text-center mt-2">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#gifModal">
                         Tutorial <i class="fa-solid fa-circle-info"></i>
                     </button>
                 </div>
 
-                <!-- Botón para configuración de audio -->
                 <div class="text-center mt-2">
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#audioConfigModal">
-                        Musica <i class="fa-solid fa-music"></i>
+                        Música <i class="fa-solid fa-music"></i>
                     </button>
                 </div>
 
-                <!-- GIF de Zeus -->
                 <div class="text-center mt-3">
                     <div class="zeus-gif"></div>
                 </div>
             </div>
-
-
         </div>
 
-        <div class="row ">
-            <div class="col-8  tablajuego rounded" id="drag-container">
+        <div class="row">
+            <div class="col-8 tablajuego rounded" id="drag-container">
                 <!-- Aquí se generarán los elementos de los dioses aleatoriamente -->
             </div>
             <div class="col-1"></div>
             <div class="col-3 border">
-                <h1 class="text-white text-center">usuarios en linea o ranking</h1>
+                <h1 class="text-white text-center">Usuarios en línea o ranking</h1>
             </div>
         </div>
     </div>
-    <!-- modales -->
 
+    <!-- Modales -->
     <div id="winModal" class="modal custom-win-modal" style="display: none;">
         <div class="modal-wrapper">
             <div class="gif-container">
@@ -108,7 +83,6 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
-    <!-- Modal de Perder -->
     <div id="loseModal" class="modal custom-lose-modal" style="display: none;">
         <div class="modal-wrapper">
             <div class="gif-container">
@@ -122,7 +96,7 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
-    <!-- Modal para explicarle al usuario como jugar -->
+    <!-- Modal para explicarle al usuario cómo jugar -->
     <div class="modal fade custom-gif-modal" id="gifModal" tabindex="-1" aria-labelledby="gifModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -133,8 +107,6 @@ include('../libreria/juego/listarPreguntas.php');
                                 Observa cómo se seleccionan las opciones correctas y arrástralas al área correspondiente. <br>
                                 Asegúrate de completarlas antes de que el tiempo se acabe. ¡Suerte! <i class="fa-regular fa-face-smile-wink"></i>
                             </p>
-
-
                         </div>
                         <div class="col-12"> <img src="../gif/pregunta.gif" alt="GIF" class="img-fluid rounded"></div>
                     </div>
@@ -146,7 +118,7 @@ include('../libreria/juego/listarPreguntas.php');
         </div>
     </div>
 
-    <!-- modal de para configurar el audio -->
+    <!-- Modal para configurar el audio -->
     <div class="modal fade custom-audio-modal" id="audioConfigModal" tabindex="-1" aria-labelledby="audioConfigModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -169,7 +141,6 @@ include('../libreria/juego/listarPreguntas.php');
             </div>
         </div>
     </div>
-
 
     <!-- Modal para el chat -->
     <div id="chatModal" class="chat-modal" style="display: none;">
@@ -198,6 +169,7 @@ include('../libreria/juego/listarPreguntas.php');
     <script src="../js/juego-js/dragDrop/arrastrarYsoltar.js"></script>
     <script src="../js/juego-js/dragDrop/crearDropZone.js"></script>
     <script src="../js/juego-js/dragDrop/devolverDrag.js"></script>
+    <script src="../js/juego-js/validacion/validacionesID.js"></script>
     <script src="../js/juego-js/validacion/validacionDioses.js"></script>
 
 </body>

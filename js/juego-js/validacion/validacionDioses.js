@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const diosesVerdaderos = ["afrodita", "apolo", "ares", "artemisa", "atenea", "hades", "hefesto", "hera", "poseidon", "zeus"];
-    const semiDioses = ["gemini", "hercules"];
-    const criaturasMitologicas = ["griffo", "minotauro", "sirenas"];
-
     const contador = document.getElementById("contador");
     const loseModal = document.getElementById("loseModal");
     const winModal = document.getElementById("winModal");
