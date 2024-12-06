@@ -131,3 +131,15 @@
   color: #ffffff;
   text-shadow: 1px 1px 3px #000;
 }
+
+.custom-swal-title {
+  color: #ffffff; /* Color blanco puro */
+  font-size: 24px; /* Tamaño más grande */
+  text-shadow: 0 0 5px #ffffff; /* Sombra blanca brillante */
+}
+
+.custom-swal-text {
+  color: #000000; /* Color blanco puro */
+  font-size: 24px; /* Tamaño más grande */
+  text-shadow: 0 0 2px #ffffff; /* Sombra blanca brillante */
+}
