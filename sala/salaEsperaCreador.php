@@ -38,19 +38,19 @@ if (!isset($_SESSION['nombreUsuario'])) {
           </div>
 
           <div class="p-4 mt-4 rueda" id="lista-usuarios">
-        
+
           </div>
         </div>
 
 
         <!-- botón de iniciarl la sala -->
         <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-sm text-center border-0 " onclick="iniciarTransicion()">
-            <img
-              src="../img/botonIniciarJuego.png"
-              class="botonIniciarJuego"
-              alt="Iniciar Juego" />
-          </button>
+          <button type="button" class="btn btn-sm text-center border-0 ">
+            <a href="../juego/juego.php"> <img
+                src="../img/botonIniciarJuego.png"
+                class="botonIniciarJuego"
+                alt="Iniciar Juego" />
+          </button></a>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@ if (!isset($_SESSION['nombreUsuario'])) {
 
   <script src="../js/socket/usuarioOnline.js"></script>
   <script src="../js/eliminar.js"></script>
-  <script src="../js/transicion.js"></script>
+  <!-- <script src="../js/transicion.js"></script> -->
   <script type="module" src="../js/main.js"></script>
 </body>
 

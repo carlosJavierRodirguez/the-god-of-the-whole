@@ -19,6 +19,7 @@ socket.onmessage = (event) => {
     if (mensaje.tipo === "usuarios_en_sala") {
       // Renderiza la lista de usuarios conectados
       const listaUsuarios = document.getElementById("lista-usuarios");
+      const contadorUsuarios = document.getElementById("contador-usuarios");
       listaUsuarios.innerHTML = ""; // Limpia la lista existente
 
       mensaje.usuarios.forEach((usuario) => {
@@ -44,6 +45,11 @@ socket.onmessage = (event) => {
 
         listaUsuarios.appendChild(divUserProfile);
       });
+
+      // Actualiza y muestra el contador de usuarios
+      if (contadorUsuarios) {
+        contadorUsuarios.textContent = `${mensaje.usuarios.length}`;
+      }
     }
   } catch (error) {
     console.error("Error al procesar el mensaje del servidor:", error);

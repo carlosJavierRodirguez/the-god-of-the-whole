@@ -64,8 +64,8 @@
                 <!-- Aquí se generarán los elementos de los dioses aleatoriamente -->
             </div>
             <div class="col-1"></div>
-            <div class="col-3 border">
-                <h1 class="text-white text-center">Usuarios en línea o ranking</h1>
+            <div class="col-3 ">
+                <!-- <h1 class="text-white text-center">Usuarios en línea o ranking</h1> -->
             </div>
         </div>
     </div>

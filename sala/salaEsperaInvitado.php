@@ -38,7 +38,7 @@ $codigoSala = $_SESSION['datosSala']['codigo_sala'] ?? 'No disponible';
                 </div>
             </div>
 
-            <div class="text-white">Jugadores: <i class="fa-solid fa-user"></i> </div>
+            <div class="text-white" id="contador-usuarios">Jugadores: <i class="fa-solid fa-user"></i> </div>
 
             <div class="rueda col-9" id="lista-usuarios">
 
